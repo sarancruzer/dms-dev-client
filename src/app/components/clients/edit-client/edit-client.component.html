@@ -1,0 +1,118 @@
+<div class="animated fadeIn">
+    <div class="row">
+     
+      <div class="col-sm-10">
+        <div class="card">
+          <div class="card-header">
+            <strong>Edit Client</strong>
+            <small>Form</small>
+          </div>
+          <div class="card-body">
+              <div class="form-group">
+                  <label for="company">Reference</label>
+                  <input type="text" class="form-control" id="company" placeholder="1001"  [(ngModel)] = "client.reference" disabled="disabled">
+                </div>
+                <div class="form-group">
+                  <label for="company">Reference Date</label>
+                  <input type="text" class="form-control" id="company" placeholder="2017-10-05" [(ngModel)] = "client.reference_date" disabled="disabled">
+                </div>
+             <div class="form-group">
+              <label for="company">Client business</label>
+              <input type="text" class="form-control" id="company" placeholder="Client business" [(ngModel)] = "client.client_business" >
+            </div>
+
+            <div class="form-group">
+                <label for="company">Client Company</label>
+                <textarea rows="" cols="" class="form-control" id="company" placeholder="Client Company" [(ngModel)] = "client.client_company" ></textarea> 
+              </div>
+              <div class="form-group">
+                <label for="company">ABN</label>
+                <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "client.abn" >
+              </div>
+              <div class="form-group">
+                  <label for="company">Address1</label>
+                  <textarea rows="" cols="" class="form-control" id="company" placeholder="Address1" [(ngModel)] = "client.address1" ></textarea> 
+                </div>
+                <div class="form-group">
+                    <label for="company">Address2</label>
+                    <textarea rows="" cols="" class="form-control" id="company" placeholder="Address2" [(ngModel)] = "client.address2" ></textarea> 
+                  </div>
+                  <div class="form-group">
+                      <label for="company">City</label>
+                      <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "client.city" >
+      
+                    </div>
+
+               <div class="form-group">
+                <label for="company">State</label>
+                <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "client.state" >
+                    <option value="0">Please select</option>
+                    <option value="1">Option #1</option>
+                    <option value="2">Option #2</option>
+                    <option value="3">Option #3</option>
+                  </select>
+
+              </div>
+
+            <div class="form-group">
+              <label for="street">Post Code
+                </label>
+              <input type="text" class="form-control" id="street" placeholder="Post Code" [(ngModel)] = "client.post_code" >
+            </div>
+              <div class="form-group ">
+                <label for="city">Web Address</label>
+                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "client.web_address" >
+              </div>
+              <div class="form-group ">
+                  <label for="city">Business Type</label>
+                  <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "client.business_type" >
+                      <option value="0">Please select</option>
+                      <option value="1">Option #1</option>
+                      <option value="2">Option #2</option>
+                      <option value="3">Option #3</option>
+                    </select>
+
+                </div>
+                <div class="form-group ">
+                    <label for="city">Size</label>
+                    <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "client.size" >
+                        <option value="0">Please select</option>
+                        <option value="1">Option #1</option>
+                        <option value="2">Option #2</option>
+                        <option value="3">Option #3</option>
+                      </select>
+                  </div>
+              <div class="form-group ">
+                <label for="postal-code">Annual Turnover</label>
+                <input type="text" class="form-control" id="postal-code" placeholder="Annual Turnover" [(ngModel)] = "client.annual_turnover" >
+              </div>
+
+              <div class="form-group ">
+                  <label for="city">Managing License</label>
+                  <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "client.manage_license" >
+                      <option value="0">Please select</option>
+                      <option value="1">Option #1</option>
+                      <option value="2">Option #2</option>
+                      <option value="3">Option #3</option>
+                    </select>
+                </div>
+
+
+              <div class="form-group ">
+                  <label for="postal-code">Notes</label>
+                  
+                  <textarea rows="" cols="" class="form-control" id="company" placeholder="Notes" [(ngModel)] = "client.notes" ></textarea> 
+                </div>
+              <div class="pull-right">
+                <button type="submit" class="btn btn-sm btn-primary" (click)="updateLicense()"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+              </div> 
+
+            </div><!--/.row-->
+          
+        </div>
+      </div><!--/.col-->
+    </div><!--/.row-->
+  
+  </div>
+  

@@ -1,0 +1,185 @@
+
+
+<div class="animated fadeIn">
+    <div class="row">
+      
+      <!--/.col-->
+      <div class="col-lg-12">
+          
+        <div class="card">
+          
+          <div class="card-header">
+
+            <i class="fa fa-align-justify"></i> {{title}} List
+            <div class="pull-right">
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" (click)="createModal.show()">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i> Create
+          </button>
+              </div>
+          </div>
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Created at</th>
+                  <th>Updated at</th>
+                  <th>Status</th>
+                  <th>Actions</th>                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>AKL</td>
+                 
+                  <td>2017-10-18</td>
+                  <td>2017-10-18</td>
+                   <td><span class="badge badge-success">Active</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" (click)="editModal.show()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModal.show()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    
+                  </td>
+                  
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>AKL</td>
+               
+                  <td>2017-10-18</td>
+                  <td>2017-10-18</td>
+                   <td><span class="badge badge-secondary">Inactive</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" (click)="editModal.show()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModal.show()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    
+                  </td>
+                  
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>AKL</td>
+                  
+                  <td>2017-10-18</td>
+                  <td>2017-10-18</td>
+                   <td><span class="badge badge-success">Active</span></td>
+                  <td>
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" (click)="editModal.show()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModal.show()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    
+                  </td>
+                  
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>AKL</td>
+                
+                  <td>2017-10-18</td>
+                  <td>2017-10-18</td>
+                  <td><span class="badge badge-success">Active</span></td>
+                   
+                  <td>
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" (click)="editModal.show()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModal.show()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    
+                  </td>
+                  
+                </tr> 
+              </tbody>
+            </table>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+    
+  </div>
+  
+
+
+
+<div bsModal #createModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Create {{title}}</h4>
+        <button type="button" class="close" (click)="createModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div class="card-body">
+            <div class="form-group">
+              <label for="company">{{title}} Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Name"  [(ngModel)] = "territory.name">
+            </div>
+           </div><!--/.row-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="createModal.hide()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="create()" >Save </button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit {{title}}</h4>
+        <button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="card-body">
+            <div class="form-group">
+              <label for="company">{{title}} Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Name"  [(ngModel)] = "territory.name">
+            </div>
+           </div><!--/.row-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="editModal.hide()">Close</button>
+        <button type="button" class="btn btn-success">Update </button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div bsModal #deleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Are you sure want to delete!</h4>
+        <button type="button" class="close" (click)="deleteModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="deleteModal.hide()">Close</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
