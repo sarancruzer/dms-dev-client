@@ -35,6 +35,7 @@ export class TerritoryComponent implements OnInit {
   dError:any;
 
   @ViewChild('createModal') public createModal:ModalDirective;
+  @ViewChild('editModal') public editModal:ModalDirective;
   
 
   constructor(private _territoryService:TerritoryService) {
@@ -60,7 +61,7 @@ export class TerritoryComponent implements OnInit {
  }
 
   create(){
-    this._territoryService.saveComments(this.territory).subscribe(     
+    this._territoryService.addTerritory(this.territory).subscribe(     
       (res) => {
            this.cSuccess = res['result']['info']['msg'];
            this.loadTerritory(this.page);
@@ -73,16 +74,19 @@ export class TerritoryComponent implements OnInit {
   }
 
   edit(data){
-    this.items.name = data.name;
-    this.items.short_code = data.short_code;
+    this.editModal.show();
+    this.territory.id = data.id;
+    this.territory.name = data.name;
+    this.territory.short_code = data.short_code;
 
   }
 
   update(id){
     this._territoryService.updateTerritory(this.territory,id).subscribe(     
       (res) => {
-           this.territory = res['result']['info']['data'];
            this.uSuccess = res['result']['info']['msg'];
+           this.loadTerritory(this.page);
+           this.editModal.hide();
       },
     (err) => { 
         this.uError = err;

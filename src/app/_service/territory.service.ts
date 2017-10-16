@@ -29,25 +29,16 @@ export class TerritoryService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  saveComments(param:any):Observable<Territory[]>{
+  addTerritory(param:any) : Observable<Territory[]> {
     console.log(param);
     let body = JSON.stringify({'info':param});
-    return this._http.post(this.apiUrl+"addTerritory",body,this.options)
-    .map(res =>  <Territory> res.json())
-    .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
-
-  }
-
-
-  addTerritorytt(body:any) : Observable<Territory[]> {
-    console.log(body);
     return this._http.post(this.apiUrl+'addTerritory',body,this.options)
     .map((res:Response) => <Territory[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   updateTerritory(params:any,id:number) : Observable<Territory[]> {
-    let body = JSON.stringify(params);
+    let body = JSON.stringify({'info':params});
     return this._http.post(this.apiUrl+'updateTerritory/'+id,body,this.options)
     .map((res:Response) => <Territory[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
