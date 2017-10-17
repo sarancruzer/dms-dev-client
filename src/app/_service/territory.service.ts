@@ -22,9 +22,8 @@ export class TerritoryService {
    }
 
  
-  getTerritory(page:any,q:any) : Observable<Territory[]> {
-    let body ={"q":q};
-    return this._http.post(this.apiUrl+'getTerritory?page='+page,body,this.options)
+  getTerritory(page:any,params:any) : Observable<Territory[]> {
+    return this._http.post(this.apiUrl+'getTerritory?page='+page,params,this.options)
     .map((res:Response) => <Territory[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -45,9 +44,10 @@ export class TerritoryService {
   }
 
   deleteTerritory(id:number) : Observable<Territory[]> {
-    return this._http.post(this.apiUrl+'deleteTerritory/'+id,this.options)
+    return this._http.post(this.apiUrl+'deleteTerritory/'+id,'',this.options)
     .map((res:Response) => <Territory[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
+  
 
 }

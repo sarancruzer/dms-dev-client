@@ -29,11 +29,8 @@ export class LoginComponent implements OnInit {
 
 
   authenticate(){
-    console.log("authenticate");
-
     this._loginService.getAuthenticate(this.email,this.password).subscribe(response => {
         let res = response.result;
-        console.log(response);
         this._local = res.info
         this.setLocalStorage(this._local,res.token);
         setTimeout(() => {

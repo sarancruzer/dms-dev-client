@@ -7,9 +7,11 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { ModalModule } from "ngx-bootstrap";
-
-
 import { AppComponent } from './app.component';
+
+import { ToastrModule } from 'toastr-ng2';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 // Import containers
 import {
@@ -93,7 +95,6 @@ import { CategoryComponent } from './components/masters/category/category.compon
 import { SubCategoryComponent } from './components/masters/sub-category/sub-category.component';
 
 
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -104,7 +105,9 @@ import { SubCategoryComponent } from './components/masters/sub-category/sub-cate
     FormsModule,
     HttpModule,
     RouterModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ToastrModule.forRoot(), // ToastrModule added 
+    BrowserAnimationsModule   
   ],
   declarations: [
     AppComponent,
