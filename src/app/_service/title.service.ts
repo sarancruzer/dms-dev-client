@@ -6,14 +6,14 @@ import { Observable } from "rxjs/Observable";
 import { Territory } from "app/_model/territory";
 
 @Injectable()
-export class TerritoryService {
+export class TitleService {
 
   private apiUrl = environment.apiUrl; 
   
   headers : any;
   options:any;
   territory:Territory[] = [];
-  title = "Territory";
+  title = "Title";
   
   constructor(private _http : Http ) {
     this.headers = new Headers();

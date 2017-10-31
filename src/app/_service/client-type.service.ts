@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { environment } from "../../environments/environment";
+import { environment } from "environments/environment";
+import { State } from "app/_model/state";
 import { Http, RequestOptions, Response ,Headers} from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from "rxjs/Observable";
-import { Territory } from "app/_model/territory";
 
 @Injectable()
-export class TerritoryService {
+export class ClientTypeService {
 
   private apiUrl = environment.apiUrl; 
   
   headers : any;
   options:any;
-  territory:Territory[] = [];
-  title = "Territory";
+  territory:State[] = [];
+  title = "ClientType";
   
   constructor(private _http : Http ) {
     this.headers = new Headers();
@@ -22,32 +22,34 @@ export class TerritoryService {
     this.options = new RequestOptions({ headers: this.headers });
 
    }
+
  
-  get(page:any,params:any) : Observable<Territory[]> {
+  get(page:any,params:any) : Observable<State[]> {
     return this._http.post(this.apiUrl+'get'+this.title+'?page='+page,params,this.options)
-    .map((res:Response) => <Territory[]>res.json())
+    .map((res:Response) => <State[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  add(param:any) : Observable<Territory[]> {
+  add(param:any) : Observable<State[]> {
     console.log(param);
     let body = JSON.stringify({'info':param});
     return this._http.post(this.apiUrl+'add'+this.title,body,this.options)
-    .map((res:Response) => <Territory[]>res.json())
+    .map((res:Response) => <State[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  update(params:any,id:number) : Observable<Territory[]> {
+  update(params:any,id:number) : Observable<State[]> {
     let body = JSON.stringify({'info':params});
     return this._http.post(this.apiUrl+'update'+this.title+'/'+id,body,this.options)
-    .map((res:Response) => <Territory[]>res.json())
+    .map((res:Response) => <State[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  delete(id:number) : Observable<Territory[]> {
+  delete(id:number) : Observable<State[]> {
     return this._http.post(this.apiUrl+'delete'+this.title+'/'+id,'',this.options)
-    .map((res:Response) => <Territory[]>res.json())
+    .map((res:Response) => <State[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
   
+
 }

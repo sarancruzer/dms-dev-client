@@ -6,6 +6,7 @@ import { IsuccessError } from "../../../_interface/isuccess-error.model";
 import { ToastrService } from 'toastr-ng2';
 
 
+
 @Component({
   selector: 'app-territory',
   templateUrl: './territory.component.html',
@@ -16,7 +17,7 @@ import { ToastrService } from 'toastr-ng2';
 
 export class TerritoryComponent implements OnInit {
   
-  territory = new Territory();
+  model = new Territory();
   items:any;
   title:string;
 
@@ -39,7 +40,7 @@ export class TerritoryComponent implements OnInit {
   column: string = 'id';
   orderby:string = "desc";
 
-  constructor(private _territoryService:TerritoryService,private toastrService: ToastrService) {
+  constructor(private _service:TerritoryService,private toastrService: ToastrService) {
     this.title = "Territory";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
@@ -47,21 +48,21 @@ export class TerritoryComponent implements OnInit {
    }
 
    ngOnInit() {
-     this.loadTerritory(1);
+     this.init(1);
    }
 
    sort(property){
     this.isDesc = !this.isDesc; //change the direction    
     this.column = property;
     this.orderby = this.isDesc ? 'desc' : 'asc'
-    this.loadTerritory(this.currentPage);
+    this.init(this.currentPage);
   };
   
 
-  loadTerritory(page) {
+  init(page) {
     console.log(page,this.q);
     let params = {column:this.column,orderby:this.orderby,q:this.q};
-    this._territoryService.getTerritory(page,params).subscribe(     
+    this._service.get(page,params).subscribe(     
       (res) => {
            this.items = res['result']['info']['data'];
            this.totalPage = res['result']['info']['total'];
@@ -82,33 +83,37 @@ export class TerritoryComponent implements OnInit {
     }) 
  }
 
-  create(){
-    this._territoryService.addTerritory(this.territory).subscribe(     
+  create(form){
+    if(form.valid){
+    this._service.add(this.model).subscribe(     
       (res) => {
            this.iSuccessError.mSuccess = res['result']['info']['msg'];
-           this.loadTerritory(this.currentPage);
+           this.init(this.currentPage);
            this.createModal.hide();
            this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
+           this.model.name = '';
+           this.model.short_code = '';           
       },
     (err) => { 
         this.iSuccessError.mError = err;
         this.toastrService.error(err, 'Error!');
     }) 
   }
+  }
 
   edit(data){
     this.editModal.show();
-    this.territory.id = data.id;
-    this.territory.name = data.name;
-    this.territory.short_code = data.short_code;
+    this.model.id = data.id;
+    this.model.name = data.name;
+    this.model.short_code = data.short_code;
 
   }
 
   update(id){
-    this._territoryService.updateTerritory(this.territory,id).subscribe(     
+    this._service.update(this.model,id).subscribe(     
       (res) => {
            this.iSuccessError.mSuccess = res['result']['info']['msg'];
-           this.loadTerritory(this.currentPage);
+           this.init(this.currentPage);
            this.editModal.hide();
            this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
       },
@@ -124,11 +129,11 @@ export class TerritoryComponent implements OnInit {
   }
 
   delete(){
-    this._territoryService.deleteTerritory(this.id).subscribe(     
+    this._service.delete(this.id).subscribe(     
       (res) => {
           console.log(res);
            this.iSuccessError.mSuccess = res['result']['info']['msg'];
-           this.loadTerritory(this.currentPage);
+           this.init(this.currentPage);
            this.deleteModal.hide();
            this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
       },

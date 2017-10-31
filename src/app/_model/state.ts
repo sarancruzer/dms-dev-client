@@ -1,4 +1,4 @@
-export class Territory {
+export class State {
     public id:number;
     public name:string;
     public status:number;

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation'
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
@@ -11,6 +12,7 @@ import { AppComponent } from './app.component';
 
 import { ToastrModule } from 'toastr-ng2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 // Import containers
@@ -107,7 +109,8 @@ import { SubCategoryComponent } from './components/masters/sub-category/sub-cate
     RouterModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(), // ToastrModule added 
-    BrowserAnimationsModule   
+    BrowserAnimationsModule,
+    CustomFormsModule   
   ],
   declarations: [
     AppComponent,
