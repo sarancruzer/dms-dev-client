@@ -93,8 +93,6 @@ import { ManageClientComponent } from './components/clients/manage-client/manage
 import { AddClientComponent } from './components/clients/add-client/add-client.component';
 import { EditClientComponent } from './components/clients/edit-client/edit-client.component';
 import { RolePrivillegesComponent } from './components/role-privilleges/role-privilleges.component';
-import { CategoryComponent } from './components/masters/category/category.component';
-import { SubCategoryComponent } from './components/masters/sub-category/sub-category.component';
 
 
 @NgModule({
@@ -138,9 +136,7 @@ import { SubCategoryComponent } from './components/masters/sub-category/sub-cate
     ManageClientComponent,
     AddClientComponent,
     EditClientComponent,
-    RolePrivillegesComponent,
-    CategoryComponent,
-    SubCategoryComponent
+    RolePrivillegesComponent,    
   ],
   providers: [{
     provide: LocationStrategy,

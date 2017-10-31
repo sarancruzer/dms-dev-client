@@ -1,10 +1,9 @@
-import { TitleService } from './../../../_service/title.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
-import { TerritoryService } from "app/_service/territory.service";
 import { Title } from "app/_model/title";
 import { IsuccessError } from "../../../_interface/isuccess-error.model";
 import { ToastrService } from 'toastr-ng2';
+import { TitleService } from './../../../_service/title.service';
 
 
 @Component({
@@ -31,6 +30,7 @@ export class TitleComponent implements OnInit {
   id:number;
   iSuccessError:IsuccessError;
 
+  
   @ViewChild('createModal') public createModal:ModalDirective;
   @ViewChild('editModal') public editModal:ModalDirective;
   @ViewChild('deleteModal') public deleteModal:ModalDirective;
@@ -39,9 +39,9 @@ export class TitleComponent implements OnInit {
   isDesc: boolean = true;
   column: string = 'id';
   orderby:string = "desc";
-
+  submitted: boolean = false; 
   constructor(private _service:TitleService,private toastrService: ToastrService) {
-    this.title = "Territory";
+    this.title = "Client Type";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
     
@@ -57,7 +57,7 @@ export class TitleComponent implements OnInit {
     this.orderby = this.isDesc ? 'desc' : 'asc'
     this.init(this.currentPage);
   };
-  
+
 
   init(page) {
     console.log(page,this.q);
@@ -81,24 +81,28 @@ export class TitleComponent implements OnInit {
        this.items = [];
        this.pages = [];
     }) 
+
+   
  }
 
   create(form){
+
     if(form.valid){
-    this._service.add(this.model).subscribe(     
-      (res) => {
-           this.iSuccessError.mSuccess = res['result']['info']['msg'];
-           this.init(this.currentPage);
-           this.createModal.hide();
-           this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
-           this.model.name = '';
-           this.model.short_code = '';     
-      },
-    (err) => { 
-        this.iSuccessError.mError = err;
-        this.toastrService.error(err, 'Error!');
-    }) 
-  }
+      this._service.add(this.model).subscribe(     
+        (res) => {
+            this.iSuccessError.mSuccess = res['result']['info']['msg'];
+            this.init(this.currentPage);
+            this.createModal.hide();
+            this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
+            form.resetForm(); 
+            
+        },
+      (err) => { 
+          this.iSuccessError.mError = err;
+          this.toastrService.error(err, 'Error!');
+      }) 
+    
+   }
   }
 
   edit(data){
@@ -109,18 +113,23 @@ export class TitleComponent implements OnInit {
 
   }
 
-  update(id){
+  update(form,id){
+
+    if(form.valid){
     this._service.update(this.model,id).subscribe(     
       (res) => {
            this.iSuccessError.mSuccess = res['result']['info']['msg'];
            this.init(this.currentPage);
            this.editModal.hide();
            this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
+           
       },
     (err) => { 
         this.iSuccessError.mError = err;
         this.toastrService.error(err, 'Error!');
     }) 
+  }
+
   }
 
   deleteModalFunc(id){

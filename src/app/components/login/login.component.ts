@@ -1,3 +1,4 @@
+import { GlobalSettings } from './../../class/global-settings';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { LoginService  } from '../../_service/login.service';
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   email:string;
   password:string;
 
-  constructor(private router : Router,private _loginService : LoginService) {
+  constructor(private router : Router,private _loginService : LoginService,private _globalSettings : GlobalSettings) {
     this.email = "sarancruzer@dms.dev";
     this.password = "123456";
    }
@@ -31,8 +32,7 @@ export class LoginComponent implements OnInit {
   authenticate(){
     this._loginService.getAuthenticate(this.email,this.password).subscribe(response => {
         let res = response.result;
-        this._local = res.info
-        this.setLocalStorage(this._local,res.token);
+        this.setLocalStorage(res.info,res.token);
         setTimeout(() => {
           this.router.navigate(['/dashboard']); 
         }, 2000);
@@ -57,6 +57,8 @@ setLocalStorage(_local,token){
   localStorage.setItem("token",'Bearer '+token);
   localStorage.setItem("authentication",JSON.stringify(true));
   
+  // this._globalSettings.username = localStorage.getItem("first_name");
+  // this._globalSettings.authenticated = JSON.parse(localStorage.getItem("authentication"));
 
 }
 

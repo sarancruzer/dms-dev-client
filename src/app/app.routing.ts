@@ -28,8 +28,6 @@ import { ManageClientComponent } from "app/components/clients/manage-client/mana
 import { AddClientComponent } from "app/components/clients/add-client/add-client.component";
 import { EditClientComponent } from "app/components/clients/edit-client/edit-client.component";
 import { RolePrivillegesComponent } from "app/components/role-privilleges/role-privilleges.component";
-import { CategoryComponent } from "app/components/masters/category/category.component";
-import { SubCategoryComponent } from "app/components/masters/sub-category/sub-category.component";
 
 export const routes: Routes = [
   {path: '',redirectTo: 'login',pathMatch: 'full'},
@@ -58,9 +56,7 @@ export const routes: Routes = [
 
         {path: 'manageRoles',component: RolesComponent,data: {title: 'Roles'}},
         {path: 'rolePrivilleges',component: RolePrivillegesComponent,data: {title: 'Role Privilleges'}},
-
-        {path: 'masters/category',component: CategoryComponent,data: {title: 'Manage Category'}},
-        {path: 'masters/subCategory',component: SubCategoryComponent,data: {title: 'Manage Sub Category'}},
+        
         {path: 'masters/territory',component: TerritoryComponent,data: {title: 'Manage Territory'}},
         {path: 'masters/state',component: StateComponent,data: {title: 'Manage State'}},
         {path: 'masters/title',component: TitleComponent,data: {title: 'Manage Title'}},
