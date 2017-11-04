@@ -1,4 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
+import { GlobalSettings } from "app/class/global-settings";
+import { CommonNewService } from "app/_service/common-new.service";
 
 
 
@@ -24,11 +26,22 @@ export const ROUTES: RouteInfo[] = [
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './app-sidebar.component.html'
+  templateUrl: './app-sidebar.component.html',
+  providers:[CommonNewService]
 })
 export class AppSidebar {
   menuItems: any[];
-  constructor(private el: ElementRef) { }
+  roleAccess : any[];
+  
+  constructor(private el: ElementRef,private _globalSettings : GlobalSettings,private _commonnewService : CommonNewService) {
+     this.roleAccess = this._commonnewService.getUserRolePermissions();     
+     console.log("role permissions");
+     //console.log(JSON.parse(JSON.stringify(this._globalSettings.role_permissions)));
+     console.log(this.roleAccess);
+     console.log(this.roleAccess.indexOf('/masters/territory') !== -1);
+     
+    
+   }
 
   //wait for the component to render completely
   ngOnInit(): void {
