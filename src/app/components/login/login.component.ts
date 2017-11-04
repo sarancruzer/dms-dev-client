@@ -1,3 +1,4 @@
+import { CommonService } from './../../_service/common.service';
 import { GlobalSettings } from './../../class/global-settings';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
@@ -20,12 +21,14 @@ export class LoginComponent implements OnInit {
   email:string;
   password:string;
 
-  constructor(private router : Router,private _loginService : LoginService,private _globalSettings : GlobalSettings) {
+  constructor(private _router : Router,private _loginService : LoginService,private _globalSettings : GlobalSettings,private _commonService:CommonService) {
     this.email = "sarancruzer@dms.dev";
     this.password = "123456";
    }
 
   ngOnInit() {
+    this._commonService.authRedirect('/dashboard');
+
   }
 
 
@@ -34,7 +37,7 @@ export class LoginComponent implements OnInit {
         let res = response.result;
         this.setLocalStorage(res.info,res.token);
         setTimeout(() => {
-          this.router.navigate(['/dashboard']); 
+          this._router.navigate(['/dashboard']); 
         }, 2000);
        
    },
@@ -57,19 +60,19 @@ setLocalStorage(_local,token){
   localStorage.setItem("token",'Bearer '+token);
   localStorage.setItem("authentication",JSON.stringify(true));
   
-  // this._globalSettings.username = localStorage.getItem("first_name");
-  // this._globalSettings.authenticated = JSON.parse(localStorage.getItem("authentication"));
+   this._globalSettings.username = localStorage.getItem("first_name");
+   this._globalSettings.authenticated = JSON.parse(localStorage.getItem("authentication"));
 
 }
 
   signupFunc(){
     console.log("login func");
-    this.router.navigate(['/userRegister']);
+    this._router.navigate(['/userRegister']);
   }
 
   forgotPasswordFunc(){
     console.log("login func");
-    this.router.navigate(['/forgotPassword']);
+    this._router.navigate(['/forgotPassword']);
   }
   
 
