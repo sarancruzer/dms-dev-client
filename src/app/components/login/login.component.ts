@@ -56,10 +56,20 @@ setLocalStorage(_local,token){
   localStorage.setItem("avatar",_local['avatar']);
   localStorage.setItem("token",'Bearer '+token);
   localStorage.setItem("authentication",JSON.stringify(true));
-  
-  // this._globalSettings.username = localStorage.getItem("first_name");
+
+ 
+  let role_permissions = _local['role_permissions'];
+  let role_access = [];
+   role_permissions.forEach(item => {
+         role_access.push(item.module_url);
+      });
+  localStorage.setItem("role_permissions",JSON.stringify(_local['role_permissions']));
+  localStorage.setItem("role_access",JSON.stringify(role_access));
+    // this._globalSettings.username = localStorage.getItem("first_name");
   // this._globalSettings.authenticated = JSON.parse(localStorage.getItem("authentication"));
 
+  this._globalSettings.role_permissions = localStorage.getItem("role_permissions");
+  this._globalSettings.role_access = localStorage.getItem("role_access");    
 }
 
   signupFunc(){
