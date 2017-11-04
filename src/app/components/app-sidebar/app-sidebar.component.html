@@ -6,7 +6,7 @@
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
       </li>
-      <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+      <li class="nav-item nav-dropdown" *ngIf="roleAccess.indexOf('/masters') !== -1" routerLinkActive="open" appNavDropdown >
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Masters</a>
           <ul class="nav-dropdown-items">
             
@@ -21,40 +21,45 @@
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/territory']"><i class="icon-puzzle"></i> Territory</a>
             </li>
-            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
+            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/state') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/state']"><i class="icon-puzzle"></i> State </a>
             </li>
-            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
+            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/title') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/title']"><i class="icon-puzzle"></i> Title</a>
             </li>
-            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
+            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/clientType') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/clientType']"><i class="icon-puzzle"></i> Client Type</a>
             </li>
-            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
+            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/clientSize') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/clientSize']"><i class="icon-puzzle"></i> Client Size</a>
             </li>
            
           </ul>
         </li>
         
-      <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
+      <li class="nav-item" *ngIf="roleAccess.indexOf('/manageUsers') !== -1">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageUsers']"><i class="icon-user"></i> Manage Users </a>
       </li>
-      <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
+      <li class="nav-item" *ngIf="roleAccess.indexOf('/manageRoles') !== -1">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageRoles']"><i class="fa fa-id-badge"></i> Manage Roles </a>
       </li>
+
+      <li class="nav-item" *ngIf="roleAccess.indexOf('/manageModules') !== -1">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageRoles']"><i class="fa fa-id-badge"></i> Manage Modules </a>
+      </li>
+
       <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" [routerLink]="['/rolePrivilleges']"><i class="fa fa-cubes"></i> Role Privilleges</a>
+            <a class="nav-link" *ngIf="roleAccess.indexOf('rolePrivilleges') !== -1" routerLinkActive="active" [routerLink]="['/rolePrivilleges']"><i class="fa fa-cubes"></i> Role Privilleges</a>
           </li>
 
-      <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
+      <li class="nav-item" *ngIf="roleAccess.indexOf('/manageClients') !== -1">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageClients']"><i class="fa fa-briefcase"></i> Manage Clients </a>
         </li>
-      <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
+      <li class="nav-item" *ngIf="roleAccess.indexOf('/manageLicense') !== -1">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageLicense']"><i class="fa fa-id-card"></i> Manage License </a>
       </li>
 
-      <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
+      <li class="nav-item" *ngIf="roleAccess.indexOf('/components/forms') !== -1">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/forms']"><i class="icon-puzzle"></i> Forms</a>
       </li>
 

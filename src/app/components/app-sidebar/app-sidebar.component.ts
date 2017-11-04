@@ -34,11 +34,10 @@ export class AppSidebar {
   roleAccess : any[];
   
   constructor(private el: ElementRef,private _globalSettings : GlobalSettings,private _commonnewService : CommonNewService) {
-     this.roleAccess = this._commonnewService.getUserRolePermissions();     
-     console.log("role permissions");
+     this.roleAccess = this._commonnewService.getUserRoleAccess();     
+     console.log("role access");
      //console.log(JSON.parse(JSON.stringify(this._globalSettings.role_permissions)));
      console.log(this.roleAccess);
-     console.log(this.roleAccess.indexOf('/masters/territory') !== -1);
      
     
    }
