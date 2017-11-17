@@ -8,13 +8,13 @@
             <small>Form</small>
           </div>
           <div class="card-body">
-          <form (ngSubmit)="submit(createForm)" #createForm="ngForm" novalidate >           
+          <form (ngSubmit)="submit(form)" #form="ngForm" novalidate >           
              <div class="form-group">
               <label for="company">First Name</label>
               <input type="text" class="form-control" id="company" placeholder="First Name" [(ngModel)] = "model.first_name" name = "first_name" #first_name="ngModel" required>
 
               <div style="color:red" 
-              *ngIf="first_name.errors && (first_name.dirty || first_name.touched || createForm.submitted)">
+              *ngIf="first_name.errors && (first_name.dirty || first_name.touched || form.submitted)">
               <span class="help-block" *ngIf="first_name.errors.required">
                   This field is required.
               </span>
@@ -27,7 +27,7 @@
                 <input class="form-control" id="last_name" name = "last_name" placeholder="Last Name" [(ngModel)] = "model.last_name"  #last_name="ngModel" required> 
 
                 <div style="color:red" 
-                *ngIf="last_name.errors && (last_name.dirty || last_name.touched || createForm.submitted)">
+                *ngIf="last_name.errors && (last_name.dirty || last_name.touched || form.submitted)">
                 <span class="help-block" *ngIf="last_name.errors.required">
                     This field is required.
                 </span>
@@ -39,7 +39,7 @@
                 <input type="text" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)] = "model.email"  #email="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
 
                 <div style="color:red" 
-                *ngIf="email.errors && (email.dirty || email.touched || createForm.submitted)">
+                *ngIf="email.errors && (email.dirty || email.touched || form.submitted)">
                 
                 <span class="help-block" *ngIf="email.errors.required">
                     This field is required.
@@ -57,7 +57,7 @@
                   <input class="form-control" id="mobile" name="mobile" placeholder="Mobile" [(ngModel)] = "model.mobile" #mobile="ngModel" required pattern = "^[7-9][0-9]{9}$" minlength=10 maxlength=10>
 
                   <div style="color:red" 
-                  *ngIf="mobile.errors && (mobile.dirty || mobile.touched || createForm.submitted)">
+                  *ngIf="mobile.errors && (mobile.dirty || mobile.touched || form.submitted)">
                   <span class="help-block" *ngIf="mobile.errors.required">
                       This field is required.
                   </span>
@@ -80,7 +80,7 @@
                       <option *ngFor="let role of roles" value= {{role.id}}>{{role.name}}</option></select>
 
                       <div style="color:red" 
-                      *ngIf="role.errors && (role.dirty || role.touched || createForm.submitted)">
+                      *ngIf="role.errors && (role.dirty || role.touched || form.submitted)">
                       <span class="help-block" *ngIf="role.errors.required">
                           This field is required.
                       </span>
@@ -91,7 +91,7 @@
               <div class="pull-right">
                 
                 <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Save </button>
-                <button type="reset" class="btn btn-sm btn-default"><i class="fa fa-ban"></i> cancel</button>
+                <a [routerLink]="[ '/manageUsers']" > <button type="button" class="btn btn-sm btn-default"><i class="fa fa-ban"></i> Cancel </button></a>
               </div> 
             </form>  
             </div><!--/.row-->

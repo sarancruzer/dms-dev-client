@@ -86,7 +86,7 @@
                   <td><span class="badge badge-success">Active</span></td>
                   <td>
                     
-                    <a [routerLink]="[ '/addUser']" class="btn btn-outline-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a [routerLink]="[ '/editUser',item.id]" class="btn btn-outline-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                   
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModalFunc(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                     

@@ -26,21 +26,21 @@ export class AdduserComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.init();
+    this.getMasterData();
   }
-
-  init() {
-    let params = ['m_roles',];
-    this._commonService.getMasterDetails(params).subscribe(     
-      (res) => {
-           this.roles = res['result']['info']['m_roles'];
-           console.log(res);
-      },
-    (err) => { 
-       this.iSuccessError.mError = err;
-       this.toastrService.error(err, 'Error!');
-    }) 
- }
+    
+  getMasterData(){
+  let params = ['m_roles',];
+  this._commonService.getMasterDetails(params).subscribe(     
+    (res) => {
+          this.roles = res['result']['info']['m_roles'];
+          console.log(res);
+    },
+  (err) => { 
+      this.iSuccessError.mError = err;
+      this.toastrService.error(err, 'Error!');
+  }) 
+  }
 
  submit(form){    
       if(form.valid){

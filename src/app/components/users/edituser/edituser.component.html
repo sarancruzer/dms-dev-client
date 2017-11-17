@@ -4,39 +4,96 @@
       <div class="col-sm-10">
         <div class="card">
           <div class="card-header">
-            <strong>Edit user</strong>
+            <strong>Add user</strong>
             <small>Form</small>
           </div>
           <div class="card-body">
-            
+          <form (ngSubmit)="submit(form)" #form="ngForm" novalidate >           
              <div class="form-group">
               <label for="company">First Name</label>
-              <input type="text" class="form-control" id="company" placeholder="First Name" [(ngModel)] = "user.first_name" >
+              <input type="text" class="form-control" id="company" placeholder="First Name" [(ngModel)] = "model.first_name" name = "first_name" #first_name="ngModel" required>
+
+              <div style="color:red" 
+              *ngIf="first_name.errors && (first_name.dirty || first_name.touched || form.submitted)">
+              <span class="help-block" *ngIf="first_name.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
             </div>
 
             <div class="form-group">
                 <label for="company">Last Name</label>
-                <textarea rows="" cols="" class="form-control" id="company" placeholder="Last Name" [(ngModel)] = "user.last_name" ></textarea> 
+                <input class="form-control" id="last_name" name = "last_name" placeholder="Last Name" [(ngModel)] = "model.last_name"  #last_name="ngModel" required> 
+
+                <div style="color:red" 
+                *ngIf="last_name.errors && (last_name.dirty || last_name.touched || form.submitted)">
+                <span class="help-block" *ngIf="last_name.errors.required">
+                    This field is required.
+                </span>
+                </div>
+
               </div>
               <div class="form-group">
                 <label for="company">Email</label>
-                <input type="text" class="form-control" id="company" placeholder="Email" [(ngModel)] = "user.email" >
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)] = "model.email"  #email="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+
+                <div style="color:red" 
+                *ngIf="email.errors && (email.dirty || email.touched || form.submitted)">
+                
+                <span class="help-block" *ngIf="email.errors.required">
+                    This field is required.
+                </span>
+                <span class="help-block" *ngIf="email.errors.pattern">
+                    Invalid email format.
+                </span>
+                </div>
+
               </div>
+
+              
               <div class="form-group">
                   <label for="company">Mobile</label>
-                  <textarea rows="" cols="" class="form-control" id="company" placeholder="Mobile" [(ngModel)] = "user.mobile" ></textarea> 
+                  <input class="form-control" id="mobile" name="mobile" placeholder="Mobile" [(ngModel)] = "model.mobile" #mobile="ngModel" required pattern = "^[7-9][0-9]{9}$" minlength=10 maxlength=10>
+
+                  <div style="color:red" 
+                  *ngIf="mobile.errors && (mobile.dirty || mobile.touched || form.submitted)">
+                  <span class="help-block" *ngIf="mobile.errors.required">
+                      This field is required.
+                  </span>
+                  <span class="help-block" *ngIf="mobile.errors.minlength">
+                      Phone no not less that 10 char.
+                  </span>
+                  <span class="help-block" *ngIf="mobile.errors.maxlength">
+                      Phone no not more than 10 char.
+                  </span>
+                  <span class="help-block" *ngIf="!mobile.errors.minlength && !mobile.errors.maxlength  && mobile.errors.pattern">
+                      Invalid mobile number.
+                  </span>
+                  
+                  </div>
+
                 </div>
                 <div class="form-group">
                     <label for="company">User Type</label>
-                    <select id="select" name="select" class="form-control"  [(ngModel)] = "user.state" >
-                        <option *ngFor="let role of roles" value= {{role.id}}>{{role.role_name}}</option></select>
-                  </div>
+                   <select id="select" name="role" class="form-control"  [(ngModel)] = "model.role" #role="ngModel" required>
+                      <option *ngFor="let role of roles" value= {{role.id}}>{{role.name}}</option></select>
+
+                      <div style="color:red" 
+                      *ngIf="role.errors && (role.dirty || role.touched || form.submitted)">
+                      <span class="help-block" *ngIf="role.errors.required">
+                          This field is required.
+                      </span>
+                      </div>
+
+                </div>
                            
               <div class="pull-right">
-                <button type="submit" class="btn btn-sm btn-primary" (click)="updateUser()"><i class="fa fa-dot-circle-o"></i> Update</button>
-                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                
+                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Save </button>
+                <a [routerLink]="[ '/manageUsers']" > <button type="button" class="btn btn-sm btn-default"><i class="fa fa-ban"></i> Cancel </button></a>
               </div> 
-
+            </form>  
             </div><!--/.row-->
           
         </div>

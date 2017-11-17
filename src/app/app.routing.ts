@@ -52,7 +52,7 @@ export const routes: Routes = [
 
         {path: 'manageUsers',component: ManageuserComponent,data: {title: 'Manage Users'}},
         {path: 'addUser',component: AdduserComponent,data: {title: 'Add User'}},
-        {path: 'editUser',component: EdituserComponent,data: {title: 'Edit User'}},
+        {path: 'editUser/:id',component: EdituserComponent,data: {title: 'Edit User'}},
 
         {path: 'manageRoles',component: RolesComponent,data: {title: 'Roles'}},
         {path: 'rolePrivilleges',component: RolePrivillegesComponent,data: {title: 'Role Privilleges'}},
