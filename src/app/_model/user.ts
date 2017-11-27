@@ -7,7 +7,8 @@ export class User {
     public email:string;
     public password:string;
     public avatar:string;
-    public role_id:number;
+    public mobile:string;
+    public role:number;
     public created_at:Date;
     public updated_at:Date;
        
