@@ -6,7 +6,6 @@ import { IsuccessError } from "../../../_interface/isuccess-error.model";
 import { ToastrService } from 'toastr-ng2';
 
 
-
 @Component({
   selector: 'app-territory',
   templateUrl: './territory.component.html',

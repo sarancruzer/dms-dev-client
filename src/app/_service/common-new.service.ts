@@ -13,4 +13,11 @@ export class CommonNewService {
       return role_permissions; 
   }
 
+  getUserRoleAccess(){
+    this._globalSettings.role_access = localStorage.getItem("role_access");
+    console.log(JSON.parse(JSON.stringify(this._globalSettings.role_access)));
+    let role_access = JSON.parse(JSON.stringify(this._globalSettings.role_access));
+    return role_access; 
+}
+
 }

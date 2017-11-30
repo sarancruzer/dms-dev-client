@@ -1,3 +1,6 @@
+import { CommonService } from './../../../_service/common.service';
+import { Router } from '@angular/router';
+import { GlobalSettings } from './../../../class/global-settings';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
 import { ClientTypeService } from "app/_service/client-type.service";
@@ -38,7 +41,7 @@ export class ClienttypeComponent implements OnInit {
   column: string = 'id';
   orderby:string = "desc";
   submitted: boolean = false; 
-  constructor(private _service:ClientTypeService,private toastrService: ToastrService) {
+  constructor(private _router : Router,private _service:ClientTypeService,private toastrService: ToastrService,private _globalSettings : GlobalSettings,private _commonService : CommonService) {
     this.title = "Client Type";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
@@ -47,6 +50,8 @@ export class ClienttypeComponent implements OnInit {
 
    ngOnInit() {
      this.init(1);
+     this._commonService.authRedirect('/masters/clientType');
+    
    }
 
    sort(property){
