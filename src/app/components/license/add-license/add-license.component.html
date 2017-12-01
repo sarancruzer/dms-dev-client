@@ -8,74 +8,114 @@
             <small>Form</small>
           </div>
           <div class="card-body">
+            <form (ngSubmit)="submit(form)" #form="ngForm" novalidate >           
             <div class="form-group">
               <label for="company">Licensee Trading Name</label>
-              <input type="text" class="form-control" id="company" placeholder="Licensee Trading Name"  [(ngModel)] = "license.trading_name" >
+              <input type="text" class="form-control" id="company" placeholder="License Trading Name"  [(ngModel)] = "model.license_trading_name" name = "license_trading_name" #license_trading_name="ngModel" required>
+             
+              <div style="color:red" 
+              *ngIf="license_trading_name.errors && (license_trading_name.dirty || license_trading_name.touched || form.submitted)">
+              <span class="help-block" *ngIf="license_trading_name.errors.required">
+                  This field is required.
+              </span>
+              </div>
             </div>
             <div class="form-group">
               <label for="company">Company Name</label>
-              <input type="text" class="form-control" id="company" placeholder="company name" [(ngModel)] = "license.company_name" >
+              <input type="text" class="form-control" id="company" placeholder="company name" [(ngModel)] = "model.company_name" name = "company_name" #company_name="ngModel" required>
+              <div style="color:red" 
+              *ngIf="company_name.errors && (company_name.dirty || company_name.touched || form.submitted)">
+              <span class="help-block" *ngIf="company_name.errors.required">
+                  This field is required.
+              </span>
+              </div>
             </div>
              <div class="form-group">
               <label for="company">Address 1</label>
-              <textarea rows="" cols="" class="form-control" id="company" placeholder="Address" [(ngModel)] = "license.address1" ></textarea> 
+              <textarea rows="" cols="" class="form-control" id="company" placeholder="Address" [(ngModel)] = "model.address1" name = "address1" #address1="ngModel" required></textarea> 
+
+              <div style="color:red" 
+              *ngIf="address1.errors && (address1.dirty || address1.touched || form.submitted)">
+              <span class="help-block" *ngIf="address1.errors.required">
+                  This field is required.
+              </span>
+              </div>
             </div>
 
             <div class="form-group">
                 <label for="company">Address 2</label>
-                <textarea rows="" cols="" class="form-control" id="company" placeholder="Address" [(ngModel)] = "license.address2" ></textarea> 
+                <textarea rows="" cols="" class="form-control" id="company" placeholder="Address" [(ngModel)] = "model.address2" name="address2"></textarea> 
               </div>
               <div class="form-group">
                 <label for="company">Town/City</label>
-                <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "license.city" >
+                <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "model.city" name="city" #city="ngModel" required>
+                <div style="color:red" 
+                *ngIf="city.errors && (city.dirty || city.touched || form.submitted)">
+                <span class="help-block" *ngIf="city.errors.required">
+                    This field is required.
+                </span>
+                </div>
               </div>
                <div class="form-group">
                 <label for="company">State</label>
-                <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "license.state" >
-                    <option value="0">Please select</option>
-                    <option value="1">Option #1</option>
-                    <option value="2">Option #2</option>
-                    <option value="3">Option #3</option>
+                <select id="state" class="form-control form-control-lg"  [(ngModel)] = "model.state" name="state" #state="ngModel" required>
+                    <option *ngFor="let row of states" value= {{row.id}}>{{row.name}}</option>
+                    
                   </select>
+                  <div style="color:red" 
+                  *ngIf="state.errors && (state.dirty || state.touched || form.submitted)">
+                  <span class="help-block" *ngIf="state.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
 
               </div>
 
 
             <div class="form-group">
               <label for="vat">Territory</label>
-              <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "license.territory" >
-                  <option value="0">Please select</option>
-                  <option value="1">Option #1</option>
-                  <option value="2">Option #2</option>
-                  <option value="3">Option #3</option>
+              <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "model.territory" name="territory" #territory="ngModel" required>
+                  <option *ngFor="let row of territorys" value= {{row.id}}>{{row.name}}</option>
                 </select>
+                <div style="color:red" 
+                *ngIf="territory.errors && (territory.dirty || territory.touched || form.submitted)">
+                <span class="help-block" *ngIf="territory.errors.required">
+                    This field is required.
+                </span>
+                </div>
             </div>
             <div class="form-group">
               <label for="street">CAN/ABN/NZ Biz Number
                 </label>
-              <input type="text" class="form-control" id="street" placeholder="CAN/ABN/NZ Biz Number" [(ngModel)] = "license.biz_number" >
+              <input type="text" class="form-control" id="street" placeholder="CAN/ABN/NZ Biz Number" [(ngModel)] = "model.biz_number" name="biz_number" #biz_number="ngModel" required>
+              <div style="color:red" 
+              *ngIf="biz_number.errors && (biz_number.dirty || biz_number.touched || form.submitted)">
+              <span class="help-block" *ngIf="biz_number.errors.required">
+                  This field is required.
+              </span>
+              </div>
             </div>
               <div class="form-group ">
                 <label for="city">Bank Name</label>
-                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "license.bank_name" >
+                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "model.bank_name" name="bank_name">
               </div>
               <div class="form-group ">
                   <label for="city">Account Name</label>
-                  <input type="text" class="form-control" id="city" placeholder="Account Name" [(ngModel)] = "license.account_name" >
+                  <input type="text" class="form-control" id="city" placeholder="Account Name" [(ngModel)] = "model.account_name" name="account_name">
                 </div>
                 <div class="form-group ">
                     <label for="city">Short Code/BSB</label>
-                    <input type="text" class="form-control" id="city" placeholder="Short Code/BSB" [(ngModel)] = "license.short_code" >
+                    <input type="text" class="form-control" id="city" placeholder="Short Code/BSB" [(ngModel)] = "model.short_code" name="short_code">
                   </div>
               <div class="form-group ">
                 <label for="postal-code">Account Number</label>
-                <input type="text" class="form-control" id="postal-code" placeholder="Account Number" [(ngModel)] = "license.account_number" >
+                <input type="text" class="form-control" id="postal-code" placeholder="Account Number" [(ngModel)] = "model.account_number" name="account_number">
               </div>
               <div class="pull-right">
-                <button type="submit" class="btn btn-sm btn-primary" (click)="createLicense()"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                  <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Save </button>
+                  <a [routerLink]="[ '/manageLicense']" > <button type="button" class="btn btn-sm btn-default"><i class="fa fa-ban"></i> Cancel </button></a>
               </div> 
-
+            </form>  
             </div><!--/.row-->
           
         </div>

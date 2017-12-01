@@ -68,7 +68,7 @@ export const routes: Routes = [
 
         {path: 'manageLicense',component: ManageLicenseComponent,data: {title: 'Manage License'}},
         {path: 'addLicense',component: AddLicenseComponent,data: {title: 'Add License'}},
-        {path: 'editLicense',component: EditLicenseComponent,data: {title: 'Edit License'}},
+        {path: 'editLicense/:id',component: EditLicenseComponent,data: {title: 'Edit License'}},
         
     ]
   },

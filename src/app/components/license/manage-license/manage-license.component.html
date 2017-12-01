@@ -18,85 +18,96 @@
               </div>
           </div>
           <div class="card-body">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Licensee Trading Name</th>
-                  <th>Company Name</th>
-                  <th>State</th>
-                  <th>Territory</th>
-                  <th>Bank Name</th>
-                  <th>Account Name</th>
-                  <th>Short Code/BSB</th>
-                  <th>Actions</th>                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Yiorgos Avraamu</td>
-                  <td>Corpus pvt ltd</td>
-                  <td>CKN</td>
-                  <td>AKL</td>
-                  <td>ICICI </td>
-                  <td>SB </td>
-                  <td>ICICSB </td>
-                  <td> <a class="btn btn-outline-success" [routerLink]="[ '/editLicense']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    <button class="btn btn-outline-danger" (click)="deleteLicense()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                  </td>
-                  
-                </tr>
-                <tr>
-                    <td>Yiorgos Avraamu</td>
-                    <td>Corpus pvt ltd</td>
-                    <td>CKN</td>
-                    <td>AKL</td>
-                    <td>ICICI </td>
-                    <td>SB </td>
-                    <td>ICICSB </td>
-                    <td> <a class="btn btn-outline-success" [routerLink]="[ '/editLicense']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                      <button class="btn btn-outline-danger" (click)="deleteLicense()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                    </td>
-                    
-                  </tr>
-                  <tr>
-                      <td>Yiorgos Avraamu</td>
-                      <td>Corpus pvt ltd</td>
-                      <td>CKN</td>
-                      <td>AKL</td>
-                      <td>ICICI </td>
-                      <td>SB </td>
-                      <td>ICICSB </td>
-                      <td> <a class="btn btn-outline-success" [routerLink]="[ '/editLicense']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <button class="btn btn-outline-danger" (click)="deleteLicense()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                      </td>
-                      
-                    </tr>
-                    <tr>
-                        <td>Yiorgos Avraamu</td>
-                        <td>Corpus pvt ltd</td>
-                        <td>CKN</td>
-                        <td>AKL</td>
-                        <td>ICICI </td>
-                        <td>SB </td>
-                        <td>ICICSB </td>
-                        <td> <a class="btn btn-outline-success" [routerLink]="[ '/editLicense']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                          <button class="btn btn-outline-danger" (click)="deleteLicense()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                        </td>
-                        
-                      </tr>
-              </tbody>
-            </table>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </div>
+            
+                      <table class="table table-striped">
+                        <thead>
+                          <!-- <tr>
+                            <th class="pointer" (click)="sort('name')">
+                              #
+                              <i class="fa" [ngClass]="{'fa-sort': column != 'id', 'fa-sort-asc': (column == 'id' && isDesc), 'fa-sort-desc': (column == 'id' && !isDesc) }" aria-hidden="true"> </i>
+                          </th>
+                            <th class="pointer" (click)="sort('name')">
+                                Name
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('short_code')">
+                                Short Code
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'short_code', 'fa-sort-asc': (column == 'short_code' && isDesc), 'fa-sort-desc': (column == 'short_code' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('created_at')">
+                                Created at
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'created_at', 'fa-sort-asc': (column == 'created_at' && isDesc), 'fa-sort-desc': (column == 'created_at' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('updated_at')">
+                                Updated at
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'updated_at', 'fa-sort-asc': (column == 'updated_at' && isDesc), 'fa-sort-desc': (column == 'updated_at' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('Name')">
+                                Status
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'Description', 'fa-sort-asc': (column == 'Description' && isDesc), 'fa-sort-desc': (column == 'Description' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer">
+                                Actions
+                            </th>
+                          </tr> -->
+                          <tr>
+                          <th class="pointer">#</th>
+                          <th class="pointer">Licensee Trading Name</th>
+                          <th class="pointer">Company Name</th>
+                          <th class="pointer">State</th>
+                          <th class="pointer">Territory</th>
+                          <th class="pointer">Bank Name</th>
+                          <th class="pointer">Account Name</th>
+                          <th class="pointer">Short Code/BSB</th>
+                          <th class="pointer">Actions</th>   
+                          </tr>
+                        </thead>
+                        <tbody *ngIf="pages.length">
+                          <tr *ngFor="let item of items let i = index" [attr.data-index]="i" >
+                            <td>{{i+1}}</td>
+                            <td>{{item.license_trading_name}} </td>
+                            <td>{{item.company_name}}</td>
+                            <td>{{item.state}}</td>
+                            <td>{{item.territory}}</td>
+                            <td>{{item.created_at}}</td>
+                            <td>{{item.updated_at}}</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>
+                              
+                              <a [routerLink]="[ '/editLicense',item.id]" class="btn btn-outline-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            
+                              <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModalFunc(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                              
+                            </td>
+                          </tr>
+                        </tbody>
+                       
+                        <tbody *ngIf="!pages.length">
+                            <tr>
+                                <td colspan="9"><div class="talign" >{{iSuccessError.mError}}</div></td>
+                              </tr>
+                        </tbody>
+                      </table>
+                      <ul *ngIf="pages && pages.length" class="pagination">
+                          <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+                              <a (click)="init(1)">First</a>
+                          </li>
+                          <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+                              <a (click)="init(currentPage - 1)">Previous</a>
+                          </li>
+                          <li class="page-item" *ngFor="let page of pages" [ngClass]="{active:currentPage === page}">
+                              <a (click)="init(page)">{{page}}</a>
+                          </li>
+                          <li class="page-item" [ngClass]="{disabled:currentPage === lastPage}">
+                              <a (click)="init(currentPage + 1)">Next</a>
+                          </li>
+                          <li class="page-item" [ngClass]="{disabled:currentPage === lastPage}">
+                              <a (click)="init(lastPage)">Last</a>
+                          </li>
+                      </ul>
+            
+                    </div>
+          
         </div>
       </div>
       <!--/.col-->
@@ -104,4 +115,25 @@
     <!--/.row-->
     
   </div>
+
+
+  <div bsModal #deleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Are you sure want to delete!</h4>
+              <button type="button" class="close" (click)="deleteModal.hide()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure want to delete this record! &hellip;</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="deleteModal.hide()">Close</button>
+              <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+            </div>
+          </div>
+        </div>
+        </div>
   
