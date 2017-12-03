@@ -1,3 +1,6 @@
+import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
+import { AddProjectComponent } from './components/project/add-project/add-project.component';
+import { ManageProjectComponent } from './components/project/manage-project/manage-project.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -70,6 +73,10 @@ export const routes: Routes = [
         {path: 'manageLicense',component: ManageLicenseComponent,data: {title: 'Manage License'}},
         {path: 'addLicense',component: AddLicenseComponent,data: {title: 'Add License'}},
         {path: 'editLicense/:id',component: EditLicenseComponent,data: {title: 'Edit License'}},
+
+        {path: 'manageProject',component: ManageProjectComponent,data: {title: 'Manage Project'}},
+        {path: 'addProject',component: AddProjectComponent,data: {title: 'Add project'}},
+        {path: 'editProject/:id',component: EditProjectComponent,data: {title: 'Edit Project'}},
         
     ]
   },

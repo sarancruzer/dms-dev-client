@@ -1,3 +1,179 @@
-<p>
-  add-project works!
-</p>
+<div class="animated fadeIn">
+    <div class="row">
+     
+      <div class="col-sm-10">
+        <div class="card">
+          <div class="card-header">
+            <strong>Add Project</strong>
+            <small>Form</small>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="submit(form)" #form="ngForm" novalidate >
+            <!-- <div class="form-group">
+              <label for="company">Reference</label>
+              <input type="text" class="form-control" id="company" placeholder="1001"  [(ngModel)] = "model.reference"  name="reference">
+            </div>
+            <div class="form-group">
+              <label for="company">Reference Date</label>
+              <input type="text" class="form-control" id="company" placeholder="2017-10-05" [(ngModel)] = "model.reference_date"  name="reference_date">
+            </div> -->
+             <div class="form-group">
+              <label for="company">Project Name</label>
+              <input type="text" class="form-control" id="company" placeholder="Client business" [(ngModel)] = "model.project_name" name="project_name" #project_name="ngModel" required >
+
+              <div style="color:red" *ngIf="project_name.errors && (project_name.dirty || project_name.touched || form.submitted)">
+              <span class="help-block" *ngIf="project_name.errors.required">
+                  This field is required.
+              </span>
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label for="company">Project Address 1</label>
+                <textarea rows="" cols="" class="form-control" id="company" placeholder="Client Company" [(ngModel)] = "model.address1" name="address1" #address1="ngModel"  required ></textarea> 
+
+              </div>
+
+              <div class="form-group">
+                <label for="company">Project Address 2</label>
+                <textarea rows="" cols="" class="form-control" id="company" placeholder="Client Company" [(ngModel)] = "model.address2" name="address2"></textarea> 
+
+              </div>
+
+              <div class="form-group">
+                <label for="company">City</label>
+                <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "model.city" name="city" #city="ngModel" required >
+                <div style="color:red" 
+              *ngIf="city.errors && (city.dirty || city.touched || form.submitted)">
+              <span class="help-block" *ngIf="city.errors.required">
+                  This field is required.
+              </span>
+              </div>
+              </div>
+
+              <div class="form-group">
+                    <label for="company">State</label>
+                <select id="select" name="state" class="form-control form-control-lg"  [(ngModel)] = "model.state" #state="ngModel" required>
+                    <option *ngFor="let row of states" value= {{row.id}}>{{row.name}}</option>
+                  </select>
+
+                  <div style="color:red" 
+              *ngIf="state.errors && (state.dirty || state.touched || form.submitted)">
+              <span class="help-block" *ngIf="state.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+                  </div>
+
+              <div class="form-group">
+                  <label for="company">post_code</label>
+                  <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "model.post_code" name="post_code" #post_code="ngModel" required>
+                    <div style="color:red" 
+                  *ngIf="post_code.errors && (post_code.dirty || post_code.touched || form.submitted)">
+                  <span class="help-block" *ngIf="post_code.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
+                </div>
+                
+                  <div class="form-group">
+                      <label for="company">Client Name</label>
+                       <select id="select" name="state" class="form-control form-control-lg"  [(ngModel)] = "model.client_name" #client_name="ngModel" required>
+                    <option *ngFor="let row of clients" value= {{row.id}}>{{row.client_business}}</option>
+                  </select>
+                    <div style="color:red" 
+                  *ngIf="client_name.errors && (client_name.dirty || client_name.touched || form.submitted)">
+                  <span class="help-block" *ngIf="client_name.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
+      
+                    </div>
+
+               <div class="form-group">
+                <label for="company">Project Status</label>
+                 <select id="select" name="state" class="form-control form-control-lg"  [(ngModel)] = "model.project_status" #project_status="ngModel" required>
+                    <option *ngFor="let row of clients" value= {{row.id}}>{{row.client_business}}</option>
+                  </select>
+
+                <div style="color:red" 
+              *ngIf="project_status.errors && (project_status.dirty || project_status.touched || form.submitted)">
+              <span class="help-block" *ngIf="project_status.errors.required">
+                  This field is required.
+              </span>
+              </div>
+              </div>
+
+              <div class="form-group">
+                <label for="company">Description</label>
+                <textarea rows="" cols="" class="form-control" id="company" placeholder="Client Company" [(ngModel)] = "model.description" name="description"></textarea> 
+
+              </div>
+
+            <div class="form-group">
+              <label for="street">website</label>
+              <input type="text" class="form-control" id="street" placeholder="Post Code" [(ngModel)] = "model.website" name="website" #website="ngModel" required>
+                    <div style="color:red" 
+                  *ngIf="website.errors && (website.dirty || website.touched || form.submitted)">
+                  <span class="help-block" *ngIf="website.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
+            </div>
+              <div class="form-group ">
+                <label for="city">Levels Begin</label>
+                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "model.levels_begin" name="levels_begin" #levels_begin="ngModel" required >
+                <div style="color:red" 
+                  *ngIf="levels_begin.errors && (levels_begin.dirty || levels_begin.touched || form.submitted)">
+                  <span class="help-block" *ngIf="levels_begin.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
+              </div>
+              <div class="form-group ">
+                <label for="city">Levels Begin</label>
+                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "model.levels_end" name="levels_end" #levels_end="ngModel" required >
+                <div style="color:red" 
+                  *ngIf="levels_end.errors && (levels_end.dirty || levels_end.touched || form.submitted)">
+                  <span class="help-block" *ngIf="levels_end.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
+              </div>
+
+              <div class="form-group ">
+                <label for="city">Construction Start</label>
+                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "model.construction_start" name="construction_start" #construction_start="ngModel" required >
+                <div style="color:red" 
+                  *ngIf="construction_start.errors && (construction_start.dirty || construction_start.touched || form.submitted)">
+                  <span class="help-block" *ngIf="construction_start.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
+
+              </div>
+              <div class="form-group ">
+                <label for="city">Construction duration</label>
+                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "model.construction_duration" name="construction_duration" #construction_duration="ngModel" required >
+                <div style="color:red" 
+                  *ngIf="construction_duration.errors && (construction_duration.dirty || construction_duration.touched || form.submitted)">
+                  <span class="help-block" *ngIf="construction_duration.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
+              </div>
+              
+              <div class="pull-right">
+                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Save </button>
+                  <a [routerLink]="[ '/manageClient']" > <button type="button" class="btn btn-sm btn-default"><i class="fa fa-ban"></i> Cancel </button></a>
+              </div> 
+            </form>
+            </div><!--/.row-->
+          
+        </div>
+      </div><!--/.col-->
+    </div><!--/.row-->
+  
+  </div>
+  

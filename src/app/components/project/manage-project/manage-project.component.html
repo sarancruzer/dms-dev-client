@@ -1,3 +1,165 @@
-<p>
-  manage-project works!
-</p>
+
+
+<div class="animated fadeIn">
+    <div class="row">
+        
+      
+     
+      <!--/.col-->
+      <div class="col-lg-12">
+          
+        <div class="card">
+          
+          <div class="card-header">
+
+            <i class="fa fa-align-justify"></i> Project List
+            <div class="pull-right">
+                <a [routerLink]="[ '/addProject']" class="btn btn-sm btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create</a>
+              </div>
+          </div>
+
+          
+          <div class="card-body">
+
+             <table class="table table-striped">
+                        <thead>
+                          <!-- <tr>
+                            <th class="pointer" (click)="sort('name')">
+                              #
+                              <i class="fa" [ngClass]="{'fa-sort': column != 'id', 'fa-sort-asc': (column == 'id' && isDesc), 'fa-sort-desc': (column == 'id' && !isDesc) }" aria-hidden="true"> </i>
+                          </th>
+                            <th class="pointer" (click)="sort('name')">
+                                Name
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('short_code')">
+                                Short Code
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'short_code', 'fa-sort-asc': (column == 'short_code' && isDesc), 'fa-sort-desc': (column == 'short_code' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('created_at')">
+                                Created at
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'created_at', 'fa-sort-asc': (column == 'created_at' && isDesc), 'fa-sort-desc': (column == 'created_at' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('updated_at')">
+                                Updated at
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'updated_at', 'fa-sort-asc': (column == 'updated_at' && isDesc), 'fa-sort-desc': (column == 'updated_at' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('Name')">
+                                Status
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'Description', 'fa-sort-asc': (column == 'Description' && isDesc), 'fa-sort-desc': (column == 'Description' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer">
+                                Actions
+                            </th>
+                          </tr> -->
+                          <tr>
+                          <th>#</th>
+                          <th class="pointer">Reference</th>
+                          <th class="pointer">Project Name</th>
+                          <th class="pointer">Address</th>
+                          <th class="pointer">Town / City</th>
+                          <th class="pointer">State</th>
+                          <th class="pointer">Post Code</th>
+                          <th class="pointer">Client Name</th>
+                          <th class="pointer">Status</th>  
+                          <th class="pointer">Configure Data</th>
+                          <th class="pointer">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody *ngIf="pages.length">
+                          <tr *ngFor="let item of items let i = index" [attr.data-index]="i" >
+                            <td>{{i+1}}</td>
+                            <td>{{item.id}} </td>
+                            <td>{{item.project_name}}</td>
+                            <td>{{item.address1}}</td>
+                            <td>{{item.city}}</td>
+                            <td>{{item.state}}</td>
+                            <td>{{item.post_code}}</td>
+                            <td>{{item.client_name}}</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td><a class="btn btn-outline-primary" [routerLink]="[ '/configureProject']">Configure</a></td>
+                            <td>
+                              
+                              <a [routerLink]="[ '/editProject',item.id]" class="btn btn-outline-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            
+                              <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModalFunc(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                              
+                            </td>
+                            <!-- <td><a class="btn btn-outline-primary" [routerLink]="[ '/configureProject']">Configure</a></td>
+                  <td><button type="button" class="btn btn-success" data-toggle="modal" (click)="createModal.show()">
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i> Project data
+                    </button></td> -->
+
+                          </tr>
+                        </tbody>
+                       
+                        <tbody *ngIf="!pages.length">
+                            <tr>
+                                <td colspan="12"><div class="talign" >{{iSuccessError.mError}}</div></td>
+                              </tr>
+                        </tbody>
+                      </table>
+            
+            <ul *ngIf="pages && pages.length" class="pagination">
+                          <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+                              <a (click)="init(1)">First</a>
+                          </li>
+                          <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+                              <a (click)="init(currentPage - 1)">Previous</a>
+                          </li>
+                          <li class="page-item" *ngFor="let page of pages" [ngClass]="{active:currentPage === page}">
+                              <a (click)="init(page)">{{page}}</a>
+                          </li>
+                          <li class="page-item" [ngClass]="{disabled:currentPage === lastPage}">
+                              <a (click)="init(currentPage + 1)">Next</a>
+                          </li>
+                          <li class="page-item" [ngClass]="{disabled:currentPage === lastPage}">
+                              <a (click)="init(lastPage)">Last</a>
+                          </li>
+                      </ul>
+          </div>
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+    
+  </div>
+  
+  
+<div bsModal #createModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Project Details</h4>
+          <button type="button" class="close" (click)="createModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           <div class="card-body">
+
+              <div class="form-group">                  
+                  <a class="btn btn-outline-secondary btn-lg btn-block" [routerLink]="[ '/projectTeam']">Project Team</a>
+                </div>
+                <div class="form-group">                    
+                    <a class="btn btn-outline-primary btn-lg btn-block" [routerLink]="[ '/projectScope']">Project Scope</a>
+                  </div>
+                  <div class="form-group">                      
+                      <a class="btn btn-outline-success btn-lg btn-block" [routerLink]="[ '/supplyItems']">Supply Items</a>
+                    </div>
+                    <div class="form-group">                      
+                        <a class="btn btn-outline-info btn-lg btn-block" [routerLink]="[ '/manageProjectDocumentation']">Documentation</a>
+                    </div>
+                     <div class="form-group">                      
+                          <a class="btn btn-outline-warning btn-lg btn-block" [routerLink]="[ '/additionalInfo']">Additional Info</a>
+                    </div>
+                    <div class="form-group">                      
+                        <a class="btn btn-outline-danger btn-lg btn-block" [routerLink]="[ '/addProjectNote']">Add Project Note</a>
+                  </div> 
+             
+             </div><!--/.row-->
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
