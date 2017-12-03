@@ -1,3 +1,4 @@
+import { AddProjectComponent } from './components/project/add-project/add-project.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -93,6 +94,8 @@ import { ManageClientComponent } from './components/clients/manage-client/manage
 import { AddClientComponent } from './components/clients/add-client/add-client.component';
 import { EditClientComponent } from './components/clients/edit-client/edit-client.component';
 import { RolePrivillegesComponent } from './components/role-privilleges/role-privilleges.component';
+import { ManageProjectComponent } from './components/project/manage-project/manage-project.component';
+import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
 
 
 @NgModule({
@@ -136,7 +139,10 @@ import { RolePrivillegesComponent } from './components/role-privilleges/role-pri
     ManageClientComponent,
     AddClientComponent,
     EditClientComponent,
-    RolePrivillegesComponent,    
+    RolePrivillegesComponent,
+    AddProjectComponent,
+    ManageProjectComponent,
+    EditProjectComponent,    
   ],
   providers: [{
     provide: LocationStrategy,

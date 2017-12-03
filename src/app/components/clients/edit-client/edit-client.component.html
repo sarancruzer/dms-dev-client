@@ -8,106 +8,152 @@
             <small>Form</small>
           </div>
           <div class="card-body">
-              <div class="form-group">
-                  <label for="company">Reference</label>
-                  <input type="text" class="form-control" id="company" placeholder="1001"  [(ngModel)] = "client.reference" disabled="disabled">
-                </div>
-                <div class="form-group">
-                  <label for="company">Reference Date</label>
-                  <input type="text" class="form-control" id="company" placeholder="2017-10-05" [(ngModel)] = "client.reference_date" disabled="disabled">
-                </div>
+            <form (ngSubmit)="submit(form)" #form="ngForm" novalidate >
+            <!-- <div class="form-group">
+              <label for="company">Reference</label>
+              <input type="text" class="form-control" id="company" placeholder="1001"  [(ngModel)] = "model.reference"  name="reference">
+            </div>
+            <div class="form-group">
+              <label for="company">Reference Date</label>
+              <input type="text" class="form-control" id="company" placeholder="2017-10-05" [(ngModel)] = "model.reference_date"  name="reference_date">
+            </div> -->
              <div class="form-group">
               <label for="company">Client business</label>
-              <input type="text" class="form-control" id="company" placeholder="Client business" [(ngModel)] = "client.client_business" >
+              <input type="text" class="form-control" id="company" placeholder="Client business" [(ngModel)] = "model.client_business" name="client_business" #client_business="ngModel" required >
+
+              <div style="color:red" *ngIf="client_business.errors && (client_business.dirty || client_business.touched || form.submitted)">
+              <span class="help-block" *ngIf="client_business.errors.required">
+                  This field is required.
+              </span>
+              </div>
             </div>
 
             <div class="form-group">
                 <label for="company">Client Company</label>
-                <textarea rows="" cols="" class="form-control" id="company" placeholder="Client Company" [(ngModel)] = "client.client_company" ></textarea> 
+                <textarea rows="" cols="" class="form-control" id="company" placeholder="Client Company" [(ngModel)] = "model.client_company_name" name="client_company_name"></textarea> 
+
               </div>
               <div class="form-group">
                 <label for="company">ABN</label>
-                <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "client.abn" >
+                <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "model.abn" name="abn" #abn="ngModel">
+                <div style="color:red" 
+              *ngIf="abn.errors && (abn.dirty || abn.touched || form.submitted)">
+              <span class="help-block" *ngIf="abn.errors.required">
+                  This field is required.
+              </span>
               </div>
+              </div>
+
               <div class="form-group">
-                  <label for="company">Address1</label>
-                  <textarea rows="" cols="" class="form-control" id="company" placeholder="Address1" [(ngModel)] = "client.address1" ></textarea> 
-                </div>
-                <div class="form-group">
-                    <label for="company">Address2</label>
-                    <textarea rows="" cols="" class="form-control" id="company" placeholder="Address2" [(ngModel)] = "client.address2" ></textarea> 
+                    <label for="company">Address1</label>
+                    <textarea rows="" cols="" class="form-control" id="company" placeholder="Address2" [(ngModel)] = "model.address1" name="address1" #address1="ngModel"></textarea>
+                <div style="color:red" 
+              *ngIf="address1.errors && (address1.dirty || address1.touched || form.submitted)">
+              <span class="help-block" *ngIf="address1.errors.required">
+                  This field is required.
+              </span>
+              </div> 
                   </div>
+
+              <div class="form-group">
+                  <label for="company">Address2</label>
+                  <textarea rows="" cols="" class="form-control" id="company" placeholder="Address2" [(ngModel)] = "model.address2" name="address2"></textarea> 
+                </div>
+                
                   <div class="form-group">
                       <label for="company">City</label>
-                      <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "client.city" >
+                      <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "model.city" name="abn" #abn="ngModel">
+                    <div style="color:red" 
+                  *ngIf="abn.errors && (abn.dirty || abn.touched || form.submitted)">
+                  <span class="help-block" *ngIf="abn.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
       
                     </div>
 
                <div class="form-group">
                 <label for="company">State</label>
-                <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "client.state" >
-                    <option value="0">Please select</option>
-                    <option value="1">Option #1</option>
-                    <option value="2">Option #2</option>
-                    <option value="3">Option #3</option>
+                <select id="select" name="state" class="form-control form-control-lg"  [(ngModel)] = "model.state" #state="ngModel" required>
+                    <option *ngFor="let row of states" value= {{row.id}}>{{row.name}}</option>
                   </select>
-
+                <div style="color:red" 
+              *ngIf="state.errors && (state.dirty || state.touched || form.submitted)">
+              <span class="help-block" *ngIf="state.errors.required">
+                  This field is required.
+              </span>
               </div>
-
+              </div>
+            
             <div class="form-group">
               <label for="street">Post Code
                 </label>
-              <input type="text" class="form-control" id="street" placeholder="Post Code" [(ngModel)] = "client.post_code" >
+              <input type="text" class="form-control" id="street" placeholder="Post Code" [(ngModel)] = "model.post_code" name="post_code" #post_code="ngModel">
+                    <div style="color:red" 
+                  *ngIf="post_code.errors && (post_code.dirty || post_code.touched || form.submitted)">
+                  <span class="help-block" *ngIf="post_code.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
             </div>
               <div class="form-group ">
                 <label for="city">Web Address</label>
-                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "client.web_address" >
+                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "model.web_address" name="city">
               </div>
               <div class="form-group ">
                   <label for="city">Business Type</label>
-                  <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "client.business_type" >
-                      <option value="0">Please select</option>
-                      <option value="1">Option #1</option>
-                      <option value="2">Option #2</option>
-                      <option value="3">Option #3</option>
-                    </select>
+                  <select id="select" name="business_type" class="form-control form-control-lg"  [(ngModel)] = "model.business_type" #business_type="ngModel" required>
+                    <option *ngFor="let row of client_types" value= {{row.id}}>{{row.name}}</option>
+                  </select>
+                <div style="color:red" 
+              *ngIf="business_type.errors && (business_type.dirty || business_type.touched || form.submitted)">
+              <span class="help-block" *ngIf="business_type.errors.required">
+                  This field is required.
+              </span>
+              </div>
 
                 </div>
                 <div class="form-group ">
                     <label for="city">Size</label>
-                    <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "client.size" >
-                        <option value="0">Please select</option>
-                        <option value="1">Option #1</option>
-                        <option value="2">Option #2</option>
-                        <option value="3">Option #3</option>
-                      </select>
+                    <select id="select" name="client_size" class="form-control form-control-lg"  [(ngModel)] = "model.client_size" #client_size="ngModel" required>
+                    <option *ngFor="let row of client_sizes" value= {{row.id}}>{{row.name}}</option>
+                  </select>
+                <div style="color:red" 
+              *ngIf="client_size.errors && (client_size.dirty || client_size.touched || form.submitted)">
+              <span class="help-block" *ngIf="client_size.errors.required">
+                  This field is required.
+              </span>
+              </div>
                   </div>
               <div class="form-group ">
                 <label for="postal-code">Annual Turnover</label>
-                <input type="text" class="form-control" id="postal-code" placeholder="Annual Turnover" [(ngModel)] = "client.annual_turnover" >
+                <input type="text" class="form-control" id="postal-code" placeholder="Annual Turnover" [(ngModel)] = "model.annual_turnover" name="annual_turnover">
               </div>
 
               <div class="form-group ">
                   <label for="city">Managing License</label>
-                  <select id="select" name="select" class="form-control form-control-lg"  [(ngModel)] = "client.manage_license" >
-                      <option value="0">Please select</option>
-                      <option value="1">Option #1</option>
-                      <option value="2">Option #2</option>
-                      <option value="3">Option #3</option>
-                    </select>
+                  <select id="select" name="manage_license" class="form-control form-control-lg"  [(ngModel)] = "model.manage_license" name="manage_license" #manage_license="ngModel" required>
+                    <option *ngFor="let row of manage_licenses" value= {{row.id}}>{{row.license_trading_name}}</option>
+                  </select>
+                <div style="color:red" 
+              *ngIf="manage_license.errors && (manage_license.dirty || manage_license.touched || form.submitted)">
+              <span class="help-block" *ngIf="manage_license.errors.required">
+                  This field is required.
+              </span>
+              </div>
                 </div>
 
 
               <div class="form-group ">
                   <label for="postal-code">Notes</label>
                   
-                  <textarea rows="" cols="" class="form-control" id="company" placeholder="Notes" [(ngModel)] = "client.notes" ></textarea> 
+                  <textarea rows="" cols="" class="form-control" id="company" placeholder="Notes" [(ngModel)] = "model.notes" name="notes"></textarea> 
                 </div>
               <div class="pull-right">
-                <button type="submit" class="btn btn-sm btn-primary" (click)="updateLicense()"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Save </button>
+                  <a [routerLink]="[ '/manageClient']" > <button type="button" class="btn btn-sm btn-default"><i class="fa fa-ban"></i> Cancel </button></a>
               </div> 
-
+            </form>
             </div><!--/.row-->
           
         </div>

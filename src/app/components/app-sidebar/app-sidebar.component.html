@@ -55,9 +55,38 @@
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageLicense']"><i class="fa fa-id-card"></i> Manage License </a>
       </li>
 
-      <li class="nav-item" *ngIf="roleAccess.indexOf('/manageClients') !== -1">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageClients']"><i class="fa fa-briefcase"></i> Manage Clients </a>
+      <li class="nav-item" *ngIf="roleAccess.indexOf('/manageClient') !== -1">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageClient']"><i class="fa fa-briefcase"></i> Manage Clients </a>
         </li> 
+
+        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Project</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageProject']"><i class="icon-user"></i> Manage Project </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectTeam']"><i class="icon-puzzle"></i> Project Team </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectScope']"><i class="icon-puzzle"></i> Project Scope</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/supplyItems']"><i class="icon-puzzle"></i> Supply Items</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageProjectDocumentation']"><i class="icon-puzzle"></i> Project Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/additionalInfo']"><i class="icon-puzzle"></i> Additional Info</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/addProjectNote']"><i class="icon-puzzle"></i> Add project Note</a>
+            </li>
+          </ul>
+        </li>
+
      
 
       <!--<li class="nav-item" *ngIf="roleAccess.indexOf('/components/forms') !== -1">

@@ -17,90 +17,102 @@
                 <a [routerLink]="[ '/addClient']" class="btn btn-sm btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create</a>
               </div>
           </div>
+
+          
           <div class="card-body">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Reference</th>
-                  <th>Record Date</th>
-                  <th>Client business</th>
-                  <th>Client Company</th>
-                  <th>ABN</th>
-                  <th>City</th>
-                  <th>State</th>
-                  <th>Annual Turnover</th>
-                  <th>Actions</th>                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1101</td>
-                  <td>2017-10-05</td>
-                  <td>Data management</td>
-                  <td>Corpus Technology pvt ltd</td>
-                  <td>112N </td>
-                  <td>AKL </td>
-                  <td>CKN </td>
-                  <td>150000</td>
-                  <td> <a class="btn btn-outline-success" [routerLink]="[ '/editClient']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    <button class="btn btn-outline-danger" (click)="deleteClient()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                  </td>
-                  
-                </tr>
-                <tr>
-                    <td>1101</td>
-                    <td>2017-10-05</td>
-                    <td>Data management</td>
-                    <td>Corpus Technology pvt ltd</td>
-                    <td>112N </td>
-                    <td>AKL </td>
-                    <td>CKN </td>
-                    <td>150000</td>
-                    <td> <a class="btn btn-outline-success" [routerLink]="[ '/editClient']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                      <button class="btn btn-outline-danger" (click)="deleteClient()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                    </td>
-                    
-                  </tr>
-                  <tr>
-                      <td>1101</td>
-                      <td>2017-10-05</td>
-                      <td>Data management</td>
-                      <td>Corpus Technology pvt ltd</td>
-                      <td>112N </td>
-                      <td>AKL </td>
-                      <td>CKN </td>
-                      <td>150000</td>
-                      <td> <a class="btn btn-outline-success" [routerLink]="[ '/editClient']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        <button class="btn btn-outline-danger" (click)="deleteClient()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                      </td>
-                      
-                    </tr>
-                    <tr>
-                        <td>1101</td>
-                        <td>2017-10-05</td>
-                        <td>Data management</td>
-                        <td>Corpus Technology pvt ltd</td>
-                        <td>112N </td>
-                        <td>AKL </td>
-                        <td>CKN </td>
-                        <td>150000</td>
-                        <td> <a class="btn btn-outline-success" [routerLink]="[ '/editClient']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                          <button class="btn btn-outline-danger" (click)="deleteClient()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                        </td>
-                        
-                      </tr>
-              </tbody>
-            </table>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
+
+             <table class="table table-striped">
+                        <thead>
+                          <!-- <tr>
+                            <th class="pointer" (click)="sort('name')">
+                              #
+                              <i class="fa" [ngClass]="{'fa-sort': column != 'id', 'fa-sort-asc': (column == 'id' && isDesc), 'fa-sort-desc': (column == 'id' && !isDesc) }" aria-hidden="true"> </i>
+                          </th>
+                            <th class="pointer" (click)="sort('name')">
+                                Name
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('short_code')">
+                                Short Code
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'short_code', 'fa-sort-asc': (column == 'short_code' && isDesc), 'fa-sort-desc': (column == 'short_code' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('created_at')">
+                                Created at
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'created_at', 'fa-sort-asc': (column == 'created_at' && isDesc), 'fa-sort-desc': (column == 'created_at' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('updated_at')">
+                                Updated at
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'updated_at', 'fa-sort-asc': (column == 'updated_at' && isDesc), 'fa-sort-desc': (column == 'updated_at' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer" (click)="sort('Name')">
+                                Status
+                                <i class="fa" [ngClass]="{'fa-sort': column != 'Description', 'fa-sort-asc': (column == 'Description' && isDesc), 'fa-sort-desc': (column == 'Description' && !isDesc) }" aria-hidden="true"> </i>
+                            </th>
+                            <th class="pointer">
+                                Actions
+                            </th>
+                          </tr> -->
+                          <tr>
+                          <th>#</th>
+                          <th class="pointer">Reference</th>
+                          <th class="pointer">Record Date</th>
+                          <th class="pointer">Client business</th>
+                          <th class="pointer">Client Company</th>
+                          <th class="pointer">ABN</th>
+                          <th class="pointer">City</th>
+                          <th class="pointer">State</th>
+                          <th class="pointer">Annual Turnover</th>
+                          <th class="pointer">Status</th>
+                          <th class="pointer">Actions</th>  
+                          
+                          </tr>
+                        </thead>
+                        <tbody *ngIf="pages.length">
+                          <tr *ngFor="let item of items let i = index" [attr.data-index]="i" >
+                            <td>{{i+1}}</td>
+                            <td>{{item.id}} </td>
+                            <td>{{item.created_at}}</td>
+                            <td>{{item.client_business}}</td>
+                            <td>{{item.client_company_name}}</td>
+                            <td>{{item.abn}}</td>
+                            <td>{{item.city}}</td>
+                            <td>{{item.state}}</td>
+                            <td>{{item.annual_turnover}}</td>                            
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>
+                              
+                              <a [routerLink]="[ '/editClient',item.id]" class="btn btn-outline-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            
+                              <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModalFunc(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                              
+                            </td>
+                          </tr>
+                        </tbody>
+                       
+                        <tbody *ngIf="!pages.length">
+                            <tr>
+                                <td colspan="10"><div class="talign" >{{iSuccessError.mError}}</div></td>
+                              </tr>
+                        </tbody>
+                      </table>
+            
+            <ul *ngIf="pages && pages.length" class="pagination">
+                          <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+                              <a (click)="init(1)">First</a>
+                          </li>
+                          <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+                              <a (click)="init(currentPage - 1)">Previous</a>
+                          </li>
+                          <li class="page-item" *ngFor="let page of pages" [ngClass]="{active:currentPage === page}">
+                              <a (click)="init(page)">{{page}}</a>
+                          </li>
+                          <li class="page-item" [ngClass]="{disabled:currentPage === lastPage}">
+                              <a (click)="init(currentPage + 1)">Next</a>
+                          </li>
+                          <li class="page-item" [ngClass]="{disabled:currentPage === lastPage}">
+                              <a (click)="init(lastPage)">Last</a>
+                          </li>
+                      </ul>
           </div>
         </div>
       </div>

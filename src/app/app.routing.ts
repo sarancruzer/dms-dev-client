@@ -62,9 +62,10 @@ export const routes: Routes = [
         {path: 'masters/title',component: TitleComponent,data: {title: 'Manage Title'}},
         {path: 'masters/clientType',component: ClienttypeComponent,data: {title: 'Manage Client Type'}},
         {path: 'masters/clientSize',component: ClientsizeComponent,data: {title: 'Manage Client Size'}},
-        {path: 'manageClients',component: ManageClientComponent,data: {title: 'Manage Clients'}},
+        
+        {path: 'manageClient',component: ManageClientComponent,data: {title: 'Manage Clients'}},
         {path: 'addClient',component: AddClientComponent,data: {title: 'Add Client'}},
-        {path: 'editClient',component: EditClientComponent,data: {title: 'Edit Client'}},
+        {path: 'editClient/:id',component: EditClientComponent,data: {title: 'Edit Client'}},
 
         {path: 'manageLicense',component: ManageLicenseComponent,data: {title: 'Manage License'}},
         {path: 'addLicense',component: AddLicenseComponent,data: {title: 'Add License'}},

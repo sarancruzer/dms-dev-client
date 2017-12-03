@@ -10,7 +10,7 @@ export class License {
     public biz_number:string;
     public bank_name:string;
     public account_name:string;
-    public sort_code:string;
+    public short_code:string;
     public account_number:string;
     public created_at:Date;
     public updated_at:Date;
