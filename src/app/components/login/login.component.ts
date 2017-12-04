@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   password:string;
 
   constructor(private _router : Router,private _loginService : LoginService,private _globalSettings : GlobalSettings,private _commonService:CommonService) {
-    this.email = "sarancruzer@dms.dev";
+    this.email = "david@dms.dev";
     this.password = "123456";
    }
 
