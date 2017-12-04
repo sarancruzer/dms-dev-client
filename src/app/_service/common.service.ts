@@ -22,6 +22,7 @@ export class CommonService {
    }
 
   authRedirect(redirectPath:string){
+    this._globalSettings.authenticated = JSON.parse(localStorage.getItem('authentication'));
     if(!this._globalSettings.authenticated){
       this._router.navigate(['/login']); 
     }else{
