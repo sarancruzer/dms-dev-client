@@ -1,3 +1,4 @@
+import { LogoutComponent } from './components/logout/logout.component';
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
 import { AddProjectComponent } from './components/project/add-project/add-project.component';
 import { ManageProjectComponent } from './components/project/manage-project/manage-project.component';
@@ -81,6 +82,7 @@ export const routes: Routes = [
     ]
   },
   {path: 'login',component: LoginComponent,data: {title: 'Login Page'}},
+  {path: 'logout',component: LogoutComponent,data: {title: 'Logout Page'}},
   {path: 'userRegister',component: UserregisterComponent,data: {title: 'Register Page'}},
   {path: 'forgotPassword',component: ForgotpasswordComponent,data: {title: 'Register Page'}},
   

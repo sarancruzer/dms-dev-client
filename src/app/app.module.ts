@@ -96,6 +96,7 @@ import { EditClientComponent } from './components/clients/edit-client/edit-clien
 import { RolePrivillegesComponent } from './components/role-privilleges/role-privilleges.component';
 import { ManageProjectComponent } from './components/project/manage-project/manage-project.component';
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -142,7 +143,8 @@ import { EditProjectComponent } from './components/project/edit-project/edit-pro
     RolePrivillegesComponent,
     AddProjectComponent,
     ManageProjectComponent,
-    EditProjectComponent,    
+    EditProjectComponent,
+    LogoutComponent,    
   ],
   providers: [{
     provide: LocationStrategy,
