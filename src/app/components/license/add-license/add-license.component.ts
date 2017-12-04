@@ -21,7 +21,7 @@ export class AddLicenseComponent implements OnInit {
 
   states : any = [];
   territorys : any = [];
-  constructor(private router:Router,private _service : LicenseService,private toastrService : ToastrService,private _commonService : CommonService) {
+  constructor(private _router:Router,private _service : LicenseService,private toastrService : ToastrService,private _commonService : CommonService) {
     
     this.iSuccessError = {mSuccess:"",mError:""};
    }
@@ -41,6 +41,9 @@ export class AddLicenseComponent implements OnInit {
   (err) => { 
       this.iSuccessError.mError = err;
       this.toastrService.error(err, 'Error!');
+      if(err == 'token_expired'){
+            this._router.navigate(['/logout']);
+       }
   }) 
   }
 
@@ -50,7 +53,7 @@ export class AddLicenseComponent implements OnInit {
         (res) => {
               this.iSuccessError.mSuccess = res['result']['info']['msg'];
               this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
-                this.router.navigate(['/manageLicense']);
+                this._router.navigate(['/manageLicense']);
               
         },
       (err) => { 

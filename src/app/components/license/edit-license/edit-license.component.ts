@@ -46,6 +46,9 @@ getMasterData(){
   (err) => { 
      this.iSuccessError.mError = err;
      this.toastrService.error(err, 'Error!');
+     if(err == 'token_expired'){
+            this._router.navigate(['/logout']);
+       }
   }) 
  }
 

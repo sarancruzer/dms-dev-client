@@ -20,7 +20,7 @@ export class AdduserComponent implements OnInit {
   iSuccessError:IsuccessError;
 
   roles : any = [];
-  constructor(private router:Router,private _service : UserService,private toastrService : ToastrService,private _commonService : CommonService) {
+  constructor(private _router:Router,private _service : UserService,private toastrService : ToastrService,private _commonService : CommonService) {
     
     this.iSuccessError = {mSuccess:"",mError:""};
    }
@@ -39,6 +39,9 @@ export class AdduserComponent implements OnInit {
   (err) => { 
       this.iSuccessError.mError = err;
       this.toastrService.error(err, 'Error!');
+      if(err == 'token_expired'){
+            this._router.navigate(['/logout']);
+       }
   }) 
   }
 
@@ -48,7 +51,7 @@ export class AdduserComponent implements OnInit {
         (res) => {
               this.iSuccessError.mSuccess = res['result']['info']['msg'];
               this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
-                this.router.navigate(['/manageUsers']);
+                this._router.navigate(['/manageUsers']);
               
         },
       (err) => { 

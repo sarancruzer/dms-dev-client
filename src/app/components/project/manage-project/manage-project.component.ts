@@ -79,6 +79,9 @@ export class ManageProjectComponent implements OnInit {
        this.toastrService.error(err, 'Error!');
        this.items = [];
        this.pages = [];
+       if(err == 'token_expired'){
+            this._router.navigate(['/logout']);
+       }
     }) 
 
    

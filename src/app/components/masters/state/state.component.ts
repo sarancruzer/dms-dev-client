@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
 import { State } from "app/_model/state";
@@ -38,7 +39,7 @@ export class StateComponent implements OnInit {
   column: string = 'id';
   orderby:string = "desc";
   submitted: boolean = false; 
-  constructor(private _service:StateService,private toastrService: ToastrService) {
+  constructor(private _router:Router,private _service:StateService,private toastrService: ToastrService) {
     this.title = "Client Type";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
@@ -78,6 +79,9 @@ export class StateComponent implements OnInit {
        this.toastrService.error(err, 'Error!');
        this.items = [];
        this.pages = [];
+       if(err == 'token_expired'){
+            this._router.navigate(['/logout']);
+       }
     }) 
 
    

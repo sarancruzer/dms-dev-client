@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
 import { Title } from "app/_model/title";
@@ -40,7 +41,7 @@ export class TitleComponent implements OnInit {
   column: string = 'id';
   orderby:string = "desc";
   submitted: boolean = false; 
-  constructor(private _service:TitleService,private toastrService: ToastrService) {
+  constructor(private _router:Router,private _service:TitleService,private toastrService: ToastrService) {
     this.title = "Client Type";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
@@ -80,6 +81,9 @@ export class TitleComponent implements OnInit {
        this.toastrService.error(err, 'Error!');
        this.items = [];
        this.pages = [];
+       if(err == 'token_expired'){
+            this._router.navigate(['/logout']);
+       }
     }) 
 
    

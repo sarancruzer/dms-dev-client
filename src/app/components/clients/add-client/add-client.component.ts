@@ -14,8 +14,6 @@ import { Router } from "@angular/router";
 })
 export class AddClientComponent implements OnInit {
 
-  client:any= [];
-
   model = new Client();
   iSuccessError:IsuccessError;
 
@@ -23,7 +21,7 @@ export class AddClientComponent implements OnInit {
   client_types : any = [];
   client_sizes : any = [];
   manage_licenses : any = [];
-  constructor(private router:Router,private _service : ClientService,private toastrService : ToastrService,private _commonService : CommonService) {
+  constructor(private _router:Router,private _service : ClientService,private toastrService : ToastrService,private _commonService : CommonService) {
     
     this.iSuccessError = {mSuccess:"",mError:""};
    }
@@ -45,6 +43,9 @@ export class AddClientComponent implements OnInit {
   (err) => { 
       this.iSuccessError.mError = err;
       this.toastrService.error(err, 'Error!');
+      if(err == 'token_expired'){
+            this._router.navigate(['/logout']);
+       }
   }) 
   }
 
@@ -54,7 +55,7 @@ export class AddClientComponent implements OnInit {
         (res) => {
               this.iSuccessError.mSuccess = res['result']['info']['msg'];
               this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
-                this.router.navigate(['/manageClient']);
+                this._router.navigate(['/manageClient']);
               
         },
       (err) => { 

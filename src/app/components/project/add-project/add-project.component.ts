@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-add-project',
   templateUrl: './add-project.component.html',
   styleUrls: ['./add-project.component.css'],
-  providers:[ProjectService]
+  providers:[ProjectService,CommonService]
 })
 export class AddProjectComponent implements OnInit {
 
@@ -21,7 +21,7 @@ export class AddProjectComponent implements OnInit {
   clients:any = [];
   client_sizes : any = [];
   manage_licenses : any = [];
-  constructor(private router:Router,private _service : ProjectService,private toastrService : ToastrService,private _commonService : CommonService) {
+  constructor(private _router:Router,private _service : ProjectService,private toastrService : ToastrService,private _commonService:CommonService) {
     
     this.iSuccessError = {mSuccess:"",mError:""};
    }
@@ -43,6 +43,9 @@ export class AddProjectComponent implements OnInit {
   (err) => { 
       this.iSuccessError.mError = err;
       this.toastrService.error(err, 'Error!');
+      if(err == 'token_expired'){
+            this._router.navigate(['/logout']);
+       }
   }) 
   }
 
@@ -52,7 +55,7 @@ export class AddProjectComponent implements OnInit {
         (res) => {
               this.iSuccessError.mSuccess = res['result']['info']['msg'];
               this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
-                this.router.navigate(['/manageProject']);
+                this._router.navigate(['/manageProject']);
               
         },
       (err) => { 

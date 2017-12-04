@@ -6,7 +6,7 @@
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
       </li>
-      <li class="nav-item nav-dropdown" *ngIf="roleAccess.indexOf('/masters') !== -1" routerLinkActive="open" appNavDropdown >
+      <li class="nav-item nav-dropdown" *ngIf="roleAccess && roleAccess.indexOf('/masters') !== -1" routerLinkActive="open" appNavDropdown >
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Masters</a>
           <ul class="nav-dropdown-items">
             
@@ -37,10 +37,10 @@
           </ul>
         </li>
         
-      <li class="nav-item" *ngIf="roleAccess.indexOf('/manageUsers') !== -1">
+      <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageUsers') !== -1">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageUsers']"><i class="icon-user"></i> Manage Users </a>
       </li>
-       <li class="nav-item" *ngIf="roleAccess.indexOf('/manageRoles') !== -1">
+       <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageRoles') !== -1">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageRoles']"><i class="fa fa-id-badge"></i> Manage Roles </a>
       </li>
 
@@ -51,11 +51,11 @@
       <li class="nav-item">
             <a class="nav-link" *ngIf="roleAccess.indexOf('rolePrivilleges') !== -1" routerLinkActive="active" [routerLink]="['/rolePrivilleges']"><i class="fa fa-cubes"></i> Role Privilleges</a>
           </li>-->
-      <li class="nav-item" *ngIf="roleAccess.indexOf('/manageLicense') !== -1">
+      <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageLicense') !== -1">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageLicense']"><i class="fa fa-id-card"></i> Manage License </a>
       </li>
 
-      <li class="nav-item" *ngIf="roleAccess.indexOf('/manageClient') !== -1">
+      <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageClient') !== -1">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageClient']"><i class="fa fa-briefcase"></i> Manage Clients </a>
         </li> 
 

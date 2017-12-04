@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ProjectService {
 
-  private apiUrl = environment.apiUrl; 
+ private apiUrl = environment.apiUrl; 
   
   headers : any;
   options:any;
@@ -59,4 +59,16 @@ export class ProjectService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
   
+
+  getMasterDetails(params:any) : Observable<any[]> {
+    console.log('this.options');
+    console.log(this.options);
+    console.log("localStorage.getItem('token')");
+    console.log(localStorage.getItem('token'));
+
+    return this._http.post(this.apiUrl+'get'+ApiSettings.MASTERS,params,this.options)
+    .map((res:Response) => <any[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
 }
