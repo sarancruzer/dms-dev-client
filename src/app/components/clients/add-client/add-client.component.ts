@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
   selector: 'app-add-client',
   templateUrl: './add-client.component.html',
   styleUrls: ['./add-client.component.css'],
-  providers:[ClientService]
+  providers:[ClientService,CommonService]
 })
 export class AddClientComponent implements OnInit {
 

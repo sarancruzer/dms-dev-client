@@ -12,7 +12,7 @@ import { User } from 'app/_model/user';
   selector: 'app-adduser',
   templateUrl: './adduser.component.html',
   styleUrls: ['./adduser.component.css'],
-  providers:[UserService]
+  providers:[UserService,CommonService]
 })
 export class AdduserComponent implements OnInit {
 

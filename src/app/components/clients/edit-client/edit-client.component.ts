@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from "@angular/router";
   selector: 'app-edit-client',
   templateUrl: './edit-client.component.html',
   styleUrls: ['./edit-client.component.css'],
-  providers:[ClientService]
+  providers:[ClientService,CommonService]
 })
 export class EditClientComponent implements OnInit {
   

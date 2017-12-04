@@ -10,7 +10,7 @@ import { IsuccessError } from 'app/_interface/isuccess-error.model';
   selector: 'app-add-license',
   templateUrl: './add-license.component.html',
   styleUrls: ['./add-license.component.css'],
-  providers:[LicenseService]
+  providers:[LicenseService,CommonService]
 })
 export class AddLicenseComponent implements OnInit {
 

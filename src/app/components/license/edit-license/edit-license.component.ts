@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from "@angular/router";
   selector: 'app-edit-license',
   templateUrl: './edit-license.component.html',
   styleUrls: ['./edit-license.component.css'],
-  providers:[LicenseService]
+  providers:[LicenseService,CommonService]
 })
 export class EditLicenseComponent implements OnInit {
   model = new License();
