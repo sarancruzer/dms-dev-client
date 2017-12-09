@@ -1,3 +1,4 @@
+import { ConfigureProject } from './../_model/configure-project';
 import { Observable } from 'rxjs/Observable';
 import { ApiSettings } from 'app/class/api-settings';
 import { Http, RequestOptions , Response,Headers } from '@angular/http';
@@ -13,6 +14,7 @@ export class ProjectService {
   headers : any;
   options:any;
   model:Project[] = [];
+  configureProject:ConfigureProject[] = [];  
   title = "Project";
   
   constructor(private _http : Http) {
@@ -59,16 +61,15 @@ export class ProjectService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
   
-
-  getMasterDetails(params:any) : Observable<any[]> {
-    console.log('this.options');
-    console.log(this.options);
-    console.log("localStorage.getItem('token')");
-    console.log(localStorage.getItem('token'));
-
-    return this._http.post(this.apiUrl+'get'+ApiSettings.MASTERS,params,this.options)
-    .map((res:Response) => <any[]>res.json())
+  
+  getConfigureProjectById(id:number) : Observable<ConfigureProject[]> {
+    console.log(id);
+    let body = "";
+    return this._http.post(this.apiUrl+'get'+ApiSettings.CONFIGUREPROJECT+"ById/"+id,body,this.options)
+    .map((res:Response) => <ConfigureProject[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+
 
 }

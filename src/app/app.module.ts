@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation'
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -97,6 +97,9 @@ import { RolePrivillegesComponent } from './components/role-privilleges/role-pri
 import { ManageProjectComponent } from './components/project/manage-project/manage-project.component';
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ConfigureProjectComponent } from './components/project/configure-project/configure-project.component';
+import { ProjectTypeComponent } from './components/masters/project-type/project-type.component';
+import { BuildingClassComponent } from './components/masters/building-class/building-class.component';
 
 
 @NgModule({
@@ -112,7 +115,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     ModalModule.forRoot(),
     ToastrModule.forRoot(), // ToastrModule added 
     BrowserAnimationsModule,
-    CustomFormsModule   
+    CustomFormsModule,
+    ReactiveFormsModule   
   ],
   declarations: [
     AppComponent,
@@ -144,7 +148,10 @@ import { LogoutComponent } from './components/logout/logout.component';
     AddProjectComponent,
     ManageProjectComponent,
     EditProjectComponent,
-    LogoutComponent,    
+    LogoutComponent,
+    ConfigureProjectComponent,
+    ProjectTypeComponent,
+    BuildingClassComponent,    
   ],
   providers: [{
     provide: LocationStrategy,

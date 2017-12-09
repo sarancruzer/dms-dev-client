@@ -1,0 +1,205 @@
+<div class="container">
+    <h1>New Product</h1>
+    <form [formGroup]="form" (ngSubmit)="save()">
+          
+      <div class="row" formArrayName="project_details">
+        <div *ngFor="let variation of form.controls.project_details.controls; let i = index" [formGroupName]="i">
+            <button type="button" (click)="addNewVar(i)" class="btn btn-primary">Add </button>
+            <button type="button" (click)="removeVar(i)" class="btn btn-danger" *ngIf="form.controls.project_details.controls.length > 1">Delete </button>           
+          <div class="form-group">
+            <label>Project Type </label>
+            <input formControlName="project_type" style="max-width:500px" class="form-control">
+          </div>
+          <table>
+            <thead>
+            <tr>
+              <th>Building Class</th>
+              <th>Building Units</th>
+              <th>
+                <button type="button" class="btn btn-success" (click)="addAttrRow(i)">++</button>
+              </th>
+            </tr>
+            </thead>
+            <tbody formArrayName="building_details">
+              <tr *ngFor="let attribute of variation.get('building_details').controls; let ii = index;" [formGroupName]="ii">
+                <td>
+                  <input formControlName="building_class"/>
+                </td>
+                <td>
+                  <input formControlName="building_units"/>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" (click)="addAttrRow(i)">+</button>
+                  <button (click)="removeVAttr(ii)" class="btn btn-danger">X</button>                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-danger" (click)="removeVariation(i)">Delete</button>
+        </div>
+      </div>
+      <br>
+      <p>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </p>
+    </form>
+    <pre>{{ form.value | json }}</pre>
+  </div>
+  
+  
+<!-- <div class="animated fadeIn">
+  <div class="row">
+   
+    <div class="col-sm-10">
+     <form (ngSubmit)="submit(form)" #form="ngForm" novalidate >           
+      <div class="card"  >
+        <div class="card-header">
+            <div class="form-group row">
+                <div class="col-md-9">
+                  <select id="project_type" name="project_type[]" class="form-control"  [(ngModel)] = "project_type" #project_type="ngModel" required>
+                    <option value="">select option</option>
+                  <option *ngFor="let row of projectTypes" value= {{row.id}}>{{row.name}}</option></select>                   
+                </div>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-outline-success" (click)="addProjectType()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-outline-danger" (click)="removeProjectType()"  ><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                 </div> 
+                 
+              </div>        
+
+           
+          
+        </div>
+        <div class="card-body">
+                <table class="table">
+                    <thead class="thead-inverse">
+                      <tr>
+                        <th>#</th>
+                        <th>Building Class</th>
+                        <th>Building Units</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr >
+                        <th scope="row">1</th>
+                        <td>
+                          <select id="select" name="building_class" class="form-control"  [(ngModel)] = "building_class" #building_class="ngModel" required>
+                              <option value="">select option</option>
+                          <option *ngFor="let row of buildingClass" value= {{row.id}}>{{row.name}}</option></select>    
+                         </td>
+                        <td>
+                        <input type="text" class="form-control mb-2 mb-sm-0" name="building_units" [(ngModel)] = "building_units"  value="233" ></td>
+                        <td><button type="button" class="btn btn-outline-success" (click)="addBuildingClass()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                          <button type="button" class="btn btn-outline-danger" (click)="removeBuildingClass()"  ><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+
+                  
+
+              
+          </div>
+
+          
+        </div>
+
+         <div class="card"  >
+        <div class="card-header">
+            <div class="form-group row">
+                <div class="col-md-9">
+                    <select name="project_type" class="form-control form-control-sm" required  id="select" name="project_type">
+                      <option value="">select option</option>
+                      <option value="1" >Residential</option>
+                      <option value="2" selected>Commercial</option>
+                      <option value="3">Industrial</option>
+                      </select> 
+                </div>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-outline-success" (click)="addProjectType()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-outline-danger" (click)="removeProjectType()"  ><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                 </div> 
+                 
+              </div>        
+
+           
+          
+        </div>
+        <div class="card-body">
+           
+                <table class="table">
+                    <thead class="thead-inverse">
+                      <tr>
+                        <th>#</th>
+                        <th>Building Class</th>
+                        <th>Building Units</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr >
+                        <th scope="row">4</th>
+                        <td><select name="building_class" class="form-control" required >
+                            <option value="">select option</option>
+                            <option value="1" selected>Retail</option>
+                            <option value="2">Office</option>
+                            <option value="3">Hotel</option>
+                            
+                          </select>  </td>
+                        <td>
+                        <input type="text" class="form-control mb-2 mb-sm-0" name="building_units" value="768"></td>
+                        <td><button type="button" class="btn btn-outline-success" (click)="addItems()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                          <button type="button" class="btn btn-outline-danger" (click)="removeItems()"  ><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                      </tr>
+                        <tr >
+                        <th scope="row">5</th>
+                        <td><select name="building_class" class="form-control" required >
+                          <option value="">select option</option>
+                          <option value="1" >Retail</option>
+                          <option value="2" selected>Office</option>
+                          <option value="3">Hotel</option>
+                            
+                          </select>  </td>
+                        <td>
+                        <input type="text" class="form-control mb-2 mb-sm-0" name="building_units" value="768"  ></td>
+                        <td><button type="button" class="btn btn-outline-success" (click)="addItems()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                          <button type="button" class="btn btn-outline-danger" (click)="removeItems()"  ><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                      </tr>
+                        <tr >
+                        <th scope="row">6</th>
+                        <td><select name="building_class" class="form-control" required >
+                          <option value="">select option</option>
+                          <option value="1" >Retail</option>
+                          <option value="2" >Office</option>
+                          <option value="3" selected>Hotel</option>
+                            
+                          </select>  </td>
+                        <td>
+                        <input type="text" class="form-control mb-2 mb-sm-0" name="building_units" value="898" ></td>
+                        <td><button type="button" class="btn btn-outline-success" (click)="addItems()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                          <button type="button" class="btn btn-outline-danger" (click)="removeItems()"  ><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+
+                  
+
+              
+          </div>
+
+          
+        </div>
+        
+
+        <div class="pull-right" style="margin:10px;">
+            <button type="submit" class="btn btn-sm btn-primary" (click)="updateConfigure()"><i class="fa fa-dot-circle-o"></i> Save </button>
+            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban" (click)="updateConfigure()"></i> Cancel</button>
+        </div> 
+
+      </form>  
+    </div>
+  </div>
+
+</div> -->

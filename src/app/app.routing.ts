@@ -1,3 +1,5 @@
+import { ProjectTypeComponent } from './components/masters/project-type/project-type.component';
+import { ConfigureProjectComponent } from './components/project/configure-project/configure-project.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { EditProjectComponent } from './components/project/edit-project/edit-project.component';
 import { AddProjectComponent } from './components/project/add-project/add-project.component';
@@ -32,6 +34,7 @@ import { ManageClientComponent } from "app/components/clients/manage-client/mana
 import { AddClientComponent } from "app/components/clients/add-client/add-client.component";
 import { EditClientComponent } from "app/components/clients/edit-client/edit-client.component";
 import { RolePrivillegesComponent } from "app/components/role-privilleges/role-privilleges.component";
+import { BuildingClassComponent } from 'app/components/masters/building-class/building-class.component';
 
 export const routes: Routes = [
   {path: '',redirectTo: 'login',pathMatch: 'full'},
@@ -66,6 +69,8 @@ export const routes: Routes = [
         {path: 'masters/title',component: TitleComponent,data: {title: 'Manage Title'}},
         {path: 'masters/clientType',component: ClienttypeComponent,data: {title: 'Manage Client Type'}},
         {path: 'masters/clientSize',component: ClientsizeComponent,data: {title: 'Manage Client Size'}},
+        {path: 'masters/projectType',component: ProjectTypeComponent,data: {title: 'Manage Project Type'}},
+        {path: 'masters/buildingClass',component: BuildingClassComponent,data: {title: 'Manage Building Class'}},
         
         {path: 'manageClient',component: ManageClientComponent,data: {title: 'Manage Clients'}},
         {path: 'addClient',component: AddClientComponent,data: {title: 'Add Client'}},
@@ -78,6 +83,7 @@ export const routes: Routes = [
         {path: 'manageProject',component: ManageProjectComponent,data: {title: 'Manage Project'}},
         {path: 'addProject',component: AddProjectComponent,data: {title: 'Add project'}},
         {path: 'editProject/:id',component: EditProjectComponent,data: {title: 'Edit Project'}},
+        {path: 'configureProject/:id',component: ConfigureProjectComponent,data: {title: 'Configure Project'}},
         
     ]
   },

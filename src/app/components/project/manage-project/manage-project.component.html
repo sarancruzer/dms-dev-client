@@ -77,7 +77,7 @@
                             <td>{{item.post_code}}</td>
                             <td>{{item.client_name}}</td>
                             <td><span class="badge badge-success">Active</span></td>
-                            <td><a class="btn btn-outline-primary" [routerLink]="[ '/configureProject']">Configure</a></td>
+                            <td><a class="btn btn-outline-primary" [routerLink]="[ '/configureProject',item.id]">Configure</a></td>
                             <td>
                               
                               <a [routerLink]="[ '/editProject',item.id]" class="btn btn-outline-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

@@ -5,5 +5,9 @@ export class ApiSettings {
     public static LICENSE='License';
     public static CLIENTS='Client';
     public static PROJECT='Project';
+    public static CONFIGUREPROJECT='ConfigureProject';    
+    public static PROJECTTYPE='ProjectType';
+    public static BUILDINGCLASS='BuildingClass';
+    
 }
 
