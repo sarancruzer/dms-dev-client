@@ -1,3 +1,4 @@
+import { ConfigureProject } from './../../../_model/configure-project';
 import { ToastrService } from 'toastr-ng2';
 import { CommonService } from './../../../_service/common.service';
 import { ProjectService } from './../../../_service/project.service';
@@ -6,7 +7,6 @@ import { IsuccessError } from 'app/_interface/isuccess-error.model';
 import { Project } from './../../../_model/project';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
-import { Customer } from 'app/_interface/customer.model';
 
 @Component({
   selector: 'app-configure-project',
@@ -17,14 +17,15 @@ import { Customer } from 'app/_interface/customer.model';
 export class ConfigureProjectComponent implements OnInit {
 
   
- model = new Project();
+ //model = new Project();
  iSuccessError:IsuccessError;
  projectTypes : any = [];
  buildingClass : any = [];
  id:number;
  
+ 
  public form: FormGroup;
-
+ private model:ConfigureProject;
  
  constructor(private _router:Router,private _service : ProjectService,private toastrService : ToastrService,private _commonService : CommonService,private _route : ActivatedRoute,private fb: FormBuilder) {
 
@@ -73,9 +74,48 @@ addNewVar(index) {
   var len = Number(<FormArray>this.form.controls['project_details']['_value']['length']);
   const controll = <FormArray>this.form.get(['project_details',len-1, 'building_details']);
   controll.push(this.initVattr())
+}
+
+
+process(res)
+{
+  let contr = <FormArray>this.form.controls['project_details'].value;
+  console.log("contr");
+  console.log(contr);
+  console.log(res);
+
+  // Array:
+res.forEach(function (value, index) {
+  console.log("index");
+  console.log(index);
+  console.log("value");
+  console.log(value);
+  
+  value['building_class'].forEach(function (val, ind) {
+    console.log("ind");
+    console.log(ind);
+    console.log("val");
+    console.log(val);
+    contr["project_type"][index] = value;
+    
+    
+  });
   
 
-}
+});
+
+//   for(var i=0;i<= res.length;i++){    
+//     //contr[i]['project_type'] = res['project_type'];    
+//     console.log("project type");
+//     console.log(res);
+//     for(var j=0;j<= res['project_type'][i]['building_class'].length;j++){    
+//       console.log("building class");
+//       console.log(res['project_type'][i]['building_class']);
+//     }
+//   }
+//   console.log("after contr");
+//   console.log(contr);
+ }
 
 removeVar(index: number) {
   // remove address from the list
@@ -119,7 +159,10 @@ getDetailsById(id) {
  this._service.getConfigureProjectById(id).subscribe(     
    (res) => {
         this.model = res['result']['info']['lists'];
-        console.log(res);
+        console.log('this.model');
+        console.log(this.model);
+
+        this.process(res['result']['info']['lists']);
    },
  (err) => { 
     this.iSuccessError.mError = err;
@@ -130,8 +173,12 @@ getDetailsById(id) {
  }) 
 }
 
+
 submit(form){    
-     if(form.valid){
+  console.log("form");
+  console.log(form.value);
+
+    if(form.valid){
      this._service.update(this.model,1).subscribe(     
        (res) => {
              this.iSuccessError.mSuccess = res['result']['info']['msg'];

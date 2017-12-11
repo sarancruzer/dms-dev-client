@@ -70,6 +70,13 @@ export class ProjectService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  updateConfigure(params:any,id:number) : Observable<ConfigureProject[]> {
+    let body = JSON.stringify({'info':params});
+    return this._http.post(this.apiUrl+'update'+ApiSettings.CONFIGUREPROJECT+'/'+id,body,this.options)
+    .map((res:Response) => <ConfigureProject[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
 
 
 }
