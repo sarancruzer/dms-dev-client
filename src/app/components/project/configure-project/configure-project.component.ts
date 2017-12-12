@@ -29,7 +29,7 @@ export class ConfigureProjectComponent implements OnInit {
  
  constructor(private _router:Router,private _service : ProjectService,private toastrService : ToastrService,private _commonService : CommonService,private _route : ActivatedRoute,private fb: FormBuilder) {
 
-
+  this.iSuccessError = {mSuccess:"",mError:""};
   }
   
    ngOnInit() {
@@ -42,23 +42,15 @@ export class ConfigureProjectComponent implements OnInit {
      this.getDetailsById(this.id);
      
      this.form = this.fb.group({
-      project_details: this.fb.array([
-        this.initVariation(),
-    ])
+       project_details: this.fb.array([
+    //     this.initVariation(),
+     ])
     });
-    this.initAttributes();
+    //this.initAttributes();
     
+ 
 }
 
-
-initVariation() {
-  const emptyArr = this.fb.array([]);
-  let v = this.fb.group({
-    project_type: [''],
-    building_details: emptyArr
-  });
-  return v;
-}
 
 initAttributes(){
   const control = <FormArray>this.form.get(['project_details', 0, 'building_details']);
@@ -77,45 +69,72 @@ addNewVar(index) {
 }
 
 
-process(res)
-{
-  let contr = <FormArray>this.form.controls['project_details'].value;
-  console.log("contr");
-  console.log(contr);
-  console.log(res);
-
-  // Array:
-res.forEach(function (value, index) {
-  console.log("index");
-  console.log(index);
-  console.log("value");
-  console.log(value);
-  
-  value['building_class'].forEach(function (val, ind) {
-    console.log("ind");
-    console.log(ind);
-    console.log("val");
-    console.log(val);
-    contr["project_type"][index] = value;
-    
-    
+initVariation() {
+  const emptyArr = this.fb.array([]);
+  let v = this.fb.group({
+    project_type: [''],
+    building_details: emptyArr
   });
-  
+  return v;
+}
+
+
+initVattr() {
+  return this.fb.group({
+    building_class: [''],
+    building_units: ['']
+  });
+}
+
+
+initVariationn(res) {
+  let ress = res;
+
+  const emptyArr = this.fb.array([]);
+  let v = this.fb.group({
+    project_type: res['project_type_id'],
+    building_details: emptyArr
+  });
+  return v;
+}
+
+initVattrr(res) {
+  let ress = res;
+  return this.fb.group({
+    building_class: res['building_class_id'],
+    building_units: res['building_units']
+  });
+}
+
+
+processData(res)
+{
+  let ress = res;
+  let control = <FormArray>this.form.controls['project_details'];
+
+console.log("for each start");
+  res.forEach((obj,index) => {
+    console.log(obj);
+    console.log(index);
+    control.push(this.initVariationn(obj));
+
+    obj['building_class'].forEach((val,ind) => {      
+          const controll = <FormArray>this.form.get(['project_details',index, 'building_details']);
+          console.log(val);
+          console.log(ind);
+          controll.push(this.initVattrr(val))
+      });
 
 });
 
-//   for(var i=0;i<= res.length;i++){    
-//     //contr[i]['project_type'] = res['project_type'];    
-//     console.log("project type");
-//     console.log(res);
-//     for(var j=0;j<= res['project_type'][i]['building_class'].length;j++){    
-//       console.log("building class");
-//       console.log(res['project_type'][i]['building_class']);
-//     }
-//   }
-//   console.log("after contr");
-//   console.log(contr);
+  console.log("AFTER CONTROL");
+  console.log(control);
+  console.log(control.value);
+  
+  
  }
+
+
 
 removeVar(index: number) {
   // remove address from the list
@@ -128,12 +147,17 @@ addAttrRow(index) {
   control.push(this.initVattr())
 }
 
-initVattr() {
-  return this.fb.group({
-    building_class: [''],
-    building_units: ['']
-  });
+removeVAttr(parentIndex:number,index: number) {
+  console.log("parentIndex");
+  console.log(parentIndex);
+  console.log("index");
+  console.log(index);
+  // remove address from the list
+  const control = <FormArray>this.form.get(['project_details', parentIndex, 'building_details']);
+  control.removeAt(index);
 }
+
+
 
 
 
@@ -161,8 +185,8 @@ getDetailsById(id) {
         this.model = res['result']['info']['lists'];
         console.log('this.model');
         console.log(this.model);
-
-        this.process(res['result']['info']['lists']);
+    
+        this.processData(res['result']['info']['lists']);
    },
  (err) => { 
     this.iSuccessError.mError = err;
@@ -179,11 +203,12 @@ submit(form){
   console.log(form.value);
 
     if(form.valid){
-     this._service.update(this.model,1).subscribe(     
+     this._service.updateConfigureProject(form.value,this.id).subscribe(     
        (res) => {
+
              this.iSuccessError.mSuccess = res['result']['info']['msg'];
              this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
-               this._router.navigate(['/manageProject']);
+             this._router.navigate(['/manageProject']);
              
        },
      (err) => { 

@@ -101,9 +101,9 @@
    
     <div class="col-sm-12">
      
-    <form [formGroup]="form" (ngSubmit)="submit(form)">
+    <form [formGroup]="form" (ngSubmit)="submit(form)" >
       <div class="col-sm-6" formArrayName="project_details">
-      <div class="card"  *ngFor="let variation of form.controls.project_details.controls; let i = index" [formGroupName]="i">
+      <div class="card" *ngFor="let variation of form.controls.project_details.controls; let i = index" [formGroupName]="i">
         <div class="card-header">
             <div class="form-group row">
                 <div class="col-md-9">
@@ -144,7 +144,7 @@
                         <input type="text" class="form-control mb-2 mb-sm-0" name="building_units" formControlName="building_units" ></td>
                       
                         <td><button type="button" class="btn btn-outline-success" (click)="addAttrRow(i)"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-                        <button type="button" class="btn btn-outline-danger" (click)="removeVAttr(ii)"  ><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                        <button type="button" class="btn btn-outline-danger" (click)="removeVAttr(i,ii)"  ><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
                       </tr>
                       
                     </tbody>
