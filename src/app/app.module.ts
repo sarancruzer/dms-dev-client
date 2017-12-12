@@ -100,6 +100,9 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { ConfigureProjectComponent } from './components/project/configure-project/configure-project.component';
 import { ProjectTypeComponent } from './components/masters/project-type/project-type.component';
 import { BuildingClassComponent } from './components/masters/building-class/building-class.component';
+import { ProjectTeamComponent } from './components/project/project-team/project-team.component';
+import { ProjectScopeComponent } from './components/project/project-scope/project-scope.component';
+
 
 
 @NgModule({
@@ -151,7 +154,9 @@ import { BuildingClassComponent } from './components/masters/building-class/buil
     LogoutComponent,
     ConfigureProjectComponent,
     ProjectTypeComponent,
-    BuildingClassComponent,    
+    BuildingClassComponent,
+    ProjectTeamComponent,
+    ProjectScopeComponent    
   ],
   providers: [{
     provide: LocationStrategy,

@@ -1,3 +1,4 @@
+import { ProjectTeamComponent } from './components/project/project-team/project-team.component';
 import { ProjectTypeComponent } from './components/masters/project-type/project-type.component';
 import { ConfigureProjectComponent } from './components/project/configure-project/configure-project.component';
 import { LogoutComponent } from './components/logout/logout.component';
@@ -84,6 +85,7 @@ export const routes: Routes = [
         {path: 'addProject',component: AddProjectComponent,data: {title: 'Add project'}},
         {path: 'editProject/:id',component: EditProjectComponent,data: {title: 'Edit Project'}},
         {path: 'configureProject/:id',component: ConfigureProjectComponent,data: {title: 'Configure Project'}},
+        {path: 'projectTeam',component: ProjectTeamComponent,data: {title: 'Project Team'}},
         
     ]
   },

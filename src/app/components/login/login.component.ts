@@ -59,6 +59,7 @@ setLocalStorage(_local,token){
   localStorage.setItem("avatar",_local['avatar']);
   localStorage.setItem("token",'Bearer '+token);
   localStorage.setItem("authentication",JSON.stringify(true));
+  localStorage.setItem("project_id","1");
  
   let role_permissions = _local['role_permissions'];
   let role_access = [];

@@ -14,6 +14,8 @@ export class ProjectService {
   headers : any;
   options:any;
   model:Project[] = [];
+  
+
   configureProject:ConfigureProject[] = [];  
   title = "Project";
   
@@ -76,6 +78,25 @@ export class ProjectService {
     .map((res:Response) => <ConfigureProject[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+  getProjectTeamById(id:number) : Observable<ProjectTeam[]> {
+    console.log(id);
+    let body = "";
+    return this._http.post(this.apiUrl+'get'+ApiSettings.CONFIGUREPROJECT+"ById/"+id,body,this.options)
+    .map((res:Response) => <ConfigureProject[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  updateProjectTeam(params:any,id:number) : Observable<ConfigureProject[]> {
+    let body = JSON.stringify({'info':params});
+    return this._http.post(this.apiUrl+'update'+ApiSettings.CONFIGUREPROJECT+'/'+id,body,this.options)
+    .map((res:Response) => <ConfigureProject[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  
+
+  
 
 
 
