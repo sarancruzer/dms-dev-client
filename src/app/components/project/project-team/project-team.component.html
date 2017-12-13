@@ -13,37 +13,24 @@
             <div class="form-group">
                 <label for="company">Developer</label>
                 <select id="select" class="form-control" formControlName="developer">
-                <option value="1" selected>Developer1</option>      
-                <option value="2">Developer2</option>      
-                <option value="3">Developer3</option>      
-                
+                    <option *ngFor="let row of developers" value= {{row.id}}>{{row.name}}</option> 
                 </select>                
               </div>
               <div class="form-group">
                   <label for="company">Project Manager</label>
                   <select id="select" class="form-control"  formControlName="project_manager">
-                  <option value="1">Manager1</option>      
-                  <option value="2" selected>Manager2</option>      
-                  <option value="3">Manager3</option>      
-                  
+                  <option *ngFor="let row of projectManagers" value= {{row.id}}>{{row.name}}</option>             
                   </select>                
                 </div>
                 <div class="form-group">
                     <label for="company">Estimator</label>
                     <select id="select" name="select" class="form-control" formControlName="estimator" >
-                    <option value="1">Estimator1</option>      
-                    <option value="2">Estimator2</option>      
-                    <option value="3" selected>Estimator3</option>      
-                    
-                    </select>                
+                    <option *ngFor="let row of estimators" value= {{row.id}}>{{row.name}}</option>        </select>                
                   </div>
                   <div class="form-group">
                       <label for="company">Site Manager</label>
                       <select id="select" name="select" class="form-control"  formControlName="site_manager" >
-                      <option value="1">Manager1</option>      
-                      <option value="2" selected>Manager2</option>      
-                      <option value="3">Manager3</option>      
-                      
+                       <option *ngFor="let row of siteManagers" value= {{row.id}}>{{row.name}}</option>        
                       </select>                
                     </div>
 
@@ -71,7 +58,7 @@
               <button type="submit" class="btn btn-sm btn-primary" (click)="createProject()"><i class="fa fa-dot-circle-o"></i> Save </button>
               <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
             </div> 
-            {{form.json}}
+            <pre>{{ form.value | json }}</pre>
           </div><!--/.row-->
        </form> 
       </div>

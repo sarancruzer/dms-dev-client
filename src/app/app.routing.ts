@@ -36,6 +36,7 @@ import { AddClientComponent } from "app/components/clients/add-client/add-client
 import { EditClientComponent } from "app/components/clients/edit-client/edit-client.component";
 import { RolePrivillegesComponent } from "app/components/role-privilleges/role-privilleges.component";
 import { BuildingClassComponent } from 'app/components/masters/building-class/building-class.component';
+import { ProjectScopeComponent } from 'app/components/project/project-scope/project-scope.component';
 
 export const routes: Routes = [
   {path: '',redirectTo: 'login',pathMatch: 'full'},
@@ -86,6 +87,7 @@ export const routes: Routes = [
         {path: 'editProject/:id',component: EditProjectComponent,data: {title: 'Edit Project'}},
         {path: 'configureProject/:id',component: ConfigureProjectComponent,data: {title: 'Configure Project'}},
         {path: 'projectTeam',component: ProjectTeamComponent,data: {title: 'Project Team'}},
+        {path: 'projectScope',component: ProjectScopeComponent,data: {title: 'Project Scope'}},
         
     ]
   },

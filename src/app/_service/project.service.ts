@@ -5,6 +5,7 @@ import { Http, RequestOptions , Response,Headers } from '@angular/http';
 import { Project } from './../_model/project';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
+import { ProjectTeam } from 'app/_model/project-team';
 
 @Injectable()
 export class ProjectService {
@@ -14,6 +15,7 @@ export class ProjectService {
   headers : any;
   options:any;
   model:Project[] = [];
+  teamModel:ProjectTeam[]=[];
   
 
   configureProject:ConfigureProject[] = [];  
@@ -82,15 +84,15 @@ export class ProjectService {
   getProjectTeamById(id:number) : Observable<ProjectTeam[]> {
     console.log(id);
     let body = "";
-    return this._http.post(this.apiUrl+'get'+ApiSettings.CONFIGUREPROJECT+"ById/"+id,body,this.options)
-    .map((res:Response) => <ConfigureProject[]>res.json())
+    return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTTEAM+"ById/"+id,body,this.options)
+    .map((res:Response) => <ProjectTeam[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  updateProjectTeam(params:any,id:number) : Observable<ConfigureProject[]> {
+  updateProjectTeam(params:any,id:number) : Observable<ProjectTeam[]> {
     let body = JSON.stringify({'info':params});
-    return this._http.post(this.apiUrl+'update'+ApiSettings.CONFIGUREPROJECT+'/'+id,body,this.options)
-    .map((res:Response) => <ConfigureProject[]>res.json())
+    return this._http.post(this.apiUrl+'update'+ApiSettings.PROJECTTEAM+'/'+id,body,this.options)
+    .map((res:Response) => <ProjectTeam[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 

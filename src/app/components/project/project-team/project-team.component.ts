@@ -5,16 +5,17 @@ import { Component, OnInit } from '@angular/core';
 import { IsuccessError } from 'app/_interface/isuccess-error.model';
 import { ToastrService } from 'toastr-ng2/toastr-service';
 import { ProjectService } from 'app/_service/project.service';
+import { FormGroup ,FormControl , Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-project-team',
   templateUrl: './project-team.component.html',
-  styleUrls: ['./project-team.component.scss']
+  styleUrls: ['./project-team.component.scss'],
+  providers:[ProjectService]
 })
 export class ProjectTeamComponent implements OnInit {
 
   model = new ProjectTeam();
-  
   iSuccessError:IsuccessError;
   id:number; 
   developers:any = [];
@@ -22,11 +23,25 @@ export class ProjectTeamComponent implements OnInit {
   estimators:any = [];
   siteManagers:any = [];
 
+  form:FormGroup;
+
     constructor(private _router:Router,private _route : ActivatedRoute,private _commonService:CommonService,private toastrService:ToastrService,private _service:ProjectService) { 
       this.iSuccessError = {mSuccess:"",mError:""};
     }
     ngOnInit() {
-     
+    
+      this.form = new FormGroup({
+        developer: new FormControl('', Validators.required),
+        project_manager: new FormControl('', Validators.required),
+        estimator: new FormControl('', Validators.required),
+        site_manager: new FormControl('', Validators.required),
+        architech: new FormControl('', Validators.required),
+        engineer: new FormControl('', Validators.required),        
+        building_surveyor: new FormControl('', Validators.required),        
+        quantity_surveyor: new FormControl('', Validators.required),        
+        superintendent: new FormControl('', Validators.required)
+      });
+
     this.id = Number(localStorage.getItem("project_id"));
     console.log(this.id);
     this.getMasterData();    
@@ -37,14 +52,31 @@ export class ProjectTeamComponent implements OnInit {
 
 
 getMasterData(){
-  let params = ['m_developer','m_project_manager','m_estimator','m_site_manager'];
-  this._commonService.getMasterDetails(params).subscribe(     
+  let params = ['m_contacts'];
+  this._commonService.getContactDetails(params).subscribe(     
     (res) => {
-          this.developers = res['result']['info']['m_developer'];
-          this.projectManagers = res['result']['info']['m_project_manager'];
-          this.estimators = res['result']['info']['m_estimator'];
-          this.siteManagers = res['result']['info']['m_site_manager'];
-          console.log(res);
+        let ress = res['result']['info'];
+        for (var i = 0, len = ress.length; i < len; i++) {
+          console.log(ress[i]['job_title']);
+          if(ress[i]['job_title'] == 1){
+            this.developers.push(ress[i]);
+          }
+          if(ress[i]['job_title'] == 2){
+            this.projectManagers.push(ress[i]);
+          }
+          if(ress[i]['job_title'] == 3){
+            this.estimators.push(ress[i]);
+          }
+          if(ress[i]['job_title'] == 4){
+            this.siteManagers.push(ress[i]);
+          }
+
+        }
+          
+          console.log(this.developers);
+          console.log(this.projectManagers);
+          console.log(this.estimators);
+          console.log(this.siteManagers);
     },
   (err) => { 
       this.iSuccessError.mError = err;
@@ -58,7 +90,10 @@ getMasterData(){
  getDetailsById(id) {
   this._service.getProjectTeamById(id).subscribe(     
     (res) => {
-         this.model = res['result']['info']['lists'];
+      let ress = res['result']['info']['lists'];
+         //this.form = res['result']['info']['lists'];
+         this.setValue(ress);
+         //Object.keys(ress); // ['name', 'age']
          console.log('this.model');
          console.log(this.model);         
     },
@@ -71,7 +106,22 @@ getMasterData(){
   }) 
  }
 
-
+ setValue(res) {
+  
+    this.form = new FormGroup({
+      developer: new FormControl(res['developer'], Validators.required),
+      project_manager: new FormControl(res['project_manager'], Validators.required),
+      estimator: new FormControl(res['estimator'], Validators.required),
+      site_manager: new FormControl(res['site_manager'], Validators.required),
+      architech: new FormControl(res['architech'], Validators.required),
+      engineer: new FormControl(res['engineer'], Validators.required),        
+      building_surveyor: new FormControl(res['building_surveyor'], Validators.required),        
+      quantity_surveyor: new FormControl(res['quantity_surveyor'], Validators.required),        
+      superintendent: new FormControl(res['superintendent'], Validators.required)
+    });
+    
+    //{first: 'Carson', last: 'Drew'});
+   }
 
 
 submit(form){    
@@ -79,7 +129,7 @@ submit(form){
   console.log(form.value);
 
     if(form.valid){
-     this._service.updateConfigureProject(form.value,this.id).subscribe(     
+     this._service.updateProjectTeam(form.value,this.id).subscribe(     
        (res) => {
 
              this.iSuccessError.mSuccess = res['result']['info']['msg'];
