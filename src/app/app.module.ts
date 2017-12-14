@@ -102,6 +102,7 @@ import { ProjectTypeComponent } from './components/masters/project-type/project-
 import { BuildingClassComponent } from './components/masters/building-class/building-class.component';
 import { ProjectTeamComponent } from './components/project/project-team/project-team.component';
 import { ProjectScopeComponent } from './components/project/project-scope/project-scope.component';
+import { ValuesPipe } from './components/project/project-scope/values.pipe';
 
 
 
@@ -156,7 +157,8 @@ import { ProjectScopeComponent } from './components/project/project-scope/projec
     ProjectTypeComponent,
     BuildingClassComponent,
     ProjectTeamComponent,
-    ProjectScopeComponent    
+    ProjectScopeComponent,
+    ValuesPipe    
   ],
   providers: [{
     provide: LocationStrategy,

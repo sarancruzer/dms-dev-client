@@ -1,23 +1,29 @@
+import { ValuesPipe } from './values.pipe';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-project-scope',
   templateUrl: './project-scope.component.html',
-  styleUrls: ['./project-scope.component.scss']
+  styleUrls: ['./project-scope.component.scss'],
+  providers:[ValuesPipe]
 })
+
 export class ProjectScopeComponent implements OnInit {
 
   people:any = [];
+  keys: String[];  
+  columns:any = [];
+  keyvalues:any;
   constructor() { }
+  
+  
 
   ngOnInit() {
-
     this.loadTable();
 
   }
 
   loadTable(){
-
 
     this.people = [{
       "_id": "567137b02d704d495ec053c5",
@@ -44,6 +50,8 @@ export class ProjectScopeComponent implements OnInit {
       "phone": "+1 (865) 413-2197"
     }];
 
+    this.keyvalues = Object.getOwnPropertyNames(this.people[0]);
+    console.log(this.keyvalues);
   }
 
 }

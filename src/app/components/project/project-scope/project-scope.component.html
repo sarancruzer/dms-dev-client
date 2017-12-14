@@ -16,16 +16,15 @@
         </div>
         <div class="card-body">
 
-
-
-            <table>
-                <tr *ngFor="let item of people; let i = index" >
-                   <th>{{item.age}}</th>
-                  <th *ngFor="let person of people">
-                    {{person[i]}}
-                  </th>                  
-                </tr>
+            <table> 
+              <tr *ngFor="let item of keyvalues">
+              <th>{{item}}</th>
+              <td *ngFor="let person of people">
+                  {{person[item]}}
+                </td>      
+              </tr>           
               </table>
+              
 
            
                 <table class="table">
@@ -340,3 +339,11 @@
   </div><!--/.row-->
 
 </div>
+
+
+<!-- <tr ng-repeat="(key, value) in people[0]">
+    <th>{{key}}</th>
+    <td ng-repeat="person in people">
+      {{person[key]}}
+    </td>
+  </tr> -->

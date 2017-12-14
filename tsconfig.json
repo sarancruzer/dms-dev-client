@@ -18,3 +18,23 @@
     ]
   }
 }
+
+
+// {
+//   "compilerOptions": {
+//     "target": "es5",
+//     "sourceMap": true,
+//     "experimentalDecorators": true,
+//     "emitDecoratorMetadata": true,
+//     "module": "system",
+//     "moduleResolution": "node", // <-----
+//     "noImplicitAny": false,
+//     "outDir": "js",
+//     "rootDir": "app"
+//   },
+//   "exclude": [
+//     "node_modules",
+//     "typings/main",
+//     "typings/main.d.ts"
+//   ]
+// }
