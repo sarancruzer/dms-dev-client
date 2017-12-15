@@ -1,57 +1,127 @@
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { IsuccessError } from './../../../_interface/isuccess-error.model';
 import { ValuesPipe } from './values.pipe';
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'app/_service/common.service';
+import { ProjectService } from 'app/_service/project.service';
+import { ToastrService } from 'toastr-ng2/toastr-service';
 
 @Component({
   selector: 'app-project-scope',
   templateUrl: './project-scope.component.html',
   styleUrls: ['./project-scope.component.scss'],
-  providers:[ValuesPipe]
+  providers:[ProjectService]
 })
 
 export class ProjectScopeComponent implements OnInit {
 
+  
   people:any = [];
   keys: String[];  
   columns:any = [];
   keyvalues:any;
-  constructor() { }
+  iSuccessError:IsuccessError;
+
+  form:FormGroup;
+  id:number;  
+
+  constructor(private _router:Router,private _route : ActivatedRoute,private _commonService:CommonService,private toastrService:ToastrService,private _service:ProjectService,private fb: FormBuilder) {
+    this.iSuccessError = {mSuccess:"",mError:""};
+    this.id = Number(localStorage.getItem("project_id"));
+   }
   
   
 
   ngOnInit() {
-    this.loadTable();
+    this.form = this.fb.group({
+      project_details: this.fb.array([
+        //this.initVariation(),
+    ])
+   });
+    this.loadDyamicTable();
+       
+  }
+  
+  
+
+  initVariation(res) {
+    let v = this.fb.group({
+      project_type:res['project_type'],
+      building_class:res['building_class'],
+      building_units:res['project_type'],
+      aluminium_windows:[''],
+      aluminium_doors:[''],      
+      curtain_wall:[''],
+      aluminium_louvres:[''],
+      kitchens:[''],
+      kitchenettes:[''],
+      bedrooms:[''],
+      laundries:[''],
+      bathrooms:[''],
+      ensuites:[''],
+      balconies:[''],
+      storage:[''],
+      study	:[''],
+      garages	:[''],
+      other	:[''],
+            
+    });
+    return v;
+  }
+
+
+  loadDyamicTable(){
+    this._service.getProjectScopeMasterDataById(this.id).subscribe(     
+    (res) => {
+      let ress = res['result']['info']['lists'];
+         this.people = ress;    
+         this.loadFormControl(this.people);
+         this.keyvalues = Object.getOwnPropertyNames(this.people[0]);
+         console.log(this.keyvalues);
+    },
+  (err) => { 
+     this.iSuccessError.mError = err;
+     this.toastrService.error(err, 'Error!');
+     if(err == 'No results found!'){
+       
+     }
+  })
 
   }
 
-  loadTable(){
-
-    this.people = [{
-      "_id": "567137b02d704d495ec053c5",
-      "age": 24,
-      "name": "Schneider Crosby",
-      "gender": "male",
-      "email": "schneidercrosby@exiand.com",
-      "phone": "+1 (814) 416-2089"
-    },
-    {
-      "_id": "567137b09a169eda5257c206",
-      "age": 34,
-      "name": "Cook Richards",
-      "gender": "male",
-      "email": "cookrichards@exiand.com",
-      "phone": "+1 (904) 515-2147"
-    },
-    {
-      "_id": "567137b083eced915da6b38b",
-      "age": 33,
-      "name": "Latasha Ware",
-      "gender": "female",
-      "email": "latashaware@exiand.com",
-      "phone": "+1 (865) 413-2197"
-    }];
-
-    this.keyvalues = Object.getOwnPropertyNames(this.people[0]);
-    console.log(this.keyvalues);
+  loadFormControl(res){
+    let ress = res;
+    let control = <FormArray>this.form.controls['project_details'];
+    res.forEach((obj,index) => {
+      console.log(obj);
+      console.log(index);
+      control.push(this.initVariation(obj));   
+  });   
   }
+
+
+submit(form){    
+  console.log("form");
+  console.log(form.value);
+
+    if(form.valid){
+     this._service.updateProjectScope(form.value,this.id).subscribe(     
+       (res) => {
+             this.iSuccessError.mSuccess = res['result']['info']['msg'];
+             this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
+             this._router.navigate(['/manageProject']);
+             
+       },
+     (err) => { 
+       console.log(err);
+         this.iSuccessError.mError = err;
+         this.toastrService.error(err, 'Error!');
+     }) 
+   }
+   
+}
+
+
 
 }

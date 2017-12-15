@@ -96,6 +96,31 @@ export class ProjectService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  getProjectScopeMasterDataById(id:number) : Observable<ProjectTeam[]> {
+    console.log(id);
+    let body = "";
+    return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTSCOPEMASTERDATA+"ById/"+id,body,this.options)
+    .map((res:Response) => <ProjectTeam[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  getProjectScopeById(id:number) : Observable<ProjectTeam[]> {
+    console.log(id);
+    let body = "";
+    return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTSCOPE+"ById/"+id,body,this.options)
+    .map((res:Response) => <ProjectTeam[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+
+  updateProjectScope(params:any,id:number) : Observable<ProjectTeam[]> {
+    let body = JSON.stringify({'info':params});
+    return this._http.post(this.apiUrl+'update'+ApiSettings.PROJECTSCOPE+'/'+id,body,this.options)
+    .map((res:Response) => <ProjectTeam[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  
   
 
   

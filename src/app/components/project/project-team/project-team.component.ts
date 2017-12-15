@@ -11,7 +11,7 @@ import { FormGroup ,FormControl , Validators} from '@angular/forms';
   selector: 'app-project-team',
   templateUrl: './project-team.component.html',
   styleUrls: ['./project-team.component.scss'],
-  providers:[ProjectService]
+  providers:[ProjectService,CommonService]
 })
 export class ProjectTeamComponent implements OnInit {
 

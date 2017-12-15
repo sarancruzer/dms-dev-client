@@ -106,6 +106,7 @@ import { ValuesPipe } from './components/project/project-scope/values.pipe';
 
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -158,7 +159,7 @@ import { ValuesPipe } from './components/project/project-scope/values.pipe';
     BuildingClassComponent,
     ProjectTeamComponent,
     ProjectScopeComponent,
-    ValuesPipe    
+    ValuesPipe,    
   ],
   providers: [{
     provide: LocationStrategy,
