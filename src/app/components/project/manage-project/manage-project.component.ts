@@ -28,10 +28,11 @@ export class ManageProjectComponent implements OnInit {
   
   q:any;
   
-  id:number;
+  id:any;
   iSuccessError:IsuccessError;
 
   @ViewChild('deleteModal') public deleteModal:ModalDirective;
+  @ViewChild('scopeModal') public scopeModal:ModalDirective;
   
 
   isDesc: boolean = true;
@@ -147,6 +148,18 @@ export class ManageProjectComponent implements OnInit {
         this.iSuccessError.mError = err;
         this.toastrService.error(err, 'Error!');
     }) 
+  }
+
+  scopeModalFunc(id){
+    this.scopeModal.show();
+    this.id = id;
+  }
+
+  modalActions(routePath){
+    this.scopeModal.hide();
+    localStorage.setItem("project_id",this.id);
+    this._router.navigate([routePath]);
+
   }
 
 }

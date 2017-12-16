@@ -88,7 +88,7 @@
                             </td>
                             <!-- <td><a class="btn btn-outline-primary" [routerLink]="[ '/configureProject']">Configure</a></td>
                               -->
-                            <td><button type="button" class="btn btn-success" data-toggle="modal" (click)="createModal.show()"><i class="fa fa-paper-plane" aria-hidden="true"></i> Project data</button></td> 
+                            <td><button type="button" class="btn btn-success" data-toggle="modal" (click)="scopeModalFunc(item.id)"><i class="fa fa-paper-plane" aria-hidden="true"></i> Project data</button></td> 
 
                           </tr>
                         </tbody>
@@ -127,12 +127,12 @@
   </div>
   
   
-<div bsModal #createModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div bsModal #scopeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Project Details</h4>
-          <button type="button" class="close" (click)="createModal.hide()" aria-label="Close">
+          <button type="button" class="close" (click)="scopeModal.hide()" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -140,22 +140,22 @@
            <div class="card-body">
 
               <div class="form-group">                  
-                  <a class="btn btn-outline-secondary btn-lg btn-block" [routerLink]="[ '/projectTeam']">Project Team</a>
+                  <a class="btn btn-outline-secondary btn-lg btn-block" (click)="modalActions('/projectTeam')">Project Team</a>
                 </div>
                 <div class="form-group">                    
-                    <a class="btn btn-outline-primary btn-lg btn-block" [routerLink]="[ '/projectScope']">Project Scope</a>
+                    <a class="btn btn-outline-primary btn-lg btn-block" (click)="modalActions('/projectScope')" >Project Scope</a>
                   </div>
                   <div class="form-group">                      
-                      <a class="btn btn-outline-success btn-lg btn-block" [routerLink]="[ '/supplyItems']">Supply Items</a>
+                      <a class="btn btn-outline-success btn-lg btn-block" (click)="modalActions('/supplyItems')">Supply Items</a>
                     </div>
                     <div class="form-group">                      
-                        <a class="btn btn-outline-info btn-lg btn-block" [routerLink]="[ '/manageProjectDocumentation']">Documentation</a>
+                        <a class="btn btn-outline-info btn-lg btn-block" (click)="modalActions('/manageProjectDocumentation')" >Documentation</a>
                     </div>
                      <div class="form-group">                      
-                          <a class="btn btn-outline-warning btn-lg btn-block" [routerLink]="[ '/additionalInfo']">Additional Info</a>
+                          <a class="btn btn-outline-warning btn-lg btn-block" (click)="modalActions('/additionalInfo')" >Additional Info</a>
                     </div>
                     <div class="form-group">                      
-                        <a class="btn btn-outline-danger btn-lg btn-block" [routerLink]="[ '/addProjectNote']">Add Project Note</a>
+                        <a class="btn btn-outline-danger btn-lg btn-block" (click)="modalActions('/addProjectNote')" >Add Project Note</a>
                   </div> 
              
              </div><!--/.row-->

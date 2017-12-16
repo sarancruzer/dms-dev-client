@@ -35,11 +35,12 @@ export class ProjectScopeComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      project_details: this.fb.array([
+      quote:[''],  
+      project_details: this.fb.array([      
         //this.initVariation(),
     ])
    });
-    this.loadDyamicTable();
+    this.getProjectScopeMasterData();
        
   }
   
@@ -49,36 +50,52 @@ export class ProjectScopeComponent implements OnInit {
     let v = this.fb.group({
       project_type:res['project_type'],
       building_class:res['building_class'],
-      building_units:res['project_type'],
-      aluminium_windows:[''],
-      aluminium_doors:[''],      
-      curtain_wall:[''],
-      aluminium_louvres:[''],
-      kitchens:[''],
-      kitchenettes:[''],
-      bedrooms:[''],
-      laundries:[''],
-      bathrooms:[''],
-      ensuites:[''],
-      balconies:[''],
-      storage:[''],
-      study	:[''],
-      garages	:[''],
-      other	:[''],
+      building_units:res['building_units'],
+      aluminium_windows:res['aluminium_windows'],
+      aluminium_doors:res['aluminium_doors'],
+      curtain_wall:res['aluminium_louvres'],
+      aluminium_louvres:res['aluminium_louvres'],
+      kitchens:res['kitchens'],
+      kitchenettes:res['kitchenettes'],
+      bedrooms:res['bedrooms'],
+      laundries:res['laundries'],
+      bathrooms:res['bathrooms'],
+      ensuites:res['ensuites'],
+      balconies:res['balconies'],
+      storage:res['storage'],
+      study	:res['study'],
+      garages	:res['garages'],
+      other	:res['other'],
             
     });
     return v;
   }
 
 
-  loadDyamicTable(){
-    this._service.getProjectScopeMasterDataById(this.id).subscribe(     
+  getProjectScopeMasterData(){
+  //   this._service.getProjectScopeMasterDataById(this.id).subscribe(     
+  //   (res) => {
+  //     let ress = res['result']['info']['lists'];
+  //        this.people = ress;    
+  //        this.loadFormControl(this.people);
+  //        this.keyvalues = Object.getOwnPropertyNames(this.people[0]);
+  //        console.log(this.keyvalues);
+  //   },
+  // (err) => { 
+  //    this.iSuccessError.mError = err;
+  //    this.toastrService.error(err, 'Error!');
+  //    if(err == 'No results found!'){
+       
+  //    }
+  // })
+
+  this._service.getProjectScopeById(this.id).subscribe(     
     (res) => {
       let ress = res['result']['info']['lists'];
          this.people = ress;    
          this.loadFormControl(this.people);
          this.keyvalues = Object.getOwnPropertyNames(this.people[0]);
-         console.log(this.keyvalues);
+         console.log(this.keyvalues);         
     },
   (err) => { 
      this.iSuccessError.mError = err;
@@ -92,7 +109,10 @@ export class ProjectScopeComponent implements OnInit {
 
   loadFormControl(res){
     let ress = res;
+    let quote = <FormArray>this.form.controls['quote'];
     let control = <FormArray>this.form.controls['project_details'];
+    
+    
     res.forEach((obj,index) => {
       console.log(obj);
       console.log(index);

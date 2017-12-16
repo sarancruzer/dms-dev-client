@@ -4,3 +4,7 @@
 .talign{
     text-align: center;
 }
+
+div > div > a{
+    cursor: pointer;
+}
