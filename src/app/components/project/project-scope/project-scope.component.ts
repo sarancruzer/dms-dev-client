@@ -1,7 +1,6 @@
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IsuccessError } from './../../../_interface/isuccess-error.model';
-import { ValuesPipe } from './values.pipe';
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'app/_service/common.service';
 import { ProjectService } from 'app/_service/project.service';
