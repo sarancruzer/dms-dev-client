@@ -134,9 +134,9 @@ export class MprojectScopeComponent implements OnInit {
   edit(data){
     this.editModal.show();
     this.model.id = data.id;
-    this.model.name = data.name;
+    this.model.price = data.price;
     this.model.short_code = data.short_code;
-    this.model.project_type_id = data.project_type_id;
+    this.model.building_class_id = data.building_class_id;
   }
 
   update(form,id){
