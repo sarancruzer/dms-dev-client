@@ -11,7 +11,10 @@ export class ApiSettings {
     public static BUILDINGCLASS='BuildingClass';   
     public static CONTACTS='Contacts';       
     public static PROJECTSCOPEMASTERDATA='ProjectScopeMasterData';       
+    public static PROJECTSCOPEDETAIL='ProjectScopeDetail';
     public static PROJECTSCOPE='ProjectScope';       
+    public static ITEMS='Items';       
     
+    public static PROJECTSCOPE_M='ProjectScopeMaster';       
 }
 

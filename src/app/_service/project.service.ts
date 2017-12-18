@@ -17,6 +17,7 @@ export class ProjectService {
   model:Project[] = [];
   teamModel:ProjectTeam[]=[];
   
+  
 
   configureProject:ConfigureProject[] = [];  
   title = "Project";
@@ -107,7 +108,7 @@ export class ProjectService {
   getProjectScopeById(id:number) : Observable<ProjectTeam[]> {
     console.log(id);
     let body = "";
-    return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTSCOPE+"ById/"+id,body,this.options)
+    return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTSCOPEDETAIL+"ById/"+id,body,this.options)
     .map((res:Response) => <ProjectTeam[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -115,11 +116,17 @@ export class ProjectService {
 
   updateProjectScope(params:any,id:number) : Observable<ProjectTeam[]> {
     let body = JSON.stringify({'info':params});
-    return this._http.post(this.apiUrl+'update'+ApiSettings.PROJECTSCOPE+'/'+id,body,this.options)
+    return this._http.post(this.apiUrl+'update'+ApiSettings.PROJECTSCOPEDETAIL+'/'+id,body,this.options)
     .map((res:Response) => <ProjectTeam[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  getCustomMasterDetails(params:any) : Observable<any[]> {
+    
+    return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTSCOPE_M,params,this.options)
+    .map((res:Response) => <any[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
   
   
 

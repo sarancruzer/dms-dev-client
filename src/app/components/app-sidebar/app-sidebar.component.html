@@ -30,14 +30,21 @@
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/clientType') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/clientType']"><i class="icon-puzzle"></i> Client Type</a>
             </li>
-            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/clientSize') !== -1">
+            <!-- <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/clientSize') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/clientSize']"><i class="icon-puzzle"></i> Client Size</a>
-            </li>
+            </li> -->
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/projectType') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectType']"><i class="icon-puzzle"></i> Project Type</a>
             </li>
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/buildingClass') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/buildingClass']"><i class="icon-puzzle"></i> Building Class</a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/items']"><i class="icon-puzzle"></i> Items</a>
+            </li>
+
+            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/projectScope') !== -1">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScope']"><i class="icon-puzzle"></i> Project Scope</a>
             </li>
            
           </ul>

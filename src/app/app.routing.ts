@@ -37,6 +37,8 @@ import { EditClientComponent } from "app/components/clients/edit-client/edit-cli
 import { RolePrivillegesComponent } from "app/components/role-privilleges/role-privilleges.component";
 import { BuildingClassComponent } from 'app/components/masters/building-class/building-class.component';
 import { ProjectScopeComponent } from 'app/components/project/project-scope/project-scope.component';
+import { MprojectScopeComponent } from 'app/components/masters/mproject-scope/mproject-scope.component';
+import { ItemsComponent } from 'app/components/masters/items/items.component';
 
 export const routes: Routes = [
   {path: '',redirectTo: 'login',pathMatch: 'full'},
@@ -73,6 +75,9 @@ export const routes: Routes = [
         {path: 'masters/clientSize',component: ClientsizeComponent,data: {title: 'Manage Client Size'}},
         {path: 'masters/projectType',component: ProjectTypeComponent,data: {title: 'Manage Project Type'}},
         {path: 'masters/buildingClass',component: BuildingClassComponent,data: {title: 'Manage Building Class'}},
+        {path: 'masters/projectScope',component: MprojectScopeComponent,data: {title: 'Manage Project Scope'}},
+        {path: 'masters/items',component: ItemsComponent,data: {title: 'Manage Items'}},
+        
         
         {path: 'manageClient',component: ManageClientComponent,data: {title: 'Manage Clients'}},
         {path: 'addClient',component: AddClientComponent,data: {title: 'Add Client'}},

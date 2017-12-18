@@ -24,27 +24,30 @@
                     </tr>
               </thead>    
               <tbody >
-              <tr *ngFor="let item of keyvalues" formArrayName="project_details">
+              <tr *ngFor="let item of sidemenuItems" formArrayName="project_details">
               <th>{{item}}</th>              
 
               <td *ngFor="let variation of form.controls.project_details['controls']; let i=index" [formGroupName]="i">
                   
                   <div *ngIf="item == 'project_type'"><input type="text" class="form-control mb-2 mb-sm-0" formControlName="project_type" disabled></div>
+
+                  <div *ngIf="item == 'project_type'"><input type="hidden" class="form-control mb-2 mb-sm-0" formControlName="project_type_id" disabled></div>
                  
                   <div *ngIf="item == 'building_class'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="building_class" disabled></div>
+                  <div *ngIf="item == 'building_class'"><input type="hidden" class="form-control mb-2 mb-sm-0" formControlName="building_class_id" disabled></div>
                  
                   <div *ngIf="item == 'building_units'"><input type="text" class="form-control mb-2 mb-sm-0"   formControlName="building_units" disabled></div>
                 
 
                   <div *ngIf="item == 'aluminium_windows'">
-                    <select class="form-control"  formControlName="aluminium_windows">
+                    <select class="form-control"  formControlName="aluminium_windows" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.aluminium_windows,item)">
                         <option value="">select option</option>
                         <option value="1">Type 1</option>
                         <option value="2">Type 2</option>
                         <option value="3">Type 3</option>
                         
                       </select> </div> 
-                      <div *ngIf="item == 'aluminium_doors'"> <select class="form-control"  formControlName="aluminium_doors">
+                      <div *ngIf="item == 'aluminium_doors'"> <select class="form-control"  formControlName="aluminium_doors" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.aluminium_doors,item)">
                           <option value="">select option</option>
                           <option value="1">Type 1</option>
                           <option value="2">Type 2</option>
@@ -53,7 +56,7 @@
                         </select> </div>
                                            
                       
-                        <div *ngIf="item == 'curtain_wall'"><select class="form-control"   formControlName="curtain_wall">
+                        <div *ngIf="item == 'curtain_wall'"><select class="form-control"   formControlName="curtain_wall" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.curtain_wall,item)">
                             <option value="">select option</option>
                             <option value="1">Type 1</option>
                             <option value="2">Type 2</option>
@@ -61,7 +64,7 @@
                             
                           </select> </div> 
 
-                          <div *ngIf="item == 'aluminium_louvres'"><select class="form-control" formControlName="aluminium_louvres"  >
+                          <div *ngIf="item == 'aluminium_louvres'"><select class="form-control" formControlName="aluminium_louvres"  (keyup)="onQtyChange(variation.value.building_class_id,variation.value.aluminium_louvres,item)">
                               <option value="">select option</option>
                               <option value="1">Type 1</option>
                               <option value="2">Type 2</option>
@@ -69,28 +72,28 @@
                               
                             </select> </div> 
 
-                          <div *ngIf="item == 'kitchens'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="kitchens" ></div>
-
+                          <div *ngIf="item == 'kitchens'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="kitchens" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.kitchens_price,item)"></div>
+                            
                           
-                          <div *ngIf="item == 'kitchenettes'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="kitchenettes" ></div>
+                          <div *ngIf="item == 'kitchenettes'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="kitchenettes" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.kitchenettes,item)"></div>
 
-                          <div *ngIf="item == 'bedrooms'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="bedrooms" ></div>
+                          <div *ngIf="item == 'bedrooms'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="bedrooms" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.bedrooms,item)"></div>
 
-                          <div *ngIf="item == 'laundries'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="laundries" ></div>
+                          <div *ngIf="item == 'laundries'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="laundries" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.laundries,item)"></div>
                          
-                          <div *ngIf="item == 'bathrooms'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="bathrooms" ></div>
+                          <div *ngIf="item == 'bathrooms'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="bathrooms" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.bathrooms,item)"></div>
 
-                           <div *ngIf="item == 'ensuites'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="ensuites" ></div>
+                           <div *ngIf="item == 'ensuites'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="ensuites" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.kitchens,item)"></div>
 
-                          <div *ngIf="item == 'balconies'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="balconies" ></div>
+                          <div *ngIf="item == 'balconies'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="balconies" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.balconies,item)"></div>
 
-                          <div *ngIf="item == 'storage'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="storage" ></div>
+                          <div *ngIf="item == 'storage'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="storage" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.storage,item)"></div>
                          
-                          <div *ngIf="item == 'study'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="study" ></div>
+                          <div *ngIf="item == 'study'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="study" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.study,item)"></div>
 
-                          <div *ngIf="item == 'garages'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="garages" ></div>
+                          <div *ngIf="item == 'garages'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="garages" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.garages,item)"></div>
 
-                          <div *ngIf="item == 'other'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="other" ></div>
+                          <div *ngIf="item == 'other'"><input type="text" class="form-control mb-2 mb-sm-0"    formControlName="other" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.other,item)"></div>
                           
                      
 
@@ -104,7 +107,7 @@
                           <label class="col-md-3">Estimated Project Value:</label>
                           <div class="col-md-9">
                           
-                          <input type="text" class="form-control mb-2 mb-sm-0" required value="585624" name="value" disabled="true">  
+                          <input type="text" class="form-control mb-2 mb-sm-0" required formControlName="quote"  disabled="true">  
                           </div>
                   </div>
                   
@@ -117,9 +120,9 @@
 
         <div class="pull-right" style="margin:10px;">
             <button type="submit" class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i> Save </button>
-            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban" ></i> Cancel</button>
+            <button type="button" class="btn btn-sm btn-danger"   (click)="cancelFunc()"><i class="fa fa-ban" ></i> Cancel</button>
         </div> 
-        <pre>{{ form.value | json }}</pre>
+        <!-- <pre>{{ form.value | json }}</pre> -->
         
       </form>  
     </div><!--/.col-->

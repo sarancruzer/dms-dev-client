@@ -159,9 +159,6 @@ removeVAttr(parentIndex:number,index: number) {
 
 
 
-
-
-
 getMasterData(){
  let params = ['m_project_type','m_building_class'];
  this._commonService.getMasterDetails(params).subscribe(     
@@ -189,12 +186,39 @@ getDetailsById(id) {
         this.processData(res['result']['info']['lists']);
    },
  (err) => { 
+   this.processDataa();
     this.iSuccessError.mError = err;
-    this.toastrService.error(err, 'Error!');
+    //this.toastrService.error(err, 'Error!');
     if(err == 'No results found!'){
       
     }
  }) 
+}
+
+
+processDataa()
+{
+
+  let control = <FormArray>this.form.controls['project_details'];
+
+console.log("for each start");
+  
+  control.push(this.initVariation());
+
+  const controll = <FormArray>this.form.get(['project_details',0, 'building_details']);
+  controll.push(this.initVattrr_r())
+
+  console.log("AFTER CONTROL");
+  console.log(control);
+  console.log(control.value); 
+  
+ }
+
+ initVattrr_r() {  
+  return this.fb.group({
+    building_class: [''],
+    building_units: ['']
+  });
 }
 
 
@@ -221,7 +245,9 @@ submit(form){
 }
 
 
-    
+cancelFunc(){
+  this._router.navigate(['/manageProject']);
+}   
 
  
 }

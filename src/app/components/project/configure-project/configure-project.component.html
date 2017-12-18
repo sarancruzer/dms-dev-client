@@ -161,12 +161,12 @@
        
         <div class="pull-right" style="margin:10px;">
             <button type="submit" class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i> Save </button>
-            <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban" ></i> Cancel</button>
+            <button type="button" class="btn btn-sm btn-danger" (click)="cancelFunc()"><i class="fa fa-ban" ></i> Cancel</button>
         </div> 
 
       </form>  
 
-      <pre>{{ form.value | json }}</pre>
+      <!-- <pre>{{ form.value | json }}</pre> -->
     </div>
   </div>
 
