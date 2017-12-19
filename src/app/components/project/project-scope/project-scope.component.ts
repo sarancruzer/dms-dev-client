@@ -46,6 +46,8 @@ export class ProjectScopeComponent implements OnInit {
   form:FormGroup;
   id:number;  
   calcAmt:number = 0;
+  project_name:string;
+
 
   constructor(private _router:Router,private _route : ActivatedRoute,private _commonService:CommonService,private toastrService:ToastrService,private _service:ProjectService,private fb: FormBuilder) {
     this.iSuccessError = {mSuccess:"",mError:""};
@@ -120,7 +122,7 @@ export class ProjectScopeComponent implements OnInit {
     (res) => {
       let ress = res['result']['info']['lists'];
       let quote = res['result']['info']['quote'];
-      
+      this.project_name = res['result']['info']['project_name'];
          this.people = ress;    
          this.loadFormControl(this.people);
          this.sidemenuItems = Object.getOwnPropertyNames(this.people[0]);

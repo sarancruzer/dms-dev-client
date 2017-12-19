@@ -39,9 +39,9 @@
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/buildingClass') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/buildingClass']"><i class="icon-puzzle"></i> Building Class</a>
             </li>
-            <li class="nav-item" >
+            <!-- <li class="nav-item" >
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/items']"><i class="icon-puzzle"></i> Items</a>
-            </li>
+            </li> -->
 
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/projectScope') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScope']"><i class="icon-puzzle"></i> Project Scope</a>
@@ -84,18 +84,18 @@
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectScope']"><i class="icon-puzzle"></i> Project Scope</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/supplyItems']"><i class="icon-puzzle"></i> Supply Items</a>
-            </li>
+            </li> -->
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageProjectDocumentation']"><i class="icon-puzzle"></i> Project Docs</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectDocs']"><i class="icon-puzzle"></i> Project Docs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/additionalInfo']"><i class="icon-puzzle"></i> Additional Info</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/addProjectNote']"><i class="icon-puzzle"></i> Add project Note</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectNote']"><i class="icon-puzzle"></i> Project Note</a>
             </li>
           </ul>
         </li>
@@ -195,9 +195,6 @@
       </li> -->
       <!-- <li class="nav-item mt-auto">
         <a class="nav-link nav-link-success" href="http://coreui.io/angular/"><i class="icon-cloud-download"></i> Download CoreUI</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link nav-link-danger" href="http://coreui.io/pro/angular/"><i class="icon-layers"></i> Try CoreUI <strong>PRO</strong></a>
       </li> -->
     </ul>
   </nav>

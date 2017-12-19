@@ -22,7 +22,7 @@ export class ProjectTeamComponent implements OnInit {
   projectManagers:any = [];
   estimators:any = [];
   siteManagers:any = [];
-
+  project_name:string;
   form:FormGroup;
 
     constructor(private _router:Router,private _route : ActivatedRoute,private _commonService:CommonService,private toastrService:ToastrService,private _service:ProjectService) { 
@@ -91,6 +91,7 @@ getMasterData(){
   this._service.getProjectTeamById(id).subscribe(     
     (res) => {
       let ress = res['result']['info']['lists'];
+      this.project_name = res['result']['info']['project_name'];
          //this.form = res['result']['info']['lists'];
          this.setValue(ress);
          //Object.keys(ress); // ['name', 'age']
@@ -98,8 +99,10 @@ getMasterData(){
          console.log(this.model);         
     },
   (err) => { 
-     this.iSuccessError.mError = err;
-     this.toastrService.error(err, 'Error!');
+    console.log(err);
+     this.iSuccessError.mError = err['result']['error'];
+     this.project_name = err['result']['project_name'];
+     //this.toastrService.error(err['result']['error'], 'Error!');
      if(err == 'No results found!'){
        
      }

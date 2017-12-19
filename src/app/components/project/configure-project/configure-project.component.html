@@ -99,10 +99,15 @@
  <div class="animated fadeIn">
   <div class="row">
    
-    <div class="col-sm-12">
+    <div class="col-sm-10">
+        <div class="card">
+        <div class="card-header">
+            <strong>{{project_name}} - Configure Project</strong>
+          </div>
+        <div class="card-body">
      
     <form [formGroup]="form" (ngSubmit)="submit(form)" >
-      <div class="col-sm-6" formArrayName="project_details">
+      <div class="col-sm-8" formArrayName="project_details">
       <div class="card" *ngFor="let variation of form.controls.project_details['controls']; let i = index" [formGroupName]="i">
         <div class="card-header">
             <div class="form-group row">
@@ -165,6 +170,9 @@
         </div> 
 
       </form>  
+      </div>
+      </div>
+
 
       <!-- <pre>{{ form.value | json }}</pre> -->
     </div>

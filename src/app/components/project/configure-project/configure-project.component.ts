@@ -22,7 +22,7 @@ export class ConfigureProjectComponent implements OnInit {
  projectTypes : any = [];
  buildingClass : any = [];
  id:number;
- 
+ project_name:string;
  
  public form: FormGroup;
  private model:ConfigureProject;
@@ -180,6 +180,7 @@ getDetailsById(id) {
  this._service.getConfigureProjectById(id).subscribe(     
    (res) => {
         this.model = res['result']['info']['lists'];
+        this.project_name = res['result']['info']['project_name'];
         console.log('this.model');
         console.log(this.model);
     

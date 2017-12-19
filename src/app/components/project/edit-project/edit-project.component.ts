@@ -74,7 +74,7 @@ getDetailsById(id) {
 
  submit(form){    
       if(form.valid){
-      this._service.update(this.model,1).subscribe(     
+      this._service.update(this.model,this.id).subscribe(     
         (res) => {
               this.iSuccessError.mSuccess = res['result']['info']['msg'];
               this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');

@@ -104,7 +104,9 @@ import { ProjectTeamComponent } from './components/project/project-team/project-
 import { ProjectScopeComponent } from './components/project/project-scope/project-scope.component';
 import { MprojectScopeComponent } from './components/masters/mproject-scope/mproject-scope.component';
 import { ItemsComponent } from './components/masters/items/items.component';
-
+import { ProjectDocsComponent } from './components/project/project-docs/project-docs.component';
+import { AdditionInfoComponent } from './components/project/addition-info/addition-info.component';
+import { ProjectNoteComponent } from './components/project/project-note/project-note.component';
 
 
 
@@ -161,7 +163,10 @@ import { ItemsComponent } from './components/masters/items/items.component';
     ProjectTeamComponent,
     ProjectScopeComponent,
     MprojectScopeComponent,
-    ItemsComponent    
+    ItemsComponent,
+    ProjectDocsComponent,
+    AdditionInfoComponent,
+    ProjectNoteComponent,    
   ],
   providers: [{
     provide: LocationStrategy,

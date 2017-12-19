@@ -87,7 +87,7 @@ export class ProjectService {
     let body = "";
     return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTTEAM+"ById/"+id,body,this.options)
     .map((res:Response) => <ProjectTeam[]>res.json())
-    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    .catch((error:any) => Observable.throw(error.json() || 'Server error'));
   }
 
   updateProjectTeam(params:any,id:number) : Observable<ProjectTeam[]> {
@@ -127,6 +127,16 @@ export class ProjectService {
     .map((res:Response) => <any[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+  isProjectConfigured(id:number) : Observable<any[]> {    
+    console.log(id);
+    let body = "";
+    return this._http.post(this.apiUrl+'get'+ApiSettings.ISCONFIGUREPROJECT+"ById/"+id,body,this.options)
+    .map((res:Response) => <ConfigureProject[]>res.json())
+    .catch((error:any) => Observable.throw(error.json() || 'Server error'));
+  }
+
+  
   
   
 

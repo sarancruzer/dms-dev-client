@@ -6,6 +6,7 @@ export class ApiSettings {
     public static CLIENTS='Client';
     public static PROJECT='Project';
     public static CONFIGUREPROJECT='ConfigureProject';    
+    public static ISCONFIGUREPROJECT='IsConfigureProject';    
     public static PROJECTTEAM='ProjectTeam';    
     public static PROJECTTYPE='ProjectType';
     public static BUILDINGCLASS='BuildingClass';   
@@ -15,6 +16,12 @@ export class ApiSettings {
     public static PROJECTSCOPE='ProjectScope';       
     public static ITEMS='Items';       
     
-    public static PROJECTSCOPE_M='ProjectScopeMaster';       
+    public static PROJECTSCOPE_M='ProjectScopeMaster';
+    public static PROJECTDOCS='ProjectDocs';
+    public static ADDITIONALINFO='AdditionalInfo';
+    public static PROJECTNOTE='ProjectNote';
+    
+    
+           
 }
 

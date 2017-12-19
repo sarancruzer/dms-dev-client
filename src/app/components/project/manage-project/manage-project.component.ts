@@ -156,10 +156,33 @@ export class ManageProjectComponent implements OnInit {
   }
 
   modalActions(routePath){
-    this.scopeModal.hide();
-    localStorage.setItem("project_id",this.id);
-    this._router.navigate([routePath]);
 
+    if(routePath == '/projectScope'){
+        this.isConfigured(routePath);
+    }else{
+      this.scopeModal.hide();
+      localStorage.setItem("project_id",this.id);
+      this._router.navigate([routePath]);
+    }
+  
+
+  }
+
+  isConfigured(routePath){
+    this._service.isProjectConfigured(this.id).subscribe(     
+      (res) => {
+          console.log(res);
+           let msg = res['result']['info']['msg'];           
+           this.scopeModal.hide();
+           localStorage.setItem("project_id",this.id);
+           this._router.navigate([routePath]);
+      },
+    (err) => { 
+        console.log(err);
+        this.scopeModal.hide();
+        this.iSuccessError.mError = err.error.error;
+        this.toastrService.error(err.error.error, 'Error!');
+    }) 
   }
 
 }

@@ -39,6 +39,10 @@ import { BuildingClassComponent } from 'app/components/masters/building-class/bu
 import { ProjectScopeComponent } from 'app/components/project/project-scope/project-scope.component';
 import { MprojectScopeComponent } from 'app/components/masters/mproject-scope/mproject-scope.component';
 import { ItemsComponent } from 'app/components/masters/items/items.component';
+import { ProjectDocsComponent } from 'app/components/project/project-docs/project-docs.component';
+import { AdditionInfoComponent } from 'app/components/project/addition-info/addition-info.component';
+import { ProjectNoteComponent } from 'app/components/project/project-note/project-note.component';
+
 
 export const routes: Routes = [
   {path: '',redirectTo: 'login',pathMatch: 'full'},
@@ -93,6 +97,11 @@ export const routes: Routes = [
         {path: 'configureProject/:id',component: ConfigureProjectComponent,data: {title: 'Configure Project'}},
         {path: 'projectTeam',component: ProjectTeamComponent,data: {title: 'Project Team'}},
         {path: 'projectScope',component: ProjectScopeComponent,data: {title: 'Project Scope'}},
+
+        {path: 'projectDocs',component: ProjectDocsComponent,data: {title: 'Manage Project Docs'}},
+        {path: 'additionalInfo',component: AdditionInfoComponent,data: {title: 'Manage Additional Info '}},
+        {path: 'projectNote',component: ProjectNoteComponent,data: {title: 'Manage Project Note '}},
+        
         
     ]
   },
