@@ -88,7 +88,7 @@
                             </td>
                             <!-- <td><a class="btn btn-outline-primary" [routerLink]="[ '/configureProject']">Configure</a></td>
                               -->
-                            <td><button type="button" class="btn btn-success" data-toggle="modal" (click)="scopeModalFunc(item.id)"><i class="fa fa-paper-plane" aria-hidden="true"></i> Project data</button></td> 
+                            <td><button type="button" class="btn btn-success" data-toggle="modal" (click)="scopeModalFunc(item.id)" *ngIf="item.is_configured == 1"><i class="fa fa-paper-plane" aria-hidden="true"></i> Project data</button></td> 
 
                           </tr>
                         </tbody>

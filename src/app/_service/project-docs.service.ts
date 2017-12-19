@@ -35,7 +35,7 @@ export class ProjectDocsService {
   add(param:any) : Observable<ProjectDocs[]> {
     console.log(param);
     let body = JSON.stringify({'info':param});
-    return this._http.post(this.apiUrl+'add'+ApiSettings.PROJECTDOCS,this.options)
+    return this._http.post(this.apiUrl+'add'+ApiSettings.PROJECTDOCS,body,this.options)
     .map((res:Response) => <ProjectDocs[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -48,6 +48,8 @@ export class ProjectDocsService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  
+
   update(params:any,id:number) : Observable<ProjectDocs[]> {
     let body = JSON.stringify({'info':params});
     return this._http.post(this.apiUrl+'update'+ApiSettings.PROJECTDOCS+'/'+id,body,this.options)
@@ -57,6 +59,14 @@ export class ProjectDocsService {
 
   delete(id:number) : Observable<ProjectDocs[]> {
     return this._http.post(this.apiUrl+'delete'+ApiSettings.PROJECTDOCS+'/'+id,'',this.options)
+    .map((res:Response) => <ProjectDocs[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  getReferenceId(id:number) : Observable<ProjectDocs[]> {
+    console.log(id);
+    let body = "";
+    return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTDOCSREFERENCEID+"/"+id,body,this.options)
     .map((res:Response) => <ProjectDocs[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }

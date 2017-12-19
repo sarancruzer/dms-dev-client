@@ -187,6 +187,7 @@ getDetailsById(id) {
         this.processData(res['result']['info']['lists']);
    },
  (err) => { 
+  this.project_name = err['error']['info']['project_name'];  
    this.processDataa();
     this.iSuccessError.mError = err;
     //this.toastrService.error(err, 'Error!');

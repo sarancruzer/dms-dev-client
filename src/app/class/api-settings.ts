@@ -20,6 +20,10 @@ export class ApiSettings {
     public static PROJECTDOCS='ProjectDocs';
     public static ADDITIONALINFO='AdditionalInfo';
     public static PROJECTNOTE='ProjectNote';
+    public static PROJECTS='Projects';
+    public static PROJECTDOCSREFERENCEID='ProjectsDocsReferenceId';
+    
+    
     
     
            

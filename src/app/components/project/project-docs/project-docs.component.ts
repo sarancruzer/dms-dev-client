@@ -15,7 +15,7 @@ import { FormGroup, FormControl ,Validators} from '@angular/forms';
   selector: 'app-project-docs',
   templateUrl: './project-docs.component.html',
   styleUrls: ['./project-docs.component.scss'],
-  providers:[ProjectDocsService]
+  providers:[ProjectDocsService,CommonService]
 })
 export class ProjectDocsComponent implements OnInit {
 
@@ -30,10 +30,11 @@ export class ProjectDocsComponent implements OnInit {
   
   q:any;
   
+  project_id:number;
   id:number;
   iSuccessError:IsuccessError;
   form:FormGroup;
-  
+  project_name:string;
 
   
   @ViewChild('createModal') public createModal:ModalDirective;
@@ -46,10 +47,10 @@ export class ProjectDocsComponent implements OnInit {
   orderby:string = "desc";
   submitted: boolean = false; 
   constructor(private _router : Router,private _service:ProjectDocsService,private toastrService: ToastrService,private _globalSettings : GlobalSettings,private _commonService : CommonService) {
-    this.title = "Client Type";
+    this.title = "Project Documents";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
-    this.id = JSON.parse(localStorage.getItem("project_id"));
+    this.project_id = JSON.parse(localStorage.getItem("project_id"));
     
    }
 
@@ -71,7 +72,7 @@ export class ProjectDocsComponent implements OnInit {
 
  init(page) {
    console.log(page,this.q);
-   let params = {column:this.column,orderby:this.orderby,q:this.q,"project_id":this.id};
+   let params = {column:this.column,orderby:this.orderby,q:this.q,"project_id":this.project_id};
    this._service.get(page,params).subscribe(     
      (res) => {
           this.items = res['result']['info']['data'];
@@ -104,15 +105,34 @@ loadFormControl(){
     revision: new FormControl('', Validators.required),
     p_date: new FormControl('', Validators.required),
     p_link: new FormControl('', Validators.required),   
+    project_id: new FormControl(this.project_id),   
   });
   
 }
+
+createModalFunc(){
+
+  this._service.getReferenceId(this.project_id).subscribe(     
+    (res) => {
+        let refId = res['result']['info']['reference_id'];
+        let archId = res['result']['info']['arch_id'];
+        this.form.patchValue({ref: refId})
+        this.form.patchValue({arch_ref: archId})
+        this.project_name = res['result']['info']['project_name'];
+    },
+  (err) => { 
+      this.iSuccessError.mError = err;
+      this.toastrService.error(err, 'Error!');
+  }) 
+  this.createModal.show();
+}
+
 
   create(form){
     console.log(form.value);
     
     if(form.valid){
-      this._service.add(this.model).subscribe(     
+      this._service.add(form.value).subscribe(     
         (res) => {
             this.iSuccessError.mSuccess = res['result']['info']['msg'];
             this.init(this.currentPage);

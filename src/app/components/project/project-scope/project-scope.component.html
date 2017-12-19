@@ -103,9 +103,11 @@
             </tbody>          
               </table>
 
-                  <div class="row">
-                          <label class="col-md-3">Estimated Project Value: </label>
-                          <div class="col-md-9"> $ <input type="text" class="form-control mb-2 mb-sm-0" required formControlName="quote"  disabled="true">  
+                  <div class="row quoteamt">
+                          <label class="col-md-9"> </label>                          
+                          <div class="col-md-3">
+                              <p >Estimated Project Value :  {{quoteAmt | currency:'USD':true:'1.2-2'}}</p>
+                              <input type="hidden" class="form-control mb-2 mb-sm-0" required formControlName="quote"  disabled="true">  
                           </div>
                   </div>
                   

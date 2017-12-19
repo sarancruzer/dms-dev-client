@@ -11,7 +11,7 @@ import { ToastrService } from 'toastr-ng2/toastr-service';
   selector: 'app-mproject-scope',
   templateUrl: './mproject-scope.component.html',
   styleUrls: ['./mproject-scope.component.scss'],
-  providers:[ProjectScopeService]
+  providers:[ProjectScopeService,CommonService]
 })
 export class MprojectScopeComponent implements OnInit {
 

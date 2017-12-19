@@ -14,7 +14,9 @@
     </li>
   </ul> -->
   <ul class="nav navbar-nav ml-auto">
-    
+
+       
+       
     <!-- <li class="nav-item dropdown d-md-down-none" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
         <i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span>
@@ -179,9 +181,16 @@
       </div>
     </li> -->
 
-    <!-- <li class="nav-item d-md-down-none">
-      <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
-    </li> -->
+    <li class="nav-item d-md-down-none project_li">
+        <select id="select" name="project" class="form-control form-control-lg"  [(ngModel)] = "project" (change)="changeProject()">
+        <option *ngFor="let row of projects" value= {{row.id}}>{{row.project_name}}</option>
+        </select>
+    </li> 
+
+    <li class="nav-item d-md-down-none">
+
+    </li>
+
 
     <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">

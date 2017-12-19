@@ -1,12 +1,20 @@
 import { Component, ElementRef } from '@angular/core';
+import { CommonService } from 'app/_service/common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './app-header.component.html'
+  templateUrl: './app-header.component.html',
+  styleUrls: ['./app-header.component.scss'],
+  providers:[CommonService]
 })
 export class AppHeader {
 
-  constructor(private el: ElementRef) { }
+  projects:any;
+  project:any = 1; 
+  constructor(private el: ElementRef,private _commonService:CommonService,private _router:Router) {
+
+   }
 
   //wait for the component to render completely
   ngOnInit(): void {
@@ -18,5 +26,30 @@ export class AppHeader {
     }
     // remove the empty element(the host)
     parentElement.removeChild(nativeElement);
+
+    this.project = JSON.parse(localStorage.getItem("project_id"));
+
+    this.getMasterData();
+    
   }
+
+
+  getMasterData(){ 
+    let params = [];
+    this._commonService.getProjectList(params).subscribe(     
+      (res) => {
+          this.projects = res['result']['info'];
+      },
+    (err) => { 
+        if(err == 'token_expired'){
+              this._router.navigate(['/logout']);
+         }
+    }) 
+    }
+
+    changeProject() {
+      console.log(this.project);
+      localStorage.setItem("project_id",this.project);
+  }
+
 }

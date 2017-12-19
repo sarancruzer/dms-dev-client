@@ -11,7 +11,7 @@ import { ToastrService } from "toastr-ng2";
   selector: 'app-building-class',
   templateUrl: './building-class.component.html',
   styleUrls: ['./building-class.component.css'],
-  providers:[BuildingClassService]
+  providers:[BuildingClassService,CommonService]
 })
 export class BuildingClassComponent implements OnInit {
 

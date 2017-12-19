@@ -47,6 +47,7 @@ export class ProjectScopeComponent implements OnInit {
   id:number;  
   calcAmt:number = 0;
   project_name:string;
+  quoteAmt:number;
 
 
   constructor(private _router:Router,private _route : ActivatedRoute,private _commonService:CommonService,private toastrService:ToastrService,private _service:ProjectService,private fb: FormBuilder) {
@@ -132,6 +133,7 @@ export class ProjectScopeComponent implements OnInit {
          this.getSideMenuItems();
 
          this.form.patchValue({quote: quote})
+         this.quoteAmt = quote;
     },
   (err) => { 
      this.iSuccessError.mError = err;
@@ -207,17 +209,6 @@ submit(form){
    
 }
 
-
-
-getDimensionsByFind(id){
-  return this.projectScopes.find(x => x.building_class_id === id);
-}
-
-type(){
-  let test = this.getDimensionsByFind(10);  
-  console.log(test);
-}
-
 onQtyChange(building_class_id,qty,item){
   console.log(this.projectScopes);
   this.calcAmt=0;
@@ -277,6 +268,7 @@ onQtyChange(building_class_id,qty,item){
     console.log(this.calcAmt);
 
     this.form.patchValue({quote: this.calcAmt})
+    this.quoteAmt = this.calcAmt;
     
   });
 

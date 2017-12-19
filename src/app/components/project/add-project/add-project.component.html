@@ -18,7 +18,7 @@
             </div> -->
              <div class="form-group">
               <label for="company">Project Name</label>
-              <input type="text" class="form-control" id="company" placeholder="Client business" [(ngModel)] = "model.project_name" name="project_name" #project_name="ngModel" required >
+              <input type="text" class="form-control" id="company" placeholder="Project Name" [(ngModel)] = "model.project_name" name="project_name" #project_name="ngModel" required >
 
               <div style="color:red" *ngIf="project_name.errors && (project_name.dirty || project_name.touched || form.submitted)">
               <span class="help-block" *ngIf="project_name.errors.required">
@@ -29,13 +29,13 @@
 
             <div class="form-group">
                 <label for="company">Project Address 1</label>
-                <textarea rows="" cols="" class="form-control" id="company" placeholder="Client Company" [(ngModel)] = "model.address1" name="address1" #address1="ngModel"  required ></textarea> 
+                <textarea rows="" cols="" class="form-control" id="company" placeholder="Project Address 1" [(ngModel)] = "model.address1" name="address1" #address1="ngModel"  required ></textarea> 
 
               </div>
 
               <div class="form-group">
                 <label for="company">Project Address 2</label>
-                <textarea rows="" cols="" class="form-control" id="company" placeholder="Client Company" [(ngModel)] = "model.address2" name="address2"></textarea> 
+                <textarea rows="" cols="" class="form-control" id="company" placeholder="Project Address 2" [(ngModel)] = "model.address2" name="address2"></textarea> 
 
               </div>
 
@@ -67,7 +67,7 @@
 
               <div class="form-group">
                   <label for="company">post_code</label>
-                  <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "model.post_code" name="post_code" #post_code="ngModel" required>
+                  <input type="text" class="form-control" id="company" placeholder="post_code" [(ngModel)] = "model.post_code" name="post_code" #post_code="ngModel" required>
                     <div style="color:red" 
                   *ngIf="post_code.errors && (post_code.dirty || post_code.touched || form.submitted)">
                   <span class="help-block" *ngIf="post_code.errors.required">
@@ -106,13 +106,13 @@
 
               <div class="form-group">
                 <label for="company">Description</label>
-                <textarea rows="" cols="" class="form-control" id="company" placeholder="Client Company" [(ngModel)] = "model.description" name="description"></textarea> 
+                <textarea rows="" cols="" class="form-control" id="company" placeholder="Description" [(ngModel)] = "model.description" name="description"></textarea> 
 
               </div>
 
             <div class="form-group">
               <label for="street">website</label>
-              <input type="text" class="form-control" id="street" placeholder="Post Code" [(ngModel)] = "model.website" name="website" #website="ngModel" required>
+              <input type="text" class="form-control" id="street" placeholder="website" [(ngModel)] = "model.website" name="website" #website="ngModel" required>
                     <div style="color:red" 
                   *ngIf="website.errors && (website.dirty || website.touched || form.submitted)">
                   <span class="help-block" *ngIf="website.errors.required">
@@ -121,8 +121,8 @@
                   </div>
             </div>
               <div class="form-group ">
-                <label for="city">Levels Begin</label>
-                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "model.levels_begin" name="levels_begin" #levels_begin="ngModel" required >
+                <label for="city">Levels Below Ground</label>
+                <input type="text" class="form-control" id="city" placeholder="Levels Below Ground" [(ngModel)] = "model.levels_begin" name="levels_begin" #levels_begin="ngModel" required >
                 <div style="color:red" 
                   *ngIf="levels_begin.errors && (levels_begin.dirty || levels_begin.touched || form.submitted)">
                   <span class="help-block" *ngIf="levels_begin.errors.required">
@@ -131,8 +131,8 @@
                   </div>
               </div>
               <div class="form-group ">
-                <label for="city">Levels Begin</label>
-                <input type="text" class="form-control" id="city" placeholder="Bank Name" [(ngModel)] = "model.levels_end" name="levels_end" #levels_end="ngModel" required >
+                <label for="city">Levels - Ground & Higher</label>
+                <input type="text" class="form-control" id="city" placeholder="Levels - Ground & Higher" [(ngModel)] = "model.levels_end" name="levels_end" #levels_end="ngModel" required >
                 <div style="color:red" 
                   *ngIf="levels_end.errors && (levels_end.dirty || levels_end.touched || form.submitted)">
                   <span class="help-block" *ngIf="levels_end.errors.required">

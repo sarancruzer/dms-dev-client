@@ -45,6 +45,13 @@ export class CommonService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  getProjectList(params:any) : Observable<any[]> {
+    
+    return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTS,params,this.options)
+    .map((res:Response) => <any[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
   
   
   

@@ -13,7 +13,7 @@ import { IsuccessError } from "app/_interface/isuccess-error.model";
   selector: 'app-clienttype',
   templateUrl: './clienttype.component.html',
   styleUrls: ['./clienttype.component.css'],
-  providers:[ClientTypeService]
+  providers:[ClientTypeService,CommonService]
 })
 export class ClienttypeComponent implements OnInit {
 

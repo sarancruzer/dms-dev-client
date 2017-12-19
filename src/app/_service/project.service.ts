@@ -72,7 +72,7 @@ export class ProjectService {
     let body = "";
     return this._http.post(this.apiUrl+'get'+ApiSettings.CONFIGUREPROJECT+"ById/"+id,body,this.options)
     .map((res:Response) => <ConfigureProject[]>res.json())
-    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    .catch((error:any) => Observable.throw(error.json() || 'Server error'));
   }
 
   updateConfigureProject(params:any,id:number) : Observable<ConfigureProject[]> {
