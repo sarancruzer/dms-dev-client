@@ -14,6 +14,9 @@ import { AppComponent } from './app.component';
 import { ToastrModule } from 'toastr-ng2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//datepicker module 
+//https://github.com/kekeh/mydatepicker
+import { MyDatePickerModule } from 'mydatepicker';
 
 
 // Import containers
@@ -107,6 +110,7 @@ import { ItemsComponent } from './components/masters/items/items.component';
 import { ProjectDocsComponent } from './components/project/project-docs/project-docs.component';
 import { AdditionInfoComponent } from './components/project/addition-info/addition-info.component';
 import { ProjectNoteComponent } from './components/project/project-note/project-note.component';
+import { SupplyItemsComponent } from './components/project/supply-items/supply-items.component';
 
 
 
@@ -124,7 +128,8 @@ import { ProjectNoteComponent } from './components/project/project-note/project-
     ToastrModule.forRoot(), // ToastrModule added 
     BrowserAnimationsModule,
     CustomFormsModule,
-    ReactiveFormsModule   
+    ReactiveFormsModule,
+    MyDatePickerModule   
   ],
   declarations: [
     AppComponent,
@@ -166,7 +171,8 @@ import { ProjectNoteComponent } from './components/project/project-note/project-
     ItemsComponent,
     ProjectDocsComponent,
     AdditionInfoComponent,
-    ProjectNoteComponent,    
+    ProjectNoteComponent,
+    SupplyItemsComponent,    
   ],
   providers: [{
     provide: LocationStrategy,

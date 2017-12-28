@@ -1,0 +1,54 @@
+import { CommonService } from 'app/_service/common.service';
+import { ProjectService } from 'app/_service/project.service';
+import {Component,Input, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+
+import { TextboxQuestion } from './../../../_model/textbox-question';
+import { QuestionModel } from './../../../_model/question-model';
+
+@Component({
+    selector:'supply',
+    template:`
+    <div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div *ngFor="let question of model.questions" class="form-row">
+            <div class="formHeading">{{question.text}}</div>
+            <div [ngSwitch]="question.controlType">
+                <div *ngSwitchCase="'textbox'"><input type="{{question.type}}" id="{{question.key}}" [formControlName]="question.key"></div>
+                <div *ngSwitchCase="'dropdown'">
+                    <select [formControlName]="question.key">
+                        <option *ngFor="let o of question.options" [value]="o.key">{{o.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="errorMessage" *ngIf="!form.controls[question.key].valid">*required</div>
+        </div>
+        <div class="form-row">
+            <button type="submit" [disabled]="!form.valid">Save</button>
+        </div>
+    </form>
+    <div class="form-row">
+        <div *ngIf="payLoad"><strong>The form contains the following values</strong></div>
+        <div>
+            {{payLoad}}
+        </div>
+    </div>
+    <h4><a href="http://www.syntaxsuccess.com/viewarticle/dynamic-form-in-angular-2.0">Read more here</a></h4>
+    </div>`,
+    providers:[ProjectService,CommonService]
+})
+
+export class Supply implements OnInit{
+
+    @Input() model : any;
+    form : FormGroup;
+    payLoad = null;
+
+    ngOnInit(){
+        this.form = this.model.toGroup();
+    }
+
+    onSubmit() {
+        this.payLoad = JSON.stringify(this.form.value);
+    }
+}

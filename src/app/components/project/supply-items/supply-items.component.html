@@ -1,0 +1,579 @@
+<div class="animated fadeIn">
+  <div class="row">
+
+
+
+    <!--/.col-->
+    <div class="col-lg-12">
+
+      <form [formGroup]="form" (ngSubmit)="submit(form)" novalidate>
+        <div class="card">
+
+          <div class="card-header">
+
+            <i class="fa fa-align-justify"></i> Project Name
+
+          </div>
+          <div class="card-body">
+            <table class="table ">
+              <thead>
+                <tr>
+                  <th>Items</th>
+                  <th>Interest</th>
+                  <th>Estimate </th>
+                  <th>Quated</th>
+                  <th>Status</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>All joinery</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="all_joinery" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+                  <td>
+                    <my-date-picker name="all_joinery_quoted_date" [options]="myDatePickerOptions"
+                    formControlName="all_joinery_quoted_date"></my-date-picker>
+                  </td>
+                  <td>
+                      <my-date-picker name="all_joinery_estimated_date" [options]="myDatePickerOptions"
+                      formControlName="all_joinery_estimated_date"></my-date-picker>
+                   
+                  </td>
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="all_joinery_status" >
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+                <tr>
+                  <th>aluminium_windows</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="aluminium_windows_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+                  <td>
+                      <my-date-picker name="aluminium_windows_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="aluminium_windows_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="aluminium_windows_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="aluminium_windows_estimated_date"></my-date-picker>
+                     
+                    </td>
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="aluminium_windows_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+                <tr>
+                  <th>aluminium_doors</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="aluminium_doors_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+                  <td>
+                      <my-date-picker name="aluminium_doors_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="aluminium_doors_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="aluminium_doors_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="aluminium_doors_estimated_date"></my-date-picker>
+                     
+                    </td>
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="aluminium_doors_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+                <tr>
+                  <th>curtain_wall</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="curtain_wall_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+                  <td>
+                      <my-date-picker name="curtain_wall_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="curtain_wall_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="curtain_wall_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="curtain_wall_estimated_date"></my-date-picker>
+                     
+                    </td>
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="curtain_wall_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>aluminium_louvres</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="aluminium_louvres_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+                  <td>
+                      <my-date-picker name="aluminium_louvres_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="aluminium_louvres_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="aluminium_louvres_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="aluminium_louvres_estimated_date"></my-date-picker>
+                     
+                    </td>
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="aluminium_louvres_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>kitchens</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="kitchens_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+                  <td>
+                      <my-date-picker name="kitchens_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="kitchens_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="kitchens_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="kitchens_estimated_date"></my-date-picker>
+                     
+                    </td>
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="kitchens_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>kitchenettes</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="kitchenettes_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+                  <td>
+                      <my-date-picker name="kitchenettes_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="kitchenettes_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="kitchenettes_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="kitchenettes_estimated_date"></my-date-picker>
+                     
+                    </td>
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="kitchenettes_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>bedrooms</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="bedrooms_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+                  <td>
+                      <my-date-picker name="bedrooms_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="bedrooms_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="bedrooms_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="bedrooms_estimated_date"></my-date-picker>
+                     
+                    </td>
+                
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="bedrooms_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+               
+
+                <tr>
+                  <th>laundries</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="laundries_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+                  <td>
+                      <my-date-picker name="laundries_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="laundries_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="laundries_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="laundries_estimated_date"></my-date-picker>
+                     
+                    </td>
+
+                
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="laundries_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>bathrooms</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="bathrooms_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+
+                  <td>
+                      <my-date-picker name="bathrooms_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="bathrooms_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="bathrooms_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="bathrooms_estimated_date"></my-date-picker>
+                     
+                    </td>
+                  
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="bathrooms_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>ensuites</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="ensuites_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+
+                  <td>
+                      <my-date-picker name="ensuites_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="ensuites_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="ensuites_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="ensuites_estimated_date"></my-date-picker>
+                     
+                    </td>
+                  
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="ensuites_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>balconies</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="balconies_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+
+                  <td>
+                      <my-date-picker name="balconies_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="balconies_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="balconies_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="balconies_estimated_date"></my-date-picker>
+                     
+                    </td>
+
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="balconies_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>storage</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="storage_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+
+                  <td>
+                      <my-date-picker name="storage_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="storage_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="storage_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="storage_estimated_date"></my-date-picker>
+                     
+                    </td>
+                
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="storage_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>study</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="study_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select> 
+                  </td>
+
+                  <td>
+                      <my-date-picker name="study_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="study_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="study_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="study_estimated_date"></my-date-picker>
+                     
+                    </td>
+                 
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="study_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>garages</th>
+                  <td>
+                      <select id="select"  class="form-control"  formControlName="garages_interest" >
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select>   
+                  </td>
+
+                  <td>
+                      <my-date-picker name="garages_quoted_date" [options]="myDatePickerOptions"
+                      formControlName="garages_quoted_date"></my-date-picker>
+                    </td>
+                    <td>
+                        <my-date-picker name="garages_estimated_date" [options]="myDatePickerOptions"
+                        formControlName="garages_estimated_date"></my-date-picker>
+                    </td>
+
+                  <td>
+                      <select id="select"  class="form-control"   formControlName="garages_status">
+                          <option value="1">Preparing Quote </option>
+                          <option value="2">Completed Quote</option>
+                          <option value="3">Waiting for Cilent Response</option>
+                        </select> 
+                  </td>
+                </tr>
+
+                <tr>
+                    <th>other</th>
+                    <td>
+                        <select id="select"  class="form-control"  formControlName="other_interest" >
+                            <option value="1">Yes </option>
+                            <option value="2">No</option>
+                            <option value="3">Note</option>
+                          </select>   
+                    </td>
+
+                    <td>
+                        <my-date-picker  name="other_quoted_date" [options]="myDatePickerOptions"
+                        formControlName="other_quoted_date"></my-date-picker>
+                      </td>
+                      <td>
+                          <my-date-picker  name="other_estimated_date" [options]="myDatePickerOptions"
+                          formControlName="other_estimated_date"></my-date-picker>
+                      </td>
+               
+                    <td>
+                        <select id="select"  class="form-control"   formControlName="other_status">
+                            <option value="1">Preparing Quote </option>
+                            <option value="2">Completed Quote</option>
+                            <option value="3">Waiting for Cilent Response</option>
+                          </select> 
+                    </td>
+                  </tr>
+
+
+
+
+
+                <!-- <tr *ngFor="let item of sidemenuItems; let i=index" >
+                <td>{{item}} - {{i}}</td>
+                <div *ngIf="model.aluminium_doors">
+                <td>{{model.aluminium_doors | json}}</td>
+                <td ><label class="switch switch-text switch-pill switch-success-outline-alt">
+                          <input type="checkbox" class="switch-input" checked  >
+                          <span class="switch-label" data-on="Yes" data-off="No"></span>
+                          <span class="switch-handle"></span>
+                        </label>                                         
+                     
+                  </td>
+                 <td><input type="text" class="form-control" [(ngModel)] = "model.aluminium_doors.estimated_date" name = "estimated_date"></td>
+                <td><input type="text" class="form-control" [(ngModel)] = "model.aluminium_doors.estimated_date" name = "estimated_date"> </td> 
+                <td><span class="badge badge-success">Preparing Quote</span> </td>
+              </div>
+              
+
+              <div *ngIf="model.aluminium_windows">
+                  <td>{{model.aluminium_windows | json}}</td>
+                  <td ><label class="switch switch-text switch-pill switch-success-outline-alt">
+                            <input type="checkbox" class="switch-input" checked  >
+                            <span class="switch-label" data-on="Yes" data-off="No"></span>
+                            <span class="switch-handle"></span>
+                          </label>                                         
+                       
+                    </td>
+                   <td><input type="text" class="form-control" [(ngModel)] = "model.aluminium_windows.estimated_date" name = "estimated_date"></td>
+                  <td><input type="text" class="form-control"> </td> 
+                  <td><span class="badge badge-success">Preparing Quote</span> </td>
+                </div>
+
+              </tr> -->
+
+
+
+
+
+              </tbody>
+            </table>
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#">Prev</a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">4</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-header">
+              <strong>Supply Items</strong>
+              <small>Form</small>
+            </div>
+            <div class="card-body">
+
+              <div class="form-group">
+                <label for="company">Territory</label>
+                <select id="select" name="select" class="form-control">
+                  <option value="1">EXW</option>
+                  <option value="2">FOB</option>
+                  <option value="3">CIF</option>
+                  <option value="4">DDP</option>
+                  <option value="5">Supply & Install</option>
+
+                </select>
+              </div>
+
+            </div>
+            <!--/.row-->
+
+          </div>
+        </div>
+      </form>
+
+      <pre>{{ form.value | json }}</pre>
+
+    </div>
+
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+
+</div>

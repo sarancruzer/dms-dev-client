@@ -1,3 +1,4 @@
+import { SupplyItemsComponent } from './components/project/supply-items/supply-items.component';
 import { ProjectTeamComponent } from './components/project/project-team/project-team.component';
 import { ProjectTypeComponent } from './components/masters/project-type/project-type.component';
 import { ConfigureProjectComponent } from './components/project/configure-project/configure-project.component';
@@ -97,10 +98,11 @@ export const routes: Routes = [
         {path: 'configureProject/:id',component: ConfigureProjectComponent,data: {title: 'Configure Project'}},
         {path: 'projectTeam',component: ProjectTeamComponent,data: {title: 'Project Team'}},
         {path: 'projectScope',component: ProjectScopeComponent,data: {title: 'Project Scope'}},
-
+        
         {path: 'projectDocs',component: ProjectDocsComponent,data: {title: 'Manage Project Docs'}},
         {path: 'additionalInfo',component: AdditionInfoComponent,data: {title: 'Manage Additional Info '}},
         {path: 'projectNote',component: ProjectNoteComponent,data: {title: 'Manage Project Note '}},
+        {path: 'supplyItems',component: SupplyItemsComponent,data: {title: 'Supply Items'}},
         
         
     ]

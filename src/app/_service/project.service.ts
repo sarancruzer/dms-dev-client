@@ -136,6 +136,17 @@ export class ProjectService {
     .catch((error:any) => Observable.throw(error.json() || 'Server error'));
   }
 
+
+  getSupplyItemsById(id:number) : Observable<ProjectTeam[]> {
+    console.log(id);
+    let body = "";
+    return this._http.post(this.apiUrl+'get'+ApiSettings.SUPPLYITEMS+"ById/"+id,body,this.options)
+    .map((res:Response) => <ProjectTeam[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+
+  
   
   
   
