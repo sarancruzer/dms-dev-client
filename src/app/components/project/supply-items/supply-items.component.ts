@@ -82,6 +82,29 @@ getMasterData(){
     }) 
    }
 
+
+   submit(form){    
+    console.log("form");
+    console.log(form.value);
+  
+      if(form.valid){
+       this._service.updateSupplyItems(form.value,this.id).subscribe(     
+         (res) => {
+  
+               this.iSuccessError.mSuccess = res['result']['info']['msg'];
+               this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
+               this._router.navigate(['/manageProject']);
+               
+         },
+       (err) => { 
+         console.log(err);
+           this.iSuccessError.mError = err;
+           this.toastrService.error(err, 'Error!');
+       }) 
+     }
+     
+  }
+
  
    initFormControl() {
     
@@ -248,7 +271,7 @@ getMasterData(){
       storage_quoted_date:res['storage'].quoted_date,
       study_quoted_date	:res['study'].quoted_date,
       garages_quoted_date	:res['garages'].quoted_date,
-      //other_quoted_date	:res['other'].quoted_date,
+      other_quoted_date	:res['other'].quoted_date,
 
       all_joinery_interest:'',
       aluminium_windows_interest:res['aluminium_windows'].interest,
@@ -288,8 +311,9 @@ getMasterData(){
 
     });    
 
-    let date = new Date();
-    this.form.patchValue({other_quoted_date: {date: res['other'].quoted_date }});
+    //this.form.patchValue({garages_quoted_date: {formatted:res['garages'].quoted_date }});
+ 
+
 
   }
 

@@ -146,6 +146,12 @@ export class ProjectService {
   }
 
 
+  updateSupplyItems(params:any,id:number) : Observable<ProjectTeam[]> {
+    let body = JSON.stringify({'info':params});
+    return this._http.post(this.apiUrl+'update'+ApiSettings.SUPPLYITEMS+'ById/'+id,body,this.options)
+    .map((res:Response) => <ProjectTeam[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
   
   
   
