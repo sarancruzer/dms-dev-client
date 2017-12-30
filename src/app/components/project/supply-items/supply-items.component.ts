@@ -18,6 +18,8 @@ import {IMyDpOptions, IMyDateModel} from 'mydatepicker';
 export class SupplyItemsComponent implements OnInit {
 
   items:any = [];
+  territories:any = [];
+  project_name:string;
   id:number;
   iSuccessError:IsuccessError;
 
@@ -45,10 +47,11 @@ export class SupplyItemsComponent implements OnInit {
 
 
 getMasterData(){
-  let params = ['m_items'];
+  let params = ['m_items','m_territory'];
   this._commonService.getMasterDetails(params).subscribe(     
     (res) => {
         this.items = res['result']['info']['m_items'];
+        this.territories = res['result']['info']['m_territory'];
         console.log(this.items);
        
     },
@@ -65,10 +68,10 @@ getMasterData(){
     this._service.getSupplyItemsById(id).subscribe(     
       (res) => {
         let ress = res['result']['info']['lists'];
+        this.project_name = res['result']['info']['project_name'];
            //Object.keys(ress); // ['name', 'age']
            console.log(res);
-           this.sidemenuItems = Object.getOwnPropertyNames(ress[0]);
-           
+           this.sidemenuItems = Object.getOwnPropertyNames(ress[0]);           
            this.loadFormControl(ress[0]);
       },
     (err) => { 
@@ -110,26 +113,27 @@ getMasterData(){
     
         this.form = this.fb.group({     
           
-          all_joinery:'',
-          aluminium_windows:'',
-          aluminium_doors:'',
-          curtain_wall:'',
-          aluminium_louvres:'',
-          kitchens:'',
-          kitchenettes:'',
-          bedrooms:'',
-          laundries:'',
-          bathrooms:'',
-          ensuites:'',
-          balconies:'',
-          storage:'',
-          study	:'',
-          garages	:'',
-          other	:'',
+          // all_joinery:'',
+          // aluminium_windows:'',
+          // aluminium_doors:'',
+          // curtain_wall:'',
+          // aluminium_louvres:'',
+          // kitchens:'',
+          // kitchenettes:'',
+          // bedrooms:'',
+          // laundries:'',
+          // bathrooms:'',
+          // ensuites:'',
+          // balconies:'',
+          // storage:'',
+          // study	:'',
+          // garages	:'',
+          // other	:'',
           // aluminium_doors: this.fb.array([      
           //   this.initVarSub(res['aluminium_doors']),
           // ])
     
+          territory:'',
     
     
           all_joinery_estimated_date:'',
@@ -212,12 +216,14 @@ getMasterData(){
    
   loadFormControl(res) {
 
-    this.form = this.fb.group({     
+    this.form = this.fb.group({    
+      
+      territory:res['territory'],
       
       all_joinery:'1',
       aluminium_windows:res['aluminium_windows'].interest,
       aluminium_doors:res['aluminium_doors'].interest,
-      curtain_wall:res['aluminium_louvres'].interest,
+      curtain_wall:res['curtain_wall'].interest,
       aluminium_louvres:res['aluminium_louvres'].interest,
       kitchens:res['kitchens'].interest,
       kitchenettes:res['kitchenettes'].interest,
@@ -241,7 +247,7 @@ getMasterData(){
       all_joinery_estimated_date:'',
       aluminium_windows_estimated_date:res['aluminium_windows'].estimated_date,
       aluminium_doors_estimated_date:res['aluminium_doors'].estimated_date,
-      curtain_wall_estimated_date:res['aluminium_louvres'].estimated_date,
+      curtain_wall_estimated_date:res['curtain_wall'].estimated_date,
       aluminium_louvres_estimated_date:res['aluminium_louvres'].estimated_date,
       kitchens_estimated_date:res['kitchens'].estimated_date,
       kitchenettes_estimated_date:res['kitchenettes'].estimated_date,
@@ -259,7 +265,7 @@ getMasterData(){
       all_joinery_quoted_date:'',
       aluminium_windows_quoted_date:res['aluminium_windows'].quoted_date,
       aluminium_doors_quoted_date:res['aluminium_doors'].quoted_date,
-      curtain_wall_quoted_date:res['aluminium_louvres'].quoted_date,
+      curtain_wall_quoted_date:res['curtain_wall'].quoted_date,
       aluminium_louvres_quoted_date:res['aluminium_louvres'].quoted_date,
       kitchens_quoted_date:res['kitchens'].quoted_date,
       kitchenettes_quoted_date:res['kitchenettes'].quoted_date,
@@ -273,10 +279,11 @@ getMasterData(){
       garages_quoted_date	:res['garages'].quoted_date,
       other_quoted_date	:res['other'].quoted_date,
 
-      all_joinery_interest:'',
+      
+      all_joinery_interest:'1',
       aluminium_windows_interest:res['aluminium_windows'].interest,
       aluminium_doors_interest:res['aluminium_doors'].interest,
-      curtain_wall_interest:res['aluminium_louvres'].interest,
+      curtain_wall_interest:res['curtain_wall'].interest,
       aluminium_louvres_interest:res['aluminium_louvres'].interest,
       kitchens_interest:res['kitchens'].interest,
       kitchenettes_interest:res['kitchenettes'].interest,
@@ -290,10 +297,10 @@ getMasterData(){
       garages_interest	:res['garages'].interest,
       other_interest	:res['other'].interest,
 
-      all_joinery_status:'',
+      all_joinery_status:'1',
       aluminium_windows_status:res['aluminium_windows'].status,
       aluminium_doors_status:res['aluminium_doors'].status,
-      curtain_wall_status:res['aluminium_louvres'].status,
+      curtain_wall_status:res['curtain_wall'].status,
       aluminium_louvres_status:res['aluminium_louvres'].status,
       kitchens_status:res['kitchens'].status,
       kitchenettes_status:res['kitchenettes'].status,
@@ -310,6 +317,43 @@ getMasterData(){
 
 
     });    
+
+    
+    this.form.patchValue({all_joinery_quoted_date: {formatted:res['all_joinery'].quoted_date }});
+    this.form.patchValue({aluminium_windows_quoted_date: {formatted:res['aluminium_windows'].quoted_date }});
+    this.form.patchValue({aluminium_doors_quoted_date: {formatted:res['aluminium_doors'].quoted_date }});
+    this.form.patchValue({curtain_wall_quoted_date: {formatted:res['curtain_wall'].quoted_date }});
+    this.form.patchValue({aluminium_louvres_quoted_date: {formatted:res['aluminium_louvres'].quoted_date }});
+    this.form.patchValue({kitchens_quoted_date: {formatted:res['kitchens'].quoted_date }});
+    this.form.patchValue({kitchenettes_quoted_date: {formatted:res['kitchenettes'].quoted_date }});
+    this.form.patchValue({bedrooms_quoted_date: {formatted:res['bedrooms'].quoted_date }});
+    this.form.patchValue({laundries_quoted_date: {formatted:res['laundries'].quoted_date }});
+    this.form.patchValue({bathrooms_quoted_date: {formatted:res['bathrooms'].quoted_date }});
+    this.form.patchValue({ensuites_quoted_date: {formatted:res['ensuites'].quoted_date }});
+    this.form.patchValue({balconies_quoted_date: {formatted:res['balconies'].quoted_date }});
+    this.form.patchValue({storage_quoted_date: {formatted:res['storage'].quoted_date }});
+    this.form.patchValue({study_quoted_date: {formatted:res['study'].quoted_date }});
+    this.form.patchValue({garages_quoted_date: {formatted:res['garages'].quoted_date }});
+    this.form.patchValue({other_quoted_date: {formatted:res['other'].quoted_date }});
+
+
+    
+    this.form.patchValue({all_joinery_estimated_date: {formatted:res['all_joinery'].estimated_date }});
+    this.form.patchValue({aluminium_windows_estimated_date: {formatted:res['aluminium_windows'].estimated_date }});
+    this.form.patchValue({aluminium_doors_estimated_date: {formatted:res['aluminium_doors'].estimated_date }});
+    this.form.patchValue({curtain_wall_estimated_date: {formatted:res['curtain_wall'].estimated_date }});
+    this.form.patchValue({aluminium_louvres_estimated_date: {formatted:res['aluminium_louvres'].estimated_date }});
+    this.form.patchValue({kitchens_estimated_date: {formatted:res['kitchens'].estimated_date }});
+    this.form.patchValue({kitchenettes_estimated_date: {formatted:res['kitchenettes'].estimated_date }});
+    this.form.patchValue({bedrooms_estimated_date: {formatted:res['bedrooms'].estimated_date }});
+    this.form.patchValue({laundries_estimated_date: {formatted:res['laundries'].estimated_date }});
+    this.form.patchValue({bathrooms_estimated_date: {formatted:res['bathrooms'].estimated_date }});
+    this.form.patchValue({ensuites_estimated_date: {formatted:res['ensuites'].estimated_date }});
+    this.form.patchValue({balconies_estimated_date: {formatted:res['balconies'].estimated_date }});
+    this.form.patchValue({storage_estimated_date: {formatted:res['storage'].estimated_date }});
+    this.form.patchValue({study_estimated_date: {formatted:res['study'].estimated_date }});
+    this.form.patchValue({garages_estimated_date: {formatted:res['garages'].estimated_date }});
+    this.form.patchValue({other_estimated_date: {formatted:res['other'].estimated_date }});
 
     //this.form.patchValue({garages_quoted_date: {formatted:res['garages'].quoted_date }});
  

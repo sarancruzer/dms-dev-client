@@ -37,6 +37,7 @@ export class ProjectScopeComponent implements OnInit {
   'study_price',
   'garages_price',
   'other_price',
+  "all_joinery"
 ];  
 
 

@@ -11,7 +11,7 @@
 
           <div class="card-header">
 
-            <i class="fa fa-align-justify"></i> Project Name
+            <i class="fa fa-align-justify"></i> {{project_name}} - Supply Opportunities
 
           </div>
           <div class="card-body">
@@ -30,7 +30,7 @@
                 <tr>
                   <th>All joinery</th>
                   <td>
-                      <select id="select"  class="form-control"  formControlName="all_joinery" >
+                      <select id="select"  class="form-control"  formControlName="all_joinery_interest" >
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
@@ -551,13 +551,8 @@
 
               <div class="form-group">
                 <label for="company">Territory</label>
-                <select id="select" name="select" class="form-control">
-                  <option value="1">EXW</option>
-                  <option value="2">FOB</option>
-                  <option value="3">CIF</option>
-                  <option value="4">DDP</option>
-                  <option value="5">Supply & Install</option>
-
+                <select id="select" name="territory" class="form-control" formControlName="territory">
+                  <option *ngFor="let item of territories" value="{{item.id}}" >{{item.short_code}}</option>
                 </select>
               </div>
 
