@@ -27,8 +27,6 @@ export class AppHeader {
     // remove the empty element(the host)
     parentElement.removeChild(nativeElement);
 
-    this.project = JSON.parse(localStorage.getItem("project_id"));
-
     this.getMasterData();
     
   }
@@ -39,6 +37,9 @@ export class AppHeader {
     this._commonService.getProjectList(params).subscribe(     
       (res) => {
           this.projects = res['result']['info'];
+          localStorage.setItem("project_id",this.projects[0].id);
+
+          this.project = JSON.parse(localStorage.getItem("project_id"));
       },
     (err) => { 
         if(err == 'token_expired'){
