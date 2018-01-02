@@ -108,6 +108,13 @@ export class BuildingClassComponent implements OnInit {
    
  }
 
+
+ createModalFunc(form){
+  form.resetForm();  
+  this.createModal.show(); 
+ }
+
+
  
 
   create(form){

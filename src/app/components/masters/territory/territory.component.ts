@@ -41,8 +41,9 @@ export class TerritoryComponent implements OnInit {
   column: string = 'id';
   orderby:string = "desc";
   submitted: boolean = false; 
+
   constructor(private _router:Router,private _service:TerritoryService,private toastrService: ToastrService) {
-    this.title = "Client Type";
+    this.title = "Territory";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
     
@@ -87,6 +88,11 @@ export class TerritoryComponent implements OnInit {
     }) 
 
    
+ }
+
+ createModalFunc(form){
+  form.resetForm();  
+  this.createModal.show(); 
  }
 
   create(form){
