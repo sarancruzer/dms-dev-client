@@ -47,9 +47,7 @@
                   </td>
                   <td>
                       <select id="select"  class="form-control"   formControlName="all_joinery_status" >
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -73,9 +71,7 @@
                     </td>
                   <td>
                       <select id="select"  class="form-control"   formControlName="aluminium_windows_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -99,9 +95,7 @@
                     </td>
                   <td>
                       <select id="select"  class="form-control"   formControlName="aluminium_doors_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -125,9 +119,7 @@
                     </td>
                   <td>
                       <select id="select"  class="form-control"   formControlName="curtain_wall_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -152,9 +144,7 @@
                     </td>
                   <td>
                       <select id="select"  class="form-control"   formControlName="aluminium_louvres_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -179,9 +169,7 @@
                     </td>
                   <td>
                       <select id="select"  class="form-control"   formControlName="kitchens_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -206,9 +194,7 @@
                     </td>
                   <td>
                       <select id="select"  class="form-control"   formControlName="kitchenettes_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -234,9 +220,7 @@
                 
                   <td>
                       <select id="select"  class="form-control"   formControlName="bedrooms_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -265,9 +249,7 @@
                 
                   <td>
                       <select id="select"  class="form-control"   formControlName="laundries_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -294,9 +276,7 @@
                   
                   <td>
                       <select id="select"  class="form-control"   formControlName="bathrooms_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -323,9 +303,7 @@
                   
                   <td>
                       <select id="select"  class="form-control"   formControlName="ensuites_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -352,9 +330,7 @@
 
                   <td>
                       <select id="select"  class="form-control"   formControlName="balconies_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -381,9 +357,7 @@
                 
                   <td>
                       <select id="select"  class="form-control"   formControlName="storage_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -410,9 +384,7 @@
                  
                   <td>
                       <select id="select"  class="form-control"   formControlName="study_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -438,9 +410,7 @@
 
                   <td>
                       <select id="select"  class="form-control"   formControlName="garages_status">
-                          <option value="1">Preparing Quote </option>
-                          <option value="2">Completed Quote</option>
-                          <option value="3">Waiting for Cilent Response</option>
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select> 
                   </td>
                 </tr>
@@ -466,9 +436,7 @@
                
                     <td>
                         <select id="select"  class="form-control"   formControlName="other_status">
-                            <option value="1">Preparing Quote </option>
-                            <option value="2">Completed Quote</option>
-                            <option value="3">Waiting for Cilent Response</option>
+                            <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                           </select> 
                     </td>
                   </tr>

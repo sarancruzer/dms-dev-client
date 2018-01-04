@@ -91,6 +91,12 @@ export class ClientsizeComponent implements OnInit {
    
  }
 
+ createModalFunc(form){
+  form.resetForm();  
+  this.createModal.show(); 
+ }
+
+ 
   create(form){
 
     if(form.valid){

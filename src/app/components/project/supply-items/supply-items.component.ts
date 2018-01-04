@@ -19,6 +19,7 @@ export class SupplyItemsComponent implements OnInit {
 
   items:any = [];
   territories:any = [];
+  projectStatuss:any = [];
   project_name:string;
   id:number;
   iSuccessError:IsuccessError;
@@ -27,6 +28,7 @@ export class SupplyItemsComponent implements OnInit {
 
   model:any;
   sidemenuItems:any;
+  
   
   myDatePickerOptions: IMyDpOptions = {
     // other options...
@@ -47,11 +49,12 @@ export class SupplyItemsComponent implements OnInit {
 
 
 getMasterData(){
-  let params = ['m_items','m_territory'];
+  let params = ['m_items','m_territory','m_project_status'];
   this._commonService.getMasterDetails(params).subscribe(     
     (res) => {
         this.items = res['result']['info']['m_items'];
         this.territories = res['result']['info']['m_territory'];
+        this.projectStatuss = res['result']['info']['m_project_status'];
         console.log(this.items);
        
     },
@@ -188,22 +191,22 @@ getMasterData(){
           garages_interest	:'',
           other_interest	:'',
 
-          all_joinery_status:'',
-          aluminium_windows_status:'',
-          aluminium_doors_status:'',
+          all_joinery_status:'1',
+          aluminium_windows_status:'1',
+          aluminium_doors_status:'1',
           curtain_wall_status:'',
-          aluminium_louvres_status:'',
-          kitchens_status:'',
-          kitchenettes_status:'',
-          bedrooms_status:'',
-          laundries_status:'',
-          bathrooms_status:'',
-          ensuites_status:'',
-          balconies_status:'',
-          storage_status:'',
-          study_status	:'',
-          garages_status	:'',
-          other_status	:'',
+          aluminium_louvres_status:'1',
+          kitchens_status:'1',
+          kitchenettes_status:'1',
+          bedrooms_status:'1',
+          laundries_status:'1',
+          bathrooms_status:'1',
+          ensuites_status:'1',
+          balconies_status:'1',
+          storage_status:'1',
+          study_status	:'1',
+          garages_status	:'1',
+          other_status	:'1',
 
           
     
@@ -313,8 +316,6 @@ getMasterData(){
       study_status	:res['study'].status,
       garages_status	:res['garages'].status,
       other_status	:res['other'].status,
-
-
 
     });    
 
