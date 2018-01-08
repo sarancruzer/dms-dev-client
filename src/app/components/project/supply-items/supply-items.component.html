@@ -1,451 +1,587 @@
 <div class="animated fadeIn">
-  <div class="row">
+    <div class="row">
 
 
 
-    <!--/.col-->
-    <div class="col-lg-12">
+        <!--/.col-->
+        <div class="col-lg-12">
 
-      <form [formGroup]="form" (ngSubmit)="submit(form)" novalidate>
-        <div class="card">
+            <form [formGroup]="form" (ngSubmit)="submit(form)" novalidate>
+                <div class="card">
 
-          <div class="card-header">
+                    <div class="card-header">
 
-            <i class="fa fa-align-justify"></i> {{project_name}} - Supply opportunities
+                        <i class="fa fa-align-justify"></i> {{project_name}} - Supply opportunities
 
-          </div>
-          <div class="card-body">
-            <table class="table ">
-              <thead>
-                <tr>
-                  <th>Items</th>
-                  <th>Interest</th>
-                  <th>Estimate </th>
-                  <th>Quated</th>
-                  <th>Status</th>
+                    </div>
+                    <div class="card-body">
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>Items</th>
+                                    <th>Interest</th>
+                                    <th>Estimate </th>
+                                    <th>Quated</th>
+                                    <th>Status</th>
 
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>All joinery</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="all_joinery_interest" >
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>All joinery</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="all_joinery_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
-                  <td>
-                    <my-date-picker name="all_joinery_quoted_date" [options]="myDatePickerOptions"
-                    formControlName="all_joinery_quoted_date"></my-date-picker>
-                  </td>
-                  <td>
-                      <my-date-picker name="all_joinery_estimated_date" [options]="myDatePickerOptions"
-                      formControlName="all_joinery_estimated_date"></my-date-picker>
-                   
-                  </td>
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="all_joinery_status" >
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="all_joinery_quoted_date" [options]="myDatePickerOptions" formControlName="all_joinery_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="all_joinery_estimated_date" [options]="myDatePickerOptions" formControlName="all_joinery_estimated_date"></my-date-picker>
+
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="all_joinery_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
-                <tr>
-                  <th>aluminium_windows</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="aluminium_windows_interest" >
+                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Aluminium Louvres</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="aluminium_louvres_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
-                  <td>
-                      <my-date-picker name="aluminium_windows_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="aluminium_windows_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="aluminium_windows_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="aluminium_windows_estimated_date"></my-date-picker>
-                     
-                    </td>
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="aluminium_windows_status">
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="aluminium_louvres_quoted_date" [options]="myDatePickerOptions" formControlName="aluminium_louvres_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="aluminium_louvres_estimated_date" [options]="myDatePickerOptions" formControlName="aluminium_louvres_estimated_date"></my-date-picker>
+
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="aluminium_louvres_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
-                <tr>
-                  <th>aluminium_doors</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="aluminium_doors_interest" >
+                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Aluminium windows/doors</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="aluminium_windows_doors_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
-                  <td>
-                      <my-date-picker name="aluminium_doors_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="aluminium_doors_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="aluminium_doors_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="aluminium_doors_estimated_date"></my-date-picker>
-                     
-                    </td>
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="aluminium_doors_status">
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="aluminium_windows_doors_quoted_date" [options]="myDatePickerOptions" formControlName="aluminium_windows_doors_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="aluminium_windows_doors_estimated_date" [options]="myDatePickerOptions" formControlName="aluminium_windows_doors_estimated_date"></my-date-picker>
+
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="aluminium_windows_doors_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
-                <tr>
-                  <th>curtain_wall</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="curtain_wall_interest" >
+                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Appliances</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="appliances_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
-                  <td>
-                      <my-date-picker name="curtain_wall_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="curtain_wall_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="curtain_wall_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="curtain_wall_estimated_date"></my-date-picker>
-                     
-                    </td>
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="curtain_wall_status">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="appliances_quoted_date" [options]="myDatePickerOptions" formControlName="appliances_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="appliances_estimated_date" [options]="myDatePickerOptions" formControlName="appliances_estimated_date"></my-date-picker>
 
-                <tr>
-                  <th>aluminium_louvres</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="aluminium_louvres_interest" >
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="appliances_status">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Balustrade</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="balustrade_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
-                  <td>
-                      <my-date-picker name="aluminium_louvres_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="aluminium_louvres_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="aluminium_louvres_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="aluminium_louvres_estimated_date"></my-date-picker>
-                     
-                    </td>
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="aluminium_louvres_status">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="balustrade_quoted_date" [options]="myDatePickerOptions" formControlName="balustrade_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="balustrade_estimated_date" [options]="myDatePickerOptions" formControlName="balustrade_estimated_date"></my-date-picker>
 
-                <tr>
-                  <th>kitchens</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="kitchens_interest" >
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="balustrade_status">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Bedroom</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="bedroom_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
-                  <td>
-                      <my-date-picker name="kitchens_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="kitchens_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="kitchens_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="kitchens_estimated_date"></my-date-picker>
-                     
-                    </td>
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="kitchens_status">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="bedroom_quoted_date" [options]="myDatePickerOptions" formControlName="bedroom_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="bedroom_estimated_date" [options]="myDatePickerOptions" formControlName="bedroom_estimated_date"></my-date-picker>
 
-                <tr>
-                  <th>kitchenettes</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="kitchenettes_interest" >
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="bedroom_status">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Benchtops</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="benchtops_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
-                  <td>
-                      <my-date-picker name="kitchenettes_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="kitchenettes_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="kitchenettes_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="kitchenettes_estimated_date"></my-date-picker>
-                     
-                    </td>
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="kitchenettes_status">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="benchtops_quoted_date" [options]="myDatePickerOptions" formControlName="benchtops_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="benchtops_estimated_date" [options]="myDatePickerOptions" formControlName="benchtops_estimated_date"></my-date-picker>
 
-                <tr>
-                  <th>bedrooms</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="bedrooms_interest" >
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="benchtops_status">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Bookcase/Mediashelf</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="bookcase_mediashelf_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
-                  <td>
-                      <my-date-picker name="bedrooms_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="bedrooms_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="bedrooms_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="bedrooms_estimated_date"></my-date-picker>
-                     
-                    </td>
-                
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="bedrooms_status">
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="bookcase_mediashelf_quoted_date" [options]="myDatePickerOptions" formControlName="bookcase_mediashelf_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="bookcase_mediashelf_estimated_date" [options]="myDatePickerOptions" formControlName="bookcase_mediashelf_estimated_date"></my-date-picker>
+
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="bookcase_mediashelf_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                </tr>
 
-               
 
-                <tr>
-                  <th>laundries</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="laundries_interest" >
+
+                                <tr>
+                                    <th>Curtain Wall</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="curtain_wall_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
-                  <td>
-                      <my-date-picker name="laundries_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="laundries_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="laundries_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="laundries_estimated_date"></my-date-picker>
-                     
-                    </td>
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="curtain_wall_quoted_date" [options]="myDatePickerOptions" formControlName="curtain_wall_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="curtain_wall_estimated_date" [options]="myDatePickerOptions" formControlName="curtain_wall_estimated_date"></my-date-picker>
 
-                
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="laundries_status">
+                                    </td>
+
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="curtain_wall_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                </tr>
 
-                <tr>
-                  <th>bathrooms</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="bathrooms_interest" >
+                                <tr>
+                                    <th>Desks</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="desks_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
+                        </select>
+                                    </td>
 
-                  <td>
-                      <my-date-picker name="bathrooms_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="bathrooms_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="bathrooms_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="bathrooms_estimated_date"></my-date-picker>
-                     
-                    </td>
-                  
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="bathrooms_status">
+                                    <td>
+                                        <my-date-picker name="desks_quoted_date" [options]="myDatePickerOptions" formControlName="desks_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="desks_estimated_date" [options]="myDatePickerOptions" formControlName="desks_estimated_date"></my-date-picker>
+
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="desks_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                </tr>
 
-                <tr>
-                  <th>ensuites</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="ensuites_interest" >
+                                <tr>
+                                    <th>Ensuit/Bathroom</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="ensuit_bathroom_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
+                        </select>
+                                    </td>
 
-                  <td>
-                      <my-date-picker name="ensuites_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="ensuites_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="ensuites_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="ensuites_estimated_date"></my-date-picker>
-                     
-                    </td>
-                  
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="ensuites_status">
+                                    <td>
+                                        <my-date-picker name="ensuit_bathroom_quoted_date" [options]="myDatePickerOptions" formControlName="ensuit_bathroom_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="ensuit_bathroom_estimated_date" [options]="myDatePickerOptions" formControlName="ensuit_bathroom_estimated_date"></my-date-picker>
+
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="ensuit_bathroom_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                </tr>
 
-                <tr>
-                  <th>balconies</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="balconies_interest" >
+                                <tr>
+                                    <th>Flooring</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="flooring_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
+                        </select>
+                                    </td>
 
-                  <td>
-                      <my-date-picker name="balconies_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="balconies_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="balconies_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="balconies_estimated_date"></my-date-picker>
-                     
-                    </td>
+                                    <td>
+                                        <my-date-picker name="flooring_quoted_date" [options]="myDatePickerOptions" formControlName="flooring_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="flooring_estimated_date" [options]="myDatePickerOptions" formControlName="flooring_estimated_date"></my-date-picker>
 
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="balconies_status">
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="flooring_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                </tr>
 
-                <tr>
-                  <th>storage</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="storage_interest" >
+                                <tr>
+                                    <th>Garage Doors</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="garage_doors_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
+                        </select>
+                                    </td>
 
-                  <td>
-                      <my-date-picker name="storage_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="storage_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="storage_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="storage_estimated_date"></my-date-picker>
-                     
-                    </td>
-                
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="storage_status">
+                                    <td>
+                                        <my-date-picker name="garage_doors_quoted_date" [options]="myDatePickerOptions" formControlName="garage_doors_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="garage_doors_estimated_date" [options]="myDatePickerOptions" formControlName="garage_doors_estimated_date"></my-date-picker>
+
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="garage_doors_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                </tr>
 
-                <tr>
-                  <th>study</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="study_interest" >
+                                <tr>
+                                    <th>Kitchen</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="kitchen_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select> 
-                  </td>
+                        </select>
+                                    </td>
 
-                  <td>
-                      <my-date-picker name="study_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="study_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="study_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="study_estimated_date"></my-date-picker>
-                     
-                    </td>
-                 
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="study_status">
+                                    <td>
+                                        <my-date-picker name="kitchen_quoted_date" [options]="myDatePickerOptions" formControlName="kitchen_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="kitchen_estimated_date" [options]="myDatePickerOptions" formControlName="kitchen_estimated_date"></my-date-picker>
+
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="kitchen_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                </tr>
 
-                <tr>
-                  <th>garages</th>
-                  <td>
-                      <select id="select"  class="form-control"  formControlName="garages_interest" >
+                                <tr>
+                                    <th>Laundry</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="laundry_interest">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
-                        </select>   
-                  </td>
+                        </select>
+                                    </td>
 
-                  <td>
-                      <my-date-picker name="garages_quoted_date" [options]="myDatePickerOptions"
-                      formControlName="garages_quoted_date"></my-date-picker>
-                    </td>
-                    <td>
-                        <my-date-picker name="garages_estimated_date" [options]="myDatePickerOptions"
-                        formControlName="garages_estimated_date"></my-date-picker>
-                    </td>
+                                    <td>
+                                        <my-date-picker name="laundry_quoted_date" [options]="myDatePickerOptions" formControlName="laundry_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="laundry_estimated_date" [options]="myDatePickerOptions" formControlName="laundry_estimated_date"></my-date-picker>
+                                    </td>
 
-                  <td>
-                      <select id="select"  class="form-control"   formControlName="garages_status">
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="laundry_status">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select> 
-                  </td>
-                </tr>
+                        </select>
+                                    </td>
+                                </tr>
 
-                <tr>
-                    <th>other</th>
-                    <td>
-                        <select id="select"  class="form-control"  formControlName="other_interest" >
+                                <tr>
+                                    <th>Other</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="other_interest">
                             <option value="1">Yes </option>
                             <option value="2">No</option>
                             <option value="3">Note</option>
-                          </select>   
-                    </td>
+                          </select>
+                                    </td>
 
-                    <td>
-                        <my-date-picker  name="other_quoted_date" [options]="myDatePickerOptions"
-                        formControlName="other_quoted_date"></my-date-picker>
-                      </td>
-                      <td>
-                          <my-date-picker  name="other_estimated_date" [options]="myDatePickerOptions"
-                          formControlName="other_estimated_date"></my-date-picker>
-                      </td>
-               
-                    <td>
-                        <select id="select"  class="form-control"   formControlName="other_status">
+                                    <td>
+                                        <my-date-picker name="other_quoted_date" [options]="myDatePickerOptions" formControlName="other_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="other_estimated_date" [options]="myDatePickerOptions" formControlName="other_estimated_date"></my-date-picker>
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="other_status">
                             <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                          </select> 
-                    </td>
-                  </tr>
+                          </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Powder Room/Toilet</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="powder_room_toilet_interest">
+                            <option value="1">Yes </option>
+                            <option value="2">No</option>
+                            <option value="3">Note</option>
+                          </select>
+                                    </td>
+
+                                    <td>
+                                        <my-date-picker name="powder_room_toilet_quoted_date" [options]="myDatePickerOptions" formControlName="powder_room_toilet_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="powder_room_toilet_estimated_date" [options]="myDatePickerOptions" formControlName="powder_room_toilet_estimated_date"></my-date-picker>
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="powder_room_toilet_status">
+                            <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                          </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Sanitaryware</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="sanitaryware_interest">
+                            <option value="1">Yes </option>
+                            <option value="2">No</option>
+                            <option value="3">Note</option>
+                          </select>
+                                    </td>
+
+                                    <td>
+                                        <my-date-picker name="sanitaryware_quoted_date" [options]="myDatePickerOptions" formControlName="sanitaryware_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="sanitaryware_estimated_date" [options]="myDatePickerOptions" formControlName="sanitaryware_estimated_date"></my-date-picker>
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="sanitaryware_status">
+                            <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                          </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Sinks/Tubs/Basins</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="sinks_tubs_basins_interest">
+                            <option value="1">Yes </option>
+                            <option value="2">No</option>
+                            <option value="3">Note</option>
+                          </select>
+                                    </td>
+
+                                    <td>
+                                        <my-date-picker name="sinks_tubs_basins_quoted_date" [options]="myDatePickerOptions" formControlName="sinks_tubs_basins_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="sinks_tubs_basins_estimated_date" [options]="myDatePickerOptions" formControlName="sinks_tubs_basins_estimated_date"></my-date-picker>
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="sinks_tubs_basins_status">
+                            <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                          </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Splashbacks</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="splashbacks_interest">
+                            <option value="1">Yes </option>
+                            <option value="2">No</option>
+                            <option value="3">Note</option>
+                          </select>
+                                    </td>
+
+                                    <td>
+                                        <my-date-picker name="splashbacks_quoted_date" [options]="myDatePickerOptions" formControlName="splashbacks_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="splashbacks_estimated_date" [options]="myDatePickerOptions" formControlName="splashbacks_estimated_date"></my-date-picker>
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="splashbacks_status">
+                            <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                          </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Study</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="study_interest">
+                            <option value="1">Yes </option>
+                            <option value="2">No</option>
+                            <option value="3">Note</option>
+                          </select>
+                                    </td>
+
+                                    <td>
+                                        <my-date-picker name="study_quoted_date" [options]="myDatePickerOptions" formControlName="study_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="study_estimated_date" [options]="myDatePickerOptions" formControlName="study_estimated_date"></my-date-picker>
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="study_status">
+                            <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                          </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Tapware</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="tapware_interest">
+                            <option value="1">Yes </option>
+                            <option value="2">No</option>
+                            <option value="3">Note</option>
+                          </select>
+                                    </td>
+
+                                    <td>
+                                        <my-date-picker name="tapware_quoted_date" [options]="myDatePickerOptions" formControlName="tapware_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="tapware_estimated_date" [options]="myDatePickerOptions" formControlName="tapware_estimated_date"></my-date-picker>
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="tapware_status">
+                            <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                          </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Wardrobes</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="wardrobes_interest">
+                            <option value="1">Yes </option>
+                            <option value="2">No</option>
+                            <option value="3">Note</option>
+                          </select>
+                                    </td>
+
+                                    <td>
+                                        <my-date-picker name="wardrobes_quoted_date" [options]="myDatePickerOptions" formControlName="wardrobes_quoted_date"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="wardrobes_estimated_date" [options]="myDatePickerOptions" formControlName="wardrobes_estimated_date"></my-date-picker>
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="wardrobes_status">
+                            <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                          </select>
+                                    </td>
+                                </tr>
 
 
 
 
 
-                <!-- <tr *ngFor="let item of sidemenuItems; let i=index" >
+                                <!-- <tr *ngFor="let item of sidemenuItems; let i=index" >
                 <td>{{item}} - {{i}}</td>
                 <div *ngIf="model.aluminium_doors">
                 <td>{{model.aluminium_doors | json}}</td>
@@ -482,46 +618,46 @@
 
 
 
-              </tbody>
-            </table>
-          
-          </div>
-        </div>
+                            </tbody>
+                        </table>
 
-        <div class="col-lg-6">
+                    </div>
+                </div>
 
-          <div class="card">
-            <div class="card-header">
-              <strong>Supply Items</strong>
-              <small>Form</small>
-            </div>
-            <div class="card-body">
+                <div class="col-lg-6">
 
-              <div class="form-group">
-                <label for="company">Territory</label>
-                <select id="select" name="territory" class="form-control" formControlName="territory">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Supply Items</strong>
+                            <small>Form</small>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="form-group">
+                                <label for="company">Territory</label>
+                                <select id="select" name="territory" class="form-control" formControlName="territory">
                   <option *ngFor="let item of territories" value="{{item.id}}" >{{item.short_code}}</option>
                 </select>
-              </div>
+                            </div>
 
-              <div class="pull-right">
-                <button type="submit" class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i> Save </button>
-                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-              </div> 
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Save </button>
+                                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                            </div>
 
-            </div>
-            <!--/.row-->
+                        </div>
+                        <!--/.row-->
 
-          </div>
+                    </div>
+                </div>
+            </form>
+
+            <pre>{{ form.value | json }}</pre>
+
         </div>
-      </form>
 
-      <!-- <pre>{{ form.value | json }}</pre> -->
-
+        <!--/.col-->
     </div>
-
-    <!--/.col-->
-  </div>
-  <!--/.row-->
+    <!--/.row-->
 
 </div>

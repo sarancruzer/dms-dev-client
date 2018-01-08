@@ -265,6 +265,9 @@ onQtyChange(building_class_id,qty,item){
 
     if(element.garages == ''){element.garages=0;}
     this.calcAmt = this.calcAmt + parseInt(element.garages) * parseInt(element.garages_price);
+
+    if(element.other == ''){element.other=0;}
+    this.calcAmt = this.calcAmt + parseInt(element.other) * parseInt(element.other_price);
     
     console.log(this.calcAmt);
 
