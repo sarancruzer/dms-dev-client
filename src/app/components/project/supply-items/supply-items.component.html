@@ -49,10 +49,10 @@
                         </select>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="disabled_class">
                                     <th>Aluminium Louvres</th>
                                     <td>
-                                        <select id="select" class="form-control" formControlName="aluminium_louvres_interest">
+                                        <select id="select" class="form-control" formControlName="aluminium_louvres_interest" >
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
@@ -589,14 +589,14 @@
                           <input type="checkbox" class="switch-input" checked  >
                           <span class="switch-label" data-on="Yes" data-off="No"></span>
                           <span class="switch-handle"></span>
-                        </label>                                         
-                     
+                        </label>
+
                   </td>
                  <td><input type="text" class="form-control" [(ngModel)] = "model.aluminium_doors.estimated_date" name = "estimated_date"></td>
-                <td><input type="text" class="form-control" [(ngModel)] = "model.aluminium_doors.estimated_date" name = "estimated_date"> </td> 
+                <td><input type="text" class="form-control" [(ngModel)] = "model.aluminium_doors.estimated_date" name = "estimated_date"> </td>
                 <td><span class="badge badge-success">Preparing Quote</span> </td>
               </div>
-              
+
 
               <div *ngIf="model.aluminium_windows">
                   <td>{{model.aluminium_windows | json}}</td>
@@ -604,11 +604,11 @@
                             <input type="checkbox" class="switch-input" checked  >
                             <span class="switch-label" data-on="Yes" data-off="No"></span>
                             <span class="switch-handle"></span>
-                          </label>                                         
-                       
+                          </label>
+
                     </td>
                    <td><input type="text" class="form-control" [(ngModel)] = "model.aluminium_windows.estimated_date" name = "estimated_date"></td>
-                  <td><input type="text" class="form-control"> </td> 
+                  <td><input type="text" class="form-control"> </td>
                   <td><span class="badge badge-success">Preparing Quote</span> </td>
                 </div>
 
@@ -628,7 +628,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <strong>Supply Items</strong>
+                            <strong>Client's Preferred Supply Terms</strong>
                             <small>Form</small>
                         </div>
                         <div class="card-body">
@@ -646,13 +646,16 @@
                             </div>
 
                         </div>
-                        <!--/.row-->
+                        <div class="card-footer">
+                            <strong>Potential Supply Value : {{}}</strong>
+                        </div>
+                        
 
                     </div>
                 </div>
             </form>
 
-            <pre>{{ form.value | json }}</pre>
+            <!-- <pre>{{ form.value | json }}</pre> -->
 
         </div>
 

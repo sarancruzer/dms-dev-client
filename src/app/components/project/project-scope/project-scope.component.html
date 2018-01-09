@@ -20,11 +20,12 @@
                             <thead class="thead-inverse">
                                 <tr>
                                     <th>Items</th>
-                                    <th *ngFor="let item of people">Project Types / Building Class</th>
+                                    <th *ngFor="let itm of people">Project Types / Building Class</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of sidemenuItems" formArrayName="project_details">
+                                    <!-- <th><pre>{{item | json}}</pre></th> -->
                                     <th>{{item}}</th>
 
                                     <td *ngFor="let variation of form.controls.project_details['controls']; let i=index" [formGroupName]="i">
@@ -123,7 +124,7 @@
                     <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Save </button>
                     <button type="button" class="btn btn-sm btn-danger" (click)="cancelFunc()"><i class="fa fa-ban" ></i> Cancel</button>
                 </div>
-                <pre>{{ form.value | json }}</pre>
+                <!-- <pre>{{ form.value | json }}</pre> -->
 
             </form>
         </div>

@@ -28,13 +28,13 @@ export class SupplyItemsComponent implements OnInit {
 
   model:any;
   sidemenuItems:any;
-  
-  
+
+
   myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd-mm-yyyy',
 };
-  
+
   constructor(private _router:Router,private _commonService:CommonService,private toastrService:ToastrService,private _service:ProjectService,private fb:FormBuilder) {
     this.iSuccessError = {mSuccess:"",mError:""};
     this.id = JSON.parse(localStorage.getItem("project_id"));
@@ -50,72 +50,72 @@ export class SupplyItemsComponent implements OnInit {
 
 getMasterData(){
   let params = ['m_items_supply','m_territory','m_project_status'];
-  this._commonService.getMasterDetails(params).subscribe(     
+  this._commonService.getMasterDetails(params).subscribe(
     (res) => {
         this.items = res['result']['info']['m_items_supply'];
         this.territories = res['result']['info']['m_territory'];
         this.projectStatuss = res['result']['info']['m_project_status'];
         console.log(this.items);
-       
+
     },
-  (err) => { 
+  (err) => {
       this.iSuccessError.mError = err;
       this.toastrService.error(err, 'Error!');
       if(err == 'token_expired'){
             this._router.navigate(['/logout']);
        }
-  }) 
+  })
   }
 
   getDetailsById(id) {
-    this._service.getSupplyItemsById(id).subscribe(     
+    this._service.getSupplyItemsById(id).subscribe(
       (res) => {
         let ress = res['result']['info']['lists'];
         this.project_name = res['result']['info']['project_name'];
            //Object.keys(ress); // ['name', 'age']
            console.log(res);
-           this.sidemenuItems = Object.getOwnPropertyNames(ress[0]);           
+           this.sidemenuItems = Object.getOwnPropertyNames(ress[0]);
            this.loadFormControl(ress[0]);
       },
-    (err) => { 
+    (err) => {
       console.log(err);
        this.iSuccessError.mError = err['result']['error'];
-       
+
        //this.toastrService.error(err['result']['error'], 'Error!');
        if(err == 'No results found!'){
-         
+
        }
-    }) 
+    })
    }
 
 
-   submit(form){    
+   submit(form){
     console.log("form");
     console.log(form.value);
-  
+
       if(form.valid){
-       this._service.updateSupplyItems(form.value,this.id).subscribe(     
+       this._service.updateSupplyItems(form.value,this.id).subscribe(
          (res) => {
-  
+
                this.iSuccessError.mSuccess = res['result']['info']['msg'];
                this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
                this._router.navigate(['/manageProject']);
-               
+
          },
-       (err) => { 
+       (err) => {
          console.log(err);
            this.iSuccessError.mError = err;
            this.toastrService.error(err, 'Error!');
-       }) 
+       })
      }
-     
+
   }
 
- 
+
    initFormControl() {
-    
-        this.form = this.fb.group({     
-          
+
+        this.form = this.fb.group({
+
           // all_joinery:'',
           // aluminium_windows:'',
           // aluminium_doors:'',
@@ -132,12 +132,12 @@ getMasterData(){
           // study	:'',
           // garages	:'',
           // other	:'',
-          // aluminium_doors: this.fb.array([      
+          // aluminium_doors: this.fb.array([
           //   this.initVarSub(res['aluminium_doors']),
           // ])
-    
+
           territory:'',
-          
+
           all_joinery_estimated_date:'',
           aluminium_louvres_estimated_date:'',
           aluminium_windows_doors_estimated_date:'',
@@ -148,7 +148,7 @@ getMasterData(){
           bookcase_mediashelf_estimated_date:'',
           curtain_wall_estimated_date:'',
           desks_estimated_date:'',
-          ensuit_bathroom_estimated_date:'', 
+          ensuit_bathroom_estimated_date:'',
           flooring_estimated_date:'',
           garage_doors_estimated_date:'',
           kitchen_estimated_date:'',
@@ -161,7 +161,7 @@ getMasterData(){
           study_estimated_date:'',
           tapware_estimated_date:'',
           wardrobes_estimated_date:'',
-          
+
 
           all_joinery_quoted_date:'',
           aluminium_louvres_quoted_date:'',
@@ -173,7 +173,7 @@ getMasterData(){
           bookcase_mediashelf_quoted_date:'',
           curtain_wall_quoted_date:'',
           desks_quoted_date:'',
-          ensuit_bathroom_quoted_date:'', 
+          ensuit_bathroom_quoted_date:'',
           flooring_quoted_date:'',
           garage_doors_quoted_date:'',
           kitchen_quoted_date:'',
@@ -186,8 +186,8 @@ getMasterData(){
           study_quoted_date:'',
           tapware_quoted_date:'',
           wardrobes_quoted_date:'',
-          
-          
+
+
           all_joinery_interest:'',
           aluminium_louvres_interest:'',
           aluminium_windows_doors_interest:'',
@@ -198,7 +198,7 @@ getMasterData(){
           bookcase_mediashelf_interest:'',
           curtain_wall_interest:'',
           desks_interest:'',
-          ensuit_bathroom_interest:'', 
+          ensuit_bathroom_interest:'',
           flooring_interest:'',
           garage_doors_interest:'',
           kitchen_interest:'',
@@ -211,7 +211,7 @@ getMasterData(){
           study_interest:'',
           tapware_interest:'',
           wardrobes_interest:'',
-          
+
           all_joinery_status:'1',
           aluminium_louvres_status:'1',
           aluminium_windows_doors_status:'1',
@@ -222,7 +222,7 @@ getMasterData(){
           bookcase_mediashelf_status:'1',
           curtain_wall_status:'1',
           desks_status:'1',
-          ensuit_bathroom_status:'1', 
+          ensuit_bathroom_status:'1',
           flooring_status:'1',
           garage_doors_status:'1',
           kitchen_status:'1',
@@ -233,10 +233,35 @@ getMasterData(){
           sinks_tubs_basins_status:'1',
           splashbacks_status:'1',
           study_status:'1',
-          tapware_status:'1',
-          wardrobes_status:'1',
+          tapware_status : '1',
+          wardrobes_status : '1',
 
-          
+
+          all_joinery_greyout:'',
+          aluminium_louvres_greyout:'',
+          aluminium_windows_doors_greyout:'',
+          appliances_greyout:'',
+          balustrade_greyout:'',
+          bedroom_greyout:'',
+          benchtops_greyout:'',
+          bookcase_mediashelf_greyout:'',
+          curtain_wall_greyout:'',
+          desks_greyout:'',
+          ensuit_bathroom_greyout:'',
+          flooring_greyout:'',
+          garage_doors_greyout:'',
+          kitchen_greyout:'',
+          laundry_greyout:'',
+          other_greyout:'',
+          powder_room_toilet_greyout:'',
+          sanitaryware_greyout:'',
+          sinks_tubs_basins_greyout:'',
+          splashbacks_greyout:'',
+          study_greyout:'',
+          tapware_greyout:'',
+          wardrobes_greyout:'',
+
+
           // all_joinery_estimated_date:'',
           // aluminium_windows_estimated_date:'',
           // aluminium_doors_estimated_date:'',
@@ -253,8 +278,8 @@ getMasterData(){
           // study_estimated_date	:'',
           // garages_estimated_date	:'',
           // other_estimated_date	:'',
-    
-    
+
+
           // all_joinery_quoted_date:'',
           // aluminium_windows_quoted_date:'',
           // aluminium_doors_quoted_date:'',
@@ -306,19 +331,19 @@ getMasterData(){
           // garages_status	:'1',
           // other_status	:'1',
 
-          
-    
-    
-    
-        });    
+
+
+
+
+        });
       }
 
-  
-   
+
+
   loadFormControl(res) {
 
-    this.form = this.fb.group({    
-      
+    this.form = this.fb.group({
+
       territory:res['territory'],
 
 
@@ -335,7 +360,7 @@ getMasterData(){
           // bookcase_mediashelf_estimated_date:'',
           // curtain_wall_estimated_date:'',
           // bathrooms_estimated_date:'',
-          // ensuit_bathroom_estimated_date:'', 
+          // ensuit_bathroom_estimated_date:'',
           // flooring_estimated_date:'',
           // garage_doors_estimated_date:'',
           // kitchen_estimated_date:'',
@@ -358,7 +383,7 @@ getMasterData(){
           bookcase_mediashelf_quoted_date:res['bookcase_mediashelf'].quoted_date,
           curtain_wall_quoted_date:res['curtain_wall'].quoted_date,
           desks_quoted_date:res['desks'].quoted_date,
-          ensuit_bathroom_quoted_date:res['ensuit_bathroom'].quoted_date, 
+          ensuit_bathroom_quoted_date:res['ensuit_bathroom'].quoted_date,
           flooring_quoted_date:res['flooring'].quoted_date,
           garage_doors_quoted_date:res['garage_doors'].quoted_date,
           kitchen_quoted_date:res['kitchen'].quoted_date,
@@ -382,7 +407,7 @@ getMasterData(){
           bookcase_mediashelf_estimated_date:res['bookcase_mediashelf'].estimated_date,
           curtain_wall_estimated_date:res['curtain_wall'].estimated_date,
           desks_estimated_date:res['desks'].estimated_date,
-          ensuit_bathroom_estimated_date:res['ensuit_bathroom'].estimated_date, 
+          ensuit_bathroom_estimated_date:res['ensuit_bathroom'].estimated_date,
           flooring_estimated_date:res['flooring'].estimated_date,
           garage_doors_estimated_date:res['garage_doors'].estimated_date,
           kitchen_estimated_date:res['kitchen'].estimated_date,
@@ -406,7 +431,7 @@ getMasterData(){
           bookcase_mediashelf_interest:res['bookcase_mediashelf'].interest,
           curtain_wall_interest:res['curtain_wall'].interest,
           desks_interest:res['desks'].interest,
-          ensuit_bathroom_interest:res['ensuit_bathroom'].interest, 
+          ensuit_bathroom_interest:res['ensuit_bathroom'].interest,
           flooring_interest:res['flooring'].interest,
           garage_doors_interest:res['garage_doors'].interest,
           kitchen_interest:res['kitchen'].interest,
@@ -430,7 +455,7 @@ getMasterData(){
           bookcase_mediashelf_status:res['bookcase_mediashelf'].status,
           curtain_wall_status:res['curtain_wall'].status,
           desks_status:res['desks'].status,
-          ensuit_bathroom_status:res['ensuit_bathroom'].status, 
+          ensuit_bathroom_status:res['ensuit_bathroom'].status,
           flooring_status:res['flooring'].status,
           garage_doors_status:res['garage_doors'].status,
           kitchen_status:res['kitchen'].status,
@@ -443,7 +468,34 @@ getMasterData(){
           study_status:res['study'].status,
           tapware_status:res['tapware'].status,
           wardrobes_status:res['wardrobes'].status,
-          
+
+
+          all_joinery_greyout:'1',
+          //aluminium_louvres_greyout:res['aluminium_louvres'].greyout,
+          aluminium_windows_doors_greyout:res['aluminium_windows_doors'].greyout,
+          appliances_greyout:res['appliances'].greyout,
+          balustrade_greyout:res['balustrade'].greyout,
+          bedroom_greyout:res['bedroom'].greyout,
+          benchtops_greyout:res['benchtops'].greyout,
+          bookcase_mediashelf_greyout:res['bookcase_mediashelf'].greyout,
+          curtain_wall_greyout:res['curtain_wall'].greyout,
+          desks_greyout:res['desks'].greyout,
+          ensuit_bathroom_greyout:res['ensuit_bathroom'].greyout,
+          flooring_greyout:res['flooring'].greyout,
+          garage_doors_greyout:res['garage_doors'].greyout,
+          kitchen_greyout:res['kitchen'].greyout,
+          laundry_greyout:res['laundry'].greyout,
+          other_greyout:res['other'].greyout,
+          powder_room_toilet_greyout:res['powder_room_toilet'].greyout,
+          sanitaryware_greyout:res['sanitaryware'].greyout,
+          sinks_tubs_basins_greyout:res['sinks_tubs_basins'].greyout,
+          splashbacks_greyout:res['splashbacks'].greyout,
+          study_greyout:res['study'].greyout,
+          tapware_greyout:res['tapware'].greyout,
+          wardrobes_greyout:res['wardrobes'].greyout,
+
+          aluminium_louvres_greyout:1,
+
 
           // aluminium_louvres_status:'1',
           // aluminium_windows_doors_status:'1',
@@ -454,7 +506,7 @@ getMasterData(){
           // bookcase_mediashelf_status:'1',
           // curtain_wall_status:'1',
           // bathrooms_status:'1',
-          // ensuit_bathroom_status:'1', 
+          // ensuit_bathroom_status:'1',
           // flooring_status:'1',
           // garage_doors_status:'1',
           // kitchen_status:'1',
@@ -485,12 +537,12 @@ getMasterData(){
       // study	:res['study'].interest,
       // garages	:res['garages'].interest,
       // other	:res['other'].interest,
-      // aluminium_doors: this.fb.array([      
+      // aluminium_doors: this.fb.array([
       //   this.initVarSub(res['aluminium_doors']),
       // ])
 
 
-      
+
 
 
       // all_joinery_estimated_date:'',
@@ -528,7 +580,7 @@ getMasterData(){
       // garages_quoted_date	:res['garages'].quoted_date,
       // other_quoted_date	:res['other'].quoted_date,
 
-      
+
       // all_joinery_interest:'1',
       // aluminium_windows_interest:res['aluminium_windows'].interest,
       // aluminium_doors_interest:res['aluminium_doors'].interest,
@@ -563,10 +615,10 @@ getMasterData(){
       // garages_status	:res['garages'].status,
       // other_status	:res['other'].status,
 
-    });    
+    });
 
-    
-    
+
+
     this.form.patchValue({aluminium_louvres_quoted_date: {formatted:res['aluminium_louvres'].quoted_date }});
     this.form.patchValue({aluminium_windows_doors_quoted_date: {formatted:res['aluminium_windows_doors'].quoted_date }});
     this.form.patchValue({appliances_quoted_date: {formatted:res['appliances'].quoted_date }});
@@ -612,9 +664,9 @@ getMasterData(){
     this.form.patchValue({study_estimated_date: {formatted:res['study'].estimated_date }});
     this.form.patchValue({tapware_estimated_date: {formatted:res['tapware'].estimated_date }});
     this.form.patchValue({wardrobes_estimated_date: {formatted:res['wardrobes'].estimated_date }});
-    
+
     //this.form.patchValue({garages_quoted_date: {formatted:res['garages'].quoted_date }});
- 
+
 
 
   }
@@ -630,6 +682,6 @@ getMasterData(){
     return v;
   }
 
-  
+
 
 }

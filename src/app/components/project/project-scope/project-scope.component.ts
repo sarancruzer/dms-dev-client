@@ -11,7 +11,7 @@ import { ToastrService } from 'toastr-ng2/toastr-service';
   selector: 'app-project-scope',
   templateUrl: './project-scope.component.html',
   styleUrls: ['./project-scope.component.scss'],
-  providers:[ProjectService]
+  providers:[ProjectService,CommonService]
 })
 
 export class ProjectScopeComponent implements OnInit {
@@ -42,6 +42,9 @@ export class ProjectScopeComponent implements OnInit {
 
 
   projectScopes:any = [];
+  itemss:any = [];
+  itemsLists:any = [];
+  
 
   iSuccessError:IsuccessError;
   form:FormGroup;
@@ -125,13 +128,19 @@ export class ProjectScopeComponent implements OnInit {
       let ress = res['result']['info']['lists'];
       let quote = res['result']['info']['quote'];
       this.project_name = res['result']['info']['project_name'];
-         this.people = ress;    
-         this.loadFormControl(this.people);
-         this.sidemenuItems = Object.getOwnPropertyNames(this.people[0]);
-         console.log(this.people);
+      this.itemsLists = res['result']['info']['items_lists'];
+      this.people = ress;    
+
+         this.sidemenuItems = Object.getOwnPropertyNames(this.itemsLists[0]);
          console.log("THIS SIDEMENU ITESM");
          console.log(this.sidemenuItems);
-         this.getSideMenuItems();
+         console.log(this.people[0]);
+         
+         
+        // this.getSideMenuItems();
+
+         this.loadFormControl(this.people);
+         
 
          this.form.patchValue({quote: quote})
          this.quoteAmt = quote;
@@ -173,10 +182,11 @@ export class ProjectScopeComponent implements OnInit {
   }
 
   getMasterData(){
-    let params = ['m_project_scope'];
-    this._service.getCustomMasterDetails(params).subscribe(     
+    let params = ['m_project_scope','m_items'];
+    this._commonService.getMasterDetails(params).subscribe(     
       (res) => {
-            this.projectScopes = res['result']['info'];            
+            this.projectScopes = res['result']['info']['m_project_scope'];            
+            this.itemss = res['result']['info']['m_items'];
             console.log(res);
       },
     (err) => { 
