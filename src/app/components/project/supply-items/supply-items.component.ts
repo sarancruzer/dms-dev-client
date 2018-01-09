@@ -8,6 +8,34 @@ import { CommonService } from 'app/_service/common.service';
 import { FormGroup ,FormBuilder, FormArray} from '@angular/forms';
 import {IMyDpOptions, IMyDateModel} from 'mydatepicker';
 
+export interface IGreyout {
+
+  // all_joinery_greyout: string;
+  // aluminium_louvres_greyout: string;
+  // aluminium_windows_doors_greyout: string;
+  // appliances_greyout: string;
+  // balustrade_greyout: string;
+  // bedroom_greyout: string;
+  // benchtops_greyout: string;
+  // bookcase_mediashelf_greyout: string;
+  // curtain_wall_greyout: string;
+  // desks_greyout: string;
+  // ensuit_bathroom_greyout: string;
+  // flooring_greyout: string;
+  // garage_doors_greyout: string;
+  // kitchen_greyout: string;
+  // laundry_greyout: string;
+  // other_greyout: string;
+  // powder_room_toilet_greyout: string;
+  // sanitaryware_greyout: string;
+  // sinks_tubs_basins_greyout: string;
+  // splashbacks_greyout: string;
+  study_greyout?: string;
+  tapware_greyout?: string;
+  wardrobes_greyout?: string;
+
+}
+
 
 @Component({
   selector: 'app-supply-items',
@@ -29,6 +57,33 @@ export class SupplyItemsComponent implements OnInit {
   model:any;
   sidemenuItems:any;
 
+  
+
+  all_joinery_greyout: string;
+  aluminium_louvres_greyout: string;
+  aluminium_windows_doors_greyout: string;
+  appliances_greyout: string;
+  balustrade_greyout: string;
+  bedroom_greyout: string;
+  benchtops_greyout: string;
+  bookcase_mediashelf_greyout: string;
+  curtain_wall_greyout: string;
+  desks_greyout: string;
+  ensuit_bathroom_greyout: string;
+  flooring_greyout: string;
+  garage_doors_greyout: string;
+  kitchen_greyout: string;
+  laundry_greyout: string;
+  other_greyout: string;
+  powder_room_toilet_greyout: string;
+  sanitaryware_greyout: string;
+  sinks_tubs_basins_greyout: string;
+  splashbacks_greyout: string;
+  study_greyout?: string;
+  tapware_greyout?: string;
+  wardrobes_greyout?: string;
+
+
 
   myDatePickerOptions: IMyDpOptions = {
     // other options...
@@ -38,6 +93,7 @@ export class SupplyItemsComponent implements OnInit {
   constructor(private _router:Router,private _commonService:CommonService,private toastrService:ToastrService,private _service:ProjectService,private fb:FormBuilder) {
     this.iSuccessError = {mSuccess:"",mError:""};
     this.id = JSON.parse(localStorage.getItem("project_id"));
+    
    }
 
   ngOnInit() {
@@ -115,26 +171,6 @@ getMasterData(){
    initFormControl() {
 
         this.form = this.fb.group({
-
-          // all_joinery:'',
-          // aluminium_windows:'',
-          // aluminium_doors:'',
-          // curtain_wall:'',
-          // aluminium_louvres:'',
-          // kitchens:'',
-          // kitchenettes:'',
-          // bedrooms:'',
-          // laundries:'',
-          // bathrooms:'',
-          // ensuites:'',
-          // balconies:'',
-          // storage:'',
-          // study	:'',
-          // garages	:'',
-          // other	:'',
-          // aluminium_doors: this.fb.array([
-          //   this.initVarSub(res['aluminium_doors']),
-          // ])
 
           territory:'',
 
@@ -262,79 +298,6 @@ getMasterData(){
           wardrobes_greyout:'',
 
 
-          // all_joinery_estimated_date:'',
-          // aluminium_windows_estimated_date:'',
-          // aluminium_doors_estimated_date:'',
-          // curtain_wall_estimated_date:'',
-          // aluminium_louvres_estimated_date:'',
-          // kitchens_estimated_date:'',
-          // kitchenettes_estimated_date:'',
-          // bedrooms_estimated_date:'',
-          // laundries_estimated_date:'',
-          // bathrooms_estimated_date:'',
-          // ensuites_estimated_date:'',
-          // balconies_estimated_date:'',
-          // storage_estimated_date:'',
-          // study_estimated_date	:'',
-          // garages_estimated_date	:'',
-          // other_estimated_date	:'',
-
-
-          // all_joinery_quoted_date:'',
-          // aluminium_windows_quoted_date:'',
-          // aluminium_doors_quoted_date:'',
-          // curtain_wall_quoted_date:'',
-          // aluminium_louvres_quoted_date:'',
-          // kitchens_quoted_date:'',
-          // kitchenettes_quoted_date:'',
-          // bedrooms_quoted_date:'',
-          // laundries_quoted_date:'',
-          // bathrooms_quoted_date:'',
-          // ensuites_quoted_date:'',
-          // balconies_quoted_date:'',
-          // storage_quoted_date:'',
-          // study_quoted_date	:'',
-          // garages_quoted_date	:'',
-          // other_quoted_date	:'',
-
-          // all_joinery_interest:'',
-          // aluminium_windows_interest:'',
-          // aluminium_doors_interest:'',
-          // curtain_wall_interest:'',
-          // aluminium_louvres_interest:'',
-          // kitchens_interest:'',
-          // kitchenettes_interest:'',
-          // bedrooms_interest:'',
-          // laundries_interest:'',
-          // bathrooms_interest:'',
-          // ensuites_interest:'',
-          // balconies_interest:'',
-          // storage_interest:'',
-          // study_interest	:'',
-          // garages_interest	:'',
-          // other_interest	:'',
-
-          // all_joinery_status:'1',
-          // aluminium_windows_status:'1',
-          // aluminium_doors_status:'1',
-          // curtain_wall_status:'',
-          // aluminium_louvres_status:'1',
-          // kitchens_status:'1',
-          // kitchenettes_status:'1',
-          // bedrooms_status:'1',
-          // laundries_status:'1',
-          // bathrooms_status:'1',
-          // ensuites_status:'1',
-          // balconies_status:'1',
-          // storage_status:'1',
-          // study_status	:'1',
-          // garages_status	:'1',
-          // other_status	:'1',
-
-
-
-
-
         });
       }
 
@@ -347,32 +310,6 @@ getMasterData(){
       territory:res['territory'],
 
 
-
-
-
-
-          // aluminium_louvres_estimated_date:'',
-          // aluminium_windows_doors_estimated_date:'',
-          // appliances_estimated_date:'',
-          // balustrade_estimated_date:'',
-          // bedroom_estimated_date:'',
-          // benchtops_estimated_date:'',
-          // bookcase_mediashelf_estimated_date:'',
-          // curtain_wall_estimated_date:'',
-          // bathrooms_estimated_date:'',
-          // ensuit_bathroom_estimated_date:'',
-          // flooring_estimated_date:'',
-          // garage_doors_estimated_date:'',
-          // kitchen_estimated_date:'',
-          // laundry_estimated_date:'',
-          // other_estimated_date:'',
-          // powder_room_toilet_estimated_date:'',
-          // sanitaryware_estimated_date:'',
-          // sinks_tubs_basins_estimated_date:'',
-          // splashbacks_estimated_date:'',
-          // study_estimated_date:'',
-          // tapware_estimated_date:'',
-          // wardrobes_estimated_date:'',
           all_joinery_quoted_date:'',
           aluminium_louvres_quoted_date:res['aluminium_louvres'].quoted_date,
           aluminium_windows_doors_quoted_date:res['aluminium_windows_doors'].quoted_date,
@@ -470,150 +407,30 @@ getMasterData(){
           wardrobes_status:res['wardrobes'].status,
 
 
-          all_joinery_greyout:'1',
-          //aluminium_louvres_greyout:res['aluminium_louvres'].greyout,
-          aluminium_windows_doors_greyout:res['aluminium_windows_doors'].greyout,
-          appliances_greyout:res['appliances'].greyout,
-          balustrade_greyout:res['balustrade'].greyout,
-          bedroom_greyout:res['bedroom'].greyout,
-          benchtops_greyout:res['benchtops'].greyout,
-          bookcase_mediashelf_greyout:res['bookcase_mediashelf'].greyout,
-          curtain_wall_greyout:res['curtain_wall'].greyout,
-          desks_greyout:res['desks'].greyout,
-          ensuit_bathroom_greyout:res['ensuit_bathroom'].greyout,
-          flooring_greyout:res['flooring'].greyout,
-          garage_doors_greyout:res['garage_doors'].greyout,
-          kitchen_greyout:res['kitchen'].greyout,
-          laundry_greyout:res['laundry'].greyout,
-          other_greyout:res['other'].greyout,
-          powder_room_toilet_greyout:res['powder_room_toilet'].greyout,
-          sanitaryware_greyout:res['sanitaryware'].greyout,
-          sinks_tubs_basins_greyout:res['sinks_tubs_basins'].greyout,
-          splashbacks_greyout:res['splashbacks'].greyout,
-          study_greyout:res['study'].greyout,
-          tapware_greyout:res['tapware'].greyout,
-          wardrobes_greyout:res['wardrobes'].greyout,
-
-          aluminium_louvres_greyout:1,
-
-
-          // aluminium_louvres_status:'1',
-          // aluminium_windows_doors_status:'1',
-          // appliances_status:'1',
-          // balustrade_status:'1',
-          // bedroom_status:'1',
-          // benchtops_status:'1',
-          // bookcase_mediashelf_status:'1',
-          // curtain_wall_status:'1',
-          // bathrooms_status:'1',
-          // ensuit_bathroom_status:'1',
-          // flooring_status:'1',
-          // garage_doors_status:'1',
-          // kitchen_status:'1',
-          // laundry_status:'1',
-          // other_status:'1',
-          // powder_room_toilet_status:'1',
-          // sanitaryware_status:'1',
-          // sinks_tubs_basins_status:'1',
-          // splashbacks_status:'1',
-          // study_status:'1',
-          // tapware_status:'1',
-          // wardrobes_status:'1',
-
-
-      // all_joinery:'1',
-      // aluminium_windows:res['aluminium_windows'].interest,
-      // aluminium_doors:res['aluminium_doors'].interest,
-      // curtain_wall:res['curtain_wall'].interest,
-      // aluminium_louvres:res['aluminium_louvres'].interest,
-      // kitchens:res['kitchens'].interest,
-      // kitchenettes:res['kitchenettes'].interest,
-      // bedrooms:res['bedrooms'].interest,
-      // laundries:res['laundries'].interest,
-      // bathrooms:res['bathrooms'].interest,
-      // ensuites:res['ensuites'].interest,
-      // balconies:res['balconies'].interest,
-      // storage:res['storage'].interest,
-      // study	:res['study'].interest,
-      // garages	:res['garages'].interest,
-      // other	:res['other'].interest,
-      // aluminium_doors: this.fb.array([
-      //   this.initVarSub(res['aluminium_doors']),
-      // ])
-
-
-
-
-
-      // all_joinery_estimated_date:'',
-      // aluminium_windows_estimated_date:res['aluminium_windows'].estimated_date,
-      // aluminium_doors_estimated_date:res['aluminium_doors'].estimated_date,
-      // curtain_wall_estimated_date:res['curtain_wall'].estimated_date,
-      // aluminium_louvres_estimated_date:res['aluminium_louvres'].estimated_date,
-      // kitchens_estimated_date:res['kitchens'].estimated_date,
-      // kitchenettes_estimated_date:res['kitchenettes'].estimated_date,
-      // bedrooms_estimated_date:res['bedrooms'].estimated_date,
-      // laundries_estimated_date:res['laundries'].estimated_date,
-      // bathrooms_estimated_date:res['bathrooms'].estimated_date,
-      // ensuites_estimated_date:res['ensuites'].estimated_date,
-      // balconies_estimated_date:res['balconies'].estimated_date,
-      // storage_estimated_date:res['storage'].estimated_date,
-      // study_estimated_date	:res['study'].estimated_date,
-      // garages_estimated_date	:res['garages'].estimated_date,
-      // other_estimated_date	:res['other'].estimated_date,
-
-
-      // all_joinery_quoted_date:'',
-      // aluminium_windows_quoted_date:res['aluminium_windows'].quoted_date,
-      // aluminium_doors_quoted_date:res['aluminium_doors'].quoted_date,
-      // curtain_wall_quoted_date:res['curtain_wall'].quoted_date,
-      // aluminium_louvres_quoted_date:res['aluminium_louvres'].quoted_date,
-      // kitchens_quoted_date:res['kitchens'].quoted_date,
-      // kitchenettes_quoted_date:res['kitchenettes'].quoted_date,
-      // bedrooms_quoted_date:res['bedrooms'].quoted_date,
-      // laundries_quoted_date:res['laundries'].quoted_date,
-      // bathrooms_quoted_date:res['bathrooms'].quoted_date,
-      // ensuites_quoted_date:res['ensuites'].quoted_date,
-      // balconies_quoted_date:res['balconies'].quoted_date,
-      // storage_quoted_date:res['storage'].quoted_date,
-      // study_quoted_date	:res['study'].quoted_date,
-      // garages_quoted_date	:res['garages'].quoted_date,
-      // other_quoted_date	:res['other'].quoted_date,
-
-
-      // all_joinery_interest:'1',
-      // aluminium_windows_interest:res['aluminium_windows'].interest,
-      // aluminium_doors_interest:res['aluminium_doors'].interest,
-      // curtain_wall_interest:res['curtain_wall'].interest,
-      // aluminium_louvres_interest:res['aluminium_louvres'].interest,
-      // kitchens_interest:res['kitchens'].interest,
-      // kitchenettes_interest:res['kitchenettes'].interest,
-      // bedrooms_interest:res['bedrooms'].interest,
-      // laundries_interest:res['laundries'].interest,
-      // bathrooms_interest:res['bathrooms'].interest,
-      // ensuites_interest:res['ensuites'].interest,
-      // balconies_interest:res['balconies'].interest,
-      // storage_interest:res['storage'].interest,
-      // study_interest	:res['study'].interest,
-      // garages_interest	:res['garages'].interest,
-      // other_interest	:res['other'].interest,
-
-      // all_joinery_status:'1',
-      // aluminium_windows_status:res['aluminium_windows'].status,
-      // aluminium_doors_status:res['aluminium_doors'].status,
-      // curtain_wall_status:res['curtain_wall'].status,
-      // aluminium_louvres_status:res['aluminium_louvres'].status,
-      // kitchens_status:res['kitchens'].status,
-      // kitchenettes_status:res['kitchenettes'].status,
-      // bedrooms_status:res['bedrooms'].status,
-      // laundries_status:res['laundries'].status,
-      // bathrooms_status:res['bathrooms'].status,
-      // ensuites_status:res['ensuites'].status,
-      // balconies_status:res['balconies'].status,
-      // storage_status:res['storage'].status,
-      // study_status	:res['study'].status,
-      // garages_status	:res['garages'].status,
-      // other_status	:res['other'].status,
+          // all_joinery_greyout:'',
+          // aluminium_louvres_greyout:res['aluminium_louvres'].greyout,
+          // aluminium_windows_doors_greyout:res['aluminium_windows_doors'].greyout,
+          // appliances_greyout:res['appliances'].greyout,
+          // balustrade_greyout:res['balustrade'].greyout,
+          // bedroom_greyout:res['bedroom'].greyout,
+          // benchtops_greyout:res['benchtops'].greyout,
+          // bookcase_mediashelf_greyout:res['bookcase_mediashelf'].greyout,
+          // curtain_wall_greyout:res['curtain_wall'].greyout,
+          // desks_greyout:res['desks'].greyout,
+          // ensuit_bathroom_greyout:res['ensuit_bathroom'].greyout,
+          // flooring_greyout:res['flooring'].greyout,
+          // garage_doors_greyout:res['garage_doors'].greyout,
+          // kitchen_greyout:res['kitchen'].greyout,
+          // laundry_greyout:res['laundry'].greyout,
+          // other_greyout:res['other'].greyout,
+          // powder_room_toilet_greyout:res['powder_room_toilet'].greyout,
+          // sanitaryware_greyout:res['sanitaryware'].greyout,
+          // sinks_tubs_basins_greyout:res['sinks_tubs_basins'].greyout,
+          // splashbacks_greyout:res['splashbacks'].greyout,
+          // study_greyout:res['study'].greyout,
+          // tapware_greyout:res['tapware'].greyout,
+          // wardrobes_greyout:res['wardrobes'].greyout,
+        
 
     });
 
@@ -667,7 +484,31 @@ getMasterData(){
 
     //this.form.patchValue({garages_quoted_date: {formatted:res['garages'].quoted_date }});
 
+     
 
+    this.all_joinery_greyout = '';
+    this.aluminium_louvres_greyout = res['aluminium_louvres'].greyout;
+    this.aluminium_windows_doors_greyout = res['aluminium_windows_doors'].greyout;
+    this.appliances_greyout = res['appliances'].greyout;
+    this.balustrade_greyout = res['balustrade'].greyout;
+    this.bedroom_greyout = res['bedroom'].greyout;
+    this.benchtops_greyout = res['benchtops'].greyout;
+    this.bookcase_mediashelf_greyout = res['bookcase_mediashelf'].greyout;
+    this.curtain_wall_greyout = res['curtain_wall'].greyout;
+    this.desks_greyout = res['desks'].greyout;
+    this.ensuit_bathroom_greyout = res['ensuit_bathroom'].greyout;
+    this.flooring_greyout = res['flooring'].greyout;
+    this.garage_doors_greyout = res['garage_doors'].greyout;
+    this.kitchen_greyout = res['kitchen'].greyout;
+    this.laundry_greyout = res['laundry'].greyout;
+    this.other_greyout = res['other'].greyout;
+    this.powder_room_toilet_greyout = res['powder_room_toilet'].greyout;
+    this.sanitaryware_greyout = res['sanitaryware'].greyout;
+    this.sinks_tubs_basins_greyout = res['sinks_tubs_basins'].greyout;
+    this.splashbacks_greyout = res['splashbacks'].greyout;
+    this.study_greyout = res['study'].greyout;
+    this.tapware_greyout = res['tapware'].greyout;
+    this.wardrobes_greyout = res['wardrobes'].greyout;
 
   }
 
