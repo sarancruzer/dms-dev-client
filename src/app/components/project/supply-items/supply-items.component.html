@@ -27,10 +27,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr >
                                     <th>All joinery </th>
                                     <td>
-                                        <select id="select" class="form-control" formControlName="all_joinery_interest" [attr.disabled]="all_joinery_greyout ? '' : null">
+                                        <select id="select" class="form-control" formControlName="all_joinery_interest" [attr.disabled]="all_joinery_greyout ? '' : null" (change)="joineryChange($event)">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
@@ -49,97 +49,33 @@
                         </select>
                                     </td>
                                 </tr>
-                                <tr class="disabled_class">
-                                    <th>Aluminium Louvres</th>
+
+                                <tr [class.row-disabled]="kitchen_greyout=='disabled'">
+                                    <th>Kitchen </th>
                                     <td>
-                                        <select id="select" class="form-control" formControlName="aluminium_louvres_interest" [attr.disabled]="aluminium_louvres_greyout ? '' : null">
+                                        <select id="select" class="form-control" formControlName="kitchen_interest" [attr.disabled]="kitchen_greyout ? '' : null">
                           <option value="1">Yes </option>
                           <option value="2">No</option>
                           <option value="3">Note</option>
                         </select>
                                     </td>
+
                                     <td>
-                                        <my-date-picker name="aluminium_louvres_quoted_date" [options]="myDatePickerOptions" formControlName="aluminium_louvres_quoted_date" [attr.disabled]="aluminium_louvres_greyout ? '' : null"></my-date-picker>
+                                        <my-date-picker name="kitchen_quoted_date" [options]="myDatePickerOptions" formControlName="kitchen_quoted_date" [attr.disabled]="kitchen_greyout ? '' : null"></my-date-picker>
                                     </td>
                                     <td>
-                                        <my-date-picker name="aluminium_louvres_estimated_date" [options]="myDatePickerOptions" formControlName="aluminium_louvres_estimated_date" [attr.disabled]="aluminium_louvres_greyout ? '' : null"></my-date-picker>
+                                        <my-date-picker name="kitchen_estimated_date" [options]="myDatePickerOptions" formControlName="kitchen_estimated_date"  [attr.disabled]="kitchen_greyout ? '' : null"></my-date-picker>
 
                                     </td>
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="aluminium_louvres_status" [attr.disabled]="aluminium_louvres_greyout ? '' : null">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Aluminium windows/doors</th>
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="aluminium_windows_doors_interest" [attr.disabled]="aluminium_windows_doors_greyout ? '' : null">
-                          <option value="1">Yes </option>
-                          <option value="2">No</option>
-                          <option value="3">Note</option>
-                        </select>
-                                    </td>
-                                    <td>
-                                        <my-date-picker name="aluminium_windows_doors_quoted_date" [options]="myDatePickerOptions" formControlName="aluminium_windows_doors_quoted_date" [attr.disabled]="aluminium_windows_doors_greyout ? '' : null"></my-date-picker>
-                                    </td>
-                                    <td>
-                                        <my-date-picker name="aluminium_windows_doors_estimated_date" [options]="myDatePickerOptions" formControlName="aluminium_windows_doors_estimated_date" [attr.disabled]="aluminium_windows_doors_greyout ? '' : null"></my-date-picker>
 
-                                    </td>
                                     <td>
-                                        <select id="select" class="form-control" formControlName="aluminium_windows_doors_status" [attr.disabled]="aluminium_windows_doors_greyout ? '' : null">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Appliances</th>
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="appliances_interest" [attr.disabled]="appliances_greyout ? '' : null">
-                          <option value="1">Yes </option>
-                          <option value="2">No</option>
-                          <option value="3">Note</option>
-                        </select>
-                                    </td>
-                                    <td>
-                                        <my-date-picker name="appliances_quoted_date" [options]="myDatePickerOptions" formControlName="appliances_quoted_date" [attr.disabled]="appliances_greyout ? '' : null"></my-date-picker>
-                                    </td>
-                                    <td>
-                                        <my-date-picker name="appliances_estimated_date" [options]="myDatePickerOptions" formControlName="appliances_estimated_date" [attr.disabled]="appliances_greyout ? '' : null"></my-date-picker>
-
-                                    </td>
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="appliances_status" [attr.disabled]="appliances_greyout ? '' : null">
+                                        <select id="select" class="form-control" formControlName="kitchen_status" [attr.disabled]="kitchen_greyout ? '' : null">
                           <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select>
                                     </td>
                                 </tr>
 
-                                <tr>
-                                    <th>Balustrade</th>
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="balustrade_interest" [attr.disabled]="balustrade_greyout ? '' : null">
-                          <option value="1">Yes </option>
-                          <option value="2">No</option>
-                          <option value="3">Note</option>
-                        </select>
-                                    </td>
-                                    <td>
-                                        <my-date-picker name="balustrade_quoted_date" [options]="myDatePickerOptions" formControlName="balustrade_quoted_date" [attr.disabled]="balustrade_greyout ? '' : null"></my-date-picker>
-                                    </td>
-                                    <td>
-                                        <my-date-picker name="balustrade_estimated_date" [options]="myDatePickerOptions" formControlName="balustrade_estimated_date" [attr.disabled]="balustrade_greyout ? '' : null"></my-date-picker>
-
-                                    </td>
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="balustrade_status" [attr.disabled]="balustrade_greyout ? '' : null">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select>
-                                    </td>
-                                </tr>
-
-                                <tr>
+                                <tr [class.row-disabled]="bedroom_greyout=='disabled'">
                                     <th>Bedroom</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="bedroom_interest" [attr.disabled]="bedroom_greyout ? '' : null">
@@ -162,7 +98,175 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                <tr [class.row-disabled]="ensuit_bathroom_greyout=='disabled'">
+                                    <th>Ensuit/Bathroom</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="ensuit_bathroom_interest" [attr.disabled]="ensuit_bathroom_greyout ? '' : null">
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select>
+                                    </td>
+
+                                    <td>
+                                        <my-date-picker name="ensuit_bathroom_quoted_date" [options]="myDatePickerOptions" formControlName="ensuit_bathroom_quoted_date" [attr.disabled]="ensuit_bathroom_greyout ? '' : null"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="ensuit_bathroom_estimated_date" [options]="myDatePickerOptions" formControlName="ensuit_bathroom_estimated_date" [attr.disabled]="ensuit_bathroom_greyout ? '' : null"></my-date-picker>
+
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="ensuit_bathroom_status" [attr.disabled]="ensuit_bathroom_greyout ? '' : null">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr [class.row-disabled]="laundry_greyout=='disabled'">
+                                    <th>Laundry</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="laundry_interest" [attr.disabled]="laundry_greyout ? '' : null">
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select>
+                                    </td>
+
+                                    <td>
+                                        <my-date-picker name="laundry_quoted_date" [options]="myDatePickerOptions" formControlName="laundry_quoted_date" [attr.disabled]="laundry_greyout ? '' : null"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="laundry_estimated_date" [options]="myDatePickerOptions" formControlName="laundry_estimated_date" [attr.disabled]="laundry_greyout ? '' : null"></my-date-picker>
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="laundry_status" [attr.disabled]="laundry_greyout ? '' : null">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr [class.row-disabled]="study_greyout=='disabled'">
+                                    <th>Study</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="study_interest" [attr.disabled]="study_greyout ? '' : null">
+                            <option value="1">Yes </option>
+                            <option value="2">No</option>
+                            <option value="3">Note</option>
+                          </select>
+                                    </td>
+
+                                    <td>
+                                        <my-date-picker name="study_quoted_date" [options]="myDatePickerOptions" formControlName="study_quoted_date" [attr.disabled]="study_greyout ? '' : null"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="study_estimated_date" [options]="myDatePickerOptions" formControlName="study_estimated_date" [attr.disabled]="study_greyout ? '' : null"></my-date-picker>
+                                    </td>
+
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="study_status" [attr.disabled]="study_greyout ? '' : null">
+                            <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                          </select>
+                                    </td>
+                                </tr>
+
+
+
+
+                                <tr [class.row-disabled]="aluminium_louvres_greyout=='disabled'">
+                                    <th>Aluminium Louvres</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="aluminium_louvres_interest" [attr.disabled]="aluminium_louvres_greyout ? '' : null">
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="aluminium_louvres_quoted_date" [options]="myDatePickerOptions" formControlName="aluminium_louvres_quoted_date" [attr.disabled]="aluminium_louvres_greyout ? '' : null"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="aluminium_louvres_estimated_date" [options]="myDatePickerOptions" formControlName="aluminium_louvres_estimated_date" [attr.disabled]="aluminium_louvres_greyout ? '' : null"></my-date-picker>
+
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="aluminium_louvres_status" [attr.disabled]="aluminium_louvres_greyout ? '' : null">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                        </select>
+                                    </td>
+                                </tr>
+                                <tr [class.row-disabled]="aluminium_windows_doors_greyout=='disabled'">
+                                    <th>Aluminium windows/doors</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="aluminium_windows_doors_interest" [attr.disabled]="aluminium_windows_doors_greyout ? '' : null">
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="aluminium_windows_doors_quoted_date" [options]="myDatePickerOptions" formControlName="aluminium_windows_doors_quoted_date" [attr.disabled]="aluminium_windows_doors_greyout ? '' : null"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="aluminium_windows_doors_estimated_date" [options]="myDatePickerOptions" formControlName="aluminium_windows_doors_estimated_date" [attr.disabled]="aluminium_windows_doors_greyout ? '' : null"></my-date-picker>
+
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="aluminium_windows_doors_status" [attr.disabled]="aluminium_windows_doors_greyout ? '' : null">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                        </select>
+                                    </td>
+                                </tr>
+                                <tr [class.row-disabled]="appliances_greyout=='disabled'">
+                                    <th>Appliances</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="appliances_interest" [attr.disabled]="appliances_greyout ? '' : null">
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="appliances_quoted_date" [options]="myDatePickerOptions" formControlName="appliances_quoted_date" [attr.disabled]="appliances_greyout ? '' : null"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="appliances_estimated_date" [options]="myDatePickerOptions" formControlName="appliances_estimated_date" [attr.disabled]="appliances_greyout ? '' : null"></my-date-picker>
+
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="appliances_status" [attr.disabled]="appliances_greyout ? '' : null">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr [class.row-disabled]="balustrade_greyout=='disabled'">
+                                    <th>Balustrade</th>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="balustrade_interest" [attr.disabled]="balustrade_greyout ? '' : null">
+                          <option value="1">Yes </option>
+                          <option value="2">No</option>
+                          <option value="3">Note</option>
+                        </select>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="balustrade_quoted_date" [options]="myDatePickerOptions" formControlName="balustrade_quoted_date" [attr.disabled]="balustrade_greyout ? '' : null"></my-date-picker>
+                                    </td>
+                                    <td>
+                                        <my-date-picker name="balustrade_estimated_date" [options]="myDatePickerOptions" formControlName="balustrade_estimated_date" [attr.disabled]="balustrade_greyout ? '' : null"></my-date-picker>
+
+                                    </td>
+                                    <td>
+                                        <select id="select" class="form-control" formControlName="balustrade_status" [attr.disabled]="balustrade_greyout ? '' : null">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
+                        </select>
+                                    </td>
+                                </tr>
+
+                               
+
+                                <tr [class.row-disabled]="benchtops_greyout=='disabled'">
                                     <th>Benchtops </th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="benchtops_interest" [attr.disabled]="benchtops_greyout ? '' : null">
@@ -185,7 +289,7 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                <tr [class.row-disabled]="bookcase_mediashelf_greyout=='disabled'">
                                     <th>Bookcase/Mediashelf </th>
                                     <td>
                  <select id="select" class="form-control" formControlName="bookcase_mediashelf_interest" [attr.disabled]="bookcase_mediashelf_greyout ? '' : null">
@@ -211,7 +315,7 @@
 
 
 
-                                <tr>
+                                <tr [class.row-disabled]="curtain_wall_greyout=='disabled'">
                                     <th>Curtain Wall</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="curtain_wall_interest" [attr.disabled]="curtain_wall_greyout ? '' : null">
@@ -236,7 +340,7 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                <tr [class.row-disabled]="desks_greyout=='disabled'">
                                     <th>Desks</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="desks_interest" [attr.disabled]="desks_greyout ? '' : null">
@@ -261,32 +365,9 @@
                                     </td>
                                 </tr>
 
-                                <tr>
-                                    <th>Ensuit/Bathroom</th>
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="ensuit_bathroom_interest" [attr.disabled]="ensuit_bathroom_greyout ? '' : null">
-                          <option value="1">Yes </option>
-                          <option value="2">No</option>
-                          <option value="3">Note</option>
-                        </select>
-                                    </td>
+                                
 
-                                    <td>
-                                        <my-date-picker name="ensuit_bathroom_quoted_date" [options]="myDatePickerOptions" formControlName="ensuit_bathroom_quoted_date" [attr.disabled]="ensuit_bathroom_greyout ? '' : null"></my-date-picker>
-                                    </td>
-                                    <td>
-                                        <my-date-picker name="ensuit_bathroom_estimated_date" [options]="myDatePickerOptions" formControlName="ensuit_bathroom_estimated_date" [attr.disabled]="ensuit_bathroom_greyout ? '' : null"></my-date-picker>
-
-                                    </td>
-
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="ensuit_bathroom_status" [attr.disabled]="ensuit_bathroom_greyout ? '' : null">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select>
-                                    </td>
-                                </tr>
-
-                                <tr>
+                                <tr [class.row-disabled]="flooring_greyout=='disabled'">
                                     <th>Flooring</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="flooring_interest" [attr.disabled]="flooring_greyout ? '' : null">
@@ -311,7 +392,7 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                <tr [class.row-disabled]="garage_doors_greyout=='disabled'">
                                     <th>Garage Doors</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="garage_doors_interest" [attr.disabled]="garage_doors_greyout ? '' : null">
@@ -336,56 +417,11 @@
                                     </td>
                                 </tr>
 
-                                <tr>
-                                    <th>Kitchen </th>
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="kitchen_interest" [attr.disabled]="kitchen_greyout ? '' : null">
-                          <option value="1">Yes </option>
-                          <option value="2">No</option>
-                          <option value="3">Note</option>
-                        </select>
-                                    </td>
+                                
 
-                                    <td>
-                                        <my-date-picker name="kitchen_quoted_date" [options]="myDatePickerOptions" formControlName="kitchen_quoted_date" [attr.disabled]="kitchen_greyout ? '' : null"></my-date-picker>
-                                    </td>
-                                    <td>
-                                        <my-date-picker name="kitchen_estimated_date" [options]="myDatePickerOptions" formControlName="kitchen_estimated_date"  [attr.disabled]="kitchen_greyout ? '' : null"></my-date-picker>
+                                
 
-                                    </td>
-
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="kitchen_status" [attr.disabled]="kitchen_greyout ? '' : null">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th>Laundry</th>
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="laundry_interest" [attr.disabled]="laundry_greyout ? '' : null">
-                          <option value="1">Yes </option>
-                          <option value="2">No</option>
-                          <option value="3">Note</option>
-                        </select>
-                                    </td>
-
-                                    <td>
-                                        <my-date-picker name="laundry_quoted_date" [options]="myDatePickerOptions" formControlName="laundry_quoted_date" [attr.disabled]="laundry_greyout ? '' : null"></my-date-picker>
-                                    </td>
-                                    <td>
-                                        <my-date-picker name="laundry_estimated_date" [options]="myDatePickerOptions" formControlName="laundry_estimated_date" [attr.disabled]="laundry_greyout ? '' : null"></my-date-picker>
-                                    </td>
-
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="laundry_status" [attr.disabled]="laundry_greyout ? '' : null">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                        </select>
-                                    </td>
-                                </tr>
-
-                                <tr>
+                                <tr [class.row-disabled]="other_greyout=='disabled'">
                                     <th>Other</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="other_interest" [attr.disabled]="other_greyout ? '' : null">
@@ -409,7 +445,7 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                <tr [class.row-disabled]="powder_room_toilet_greyout=='disabled'">
                                     <th>Powder Room/Toilet</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="powder_room_toilet_interest" [attr.disabled]="powder_room_toilet_greyout ? '' : null">
@@ -433,7 +469,7 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                <tr [class.row-disabled]="sanitaryware_greyout=='disabled'">
                                     <th>Sanitaryware</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="sanitaryware_interest" [attr.disabled]="sanitaryware_greyout ? '' : null">
@@ -457,7 +493,7 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                <tr [class.row-disabled]="sinks_tubs_basins_greyout=='disabled'">
                                     <th>Sinks/Tubs/Basins</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="sinks_tubs_basins_interest" [attr.disabled]="sinks_tubs_basins_greyout ? '' : null">
@@ -481,7 +517,7 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                <tr [class.row-disabled]="splashbacks_greyout=='disabled'">
                                     <th>Splashbacks</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="splashbacks_interest" [attr.disabled]="splashbacks_greyout ? '' : null">
@@ -505,31 +541,9 @@
                                     </td>
                                 </tr>
 
-                                <tr>
-                                    <th>Study</th>
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="study_interest" [attr.disabled]="study_greyout ? '' : null">
-                            <option value="1">Yes </option>
-                            <option value="2">No</option>
-                            <option value="3">Note</option>
-                          </select>
-                                    </td>
+                                
 
-                                    <td>
-                                        <my-date-picker name="study_quoted_date" [options]="myDatePickerOptions" formControlName="study_quoted_date" [attr.disabled]="study_greyout ? '' : null"></my-date-picker>
-                                    </td>
-                                    <td>
-                                        <my-date-picker name="study_estimated_date" [options]="myDatePickerOptions" formControlName="study_estimated_date" [attr.disabled]="study_greyout ? '' : null"></my-date-picker>
-                                    </td>
-
-                                    <td>
-                                        <select id="select" class="form-control" formControlName="study_status" [attr.disabled]="study_greyout ? '' : null">
-                            <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
-                          </select>
-                                    </td>
-                                </tr>
-
-                                <tr>
+                                <tr [class.row-disabled]="tapware_greyout=='disabled'">
                                     <th>Tapware</th>
                                     <td>
                                         <select id="select" class="form-control" formControlName="tapware_interest" [attr.disabled]="tapware_greyout ? '' : null">
@@ -553,7 +567,7 @@
                                     </td>
                                 </tr>
 
-                                <tr >
+                                <tr [class.row-disabled]="wardrobes_greyout=='disabled'">
                                     <th>Wardrobes </th>
                                     <td>
                             <select id="select" class="form-control" formControlName="wardrobes_interest" [attr.disabled]="wardrobes_greyout ? '' : null">
@@ -629,12 +643,12 @@
                     <div class="card">
                         <div class="card-header">
                             <strong>Client's Preferred Supply Terms</strong>
-                            <small>Form</small>
+                           
                         </div>
                         <div class="card-body">
 
                             <div class="form-group">
-                                <label for="company">Territory</label>
+                                <label for="company"></label>
                                 <select id="select" name="territory" class="form-control" formControlName="territory">
                   <option *ngFor="let item of territories" value="{{item.id}}" >{{item.short_code}}</option>
                 </select>
@@ -655,7 +669,7 @@
                 </div>
             </form>
 
-            <!-- <pre>{{ form.value | json }}</pre> -->
+            <pre>{{ form.value | json }}</pre>
 
         </div>
 

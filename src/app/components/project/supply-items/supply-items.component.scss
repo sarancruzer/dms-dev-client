@@ -1,3 +1,29 @@
 .table thead th {
  width: 10% ;
 }
+
+
+table > tbody > tr:nth-child(2) > th {
+    text-align: center;
+}
+table > tbody > tr:nth-child(3) > th {
+    text-align: center;
+}
+table > tbody > tr:nth-child(4) > th {
+    text-align: center;
+}
+table > tbody > tr:nth-child(5) > th {
+    text-align: center;
+}
+table > tbody > tr:nth-child(6) > th {
+    text-align: center;
+}
+
+.row-disabled
+{
+    background: #c2cfd7;
+}
+
+table > tbody > tr {
+    border: 2px solid #fff;
+}

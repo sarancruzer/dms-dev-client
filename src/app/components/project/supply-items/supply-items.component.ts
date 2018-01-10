@@ -526,5 +526,21 @@ getMasterData(){
   }
 
 
+  joineryChange(e){
+    console.log("event");
+    console.log(e.target.value);
+
+    let res = e.target.value;
+
+    this.form.patchValue({kitchen_interest: res});
+    this.form.patchValue({bedroom_interest: res});
+    this.form.patchValue({ensuit_bathroom_interest: res});
+    this.form.patchValue({laundry_interest: res});
+    this.form.patchValue({study_interest: res});
+    
+
+  }
+
+
 
 }
