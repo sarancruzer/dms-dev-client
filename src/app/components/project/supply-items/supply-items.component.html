@@ -66,8 +66,8 @@
 
                                     </td>
                                     <td>
-                                        <select id="select" class="form-control" formControlName="aluminium_louvres_status">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" [attr.disabled]="aluminium_louvres_greyout ? '' : null">{{item.name}} </option>
+                                        <select id="select" class="form-control" formControlName="aluminium_louvres_status" [attr.disabled]="aluminium_louvres_greyout ? '' : null">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select>
                                     </td>
                                 </tr>
@@ -88,8 +88,8 @@
 
                                     </td>
                                     <td>
-                                        <select id="select" class="form-control" formControlName="aluminium_windows_doors_status">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" [attr.disabled]="aluminium_windows_doors_greyout ? '' : null">{{item.name}} </option>
+                                        <select id="select" class="form-control" formControlName="aluminium_windows_doors_status" [attr.disabled]="aluminium_windows_doors_greyout ? '' : null">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select>
                                     </td>
                                 </tr>
@@ -110,8 +110,8 @@
 
                                     </td>
                                     <td>
-                                        <select id="select" class="form-control" formControlName="appliances_status">
-                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" [attr.disabled]="appliances_greyout ? '' : null">{{item.name}} </option>
+                                        <select id="select" class="form-control" formControlName="appliances_status" [attr.disabled]="appliances_greyout ? '' : null">
+                          <option *ngFor="let item of projectStatuss"  value="{{item.id}}" >{{item.name}} </option>
                         </select>
                                     </td>
                                 </tr>

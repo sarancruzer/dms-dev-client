@@ -88,6 +88,10 @@
 
                                         <div *ngIf="item == 'balconies'"><input type="text" class="form-control mb-2 mb-sm-0" formControlName="balconies" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.balconies,item)"></div>
 
+                                        <div *ngIf="item == 'powder_rooms_toilets'"><input type="text" class="form-control mb-2 mb-sm-0" formControlName="ensuites" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.powder_rooms_toilets,item)"></div>
+                                        
+                                        <div *ngIf="item == 'showers'"><input type="text" class="form-control mb-2 mb-sm-0" formControlName="balconies" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.showers,item)"></div>
+
                                         <div *ngIf="item == 'storage'"><input type="text" class="form-control mb-2 mb-sm-0" formControlName="storage" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.storage,item)"></div>
 
                                         <div *ngIf="item == 'study'"><input type="text" class="form-control mb-2 mb-sm-0" formControlName="study" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.study,item)"></div>

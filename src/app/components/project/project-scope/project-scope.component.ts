@@ -95,10 +95,14 @@ export class ProjectScopeComponent implements OnInit {
       bathrooms:res['bathrooms'],
       ensuites:res['ensuites'],
       balconies:res['balconies'],
+      powder_rooms_toilets	:res['powder_rooms_toilets'],
+      showers :res['showers'],
       storage:res['storage'],
       study	:res['study'],
       garages	:res['garages'],
       other	:res['other'],
+      
+      
 
       aluminium_windows_price:res['aluminium_windows_price'],
       aluminium_doors_price:res['aluminium_doors_price'],
@@ -111,10 +115,14 @@ export class ProjectScopeComponent implements OnInit {
       bathrooms_price:res['bathrooms_price'],
       ensuites_price:res['ensuites_price'],
       balconies_price:res['balconies_price'],
+      powder_rooms_toilets_price :res['powder_rooms_toilets_price'],
+      showers_price :res['showers_price'],
       storage_price:res['storage_price'],
       study_price	:res['study_price'],
       garages_price	:res['garages_price'],
       other_price	:res['other_price'],
+      
+      
             
     });
     return v;
@@ -278,6 +286,14 @@ onQtyChange(building_class_id,qty,item){
 
     if(element.other == ''){element.other=0;}
     this.calcAmt = this.calcAmt + parseInt(element.other) * parseInt(element.other_price);
+
+    if(element.powder_rooms_toilets == ''){element.powder_rooms_toilets=0;}
+    this.calcAmt = this.calcAmt + parseInt(element.powder_rooms_toilets) * parseInt(element.powder_rooms_toilets_price);
+
+    if(element.showers == ''){element.showers=0;}
+    this.calcAmt = this.calcAmt + parseInt(element.showers) * parseInt(element.showers_price);
+
+    
     
     console.log(this.calcAmt);
 

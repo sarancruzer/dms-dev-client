@@ -37,7 +37,7 @@ export class AppHeader {
     this._commonService.getProjectList(params).subscribe(     
       (res) => {
           this.projects = res['result']['info'];
-          localStorage.setItem("project_id",this.projects[0].id);
+          //localStorage.setItem("project_id",this.projects[0].id);
 
           this.project = JSON.parse(localStorage.getItem("project_id"));
       },

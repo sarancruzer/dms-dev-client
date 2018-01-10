@@ -59,6 +59,8 @@ export class SupplyItemsComponent implements OnInit {
 
   
 
+  
+
   all_joinery_greyout: string;
   aluminium_louvres_greyout: string;
   aluminium_windows_doors_greyout: string;
@@ -307,7 +309,7 @@ getMasterData(){
 
     this.form = this.fb.group({
 
-      territory:res['territory'],
+          territory:res['territory'],
 
 
           all_joinery_quoted_date:'',
@@ -407,29 +409,29 @@ getMasterData(){
           wardrobes_status:res['wardrobes'].status,
 
 
-          // all_joinery_greyout:'',
-          // aluminium_louvres_greyout:res['aluminium_louvres'].greyout,
-          // aluminium_windows_doors_greyout:res['aluminium_windows_doors'].greyout,
-          // appliances_greyout:res['appliances'].greyout,
-          // balustrade_greyout:res['balustrade'].greyout,
-          // bedroom_greyout:res['bedroom'].greyout,
-          // benchtops_greyout:res['benchtops'].greyout,
-          // bookcase_mediashelf_greyout:res['bookcase_mediashelf'].greyout,
-          // curtain_wall_greyout:res['curtain_wall'].greyout,
-          // desks_greyout:res['desks'].greyout,
-          // ensuit_bathroom_greyout:res['ensuit_bathroom'].greyout,
-          // flooring_greyout:res['flooring'].greyout,
-          // garage_doors_greyout:res['garage_doors'].greyout,
-          // kitchen_greyout:res['kitchen'].greyout,
-          // laundry_greyout:res['laundry'].greyout,
-          // other_greyout:res['other'].greyout,
-          // powder_room_toilet_greyout:res['powder_room_toilet'].greyout,
-          // sanitaryware_greyout:res['sanitaryware'].greyout,
-          // sinks_tubs_basins_greyout:res['sinks_tubs_basins'].greyout,
-          // splashbacks_greyout:res['splashbacks'].greyout,
-          // study_greyout:res['study'].greyout,
-          // tapware_greyout:res['tapware'].greyout,
-          // wardrobes_greyout:res['wardrobes'].greyout,
+          all_joinery_greyout:'',
+          aluminium_louvres_greyout:res['aluminium_louvres'].greyout,
+          aluminium_windows_doors_greyout:res['aluminium_windows_doors'].greyout,
+          appliances_greyout:res['appliances'].greyout,
+          balustrade_greyout:res['balustrade'].greyout,
+          bedroom_greyout:res['bedroom'].greyout,
+          benchtops_greyout:res['benchtops'].greyout,
+          bookcase_mediashelf_greyout:res['bookcase_mediashelf'].greyout,
+          curtain_wall_greyout:res['curtain_wall'].greyout,
+          desks_greyout:res['desks'].greyout,
+          ensuit_bathroom_greyout:res['ensuit_bathroom'].greyout,
+          flooring_greyout:res['flooring'].greyout,
+          garage_doors_greyout:res['garage_doors'].greyout,
+          kitchen_greyout:res['kitchen'].greyout,
+          laundry_greyout:res['laundry'].greyout,
+          other_greyout:res['other'].greyout,
+          powder_room_toilet_greyout:res['powder_room_toilet'].greyout,
+          sanitaryware_greyout:res['sanitaryware'].greyout,
+          sinks_tubs_basins_greyout:res['sinks_tubs_basins'].greyout,
+          splashbacks_greyout:res['splashbacks'].greyout,
+          study_greyout:res['study'].greyout,
+          tapware_greyout:res['tapware'].greyout,
+          wardrobes_greyout:res['wardrobes'].greyout,
         
 
     });
