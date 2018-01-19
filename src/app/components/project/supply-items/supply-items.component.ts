@@ -56,8 +56,7 @@ export class SupplyItemsComponent implements OnInit {
 
   model:any;
   sidemenuItems:any;
-
-  
+  project_quote:any;
 
   
 
@@ -134,6 +133,7 @@ getMasterData(){
            console.log(res);
            this.sidemenuItems = Object.getOwnPropertyNames(ress[0]);
            this.loadFormControl(ress[0]);
+           this.project_quote = res['result']['info']['project_quote'];
       },
     (err) => {
       console.log(err);

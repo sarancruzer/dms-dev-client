@@ -144,7 +144,6 @@ export class ProjectScopeComponent implements OnInit {
          console.log(this.sidemenuItems);
          console.log(this.people[0]);
          
-         
         // this.getSideMenuItems();
 
          this.loadFormControl(this.people);

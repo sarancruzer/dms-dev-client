@@ -43,6 +43,7 @@ import { ItemsComponent } from 'app/components/masters/items/items.component';
 import { ProjectDocsComponent } from 'app/components/project/project-docs/project-docs.component';
 import { AdditionInfoComponent } from 'app/components/project/addition-info/addition-info.component';
 import { ProjectNoteComponent } from 'app/components/project/project-note/project-note.component';
+import { ProjectScopeConfigureComponent } from 'app/components/masters/project-scope-configure/project-scope-configure.component';
 
 
 export const routes: Routes = [
@@ -81,6 +82,7 @@ export const routes: Routes = [
         {path: 'masters/projectType',component: ProjectTypeComponent,data: {title: 'Manage Project Type'}},
         {path: 'masters/buildingClass',component: BuildingClassComponent,data: {title: 'Manage Building Class'}},
         {path: 'masters/projectScope',component: MprojectScopeComponent,data: {title: 'Manage Project Scope'}},
+        {path: 'masters/projectScopeConfigure',component: ProjectScopeConfigureComponent,data: {title: 'Manage Project Scope'}},
         {path: 'masters/items',component: ItemsComponent,data: {title: 'Manage Items'}},
         
         

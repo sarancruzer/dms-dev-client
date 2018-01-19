@@ -46,6 +46,10 @@
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/projectScope') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScope']"><i class="icon-puzzle"></i> Project Scope</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScopeConfigure']"><i class="icon-puzzle"></i> Project Scope Configure</a>
+            </li>
            
           </ul>
         </li>
@@ -84,6 +88,7 @@
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectScope']"><i class="icon-puzzle"></i> Project Scope</a>
             </li>
+           
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/supplyItems']"><i class="icon-puzzle"></i> Supply Items</a>
             </li>

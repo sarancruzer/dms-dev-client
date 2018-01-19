@@ -25,9 +25,11 @@ export class ProjectScopeService {
     this.options = new RequestOptions({ headers: this.headers });
 
    }
+  
+  
  
   get(page:any,params:any) : Observable<ProjectScope[]> {
-    return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTSCOPE+'?page='+page,params,this.options)
+    return this._http.post(this.apiUrl+'get'+ApiSettings.BUILDINGCLASS+'?page='+page,params,this.options)
     .map((res:Response) => <ProjectScope[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -52,6 +54,20 @@ export class ProjectScopeService {
     .map((res:Response) => <ProjectScope[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+  getBuildingClass(id:any) : Observable<ProjectScope[]> {
+    return this._http.post(this.apiUrl+'get'+ApiSettings.BUILDINGCLASS+'Items/'+id,'',this.options)
+    .map((res:Response) => <ProjectScope[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  updateBuildingClass(params:any,id:number) : Observable<ProjectScope[]> {
+    let body = JSON.stringify({'info':params});
+    return this._http.post(this.apiUrl+'update'+ApiSettings.BUILDINGCLASS+'Items/'+id,body,this.options)
+    .map((res:Response) => <ProjectScope[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
   
 
 }
