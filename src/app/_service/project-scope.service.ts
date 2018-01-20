@@ -68,6 +68,12 @@ export class ProjectScopeService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  // edit(id:number) : Observable<ProjectScope[]> {
+  //   return this._http.post(this.apiUrl+'edit'+ApiSettings.BUILDINGCLASS+'Items/'+id,'',this.options)
+  //   .map((res:Response) => <ProjectScope[]>res.json())
+  //   .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  // }
+
   
 
 }

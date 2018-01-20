@@ -24,6 +24,8 @@ export class ApiSettings {
     public static PROJECTDOCSREFERENCEID='ProjectsDocsReferenceId';
     
     public static SUPPLYITEMS='SupplyItems';
+    public static BUILDINGCLASSLISTS='BuildingClassLists';
+    
         
     
     

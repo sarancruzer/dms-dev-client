@@ -74,14 +74,14 @@
             </thead>
             <tbody *ngIf="pages.length">
               <tr *ngFor="let item of items let i = index" [attr.data-index]="i" >
-                <td>{{i}}</td>
+                <td>{{i+1}}</td>
                 <td>{{item.project_type}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.created_at}}</td>
                 <td>{{item.updated_at}}</td>
                  <td><span class="badge badge-success">Active</span></td>
                 <td>
-                  <button type="button" class="btn btn-outline-success" data-toggle="modal" (click)="edit(item)" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <button type="button" class="btn btn-outline-success" data-toggle="modal" (click)="editModelFunc(item.id)" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                   <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModalFunc(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                   
                 </td>
@@ -132,7 +132,7 @@
       <form (ngSubmit)="updateBuildingClass(createForm)" #createForm="ngForm" novalidate >
   
     <div class="modal-header">
-      <h4 class="modal-title">Create {{title}}</h4>
+      <h4 class="modal-title">{{modelTitle}} {{title}}</h4>
       <button type="button" class="close" (click)="createModal.hide()" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -143,11 +143,11 @@
 
           <div class="form-group">
               <label for="company"> Building Class</label>
-
-              <select id="select" class="form-control" name="building_class_id"  (change)="changeBuildingClass($event.target.value)">
+              
+              <select id="select" class="form-control" name="building_class_id"  (change)="changeBuildingClass($event.target.value)" [attr.disabled]="isEdit ? '' : null">
+                  <option value=""> Select Option</option>
                 <option *ngFor="let row of buildingClasses" [value]="row.id">{{row.name}}</option></select>
-
-               
+                               
                 <div style="color:red" 
                 *ngIf="building_class_id.errors && (building_class_id.dirty || building_class_id.touched || createForm.submitted)">
                 <span class="help-block" *ngIf="building_class_id.errors.required">
@@ -159,13 +159,13 @@
 
             <table class="table table-striped">
               <thead>
-                  <th>1</th>
+                  <th>#</th>
                   <th class="pointer">Item Name</th>
                   <th class="pointer" >Price</th>
               </thead>
               <tbody *ngIf="pages.length">
                     <tr *ngFor="let item of projectScopeItems let i = index" [attr.data-index]="i" >
-                      <td>{{i}} <input type="text" class="form-control" name="items_id-{{i}}" [(ngModel)]="item.items_id" value="{{item.items_id}}" /></td>
+                      <td>{{i+1}} <input type="hidden" class="form-control" name="items_id-{{i}}" [(ngModel)]="item.items_id" value="{{item.items_id}}" /></td>
                       <td><input type="text" class="form-control" name="item_name-{{i}}" [(ngModel)]="item.item_name" value="{{item.item_name}}" /></td>                      
                       <td><input type="text" class="form-control" name="price-{{i}}" [(ngModel)]="item.price" value="{{item.price}}" required /></td>
                     </tr>
@@ -240,7 +240,9 @@
         <div class="form-group">
             <label for="company"> Building Class</label>
             <select id="select" name="building_class_id" class="form-control"  [(ngModel)] = "model.building_class_id" #building_class_id="ngModel" required>
-              <option *ngFor="let row of buildingClasses" value= {{row.id}}>{{row.name}}</option></select>
+              <option value=""> Select Option</option>
+              <option *ngFor="let row of buildingClasses" value= {{row.id}}>{{row.name}}</option>
+            </select>
 
               <div style="color:red" 
               *ngIf="building_class_id.errors && (building_class_id.dirty || building_class_id.touched || createForm.submitted)">
@@ -278,14 +280,7 @@
 
             </div>
 
-      <!-- <div class="form-group">
-        <label for="company">{{title}} Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Name" [(ngModel)] = "model.name" name = "name">
-      </div>
-      <div class="form-group">
-          <label for="company"> short_code</label>
-          <input type="text" class="form-control" id="name" placeholder="Name" [(ngModel)] = "model.short_code" name = "short_code">
-        </div> -->
+     
          </div><!--/.row-->
     </div>
     <div class="modal-footer">

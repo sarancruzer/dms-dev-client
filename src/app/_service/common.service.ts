@@ -52,6 +52,12 @@ export class CommonService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  getBuildingClassDetails() : Observable<any[]> {
+    return this._http.post(this.apiUrl+'get'+ApiSettings.BUILDINGCLASSLISTS,'',this.options)
+    .map((res:Response) => <any[]>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
   
   
   

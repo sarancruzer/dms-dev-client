@@ -35,7 +35,8 @@ export class ProjectScopeConfigureComponent implements OnInit {
 
   projectScopeArr : any = [];
   buildingClassId:any;
-
+  isEdit:string = '';
+  modelTitle = "";
   
   @ViewChild('createModal') public createModal:ModalDirective;
   @ViewChild('editModal') public editModal:ModalDirective;
@@ -59,11 +60,9 @@ export class ProjectScopeConfigureComponent implements OnInit {
    }
 
    getMasterData(){
-    let params = ['m_building_class'];
-    this._commonService.getMasterDetails(params).subscribe(     
+    this._commonService.getBuildingClassDetails().subscribe(     
       (res) => {
-            this.buildingClasses = res['result']['info']['m_building_class'];
-           
+            this.buildingClasses = res['result']['info']['lists'];
             console.log(res);
       },
     (err) => { 
@@ -114,14 +113,20 @@ export class ProjectScopeConfigureComponent implements OnInit {
  }
 
  createModalFunc(form){
+  this.isEdit = ""; 
+  this.modelTitle = "Create";
   form.resetForm();  
-  this.createModal.show(); 
+  this.projectScopeItems = [];
+  this.createModal.show();
  }
  
 
  changeBuildingClass(buildingClassId){
+   
     console.log("buildingClassId " +buildingClassId);
     console.log(buildingClassId);
+    if(buildingClassId != 0){
+
       this._service.getBuildingClass(buildingClassId).subscribe(     
         (res) => {
           console.log(res);
@@ -133,7 +138,10 @@ export class ProjectScopeConfigureComponent implements OnInit {
           this.iSuccessError.mError = err;
           this.toastrService.error(err, 'Error!');
       }) 
+    }else{
+      this.projectScopeItems = [];
     }
+}
 
 
  
@@ -161,6 +169,7 @@ export class ProjectScopeConfigureComponent implements OnInit {
             this.createModal.hide();
             this.toastrService.success(this.iSuccessError.mSuccess, 'Success!');
             form.resetForm(); 
+            this.getMasterData();
             
         },
       (err) => { 
@@ -171,12 +180,23 @@ export class ProjectScopeConfigureComponent implements OnInit {
    }
   }
 
-  edit(data){
-    this.editModal.show();
-    this.model.id = data.id;
-    this.model.price = data.price;
-    this.model.short_code = data.short_code;
-    this.model.building_class_id = data.building_class_id;
+  editModelFunc(buildingClassId){    
+    this.isEdit = "disabled";
+    this.modelTitle = "Edit";
+    this.createModal.show();
+    this.model.building_class_id = buildingClassId;
+    this._service.getBuildingClass(buildingClassId).subscribe(     
+      (res) => {
+        console.log(res);
+        this.projectScopeItems = res['result']['info']['lists'];
+        this.buildingClassId = buildingClassId;
+        console.log(this.projectScopeItems);
+           
+      },
+    (err) => { 
+        this.iSuccessError.mError = err;
+        this.toastrService.error(err, 'Error!');
+    }) 
   }
 
   update(form,id){
