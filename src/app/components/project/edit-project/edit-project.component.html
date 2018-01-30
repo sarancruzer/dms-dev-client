@@ -38,6 +38,21 @@
                   <textarea rows="" cols="" class="form-control" id="company" placeholder="Project Address 2" [(ngModel)] = "model.address2" name="address2"></textarea> 
   
                 </div>
+
+                <div class="form-group">
+                  <label for="company">Territory</label>
+              <select id="select" name="territory" class="form-control form-control-lg"  [(ngModel)] = "model.territory" #territory="ngModel" required>
+                  <option *ngFor="let row of territorys" value= {{row.id}}>{{row.name}}</option>
+                </select>
+  
+                <div style="color:red" 
+            *ngIf="territory.errors && (territory.dirty || territory.touched || form.submitted)">
+            <span class="help-block" *ngIf="territory.errors.required">
+                This field is required.
+            </span>
+            </div>
+  
+                </div>
   
                 <div class="form-group">
                   <label for="company">City</label>

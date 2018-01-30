@@ -46,7 +46,7 @@ export interface IGreyout {
 export class SupplyItemsComponent implements OnInit {
 
   items:any = [];
-  territories:any = [];
+  supply_terms:any = [];
   projectStatuss:any = [];
   project_name:string;
   id:number;
@@ -106,11 +106,11 @@ export class SupplyItemsComponent implements OnInit {
 
 
 getMasterData(){
-  let params = ['m_items_supply','m_territory','m_project_status'];
+  let params = ['m_items_supply','m_supply_terms','m_project_status'];
   this._commonService.getMasterDetails(params).subscribe(
     (res) => {
         this.items = res['result']['info']['m_items_supply'];
-        this.territories = res['result']['info']['m_territory'];
+        this.supply_terms = res['result']['info']['m_supply_terms'];
         this.projectStatuss = res['result']['info']['m_project_status'];
         console.log(this.items);
 
@@ -174,7 +174,7 @@ getMasterData(){
 
         this.form = this.fb.group({
 
-          territory:'',
+          supply_terms:'',
 
           all_joinery_estimated_date:'',
           aluminium_louvres_estimated_date:'',
@@ -309,7 +309,7 @@ getMasterData(){
 
     this.form = this.fb.group({
 
-          territory:res['territory'],
+      supply_terms:res['supply_terms'],
 
 
           all_joinery_quoted_date:'',

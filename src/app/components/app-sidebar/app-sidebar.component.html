@@ -10,23 +10,15 @@
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Masters</a>
           <ul class="nav-dropdown-items">
             
-            <!-- <li class="nav-item">
-                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/category']"><i class="icon-puzzle"></i> Category</a>
-              </li>
-            
-              <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/subCategory']"><i class="icon-puzzle"></i> Sub Category</a>
-              </li> -->
-
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/territory') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/territory']"><i class="icon-puzzle"></i> Territory</a>
             </li>
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/state') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/state']"><i class="icon-puzzle"></i> State </a>
             </li>
-            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/title') !== -1">
+            <!-- <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/title') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/title']"><i class="icon-puzzle"></i> Title</a>
-            </li>
+            </li> -->
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/clientType') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/clientType']"><i class="icon-puzzle"></i> Client Type</a>
             </li>
@@ -43,12 +35,12 @@
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/items']"><i class="icon-puzzle"></i> Items</a>
             </li> -->
 
-            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/projectScope') !== -1">
+            <!-- <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/projectScope') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScope']"><i class="icon-puzzle"></i> Project Scope</a>
-            </li>
+            </li> -->
 
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScopeConfigure']"><i class="icon-puzzle"></i> Project Scope Configure</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScopeConfigure']"><i class="icon-puzzle"></i> Project Scope </a>
             </li>
            
           </ul>
@@ -61,13 +53,14 @@
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageRoles']"><i class="fa fa-id-badge"></i> Manage Roles </a>
       </li>
 
-      <!--<li class="nav-item" *ngIf="roleAccess.indexOf('/manageModules') !== -1">
+      <!-- <li class="nav-item" *ngIf="roleAccess.indexOf('/manageModules') !== -1">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageRoles']"><i class="fa fa-id-badge"></i> Manage Modules </a>
       </li>
 
       <li class="nav-item">
             <a class="nav-link" *ngIf="roleAccess.indexOf('rolePrivilleges') !== -1" routerLinkActive="active" [routerLink]="['/rolePrivilleges']"><i class="fa fa-cubes"></i> Role Privilleges</a>
-          </li>-->
+      </li>
+       -->
       <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageLicense') !== -1">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageLicense']"><i class="fa fa-id-card"></i> Manage License </a>
       </li>
@@ -105,21 +98,21 @@
           </ul>
         </li>
 
-        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+        <!-- <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Reports</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectDetailReport']"><i class="icon-user"></i> Project  Details </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/clientReport']"><i class="icon-puzzle"></i> Client Report </a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/clientReport']"><i class="icon-puzzle"></i> Client Activity Report </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectScopeReport']"><i class="icon-puzzle"></i> Project Scope Report</a>
             </li>           
            
           </ul>
-        </li>
+        </li> -->
 
      
 

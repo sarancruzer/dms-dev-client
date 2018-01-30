@@ -12,7 +12,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   selector: 'app-manage-project',
   templateUrl: './manage-project.component.html',
   styleUrls: ['./manage-project.component.css'],
-  providers:[ProjectService]
+  providers:[ProjectService,CommonService]
 })
 export class ManageProjectComponent implements OnInit {
 
@@ -27,7 +27,7 @@ export class ManageProjectComponent implements OnInit {
   pages=[];
   
   q:any;
-  
+  territory:any;
   id:any;
   iSuccessError:IsuccessError;
 
@@ -39,15 +39,20 @@ export class ManageProjectComponent implements OnInit {
   column: string = 'id';
   orderby:string = "desc";
   submitted: boolean = false; 
+  
+  territorys:any = [];
+
   constructor(private _router : Router,private _service:ProjectService,private toastrService: ToastrService,private _globalSettings : GlobalSettings,private _commonService : CommonService) {
     this.title = "Manage Project";
     this.q = "";
+    this.territory = "0";
     this.iSuccessError = {mSuccess:"",mError:""};
     
    }
 
    ngOnInit() {
      this.init(1);
+     this.getMasterData();
     
    }
 
@@ -59,9 +64,27 @@ export class ManageProjectComponent implements OnInit {
   };
 
 
+  getMasterData(){
+    let params = ['m_territory'];
+    this._commonService.getMasterDetails(params).subscribe(     
+      (res) => {
+            this.territorys = res['result']['info']['m_territory'];
+            console.log(res);
+      },
+    (err) => { 
+        this.iSuccessError.mError = err;
+        //this.toastrService.error(err, 'Error!');
+        if(err == 'token_expired'){
+              this._router.navigate(['/logout']);
+         }
+    }) 
+    }
+
+
+
   init(page) {
     console.log(page,this.q);
-    let params = {column:this.column,orderby:this.orderby,q:this.q};
+    let params = {column:this.column,orderby:this.orderby,q:this.q,territory:this.territory};
     this._service.get(page,params).subscribe(     
       (res) => {
            this.items = res['result']['info']['data'];

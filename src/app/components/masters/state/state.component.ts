@@ -40,7 +40,7 @@ export class StateComponent implements OnInit {
   orderby:string = "desc";
   submitted: boolean = false; 
   constructor(private _router:Router,private _service:StateService,private toastrService: ToastrService) {
-    this.title = "Client Type";
+    this.title = "State";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
     

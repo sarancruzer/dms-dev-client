@@ -40,6 +40,22 @@
               </div>
 
               <div class="form-group">
+                <label for="company">Territory</label>
+            <select id="select" name="territory" class="form-control form-control-lg"  [(ngModel)] = "model.territory" #territory="ngModel" required>
+                <option *ngFor="let row of territorys" value= {{row.id}}>{{row.name}}</option>
+              </select>
+
+              <div style="color:red" 
+          *ngIf="territory.errors && (territory.dirty || territory.touched || form.submitted)">
+          <span class="help-block" *ngIf="territory.errors.required">
+              This field is required.
+          </span>
+          </div>
+
+              </div>
+
+
+              <div class="form-group">
                 <label for="company">City</label>
                 <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "model.city" name="city" #city="ngModel" required >
                 <div style="color:red" 
@@ -64,6 +80,8 @@
               </div>
 
                   </div>
+
+                  
 
               <div class="form-group">
                   <label for="company">post_code</label>

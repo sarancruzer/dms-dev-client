@@ -67,7 +67,7 @@ export class ProjectScopeConfigureComponent implements OnInit {
       },
     (err) => { 
         this.iSuccessError.mError = err;
-        this.toastrService.error(err, 'Error!');
+       // this.toastrService.error(err, 'Error!');
         if(err == 'token_expired'){
               this._router.navigate(['/logout']);
          }
@@ -101,7 +101,7 @@ export class ProjectScopeConfigureComponent implements OnInit {
       },
     (err) => { 
        this.iSuccessError.mError = err;
-       this.toastrService.error(err, 'Error!');
+      // this.toastrService.error(err, 'Error!');
        this.items = [];
        this.pages = [];
        if(err == 'token_expired'){

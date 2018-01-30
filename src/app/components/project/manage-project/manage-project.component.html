@@ -9,6 +9,24 @@
       <div class="col-lg-12">
           
         <div class="card">
+
+            <div class="card-body">
+                <div class="col-md-12">
+                  <div class="input-group">
+                    <input type="text" id="input1-group2" name="input1-group2" class="form-control col-md-9" placeholder="Search here" [(ngModel)]="q" (keyup.enter)="init(currentPage);">
+                    
+                    <select  id="select" name="territory" class="form-control form-control-lg col-md-3"  [(ngModel)] = "territory" (change)="init(currentPage);">
+                        <option value= "0">All Territory</option>
+                        <option *ngFor="let row of territorys" value= {{row.id}}>{{row.name}}</option>
+                    </select>
+                                        
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary"  (click)="init(currentPage)"><i class="fa fa-search" ></i> Search</button>
+                      </span>
+                  </div>
+                </div>
+          </div>
+
           
           <div class="card-header">
 

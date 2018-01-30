@@ -23,6 +23,7 @@ export class EditProjectComponent implements OnInit {
   client_sizes : any = [];
   manage_licenses : any = [];
   id:number;
+  territorys:any = [];
   
   constructor(private _router:Router,private _service : ProjectService,private toastrService : ToastrService,private _commonService : CommonService,private _route : ActivatedRoute) {
     
@@ -41,13 +42,14 @@ export class EditProjectComponent implements OnInit {
 
 
 getMasterData(){
-  let params = ['m_state','clients','m_client_size','license'];
+  let params = ['m_state','clients','m_client_size','license','m_territory'];
   this._commonService.getMasterDetails(params).subscribe(     
     (res) => {
           this.states = res['result']['info']['m_state'];
           this.clients = res['result']['info']['clients'];
           this.client_sizes = res['result']['info']['m_client_size'];
           this.manage_licenses = res['result']['info']['license'];
+          this.territorys = res['result']['info']['m_territory'];
           console.log(res);
     },
   (err) => { 

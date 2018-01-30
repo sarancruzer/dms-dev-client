@@ -4,6 +4,7 @@ export class Project {
     public project_name:string;
     public address1:string;
     public address2:string;
+    public territory:string;
     public city:string;
     public state:string;
     public post_code:string;
