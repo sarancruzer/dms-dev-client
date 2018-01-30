@@ -56,7 +56,7 @@ getMasterData(){
 getDetailsById(id) {
   this._service.edit(id).subscribe(     
     (res) => {
-         this.model = res['result']['info'];
+         this.model = res['result']['info']['lists'];
          console.log(res);
     },
   (err) => { 

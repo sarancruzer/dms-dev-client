@@ -1,3 +1,4 @@
+import { ClientReportComponent } from './components/reports/client-report/client-report.component';
 import { SupplyItemsComponent } from './components/project/supply-items/supply-items.component';
 import { ProjectTeamComponent } from './components/project/project-team/project-team.component';
 import { ProjectTypeComponent } from './components/masters/project-type/project-type.component';
@@ -105,6 +106,11 @@ export const routes: Routes = [
         {path: 'additionalInfo',component: AdditionInfoComponent,data: {title: 'Manage Additional Info '}},
         {path: 'projectNote',component: ProjectNoteComponent,data: {title: 'Manage Project Note '}},
         {path: 'supplyItems',component: SupplyItemsComponent,data: {title: 'Supply Items'}},
+
+        {path: 'projectDetailReport',component: SupplyItemsComponent,data: {title: 'Project Detail Report'}},
+        {path: 'clientReport',component: ClientReportComponent,data: {title: 'Client Report'}},
+        {path: 'projectScopeReport',component: SupplyItemsComponent,data: {title: 'Project Scope Report'}},
+        
         
         
     ]

@@ -1,0 +1,41 @@
+<p>
+  client-report works!
+</p>
+<div class="animated fadeIn">
+  <div class="row">
+   
+    <div class="col-sm-10">
+      <div class="card">
+        <div class="card-header">
+          <strong>Client Report</strong>
+          
+        </div>
+        <div class="card-body">
+        <form (ngSubmit)="submit(form)" #form="ngForm" novalidate >           
+            
+              <div class="form-group">
+                  <label for="company">User Type</label>
+                 <select id="select" name="projectId" class="form-control"  [(ngModel)] = "projectId" required>
+                    <option value="0">Select option</option>
+                    <option value="1">project 1</option>
+                    <option value="2">project 2</option>
+                    <option value="3">project 3</option>
+                    </select>
+
+                    
+
+              </div>
+                         
+            <div class="pull-right">
+              
+              <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit </button>
+              <a [routerLink]="[ '/manageUsers']" > <button type="button" class="btn btn-sm btn-default"><i class="fa fa-ban"></i> Cancel </button></a>
+            </div> 
+          </form>  
+          </div><!--/.row-->
+        
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+
+</div>

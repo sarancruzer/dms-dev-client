@@ -112,6 +112,7 @@ import { AdditionInfoComponent } from './components/project/addition-info/additi
 import { ProjectNoteComponent } from './components/project/project-note/project-note.component';
 import { SupplyItemsComponent } from './components/project/supply-items/supply-items.component';
 import { ProjectScopeConfigureComponent } from './components/masters/project-scope-configure/project-scope-configure.component';
+import { ClientReportComponent } from './components/reports/client-report/client-report.component';
 
 
 
@@ -174,7 +175,8 @@ import { ProjectScopeConfigureComponent } from './components/masters/project-sco
     AdditionInfoComponent,
     ProjectNoteComponent,
     SupplyItemsComponent,
-    ProjectScopeConfigureComponent,    
+    ProjectScopeConfigureComponent,
+    ClientReportComponent,    
   ],
   providers: [{
     provide: LocationStrategy,
