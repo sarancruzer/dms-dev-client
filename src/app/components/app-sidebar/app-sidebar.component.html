@@ -45,6 +45,23 @@
            
           </ul>
         </li>
+
+        <!-- <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Reports</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectDetailReport']"><i class="icon-user"></i> Project  Details </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/clientReport']"><i class="icon-puzzle"></i> Client Activity Report </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectScopeReport']"><i class="icon-puzzle"></i> Project Scope Report</a>
+            </li>           
+           
+          </ul>
+        </li> -->
+        
         
       <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageUsers') !== -1">
         <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageUsers']"><i class="icon-user"></i> Manage Users </a>
@@ -98,21 +115,7 @@
           </ul>
         </li>
 
-        <!-- <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Reports</a>
-          <ul class="nav-dropdown-items">
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectDetailReport']"><i class="icon-user"></i> Project  Details </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/clientReport']"><i class="icon-puzzle"></i> Client Activity Report </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectScopeReport']"><i class="icon-puzzle"></i> Project Scope Report</a>
-            </li>           
-           
-          </ul>
-        </li> -->
+        
 
      
 

@@ -74,7 +74,7 @@
             </thead>
             <tbody *ngIf="pages.length">
               <tr *ngFor="let item of items let i = index" [attr.data-index]="i" >
-                <td>{{i}}</td>
+                <td>{{i+1}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.short_code}}</td>
                 <td>{{item.created_at}}</td>

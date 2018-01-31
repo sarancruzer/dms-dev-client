@@ -75,8 +75,8 @@
                 </tr>
               </thead>
               <tbody *ngIf="pages.length">
-                <tr *ngFor="let item of items ">
-                  <td>{{i}}</td>
+                <tr *ngFor="let item of items let i = index" [attr.data-index]="i" >
+                  <td>{{i+1}}</td>
                   <td>{{item.first_name}} {{item.last_name}} </td>
                   <td>{{item.email}}</td>
                   <td>{{item.mobile}}</td>
