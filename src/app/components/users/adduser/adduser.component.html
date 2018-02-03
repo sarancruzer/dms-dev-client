@@ -53,27 +53,26 @@
 
               
               <div class="form-group">
-                  <label for="company">Mobile</label>
-                  <input class="form-control" id="mobile" name="mobile" placeholder="Mobile" [(ngModel)] = "model.mobile" #mobile="ngModel" required pattern = "^[7-9][0-9]{9}$" minlength=10 maxlength=10>
+                            <label for="company">Mobile</label>
+                            <input class="form-control" id="mobile" name="mobile" placeholder="Mobile" [(ngModel)]="model.mobile" #mobile="ngModel" required pattern="^[0-9]{10,12}$" minlength=10 maxlength=12>
 
-                  <div style="color:red" 
-                  *ngIf="mobile.errors && (mobile.dirty || mobile.touched || form.submitted)">
-                  <span class="help-block" *ngIf="mobile.errors.required">
+                            <div style="color:red" *ngIf="mobile.errors && (mobile.dirty || mobile.touched || form.submitted)">
+                                <span class="help-block" *ngIf="mobile.errors.required">
                       This field is required.
                   </span>
-                  <span class="help-block" *ngIf="mobile.errors.minlength">
+                                <span class="help-block" *ngIf="mobile.errors.minlength">
                       Phone no not less that 10 char.
                   </span>
-                  <span class="help-block" *ngIf="mobile.errors.maxlength">
-                      Phone no not more than 10 char.
+                                <span class="help-block" *ngIf="mobile.errors.maxlength">
+                      Phone no not more than 12 char.
                   </span>
-                  <span class="help-block" *ngIf="!mobile.errors.minlength && !mobile.errors.maxlength  && mobile.errors.pattern">
+                                <span class="help-block" *ngIf="!mobile.errors.minlength && !mobile.errors.maxlength  && mobile.errors.pattern">
                       Invalid mobile number.
                   </span>
-                  
-                  </div>
 
-                </div>
+                            </div>
+
+                        </div>
                 <div class="form-group">
                     <label for="company">User Type</label>
                    <select id="select" name="role" class="form-control"  [(ngModel)] = "model.role" #role="ngModel" required>

@@ -53,7 +53,7 @@
               
               <div class="form-group">
                   <label for="company">Mobile</label>
-                  <input class="form-control" id="mobile" name="mobile" placeholder="Mobile" [(ngModel)] = "model.mobile" #mobile="ngModel" required pattern = "^[7-9][0-9]{9}$" minlength=10 maxlength=10>
+                  <input class="form-control" id="mobile" name="mobile" placeholder="Mobile" [(ngModel)] = "model.mobile" #mobile="ngModel" required pattern = "^[0-9]{10,12}$" minlength=10 maxlength=12>
 
                   <div style="color:red" 
                   *ngIf="mobile.errors && (mobile.dirty || mobile.touched || form.submitted)">
@@ -64,7 +64,7 @@
                       Phone no not less that 10 char.
                   </span>
                   <span class="help-block" *ngIf="mobile.errors.maxlength">
-                      Phone no not more than 10 char.
+                      Phone no not more than 12 char.
                   </span>
                   <span class="help-block" *ngIf="!mobile.errors.minlength && !mobile.errors.maxlength  && mobile.errors.pattern">
                       Invalid mobile number.

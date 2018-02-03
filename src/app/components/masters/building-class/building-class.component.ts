@@ -43,7 +43,7 @@ export class BuildingClassComponent implements OnInit {
   orderby:string = "desc";
   submitted: boolean = false; 
   constructor(private _router:Router,private _service:BuildingClassService,private toastrService: ToastrService,private _commonService:CommonService) {
-    this.title = "Project Type";
+    this.title = "Building Class";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
     
