@@ -27,5 +27,14 @@ export class ReportService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
+  getProjectReport(id:number) : Observable<Blob> {
+    let body = JSON.stringify({"id":id});
+    return this._http.post(this.apiUrl+'get'+ApiSettings.PROJECTREPORT,body,this.options)
+    .map((res:Response) => <Blob>res.blob())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  
+
 
 }

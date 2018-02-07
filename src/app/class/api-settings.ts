@@ -26,6 +26,7 @@ export class ApiSettings {
     public static SUPPLYITEMS='SupplyItems';
     public static BUILDINGCLASSLISTS='BuildingClassLists';
     public static CLIENTREPORT='ClientReport'
+    public static PROJECTREPORT='ProjectReport'
     
         
     

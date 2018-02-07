@@ -15,7 +15,6 @@ import {saveAs as importedSaveAs} from "file-saver";
 })
 export class ClientReportComponent implements OnInit {
 
-  projectId:any;
   iSuccessError:IsuccessError;  
   
   constructor(private _router:Router,private _service : ReportService,private toastrService : ToastrService) {

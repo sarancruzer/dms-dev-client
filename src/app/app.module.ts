@@ -113,6 +113,7 @@ import { ProjectNoteComponent } from './components/project/project-note/project-
 import { SupplyItemsComponent } from './components/project/supply-items/supply-items.component';
 import { ProjectScopeConfigureComponent } from './components/masters/project-scope-configure/project-scope-configure.component';
 import { ClientReportComponent } from './components/reports/client-report/client-report.component';
+import { ProjectDetailReportComponent } from './components/reports/project-detail-report/project-detail-report.component';
 
 
 
@@ -176,7 +177,8 @@ import { ClientReportComponent } from './components/reports/client-report/client
     ProjectNoteComponent,
     SupplyItemsComponent,
     ProjectScopeConfigureComponent,
-    ClientReportComponent,    
+    ClientReportComponent,
+    ProjectDetailReportComponent,    
   ],
   providers: [{
     provide: LocationStrategy,

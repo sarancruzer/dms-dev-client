@@ -45,6 +45,7 @@ import { ProjectDocsComponent } from 'app/components/project/project-docs/projec
 import { AdditionInfoComponent } from 'app/components/project/addition-info/addition-info.component';
 import { ProjectNoteComponent } from 'app/components/project/project-note/project-note.component';
 import { ProjectScopeConfigureComponent } from 'app/components/masters/project-scope-configure/project-scope-configure.component';
+import { ProjectDetailReportComponent } from 'app/components/reports/project-detail-report/project-detail-report.component';
 
 
 export const routes: Routes = [
@@ -107,7 +108,7 @@ export const routes: Routes = [
         {path: 'projectNote',component: ProjectNoteComponent,data: {title: 'Manage Project Note '}},
         {path: 'supplyItems',component: SupplyItemsComponent,data: {title: 'Supply Items'}},
 
-        {path: 'projectDetailReport',component: SupplyItemsComponent,data: {title: 'Project Detail Report'}},
+        {path: 'projectDetailReport',component: ProjectDetailReportComponent,data: {title: 'Project Detail Report'}},
         {path: 'clientReport',component: ClientReportComponent,data: {title: 'Client Report'}},
         {path: 'projectScopeReport',component: SupplyItemsComponent,data: {title: 'Project Scope Report'}},
         

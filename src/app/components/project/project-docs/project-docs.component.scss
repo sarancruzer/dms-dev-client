@@ -8,3 +8,10 @@
 .modal-dialog {
     max-width: 750px;
 }
+
+#desc {
+    white-space: nowrap;
+    width: 20em;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
