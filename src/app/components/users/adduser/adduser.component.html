@@ -9,7 +9,43 @@
           </div>
           <div class="card-body">
           <form (ngSubmit)="submit(form)" #form="ngForm" novalidate >           
-             <div class="form-group">
+            
+
+            <div class="form-group">
+                <label for="company">Company Name</label>
+               <select id="select" name="company_name" class="form-control"  [(ngModel)] = "model.company_name" #company_name="ngModel" required>
+                  <option *ngFor="let item of licenses" value= {{item.id}}>{{item.company_name}}</option></select>
+
+                  <div style="color:red" 
+                  *ngIf="company_name.errors && (company_name.dirty || company_name.touched || form.submitted)">
+                  <span class="help-block" *ngIf="company_name.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="company">Title</label>
+               <select id="select" name="title" class="form-control"  [(ngModel)] = "model.title" #title="ngModel" required>
+                  <option value="">Select option</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Dr">Dr</option>
+                </select>
+
+                  <div style="color:red" 
+                  *ngIf="title.errors && (title.dirty || title.touched || form.submitted)">
+                  <span class="help-block" *ngIf="title.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
+
+            </div>
+
+            <div class="form-group">
               <label for="company">First Name</label>
               <input type="text" class="form-control" id="company" placeholder="First Name" [(ngModel)] = "model.first_name" name = "first_name" #first_name="ngModel" required>
 
@@ -53,24 +89,24 @@
 
               
               <div class="form-group">
-                            <label for="company">Mobile</label>
-                            <input class="form-control" id="mobile" name="mobile" placeholder="Mobile" [(ngModel)]="model.mobile" #mobile="ngModel" required pattern="^[0-9]{10,12}$" minlength=10 maxlength=12>
+            <label for="company">Mobile</label>
+            <input class="form-control" id="mobile" name="mobile" placeholder="Mobile" [(ngModel)]="model.mobile" #mobile="ngModel" required pattern="^[0-9]{10,12}$" minlength=10 maxlength=12>
 
-                            <div style="color:red" *ngIf="mobile.errors && (mobile.dirty || mobile.touched || form.submitted)">
-                                <span class="help-block" *ngIf="mobile.errors.required">
-                      This field is required.
-                  </span>
-                                <span class="help-block" *ngIf="mobile.errors.minlength">
-                      Phone no not less that 10 char.
-                  </span>
-                                <span class="help-block" *ngIf="mobile.errors.maxlength">
-                      Phone no not more than 12 char.
-                  </span>
-                                <span class="help-block" *ngIf="!mobile.errors.minlength && !mobile.errors.maxlength  && mobile.errors.pattern">
-                      Invalid mobile number.
-                  </span>
+            <div style="color:red" *ngIf="mobile.errors && (mobile.dirty || mobile.touched || form.submitted)">
+                <span class="help-block" *ngIf="mobile.errors.required">
+        This field is required.
+    </span>
+                <span class="help-block" *ngIf="mobile.errors.minlength">
+        Phone no not less that 10 char.
+    </span>
+                <span class="help-block" *ngIf="mobile.errors.maxlength">
+        Phone no not more than 12 char.
+    </span>
+                <span class="help-block" *ngIf="!mobile.errors.minlength && !mobile.errors.maxlength  && mobile.errors.pattern">
+        Invalid mobile number.
+    </span>
 
-                            </div>
+            </div>
 
                         </div>
                 <div class="form-group">
@@ -86,6 +122,19 @@
                       </div>
 
                 </div>
+
+                <div class="form-group">
+                        <label for="company">Skype</label>
+                        <input class="form-control" id="skype" name = "skype" placeholder="skype" [(ngModel)] = "model.skype"  #skype="ngModel" > 
+                         
+        
+                      </div>
+
+                      <div class="form-group">
+                            <label for="company">WeChat</label>
+                            <input class="form-control" id="last_name" name = "wechat" placeholder="WeChat" [(ngModel)] = "model.wechat"  #wechat="ngModel" >            
+                                      
+                          </div>
                            
               <div class="pull-right">
                 

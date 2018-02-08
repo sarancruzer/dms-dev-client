@@ -19,6 +19,8 @@ export class EdituserComponent implements OnInit {
   model = new User();
   iSuccessError:IsuccessError;
   roles : any = [];
+  licenses : any = [];
+  
   id:number;
   
   constructor(private _router:Router,private _service : UserService,private toastrService : ToastrService,private _commonService : CommonService,private _route : ActivatedRoute) {
@@ -38,10 +40,11 @@ export class EdituserComponent implements OnInit {
 
 
 getMasterData(){
-  let params = ['m_roles',];
+  let params = ['m_roles','license'];
   this._commonService.getMasterDetails(params).subscribe(     
     (res) => {
          this.roles = res['result']['info']['m_roles'];
+         this.licenses = res['result']['info']['license'];
          console.log(res);
     },
   (err) => { 

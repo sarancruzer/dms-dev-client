@@ -20,6 +20,7 @@ export class AdduserComponent implements OnInit {
   iSuccessError:IsuccessError;
 
   roles : any = [];
+  licenses : any = [];
   constructor(private _router:Router,private _service : UserService,private toastrService : ToastrService,private _commonService : CommonService) {
     
     this.iSuccessError = {mSuccess:"",mError:""};
@@ -30,10 +31,12 @@ export class AdduserComponent implements OnInit {
   }
     
   getMasterData(){
-  let params = ['m_roles',];
+  let params = ['m_roles','license'];
   this._commonService.getMasterDetails(params).subscribe(     
     (res) => {
           this.roles = res['result']['info']['m_roles'];
+          this.licenses = res['result']['info']['license'];
+          
           console.log(res);
     },
   (err) => { 
