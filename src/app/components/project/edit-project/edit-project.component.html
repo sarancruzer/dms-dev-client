@@ -93,7 +93,7 @@
                   
                     <div class="form-group">
                         <label for="company">Client Name</label>
-                         <select id="select" name="state" class="form-control form-control-lg"  [(ngModel)] = "model.client_name" #client_name="ngModel" required>
+                         <select id="select" name="client_name" class="form-control form-control-lg"  [(ngModel)] = "model.client_name" #client_name="ngModel" required>
                       <option *ngFor="let row of clients" value= {{row.id}}>{{row.client_business}}</option>
                     </select>
                       <div style="color:red" 
@@ -107,8 +107,8 @@
   
                  <div class="form-group">
                   <label for="company">Project Status</label>
-                   <select id="select" name="state" class="form-control form-control-lg"  [(ngModel)] = "model.project_status" #project_status="ngModel" required>
-                      <option *ngFor="let row of clients" value= {{row.id}}>{{row.client_business}}</option>
+                   <select id="select" name="project_status" class="form-control form-control-lg"  [(ngModel)] = "model.project_status" #project_status="ngModel" required>
+                      <option *ngFor="let row of project_statuss" value= {{row.id}}>{{row.name}}</option>
                     </select>
   
                   <div style="color:red" 

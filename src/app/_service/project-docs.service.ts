@@ -1,3 +1,4 @@
+import { ProjectTeam } from 'app/_model/project-team';
 import { Injectable } from '@angular/core';
 import { environment } from "environments/environment";
 import { Http, RequestOptions, Response ,Headers} from '@angular/http';
@@ -40,9 +41,9 @@ export class ProjectDocsService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  edit(id:number) : Observable<ProjectDocs[]> {
+  edit(id:number,projectId:any) : Observable<ProjectDocs[]> {
     console.log(id);
-    let body = "";
+    let body = JSON.stringify({"project_id":projectId});
     return this._http.post(this.apiUrl+'edit'+ApiSettings.PROJECTDOCS+"/"+id,body,this.options)
     .map((res:Response) => <ProjectDocs[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));

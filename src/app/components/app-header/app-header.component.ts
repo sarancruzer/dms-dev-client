@@ -27,7 +27,7 @@ export class AppHeader {
     // remove the empty element(the host)
     parentElement.removeChild(nativeElement);
 
-    this.getMasterData();
+    //this.getMasterData();
     
   }
 
@@ -51,6 +51,6 @@ export class AppHeader {
     changeProject() {
       console.log(this.project);
       localStorage.setItem("project_id",this.project);
-  }
+    }
 
 }

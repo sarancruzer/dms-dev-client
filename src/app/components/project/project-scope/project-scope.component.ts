@@ -48,10 +48,12 @@ export class ProjectScopeComponent implements OnInit {
 
   iSuccessError:IsuccessError;
   form:FormGroup;
-  id:number;  
+  id:any;  
   calcAmt:number = 0;
   project_name:string;
   quoteAmt:number;
+
+  projects:any = [];
 
 
   constructor(private _router:Router,private _route : ActivatedRoute,private _commonService:CommonService,private toastrService:ToastrService,private _service:ProjectService,private fb: FormBuilder) {
@@ -70,7 +72,8 @@ export class ProjectScopeComponent implements OnInit {
    });
     this.getProjectScopeMasterData();
 
-    this.getMasterData();       
+    this.getMasterData();    
+    this.getProjectList();   
   }
 
 
@@ -203,6 +206,36 @@ export class ProjectScopeComponent implements OnInit {
               this._router.navigate(['/logout']);
          }
     }) 
+    }
+
+    getProjectList(){ 
+      let params = [];
+      this._commonService.getProjectList(params).subscribe(     
+        (res) => {
+            this.projects = res['result']['info'];
+            //localStorage.setItem("project_id",this.projects[0].id);
+  
+            this.id = JSON.parse(localStorage.getItem("project_id"));
+        },
+      (err) => { 
+          if(err == 'token_expired'){
+                this._router.navigate(['/logout']);
+           }
+      }) 
+    }
+
+    changeProject() {
+      console.log(this.id);
+      localStorage.setItem("project_id",this.id);
+      this.form = this.fb.group({
+        quote:[''],  
+        project_details: this.fb.array([      
+          //this.initVariation(),
+      ])
+     });
+     this.getMasterData(); 
+     this.getProjectScopeMasterData();
+   
     }
 
 

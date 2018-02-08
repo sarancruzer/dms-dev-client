@@ -11,7 +11,13 @@
 
 #desc {
     white-space: nowrap;
-    width: 20em;
+    width: 15em;
     overflow: hidden;
     text-overflow: ellipsis; 
+}
+
+#rev {
+    white-space: nowrap;
+    width: 3em;
+    overflow: hidden;    
 }

@@ -17,13 +17,16 @@ export class ProjectTeamComponent implements OnInit {
 
   model = new ProjectTeam();
   iSuccessError:IsuccessError;
-  id:number; 
+  id:any; 
   developers:any = [];
   projectManagers:any = [];
   estimators:any = [];
   siteManagers:any = [];
   project_name:string;
   form:FormGroup;
+  
+  projects:any = [];
+  projectId:any;
 
     constructor(private _router:Router,private _route : ActivatedRoute,private _commonService:CommonService,private toastrService:ToastrService,private _service:ProjectService) { 
       this.iSuccessError = {mSuccess:"",mError:""};
@@ -31,6 +34,7 @@ export class ProjectTeamComponent implements OnInit {
     ngOnInit() {
     
       this.form = new FormGroup({
+
         developer: new FormControl('', Validators.required),
         project_manager: new FormControl('', Validators.required),
         estimator: new FormControl('', Validators.required),
@@ -39,14 +43,15 @@ export class ProjectTeamComponent implements OnInit {
         engineer: new FormControl('', Validators.required),        
         building_surveyor: new FormControl('', Validators.required),        
         quantity_surveyor: new FormControl('', Validators.required),        
-        superintendent: new FormControl('', Validators.required)
+        superintendent: new FormControl('', Validators.required)       
       });
 
-    this.id = Number(localStorage.getItem("project_id"));
+    this.id = localStorage.getItem("project_id");
     console.log(this.id);
     this.getMasterData();    
+    this.getProjectList();  
     this.getDetailsById(this.id);
-
+    
     }
 
 
@@ -71,13 +76,13 @@ getMasterData(){
             this.siteManagers.push(ress[i]);
           }
 
-        }
-          
+        }          
           console.log(this.developers);
           console.log(this.projectManagers);
           console.log(this.estimators);
           console.log(this.siteManagers);
-    },
+
+   },
   (err) => { 
       this.iSuccessError.mError = err;
       this.toastrService.error(err, 'Error!');
@@ -86,6 +91,31 @@ getMasterData(){
        }
   }) 
   }
+
+
+ 
+  getProjectList(){ 
+    let params = [];
+    this._commonService.getProjectList(params).subscribe(     
+      (res) => {
+          this.projects = res['result']['info'];
+          //localStorage.setItem("project_id",this.projects[0].id);
+
+          this.id = localStorage.getItem("project_id");
+      },
+    (err) => { 
+        if(err == 'token_expired'){
+              this._router.navigate(['/logout']);
+         }
+    }) 
+  }
+
+  changeProject() {
+    console.log(this.id);
+    localStorage.setItem("project_id",this.id);
+    this.getDetailsById(this.id);
+  }
+
  
  getDetailsById(id) {
   this._service.getProjectTeamById(id).subscribe(     
@@ -96,7 +126,7 @@ getMasterData(){
          this.setValue(ress);
          //Object.keys(ress); // ['name', 'age']
          console.log('this.model');
-         console.log(this.model);         
+         console.log(ress);         
     },
   (err) => { 
     console.log(err);

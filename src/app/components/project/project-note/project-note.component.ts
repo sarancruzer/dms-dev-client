@@ -28,10 +28,12 @@ export class ProjectNoteComponent implements OnInit {
   
   q:any;
   
-  id:number;
+  id:any;
   iSuccessError:IsuccessError;
   form:FormGroup;
   project_name:string;
+
+  projects:any = [];
   
   
   isDesc: boolean = true;
@@ -50,6 +52,7 @@ export class ProjectNoteComponent implements OnInit {
    ngOnInit() {    
     this.loadFormControl();
     this.getDetailsById(this.id);    
+    this.getProjectList();
   }
 
   getDetailsById(id) {
@@ -68,6 +71,32 @@ export class ProjectNoteComponent implements OnInit {
        }
     }) 
    }
+
+
+ 
+  getProjectList(){ 
+    let params = [];
+    this._commonService.getProjectList(params).subscribe(     
+      (res) => {
+          this.projects = res['result']['info'];
+          //localStorage.setItem("project_id",this.projects[0].id);
+
+          this.id = localStorage.getItem("project_id");
+      },
+    (err) => { 
+        if(err == 'token_expired'){
+              this._router.navigate(['/logout']);
+         }
+    }) 
+  }
+
+  changeProject() {
+    console.log(this.id);
+    localStorage.setItem("project_id",this.id);
+    this.getDetailsById(this.id);
+  }
+
+
 
 loadFormControl(){
   this.form = new FormGroup({

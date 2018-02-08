@@ -49,7 +49,8 @@ export class SupplyItemsComponent implements OnInit {
   supply_terms:any = [];
   projectStatuss:any = [];
   project_name:string;
-  id:number;
+  id:any;
+  projects:any = [];
   iSuccessError:IsuccessError;
 
   form:FormGroup;
@@ -93,7 +94,7 @@ export class SupplyItemsComponent implements OnInit {
 
   constructor(private _router:Router,private _commonService:CommonService,private toastrService:ToastrService,private _service:ProjectService,private fb:FormBuilder) {
     this.iSuccessError = {mSuccess:"",mError:""};
-    this.id = JSON.parse(localStorage.getItem("project_id"));
+    this.id = localStorage.getItem("project_id");
     
    }
 
@@ -102,6 +103,7 @@ export class SupplyItemsComponent implements OnInit {
     this.initFormControl();
     this.getMasterData();
     this.getDetailsById(this.id);
+    this.getProjectList();
   }
 
 
@@ -124,6 +126,32 @@ getMasterData(){
   })
   }
 
+  getProjectList(){ 
+    let params = [];
+    this._commonService.getProjectList(params).subscribe(     
+      (res) => {
+          this.projects = res['result']['info'];
+          //localStorage.setItem("project_id",this.projects[0].id);
+
+          this.id = localStorage.getItem("project_id");
+      },
+    (err) => { 
+        if(err == 'token_expired'){
+              this._router.navigate(['/logout']);
+         }
+    }) 
+  }
+
+  changeProject() {
+    console.log(this.id);
+    localStorage.setItem("project_id",this.id);
+
+    this.initFormControl();
+    this.getMasterData();
+    this.getDetailsById(this.id);       
+  }
+
+
   getDetailsById(id) {
     this._service.getSupplyItemsById(id).subscribe(
       (res) => {
@@ -132,6 +160,7 @@ getMasterData(){
            //Object.keys(ress); // ['name', 'age']
            console.log(res);
            this.sidemenuItems = Object.getOwnPropertyNames(ress[0]);
+         
            this.loadFormControl(ress[0]);
            this.project_quote = res['result']['info']['project_quote'];
       },

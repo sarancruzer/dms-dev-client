@@ -1,67 +1,87 @@
 <div class="animated fadeIn">
   <div class="row">
-   
-    <div class="col-sm-10">
-      <div class="card">
-      <form [formGroup]="form" (ngSubmit)="submit(form)" novalidate >
-        <div class="card-header">
-          <strong>{{project_name}} - Project Team</strong>
-        </div>
-        <div class="card-body">
-          
-            <div class="form-group">
-                <label for="company">Developer</label>
-                <select id="select" class="form-control" formControlName="developer">
-                    <option *ngFor="let row of developers" value= {{row.id}}>{{row.name}}</option> 
-                </select>                
-              </div>
-              <div class="form-group">
-                  <label for="company">Project Manager</label>
-                  <select id="select" class="form-control"  formControlName="project_manager">
-                  <option *ngFor="let row of projectManagers" value= {{row.id}}>{{row.name}}</option>             
-                  </select>                
-                </div>
-                <div class="form-group">
-                    <label for="company">Estimator</label>
-                    <select id="select" name="select" class="form-control" formControlName="estimator" >
-                    <option *ngFor="let row of estimators" value= {{row.id}}>{{row.name}}</option>        </select>                
-                  </div>
-                  <div class="form-group">
-                      <label for="company">Site Manager</label>
-                      <select id="select" name="select" class="form-control"  formControlName="site_manager" >
-                       <option *ngFor="let row of siteManagers" value= {{row.id}}>{{row.name}}</option>        
-                      </select>                
-                    </div>
 
-           <div class="form-group">
-            <label for="company">Architech</label>
-            <input type="text" class="form-control" id="company" placeholder="Architech" formControlName="architech">
-          </div>
+    <div class="col-sm-10">
+
+      <div class="card">
+        <div class="card-body">
           <div class="form-group">
+            <label for="company"></label>
+            <select id="select" name="projectId" class="form-control form-control-lg"  [(ngModel)] = "id" (change)="changeProject()">
+                <option *ngFor="let row of projects" value="{{row.id}}">{{row.project_name}}</option>
+                </select>
+          </div>        
+
+        </div>   
+      </div>
+
+      <div class="card">
+
+        <form [formGroup]="form" (ngSubmit)="submit(form)" novalidate>
+          <div class="card-header">
+            <strong>{{project_name}} - Project Team</strong>
+          </div>
+          <div class="card-body">
+
+            <div class="form-group">
+              <label for="company">Developer</label>
+              <select id="select" class="form-control" formControlName="developer">
+                <option *ngFor="let row of developers" value={{row.id}}>{{row.name}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="company">Project Manager</label>
+              <select id="select" class="form-control" formControlName="project_manager">
+                <option *ngFor="let row of projectManagers" value={{row.id}}>{{row.name}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="company">Estimator</label>
+              <select id="select" name="select" class="form-control" formControlName="estimator">
+                <option *ngFor="let row of estimators" value={{row.id}}>{{row.name}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="company">Site Manager</label>
+              <select id="select" name="select" class="form-control" formControlName="site_manager">
+                <option *ngFor="let row of siteManagers" value={{row.id}}>{{row.name}}</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="company">Architech</label>
+              <input type="text" class="form-control" id="company" placeholder="Architech" formControlName="architech">
+            </div>
+            <div class="form-group">
               <label for="company">Engineer</label>
               <input type="text" class="form-control" id="company" placeholder="Engineer" formControlName="engineer">
             </div>
             <div class="form-group">
-                <label for="company">Building surveyor</label>
-                <input type="text" class="form-control" id="company" placeholder="Building surveyor" formControlName="building_surveyor">
-              </div>
-              <div class="form-group">
-                  <label for="company">Quantity surveyor</label>
-                  <input type="text" class="form-control" id="company" placeholder="Quantity surveyor" formControlName="quantity_surveyor" >
-                </div>
-                <div class="form-group">
-                    <label for="company">Superintendent</label>
-                    <input type="text" class="form-control" id="company" placeholder="Superintendent" formControlName="superintendent" >
-                  </div>
+              <label for="company">Building surveyor</label>
+              <input type="text" class="form-control" id="company" placeholder="Building surveyor" formControlName="building_surveyor">
+            </div>
+            <div class="form-group">
+              <label for="company">Quantity surveyor</label>
+              <input type="text" class="form-control" id="company" placeholder="Quantity surveyor" formControlName="quantity_surveyor">
+            </div>
+            <div class="form-group">
+              <label for="company">Superintendent</label>
+              <input type="text" class="form-control" id="company" placeholder="Superintendent" formControlName="superintendent">
+            </div>
             <div class="pull-right">
-              <button type="submit" class="btn btn-sm btn-primary" ><i class="fa fa-dot-circle-o"></i> Save </button>
-              <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-            </div> 
+              <button type="submit" class="btn btn-sm btn-primary">
+                <i class="fa fa-dot-circle-o"></i> Save </button>
+              <button type="reset" class="btn btn-sm btn-danger">
+                <i class="fa fa-ban"></i> Reset</button>
+            </div>
             <!-- <pre>{{ form.value | json }}</pre> -->
-          </div><!--/.row-->
-       </form> 
+          </div>
+          <!--/.row-->
+        </form>
       </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
 
 </div>

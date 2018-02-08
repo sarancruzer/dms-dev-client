@@ -30,11 +30,12 @@ export class ProjectDocsComponent implements OnInit {
   
   q:any;
   
-  project_id:number;
-  id:number;
+  id:any;
   iSuccessError:IsuccessError;
   form:FormGroup;
   project_name:string;
+
+  projects:any = [];
 
   
   @ViewChild('createModal') public createModal:ModalDirective;
@@ -50,7 +51,7 @@ export class ProjectDocsComponent implements OnInit {
     this.title = "Project Documents";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
-    this.project_id = JSON.parse(localStorage.getItem("project_id"));
+    this.id = localStorage.getItem("project_id");
     
    }
 
@@ -60,6 +61,7 @@ export class ProjectDocsComponent implements OnInit {
     this.loadFormControl();
     this.init(1);
     this._commonService.authRedirect('/projectDocs');
+    this.getProjectList();
   }
 
   sort(property){
@@ -72,7 +74,7 @@ export class ProjectDocsComponent implements OnInit {
 
  init(page) {
    console.log(page,this.q);
-   let params = {column:this.column,orderby:this.orderby,q:this.q,"project_id":this.project_id};
+   let params = {column:this.column,orderby:this.orderby,q:this.q,"project_id":this.id};
    this._service.get(page,params).subscribe(     
      (res) => {
           this.items = res['result']['info']['data'];
@@ -97,6 +99,38 @@ export class ProjectDocsComponent implements OnInit {
    })   
 }
 
+getProjectList(){ 
+  let params = [];
+  this._commonService.getProjectList(params).subscribe(     
+    (res) => {
+        this.projects = res['result']['info'];
+        //localStorage.setItem("project_id",this.projects[0].id);
+        
+        this.id = localStorage.getItem("project_id");
+        let items = this.projects.find(i => i.id == this.id);
+        this.project_name = items['project_name'];
+    },
+  (err) => { 
+      if(err == 'token_expired'){
+            this._router.navigate(['/logout']);
+       }
+  }) 
+}
+
+changeProject() {
+  console.log("value");
+  console.log(this.id);
+
+  let items = this.projects.find(i => i.id == this.id);
+  console.log(items);
+  console.log(items['project_name']);
+  this.project_name = items['project_name'];
+  
+  localStorage.setItem("project_id",this.id);
+  this.init(this.currentPage);
+}
+
+
 loadFormControl(){
   this.form = new FormGroup({
     ref: new FormControl('', Validators.required),
@@ -105,20 +139,21 @@ loadFormControl(){
     revision: new FormControl('', Validators.required),
     p_date: new FormControl('', Validators.required),
     p_link: new FormControl('', Validators.required),   
-    project_id: new FormControl(this.project_id),   
+    project_id: new FormControl(this.id),   
   });
   
 }
 
 createModalFunc(){
 
-  this._service.getReferenceId(this.project_id).subscribe(     
+  this.loadFormControl();
+  this._service.getReferenceId(this.id).subscribe(     
     (res) => {
         let refId = res['result']['info']['reference_id'];
         let archId = res['result']['info']['arch_id'];
         this.form.patchValue({ref: refId})
         this.form.patchValue({arch_ref: archId})
-        this.project_name = res['result']['info']['project_name'];
+       // this.project_name = res['result']['info']['project_name'];
     },
   (err) => { 
       this.iSuccessError.mError = err;
@@ -157,13 +192,16 @@ createModalFunc(){
       revision: new FormControl(res['revision'], Validators.required),
       p_date: new FormControl(res['p_date'], Validators.required),
       p_link: new FormControl(res['p_link'], Validators.required),   
+      project_id: new FormControl(this.id, Validators.required),   
     });
     
   }
 
+
+
   edit(data){
     this.editModal.show();
-    this._service.edit(data.id).subscribe(     
+    this._service.edit(data.id,this.id).subscribe(     
       (res) => {
            this.model = res['result']['info']['lists'];
            this.loadEditFormControl(this.model);
@@ -177,9 +215,11 @@ createModalFunc(){
   }
 
   update(form){
+    console.log(this.model);
+    console.log(this.model.id);
 
     if(form.valid){
-    this._service.update(this.model,this.model.id).subscribe(     
+    this._service.update(form.value,this.model.id).subscribe(     
       (res) => {
            this.iSuccessError.mSuccess = res['result']['info']['msg'];
            this.init(this.currentPage);
