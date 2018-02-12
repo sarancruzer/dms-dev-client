@@ -46,6 +46,7 @@ import { AdditionInfoComponent } from 'app/components/project/addition-info/addi
 import { ProjectNoteComponent } from 'app/components/project/project-note/project-note.component';
 import { ProjectScopeConfigureComponent } from 'app/components/masters/project-scope-configure/project-scope-configure.component';
 import { ProjectDetailReportComponent } from 'app/components/reports/project-detail-report/project-detail-report.component';
+import { ContactsComponent } from 'app/components/masters/contacts/contacts.component';
 
 
 export const routes: Routes = [
@@ -86,6 +87,8 @@ export const routes: Routes = [
         {path: 'masters/projectScope',component: MprojectScopeComponent,data: {title: 'Manage Project Scope'}},
         {path: 'masters/projectScopeConfigure',component: ProjectScopeConfigureComponent,data: {title: 'Manage Project Scope'}},
         {path: 'masters/items',component: ItemsComponent,data: {title: 'Manage Items'}},
+        {path: 'contacts',component: ContactsComponent,data: {title: 'Manage Contacts'}},
+        
         
         
         {path: 'manageClient',component: ManageClientComponent,data: {title: 'Manage Clients'}},

@@ -82,6 +82,10 @@
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageLicense']"><i class="fa fa-id-card"></i> Manage License </a>
       </li>
 
+      <li class="nav-item" >
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/contacts']"><i class="fa fa-id-card"></i> Manage Contacts </a>
+      </li>
+
       <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageClient') !== -1">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageClient']"><i class="fa fa-briefcase"></i> Manage Clients </a>
         </li> 

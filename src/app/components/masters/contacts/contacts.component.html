@@ -1,0 +1,439 @@
+
+
+<div class="animated fadeIn">
+  <div class="row">
+    
+    <!--/.col-->
+    <div class="col-lg-12">
+             
+      <div class="card">
+
+          <div class="card-body">
+                  <div class="col-md-12">
+                    <div class="input-group">
+                      <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Search here" [(ngModel)]="q" (keyup.enter)="init(currentPage);">
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-primary"  (click)="init(currentPage)"><i class="fa fa-search" ></i> Search</button>
+                        </span>
+                    </div>
+                  </div>
+            </div>
+        
+        <div class="card-header">
+
+          <i class="fa fa-align-justify"></i> {{title}} List
+          <div class="pull-right">
+              <button type="button" class="btn btn-sm btn-primary" (click)="createModalFunc(createForm)">
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> Create
+                </button>          
+            </div>
+        </div>
+        <div class="card-body">
+
+          <table class="table table-striped">
+            <thead>
+              <!-- <tr>
+                <th class="pointer" (click)="sort('name')">
+                  #
+                  <i class="fa" [ngClass]="{'fa-sort': column != 'id', 'fa-sort-asc': (column == 'id' && isDesc), 'fa-sort-desc': (column == 'id' && !isDesc) }" aria-hidden="true"> </i>
+              </th>
+                <th class="pointer" (click)="sort('name')">
+                    Name
+                    <i class="fa" [ngClass]="{'fa-sort': column != 'name', 'fa-sort-asc': (column == 'name' && isDesc), 'fa-sort-desc': (column == 'name' && !isDesc) }" aria-hidden="true"> </i>
+                </th>
+                <th class="pointer" (click)="sort('short_code')">
+                    Short Code
+                    <i class="fa" [ngClass]="{'fa-sort': column != 'short_code', 'fa-sort-asc': (column == 'short_code' && isDesc), 'fa-sort-desc': (column == 'short_code' && !isDesc) }" aria-hidden="true"> </i>
+                </th>
+                <th class="pointer" (click)="sort('created_at')">
+                    Created at
+                    <i class="fa" [ngClass]="{'fa-sort': column != 'created_at', 'fa-sort-asc': (column == 'created_at' && isDesc), 'fa-sort-desc': (column == 'created_at' && !isDesc) }" aria-hidden="true"> </i>
+                </th>
+                <th class="pointer" (click)="sort('updated_at')">
+                    Updated at
+                    <i class="fa" [ngClass]="{'fa-sort': column != 'updated_at', 'fa-sort-asc': (column == 'updated_at' && isDesc), 'fa-sort-desc': (column == 'updated_at' && !isDesc) }" aria-hidden="true"> </i>
+                </th>
+                <th class="pointer" (click)="sort('Name')">
+                    Status
+                    <i class="fa" [ngClass]="{'fa-sort': column != 'Description', 'fa-sort-asc': (column == 'Description' && isDesc), 'fa-sort-desc': (column == 'Description' && !isDesc) }" aria-hidden="true"> </i>
+                </th>
+                <th class="pointer">
+                    Actions
+                </th>
+              </tr> -->
+             
+              <tr>
+                <th class="pointer" >#</th>
+                <th class="pointer">Name</th>
+                <th class="pointer" >Job Title</th>
+                <th class="pointer" >Mobile</th>
+                <th class="pointer" >Email</th>
+                <th class="pointer" >Created at</th>
+                <th class="pointer" >Updated at</th>
+                <th class="pointer" >Status</th>
+                <th class="pointer">Actions</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="pages.length">
+              <tr *ngFor="let item of items let i = index" [attr.data-index]="i" >
+                <td>{{i+1}}</td>
+                <td>{{item.first_name}} {{item.surename}}</td>
+                <td>{{item.job_title_name}}</td>
+                <td>{{item.mobile}}</td>                
+                <td>{{item.email}}</td>                
+                <td>{{item.created_at}}</td>
+                <td>{{item.updated_at}}</td>
+                 <td><span class="badge badge-success">Active</span></td>
+                <td>
+                  <button type="button" class="btn btn-outline-success" data-toggle="modal" (click)="edit(item)" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModalFunc(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  
+                </td>
+              </tr>
+            </tbody>
+           
+            <tbody *ngIf="!pages.length">
+                <tr>
+                    <td colspan="7"><div class="talign" >{{iSuccessError.mError}}</div></td>
+                  </tr>
+            </tbody>
+          </table>
+          <ul *ngIf="pages && pages.length" class="pagination">
+              <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+                  <a (click)="init(1)">First</a>
+              </li>
+              <li class="page-item" [ngClass]="{disabled:currentPage === 1}">
+                  <a (click)="init(currentPage - 1)">Previous</a>
+              </li>
+              <li class="page-item" *ngFor="let page of pages" [ngClass]="{active:currentPage === page}">
+                  <a (click)="init(page)">{{page}}</a>
+              </li>
+              <li class="page-item" [ngClass]="{disabled:currentPage === lastPage}">
+                  <a (click)="init(currentPage + 1)">Next</a>
+              </li>
+              <li class="page-item" [ngClass]="{disabled:currentPage === lastPage}">
+                  <a (click)="init(lastPage)">Last</a>
+              </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+  
+</div>
+
+
+
+
+<div bsModal #createModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+
+     
+      <form (ngSubmit)="create(createForm)" #createForm="ngForm" novalidate >
+
+    <div class="modal-header">
+      <h4 class="modal-title">Create {{title}}</h4>
+      <button type="button" class="close" (click)="createModal.hide()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="card-body">
+        <div class="form-group">
+            <label for="company">Client Name</label>
+            <select id="select" name="client_name" class="form-control"  [(ngModel)] = "model.client_name" #client_name="ngModel" required>
+              <option *ngFor="let item of client_names" value= {{item.id}}>{{item.client_business}}</option>
+             </select>
+
+            <div style="color:red" 
+            *ngIf="client_name.errors && (client_name.dirty || client_name.touched || updateForm.submitted)">
+            <span class="help-block" *ngIf="client_name.errors.required">
+              This field is required.
+            </span>
+            </div>
+
+            <p *ngIf="client_name.errors?.url">error message</p>
+
+          </div>
+
+          <div class="form-group">
+            <label for="company">First Name</label>
+            <input type="text" class="form-control" [(ngModel)]="model.first_name" name="first_name" #first_name="ngModel" required />
+
+            <div style="color:red" 
+            *ngIf="first_name.errors && (first_name.dirty || first_name.touched || updateForm.submitted)">
+            <span class="help-block" *ngIf="first_name.errors.required">
+              This field is required.
+            </span>
+            </div>
+
+            <p *ngIf="first_name.errors?.url">error message</p>
+
+          </div>
+
+          <div class="form-group">
+              <label for="company"> Last Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Last Name" [(ngModel)] = "model.surename" name = "surename" #surename="ngModel" required>
+              
+              <div style="color:red" 
+              *ngIf="surename.errors && (surename.dirty || surename.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="surename.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="company"> Salutation</label>
+              <input type="text" class="form-control" id="name" placeholder="Salutation" [(ngModel)] = "model.salutation" name = "salutation" #salutation="ngModel" required>
+              
+              <div style="color:red" 
+              *ngIf="salutation.errors && (salutation.dirty || salutation.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="salutation.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="company"> Job Title</label>
+              <select id="select" name="job_title" class="form-control"  [(ngModel)] = "model.job_title" #job_title="ngModel" required>
+              <option *ngFor="let item of job_titles" value= {{item.id}}>{{item.name}}</option>
+             </select>
+              
+              <div style="color:red" 
+              *ngIf="job_title.errors && (job_title.dirty || job_title.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="job_title.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="company"> Mobile</label>
+              <input type="text" class="form-control" id="name" placeholder="mobile" [(ngModel)] = "model.mobile" name = "mobile" #mobile="ngModel" required>
+              
+              <div style="color:red" 
+              *ngIf="mobile.errors && (mobile.dirty || mobile.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="mobile.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="company"> Email </label>
+              <input type="text" class="form-control" id="name" placeholder="email" [(ngModel)] = "model.email" name = "email" #email="ngModel" required>
+              
+              <div style="color:red" 
+              *ngIf="email.errors && (email.dirty || email.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="email.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="company">Skype</label>
+              <input class="form-control" id="skype" name = "skype" placeholder="skype" [(ngModel)] = "model.skype"  #skype="ngModel" > 
+               
+
+            </div>
+
+            <div class="form-group">
+                  <label for="company">WeChat</label>
+                  <input class="form-control" id="last_name" name = "wechat" placeholder="WeChat" [(ngModel)] = "model.wechat"  #wechat="ngModel" >            
+                            
+                </div>
+
+                <div class="form-group">
+                  <label for="company">Notes</label>
+                  <input class="form-control" id="last_name" name = "notes" placeholder="Notes" [(ngModel)] = "model.notes"  #notes="ngModel" >            
+                            
+                </div>
+     
+         </div><!--/.row-->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="createModal.hide()">Close</button>
+      <button type="submit" class="btn btn-primary"  >Save </button>
+    </div>
+    </form>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog " role="document">
+  <div class="modal-content">
+      <form (ngSubmit)="update(updateForm,model.id)" #updateForm="ngForm" novalidate >
+          
+    <div class="modal-header">
+      <h4 class="modal-title">Edit {{title}}</h4>
+      <button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     <div class="card-body">
+      
+      <div class="form-group">
+        <label for="company">Client Name</label>
+        <select id="select" name="client_name" class="form-control"  [(ngModel)] = "model.client_name" #client_name="ngModel" required>
+          <option *ngFor="let item of client_names" value= {{item.id}}>{{item.client_business}}</option>
+         </select>
+
+        <div style="color:red" 
+        *ngIf="client_name.errors && (client_name.dirty || client_name.touched || updateForm.submitted)">
+        <span class="help-block" *ngIf="client_name.errors.required">
+          This field is required.
+        </span>
+        </div>
+
+        <p *ngIf="client_name.errors?.url">error message</p>
+
+      </div>
+
+          <div class="form-group">
+            <label for="company">First Name</label>
+            <input type="text" class="form-control" [(ngModel)]="model.first_name" name="first_name" #first_name="ngModel" required />
+
+            <div style="color:red" 
+            *ngIf="first_name.errors && (first_name.dirty || first_name.touched || updateForm.submitted)">
+            <span class="help-block" *ngIf="first_name.errors.required">
+              This field is required.
+            </span>
+            </div>
+
+            <p *ngIf="first_name.errors?.url">error message</p>
+
+          </div>
+
+          <div class="form-group">
+              <label for="company"> Last Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Last Name" [(ngModel)] = "model.surename" name = "surename" #surename="ngModel" required>
+              
+              <div style="color:red" 
+              *ngIf="surename.errors && (surename.dirty || surename.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="surename.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="company"> Salutation</label>
+              <input type="text" class="form-control" id="name" placeholder="Salutation" [(ngModel)] = "model.salutation" name = "salutation" #salutation="ngModel" required>
+              
+              <div style="color:red" 
+              *ngIf="salutation.errors && (salutation.dirty || salutation.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="salutation.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="company"> Job Title</label>
+              <select id="select" name="job_title" class="form-control"  [(ngModel)] = "model.job_title" #job_title="ngModel" required>
+              <option *ngFor="let item of job_titles" value= {{item.id}}>{{item.name}}</option>
+             </select>
+              
+              <div style="color:red" 
+              *ngIf="job_title.errors && (job_title.dirty || job_title.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="job_title.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="company"> Mobile</label>
+              <input type="text" class="form-control" id="name" placeholder="mobile" [(ngModel)] = "model.mobile" name = "mobile" #mobile="ngModel" required>
+              
+              <div style="color:red" 
+              *ngIf="mobile.errors && (mobile.dirty || mobile.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="mobile.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="company"> Email </label>
+              <input type="text" class="form-control" id="name" placeholder="email" [(ngModel)] = "model.email" name = "email" #email="ngModel" required>
+              
+              <div style="color:red" 
+              *ngIf="email.errors && (email.dirty || email.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="email.errors.required">
+                  This field is required.
+              </span>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="company">Skype</label>
+              <input class="form-control" id="skype" name = "skype" placeholder="skype" [(ngModel)] = "model.skype"  #skype="ngModel" > 
+
+            </div>
+
+            <div class="form-group">
+                  <label for="company">WeChat</label>
+                  <input class="form-control" id="last_name" name = "wechat" placeholder="WeChat" [(ngModel)] = "model.wechat"  #wechat="ngModel" >            
+                            
+                </div>
+
+                <div class="form-group">
+                  <label for="company">Notes</label>
+                  <input class="form-control" id="last_name" name = "notes" placeholder="Notes" [(ngModel)] = "model.notes"  #notes="ngModel" >            
+                            
+                </div>
+     
+         </div><!--/.row-->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="editModal.hide()">Close</button>
+      <button type="submit" class="btn btn-success" >Update </button>
+    </div>
+    </form>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div bsModal #deleteModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog " role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Are you sure want to delete!</h4>
+      <button type="button" class="close" (click)="deleteModal.hide()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure want to delete this record! &hellip;</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="deleteModal.hide()">Close</button>
+      <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
