@@ -146,12 +146,12 @@
       <div class="card-body">
         <div class="form-group">
             <label for="company">Client Name</label>
-            <select id="select" name="client_name" class="form-control"  [(ngModel)] = "model.client_name" #client_name="ngModel" required>
+            <select id="select" name="client_name" class="form-control"  [(ngModel)] = "createModel.client_name" #client_name="ngModel" required>
               <option *ngFor="let item of client_names" value= {{item.id}}>{{item.client_business}}</option>
              </select>
 
             <div style="color:red" 
-            *ngIf="client_name.errors && (client_name.dirty || client_name.touched || updateForm.submitted)">
+            *ngIf="client_name.errors && (client_name.dirty || client_name.touched || createForm.submitted)">
             <span class="help-block" *ngIf="client_name.errors.required">
               This field is required.
             </span>
@@ -163,10 +163,10 @@
 
           <div class="form-group">
             <label for="company">First Name</label>
-            <input type="text" class="form-control" [(ngModel)]="model.first_name" name="first_name" #first_name="ngModel" required />
+            <input type="text" class="form-control" [(ngModel)]="createModel.first_name" name="first_name" #first_name="ngModel" required />
 
             <div style="color:red" 
-            *ngIf="first_name.errors && (first_name.dirty || first_name.touched || updateForm.submitted)">
+            *ngIf="first_name.errors && (first_name.dirty || first_name.touched || createForm.submitted)">
             <span class="help-block" *ngIf="first_name.errors.required">
               This field is required.
             </span>
@@ -178,10 +178,10 @@
 
           <div class="form-group">
               <label for="company"> Last Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Last Name" [(ngModel)] = "model.surename" name = "surename" #surename="ngModel" required>
+              <input type="text" class="form-control" id="name" placeholder="Last Name" [(ngModel)] = "createModel.surename" name = "surename" #surename="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="surename.errors && (surename.dirty || surename.touched || updateForm.submitted)">
+              *ngIf="surename.errors && (surename.dirty || surename.touched || createForm.submitted)">
               <span class="help-block" *ngIf="surename.errors.required">
                   This field is required.
               </span>
@@ -191,10 +191,10 @@
 
             <div class="form-group">
               <label for="company"> Salutation</label>
-              <input type="text" class="form-control" id="name" placeholder="Salutation" [(ngModel)] = "model.salutation" name = "salutation" #salutation="ngModel" required>
+              <input type="text" class="form-control" id="name" placeholder="Salutation" [(ngModel)] = "createModel.salutation" name = "salutation" #salutation="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="salutation.errors && (salutation.dirty || salutation.touched || updateForm.submitted)">
+              *ngIf="salutation.errors && (salutation.dirty || salutation.touched || createForm.submitted)">
               <span class="help-block" *ngIf="salutation.errors.required">
                   This field is required.
               </span>
@@ -204,12 +204,12 @@
 
             <div class="form-group">
               <label for="company"> Job Title</label>
-              <select id="select" name="job_title" class="form-control"  [(ngModel)] = "model.job_title" #job_title="ngModel" required>
+              <select id="select" name="job_title" class="form-control"  [(ngModel)] = "createModel.job_title" #job_title="ngModel" required>
               <option *ngFor="let item of job_titles" value= {{item.id}}>{{item.name}}</option>
              </select>
               
               <div style="color:red" 
-              *ngIf="job_title.errors && (job_title.dirty || job_title.touched || updateForm.submitted)">
+              *ngIf="job_title.errors && (job_title.dirty || job_title.touched || createForm.submitted)">
               <span class="help-block" *ngIf="job_title.errors.required">
                   This field is required.
               </span>
@@ -219,10 +219,10 @@
 
             <div class="form-group">
               <label for="company"> Mobile</label>
-              <input type="text" class="form-control" id="name" placeholder="mobile" [(ngModel)] = "model.mobile" name = "mobile" #mobile="ngModel" required>
+              <input type="text" class="form-control" id="name" placeholder="mobile" [(ngModel)] = "createModel.mobile" name = "mobile" #mobile="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="mobile.errors && (mobile.dirty || mobile.touched || updateForm.submitted)">
+              *ngIf="mobile.errors && (mobile.dirty || mobile.touched || createForm.submitted)">
               <span class="help-block" *ngIf="mobile.errors.required">
                   This field is required.
               </span>
@@ -232,10 +232,10 @@
 
             <div class="form-group">
               <label for="company"> Email </label>
-              <input type="text" class="form-control" id="name" placeholder="email" [(ngModel)] = "model.email" name = "email" #email="ngModel" required>
+              <input type="text" class="form-control" id="name" placeholder="email" [(ngModel)] = "createModel.email" name = "email" #email="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="email.errors && (email.dirty || email.touched || updateForm.submitted)">
+              *ngIf="email.errors && (email.dirty || email.touched || createForm.submitted)">
               <span class="help-block" *ngIf="email.errors.required">
                   This field is required.
               </span>
@@ -245,20 +245,20 @@
 
             <div class="form-group">
               <label for="company">Skype</label>
-              <input class="form-control" id="skype" name = "skype" placeholder="skype" [(ngModel)] = "model.skype"  #skype="ngModel" > 
+              <input class="form-control" id="skype" name = "skype" placeholder="skype" [(ngModel)] = "createModel.skype"  #skype="ngModel" > 
                
 
             </div>
 
             <div class="form-group">
                   <label for="company">WeChat</label>
-                  <input class="form-control" id="last_name" name = "wechat" placeholder="WeChat" [(ngModel)] = "model.wechat"  #wechat="ngModel" >            
+                  <input class="form-control" id="last_name" name = "wechat" placeholder="WeChat" [(ngModel)] = "createModel.wechat"  #wechat="ngModel" >            
                             
                 </div>
 
                 <div class="form-group">
                   <label for="company">Notes</label>
-                  <input class="form-control" id="last_name" name = "notes" placeholder="Notes" [(ngModel)] = "model.notes"  #notes="ngModel" >            
+                  <input class="form-control" id="last_name" name = "notes" placeholder="Notes" [(ngModel)] = "createModel.notes"  #notes="ngModel" >            
                             
                 </div>
      
@@ -278,7 +278,7 @@
 <div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog " role="document">
   <div class="modal-content">
-      <form (ngSubmit)="update(updateForm,model.id)" #updateForm="ngForm" novalidate >
+      <form (ngSubmit)="update(updateForm,editModal.id)" #updateForm="ngForm" novalidate >
           
     <div class="modal-header">
       <h4 class="modal-title">Edit {{title}}</h4>
@@ -291,7 +291,7 @@
       
       <div class="form-group">
         <label for="company">Client Name</label>
-        <select id="select" name="client_name" class="form-control"  [(ngModel)] = "model.client_name" #client_name="ngModel" required>
+        <select id="select" name="client_name" class="form-control"  [(ngModel)] = "editModel.client_name" #client_name="ngModel" required>
           <option *ngFor="let item of client_names" value= {{item.id}}>{{item.client_business}}</option>
          </select>
 
@@ -308,7 +308,7 @@
 
           <div class="form-group">
             <label for="company">First Name</label>
-            <input type="text" class="form-control" [(ngModel)]="model.first_name" name="first_name" #first_name="ngModel" required />
+            <input type="text" class="form-control" [(ngModel)]="editModel.first_name" name="first_name" #first_name="ngModel" required />
 
             <div style="color:red" 
             *ngIf="first_name.errors && (first_name.dirty || first_name.touched || updateForm.submitted)">
@@ -323,7 +323,7 @@
 
           <div class="form-group">
               <label for="company"> Last Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Last Name" [(ngModel)] = "model.surename" name = "surename" #surename="ngModel" required>
+              <input type="text" class="form-control" id="name" placeholder="Last Name" [(ngModel)] = "editModel.surename" name = "surename" #surename="ngModel" required>
               
               <div style="color:red" 
               *ngIf="surename.errors && (surename.dirty || surename.touched || updateForm.submitted)">
@@ -336,7 +336,7 @@
 
             <div class="form-group">
               <label for="company"> Salutation</label>
-              <input type="text" class="form-control" id="name" placeholder="Salutation" [(ngModel)] = "model.salutation" name = "salutation" #salutation="ngModel" required>
+              <input type="text" class="form-control" id="name" placeholder="Salutation" [(ngModel)] = "editModel.salutation" name = "salutation" #salutation="ngModel" required>
               
               <div style="color:red" 
               *ngIf="salutation.errors && (salutation.dirty || salutation.touched || updateForm.submitted)">
@@ -349,7 +349,7 @@
 
             <div class="form-group">
               <label for="company"> Job Title</label>
-              <select id="select" name="job_title" class="form-control"  [(ngModel)] = "model.job_title" #job_title="ngModel" required>
+              <select id="select" name="job_title" class="form-control"  [(ngModel)] = "editModel.job_title" #job_title="ngModel" required>
               <option *ngFor="let item of job_titles" value= {{item.id}}>{{item.name}}</option>
              </select>
               
@@ -364,7 +364,7 @@
 
             <div class="form-group">
               <label for="company"> Mobile</label>
-              <input type="text" class="form-control" id="name" placeholder="mobile" [(ngModel)] = "model.mobile" name = "mobile" #mobile="ngModel" required>
+              <input type="text" class="form-control" id="name" placeholder="mobile" [(ngModel)] = "editModel.mobile" name = "mobile" #mobile="ngModel" required>
               
               <div style="color:red" 
               *ngIf="mobile.errors && (mobile.dirty || mobile.touched || updateForm.submitted)">
@@ -377,7 +377,7 @@
 
             <div class="form-group">
               <label for="company"> Email </label>
-              <input type="text" class="form-control" id="name" placeholder="email" [(ngModel)] = "model.email" name = "email" #email="ngModel" required>
+              <input type="text" class="form-control" id="name" placeholder="email" [(ngModel)] = "editModel.email" name = "email" #email="ngModel" required>
               
               <div style="color:red" 
               *ngIf="email.errors && (email.dirty || email.touched || updateForm.submitted)">
@@ -390,19 +390,19 @@
 
             <div class="form-group">
               <label for="company">Skype</label>
-              <input class="form-control" id="skype" name = "skype" placeholder="skype" [(ngModel)] = "model.skype"  #skype="ngModel" > 
+              <input class="form-control" id="skype" name = "skype" placeholder="skype" [(ngModel)] = "editModel.skype"  #skype="ngModel" > 
 
             </div>
 
             <div class="form-group">
                   <label for="company">WeChat</label>
-                  <input class="form-control" id="last_name" name = "wechat" placeholder="WeChat" [(ngModel)] = "model.wechat"  #wechat="ngModel" >            
+                  <input class="form-control" id="last_name" name = "wechat" placeholder="WeChat" [(ngModel)] = "editModel.wechat"  #wechat="ngModel" >            
                             
                 </div>
 
                 <div class="form-group">
                   <label for="company">Notes</label>
-                  <input class="form-control" id="last_name" name = "notes" placeholder="Notes" [(ngModel)] = "model.notes"  #notes="ngModel" >            
+                  <input class="form-control" id="last_name" name = "notes" placeholder="Notes" [(ngModel)] = "editModel.notes"  #notes="ngModel" >            
                             
                 </div>
      
