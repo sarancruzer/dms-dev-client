@@ -29,6 +29,7 @@ export class ProjectScopeConfigureComponent implements OnInit {
   
   id:number;
   buildingClasses : any = [];
+  buildingClassesCreate : any = [];
   
   iSuccessError:IsuccessError;
   projectScopeItems : any = [];
@@ -48,7 +49,7 @@ export class ProjectScopeConfigureComponent implements OnInit {
   orderby:string = "desc";
   submitted: boolean = false; 
   constructor(private _router:Router,private _service:ProjectScopeService,private toastrService: ToastrService,private _commonService:CommonService) {
-    this.title = "Project SCope";
+    this.title = "Project Scope";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
     
@@ -63,6 +64,7 @@ export class ProjectScopeConfigureComponent implements OnInit {
     this._commonService.getBuildingClassDetails().subscribe(     
       (res) => {
             this.buildingClasses = res['result']['info']['lists'];
+            this.buildingClassesCreate = res['result']['info']['createLists'];
             console.log(res);
       },
     (err) => { 
@@ -185,13 +187,12 @@ export class ProjectScopeConfigureComponent implements OnInit {
     this.modelTitle = "Edit";
     this.createModal.show();
     this.model.building_class_id = buildingClassId;
+    
     this._service.getBuildingClass(buildingClassId).subscribe(     
       (res) => {
         console.log(res);
         this.projectScopeItems = res['result']['info']['lists'];
-        this.buildingClassId = buildingClassId;
-        console.log(this.projectScopeItems);
-           
+        console.log(this.projectScopeItems);                
       },
     (err) => { 
         this.iSuccessError.mError = err;

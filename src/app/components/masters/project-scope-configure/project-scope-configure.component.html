@@ -141,12 +141,12 @@
 
        <div class="card-body">
 
-          <div class="form-group">
+          <div class="form-group" *ngIf="modelTitle == 'Create'">
               <label for="company"> Building Class</label>
               
-              <select id="select" class="form-control" name="building_class_id"  (change)="changeBuildingClass($event.target.value)" [attr.disabled]="isEdit ? '' : null">
+              <select id="select" class="form-control" name="building_class_id"  (change)="changeBuildingClass($event.target.value)" [attr.disabled]="isEdit ? '' : null" [(ngModel)] = "model.building_class_id">
                   <option value=""> Select Option</option>
-                <option *ngFor="let row of buildingClasses" [value]="row.id">{{row.name}}</option></select>
+                <option *ngFor="let row of buildingClassesCreate" [value]="row.id">{{row.name}}</option></select>
                                
                 <div style="color:red" 
                 *ngIf="building_class_id.errors && (building_class_id.dirty || building_class_id.touched || createForm.submitted)">
@@ -156,6 +156,22 @@
                 </div>
   
             </div>
+
+            <div class="form-group" *ngIf="modelTitle == 'Edit'">
+                <label for="company"> Building Class</label>
+                
+                <select id="select" class="form-control" name="building_class_id"  (change)="changeBuildingClass($event.target.value)" [attr.disabled]="isEdit ? '' : null" [(ngModel)] = "model.building_class_id">
+                    <option value=""> Select Option</option>
+                  <option *ngFor="let row of buildingClasses" [value]="row.id">{{row.name}}</option></select>
+                                 
+                  <div style="color:red" 
+                  *ngIf="building_class_id.errors && (building_class_id.dirty || building_class_id.touched || createForm.submitted)">
+                  <span class="help-block" *ngIf="building_class_id.errors.required">
+                      This field is required.
+                  </span>
+                  </div>
+    
+              </div>
 
             <table class="table table-striped">
               <thead>
@@ -238,14 +254,14 @@
      <div class="card-body">
 
         <div class="form-group">
-            <label for="company"> Building Class</label>
+            <label for="company"> Building Class </label>
             <select id="select" name="building_class_id" class="form-control"  [(ngModel)] = "model.building_class_id" #building_class_id="ngModel" required>
               <option value=""> Select Option</option>
               <option *ngFor="let row of buildingClasses" value= {{row.id}}>{{row.name}}</option>
             </select>
 
               <div style="color:red" 
-              *ngIf="building_class_id.errors && (building_class_id.dirty || building_class_id.touched || createForm.submitted)">
+              *ngIf="building_class_id.errors && (building_class_id.dirty || building_class_id.touched || updateForm.submitted)">
               <span class="help-block" *ngIf="building_class_id.errors.required">
                   This field is required.
               </span>
@@ -259,7 +275,7 @@
               <option *ngFor="let row of itemss" value= {{row.id}}>{{row.name}}</option></select>
 
               <div style="color:red" 
-              *ngIf="items_id.errors && (items_id.dirty || items_id.touched || createForm.submitted)">
+              *ngIf="items_id.errors && (items_id.dirty || items_id.touched || updateForm.submitted)">
               <span class="help-block" *ngIf="items_id.errors.required">
                   This field is required.
               </span>

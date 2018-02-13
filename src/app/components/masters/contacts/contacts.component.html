@@ -85,7 +85,7 @@
                 <td>{{item.updated_at}}</td>
                  <td><span class="badge badge-success">Active</span></td>
                 <td>
-                  <button type="button" class="btn btn-outline-success" data-toggle="modal" (click)="edit(item)" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <button type="button" class="btn btn-outline-success" data-toggle="modal" (click)="edit(item.id)" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                   <button type="button" class="btn btn-outline-danger" data-toggle="modal" (click)="deleteModalFunc(item.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                   
                 </td>
@@ -146,7 +146,7 @@
       <div class="card-body">
         <div class="form-group">
             <label for="company">Client Name</label>
-            <select id="select" name="client_name" class="form-control"  [(ngModel)] = "createModel.client_name" #client_name="ngModel" required>
+            <select name="client_name" class="form-control"  [(ngModel)] = "createModel.client_name" #client_name="ngModel" required>
               <option *ngFor="let item of client_names" value= {{item.id}}>{{item.client_business}}</option>
              </select>
 
@@ -163,7 +163,7 @@
 
           <div class="form-group">
             <label for="company">First Name</label>
-            <input type="text" class="form-control" [(ngModel)]="createModel.first_name" name="first_name" #first_name="ngModel" required />
+            <input type="text" id="first_name" class="form-control" [(ngModel)]="createModel.first_name" name="first_name" #first_name="ngModel" required />
 
             <div style="color:red" 
             *ngIf="first_name.errors && (first_name.dirty || first_name.touched || createForm.submitted)">
@@ -172,13 +172,12 @@
             </span>
             </div>
 
-            <p *ngIf="first_name.errors?.url">error message</p>
-
+           
           </div>
 
           <div class="form-group">
               <label for="company"> Last Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Last Name" [(ngModel)] = "createModel.surename" name = "surename" #surename="ngModel" required>
+              <input type="text" class="form-control" placeholder="Last Name" [(ngModel)] = "createModel.surename" name = "surename" id="surename" #surename="ngModel" required>
               
               <div style="color:red" 
               *ngIf="surename.errors && (surename.dirty || surename.touched || createForm.submitted)">
@@ -191,7 +190,7 @@
 
             <div class="form-group">
               <label for="company"> Salutation</label>
-              <input type="text" class="form-control" id="name" placeholder="Salutation" [(ngModel)] = "createModel.salutation" name = "salutation" #salutation="ngModel" required>
+              <input type="text" class="form-control" placeholder="Salutation" [(ngModel)] = "createModel.salutation" name = "salutation" #salutation="ngModel" required>
               
               <div style="color:red" 
               *ngIf="salutation.errors && (salutation.dirty || salutation.touched || createForm.submitted)">
@@ -204,7 +203,7 @@
 
             <div class="form-group">
               <label for="company"> Job Title</label>
-              <select id="select" name="job_title" class="form-control"  [(ngModel)] = "createModel.job_title" #job_title="ngModel" required>
+              <select name="job_title" class="form-control"  [(ngModel)] = "createModel.job_title" #job_title="ngModel" required>
               <option *ngFor="let item of job_titles" value= {{item.id}}>{{item.name}}</option>
              </select>
               
@@ -219,7 +218,7 @@
 
             <div class="form-group">
               <label for="company"> Mobile</label>
-              <input type="text" class="form-control" id="name" placeholder="mobile" [(ngModel)] = "createModel.mobile" name = "mobile" #mobile="ngModel" required>
+              <input type="text" class="form-control" placeholder="mobile" [(ngModel)] = "createModel.mobile" name = "mobile" #mobile="ngModel" required>
               
               <div style="color:red" 
               *ngIf="mobile.errors && (mobile.dirty || mobile.touched || createForm.submitted)">
@@ -232,7 +231,7 @@
 
             <div class="form-group">
               <label for="company"> Email </label>
-              <input type="text" class="form-control" id="name" placeholder="email" [(ngModel)] = "createModel.email" name = "email" #email="ngModel" required>
+              <input type="text" class="form-control" placeholder="email" [(ngModel)] = "createModel.email" name = "email" #email="ngModel" required>
               
               <div style="color:red" 
               *ngIf="email.errors && (email.dirty || email.touched || createForm.submitted)">
@@ -245,20 +244,20 @@
 
             <div class="form-group">
               <label for="company">Skype</label>
-              <input class="form-control" id="skype" name = "skype" placeholder="skype" [(ngModel)] = "createModel.skype"  #skype="ngModel" > 
+              <input class="form-control" name = "skype" placeholder="skype" [(ngModel)] = "createModel.skype"  #skype="ngModel" > 
                
 
             </div>
 
             <div class="form-group">
                   <label for="company">WeChat</label>
-                  <input class="form-control" id="last_name" name = "wechat" placeholder="WeChat" [(ngModel)] = "createModel.wechat"  #wechat="ngModel" >            
+                  <input class="form-control"  name = "wechat" placeholder="WeChat" [(ngModel)] = "createModel.wechat"  #wechat="ngModel" >            
                             
                 </div>
 
                 <div class="form-group">
                   <label for="company">Notes</label>
-                  <input class="form-control" id="last_name" name = "notes" placeholder="Notes" [(ngModel)] = "createModel.notes"  #notes="ngModel" >            
+                  <input class="form-control"  name = "notes" placeholder="Notes" [(ngModel)] = "createModel.notes"  #notes="ngModel" >            
                             
                 </div>
      
@@ -291,43 +290,40 @@
       
       <div class="form-group">
         <label for="company">Client Name</label>
-        <select id="select" name="client_name" class="form-control"  [(ngModel)] = "editModel.client_name" #client_name="ngModel" required>
+        <select name="client_name" class="form-control"  [(ngModel)] = "editModel.client_name" #edit_client_name="ngModel" required>
           <option *ngFor="let item of client_names" value= {{item.id}}>{{item.client_business}}</option>
          </select>
 
         <div style="color:red" 
-        *ngIf="client_name.errors && (client_name.dirty || client_name.touched || updateForm.submitted)">
-        <span class="help-block" *ngIf="client_name.errors.required">
+        *ngIf="edit_client_name.errors && (edit_client_name.dirty || edit_client_name.touched || updateForm.submitted)">
+        <span class="help-block" *ngIf="edit_client_name.errors.required">
           This field is required.
         </span>
         </div>
-
-        <p *ngIf="client_name.errors?.url">error message</p>
+       
 
       </div>
 
           <div class="form-group">
             <label for="company">First Name</label>
-            <input type="text" class="form-control" [(ngModel)]="editModel.first_name" name="first_name" #first_name="ngModel" required />
+            <input type="text" class="form-control" [(ngModel)]="editModel.first_name" name="first_name" #edit_first_name="ngModel" required />
 
-            <div style="color:red" 
-            *ngIf="first_name.errors && (first_name.dirty || first_name.touched || updateForm.submitted)">
-            <span class="help-block" *ngIf="first_name.errors.required">
+           <div style="color:red" 
+            *ngIf="edit_first_name.errors && (edit_first_name.dirty || edit_first_name.touched || updateForm.submitted)">
+            <span class="help-block" *ngIf="edit_first_name.errors.required">
               This field is required.
             </span>
             </div>
 
-            <p *ngIf="first_name.errors?.url">error message</p>
-
-          </div>
+         </div>
 
           <div class="form-group">
               <label for="company"> Last Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Last Name" [(ngModel)] = "editModel.surename" name = "surename" #surename="ngModel" required>
+              <input type="text" class="form-control" placeholder="Last Name" [(ngModel)] = "editModel.surename" name = "surename" #edit_surename="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="surename.errors && (surename.dirty || surename.touched || updateForm.submitted)">
-              <span class="help-block" *ngIf="surename.errors.required">
+              *ngIf="edit_surename.errors && (edit_surename.dirty || edit_surename.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="edit_surename.errors.required">
                   This field is required.
               </span>
               </div>
@@ -336,11 +332,11 @@
 
             <div class="form-group">
               <label for="company"> Salutation</label>
-              <input type="text" class="form-control" id="name" placeholder="Salutation" [(ngModel)] = "editModel.salutation" name = "salutation" #salutation="ngModel" required>
+              <input type="text" class="form-control" placeholder="Salutation" [(ngModel)] = "editModel.salutation" name = "salutation" #edit_salutation="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="salutation.errors && (salutation.dirty || salutation.touched || updateForm.submitted)">
-              <span class="help-block" *ngIf="salutation.errors.required">
+              *ngIf="edit_salutation.errors && (edit_salutation.dirty || edit_salutation.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="edit_salutation.errors.required">
                   This field is required.
               </span>
               </div>
@@ -349,13 +345,13 @@
 
             <div class="form-group">
               <label for="company"> Job Title</label>
-              <select id="select" name="job_title" class="form-control"  [(ngModel)] = "editModel.job_title" #job_title="ngModel" required>
+              <select name="job_title" class="form-control"  [(ngModel)] = "editModel.job_title" #edit_job_title="ngModel" required>
               <option *ngFor="let item of job_titles" value= {{item.id}}>{{item.name}}</option>
              </select>
               
               <div style="color:red" 
-              *ngIf="job_title.errors && (job_title.dirty || job_title.touched || updateForm.submitted)">
-              <span class="help-block" *ngIf="job_title.errors.required">
+              *ngIf="edit_job_title.errors && (edit_job_title.dirty || edit_job_title.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="edit_job_title.errors.required">
                   This field is required.
               </span>
               </div>
@@ -364,11 +360,11 @@
 
             <div class="form-group">
               <label for="company"> Mobile</label>
-              <input type="text" class="form-control" id="name" placeholder="mobile" [(ngModel)] = "editModel.mobile" name = "mobile" #mobile="ngModel" required>
+              <input type="text" class="form-control" placeholder="mobile" [(ngModel)] = "editModel.mobile" name = "mobile" #edit_mobile="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="mobile.errors && (mobile.dirty || mobile.touched || updateForm.submitted)">
-              <span class="help-block" *ngIf="mobile.errors.required">
+              *ngIf="edit_mobile.errors && (edit_mobile.dirty || edit_mobile.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="edit_mobile.errors.required">
                   This field is required.
               </span>
               </div>
@@ -377,11 +373,11 @@
 
             <div class="form-group">
               <label for="company"> Email </label>
-              <input type="text" class="form-control" id="name" placeholder="email" [(ngModel)] = "editModel.email" name = "email" #email="ngModel" required>
+              <input type="text" class="form-control" placeholder="email" [(ngModel)] = "editModel.email" name = "email" #edit_email="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="email.errors && (email.dirty || email.touched || updateForm.submitted)">
-              <span class="help-block" *ngIf="email.errors.required">
+              *ngIf="edit_email.errors && (edit_email.dirty || edit_email.touched || updateForm.submitted)">
+              <span class="help-block" *ngIf="edit_email.errors.required">
                   This field is required.
               </span>
               </div>
@@ -390,19 +386,19 @@
 
             <div class="form-group">
               <label for="company">Skype</label>
-              <input class="form-control" id="skype" name = "skype" placeholder="skype" [(ngModel)] = "editModel.skype"  #skype="ngModel" > 
+              <input class="form-control"  name = "skype" placeholder="skype" [(ngModel)] = "editModel.skype"  #edit_skype="ngModel" > 
 
             </div>
 
             <div class="form-group">
                   <label for="company">WeChat</label>
-                  <input class="form-control" id="last_name" name = "wechat" placeholder="WeChat" [(ngModel)] = "editModel.wechat"  #wechat="ngModel" >            
+                  <input class="form-control"  name = "wechat" placeholder="WeChat" [(ngModel)] = "editModel.wechat"  #edit_wechat="ngModel" >            
                             
                 </div>
 
                 <div class="form-group">
                   <label for="company">Notes</label>
-                  <input class="form-control" id="last_name" name = "notes" placeholder="Notes" [(ngModel)] = "editModel.notes"  #notes="ngModel" >            
+                  <input class="form-control" name = "notes" placeholder="Notes" [(ngModel)] = "editModel.notes"  #edit_notes="ngModel" >            
                             
                 </div>
      

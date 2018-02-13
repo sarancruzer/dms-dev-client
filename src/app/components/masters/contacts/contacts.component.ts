@@ -142,17 +142,19 @@ export class ContactsComponent implements OnInit {
    }
   }
 
-  edit(data){
-    this.editModal.show();
-    let temp = data;
-    this.editModel = temp;    
-
+  edit(id){
+    console.log(id);
+    this.editModal.show();    
+    let data = this.items.find(i => i.id == id);
+    this.editModel = data;
   }
 
   update(form,id){
+    console.log(id);
+    console.log(this.editModel);
 
     if(form.valid){
-    this._service.update(this.editModel,id).subscribe(     
+    this._service.update(this.editModel,this.editModel.id).subscribe(     
       (res) => {
            this.iSuccessError.mSuccess = res['result']['info']['msg'];
            this.init(this.currentPage);
