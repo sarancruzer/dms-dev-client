@@ -13,12 +13,14 @@ import { CommonService } from 'app/_service/common.service';
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss'],
-  providers:[ContactsService]
+  providers:[ContactsService,CommonService]
 })
 export class ContactsComponent implements OnInit {
 
   
-  model = new Contacts();
+  createModel = new Contacts();
+  editModel = new Contacts();
+
   items:any;
   title:string;
 
@@ -123,7 +125,7 @@ export class ContactsComponent implements OnInit {
   create(form){
 
     if(form.valid){
-      this._service.add(this.model).subscribe(     
+      this._service.add(this.createModel).subscribe(     
         (res) => {
             this.iSuccessError.mSuccess = res['result']['info']['msg'];
             this.init(this.currentPage);
@@ -142,14 +144,15 @@ export class ContactsComponent implements OnInit {
 
   edit(data){
     this.editModal.show();
-    this.model = data;    
+    let temp = data;
+    this.editModel = temp;    
 
   }
 
   update(form,id){
 
     if(form.valid){
-    this._service.update(this.model,id).subscribe(     
+    this._service.update(this.editModel,id).subscribe(     
       (res) => {
            this.iSuccessError.mSuccess = res['result']['info']['msg'];
            this.init(this.currentPage);
