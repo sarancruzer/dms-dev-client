@@ -40,7 +40,7 @@ export class CommonService {
 
   getContactDetails(params:any) : Observable<any[]> {
     
-    return this._http.post(this.apiUrl+'get'+ApiSettings.CONTACTS,params,this.options)
+    return this._http.post(this.apiUrl+'get'+ApiSettings.CONTACTSDETAILS,params,this.options)
     .map((res:Response) => <any[]>res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }

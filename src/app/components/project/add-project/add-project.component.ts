@@ -22,6 +22,7 @@ export class AddProjectComponent implements OnInit {
   client_sizes : any = [];
   manage_licenses : any = [];
   territorys:any = [];
+  project_statuss:any = [];
   constructor(private _router:Router,private _service : ProjectService,private toastrService : ToastrService,private _commonService:CommonService) {
     
     this.iSuccessError = {mSuccess:"",mError:""};
@@ -32,7 +33,7 @@ export class AddProjectComponent implements OnInit {
   }
     
   getMasterData(){
-  let params = ['m_state','clients','m_client_size','license','m_territory'];
+  let params = ['m_state','clients','m_client_size','license','m_territory','m_project_status'];
   this._commonService.getMasterDetails(params).subscribe(     
     (res) => {
           this.states = res['result']['info']['m_state'];
@@ -40,6 +41,8 @@ export class AddProjectComponent implements OnInit {
           this.client_sizes = res['result']['info']['m_client_size'];
           this.manage_licenses = res['result']['info']['license'];
           this.territorys = res['result']['info']['m_territory'];
+          this.project_statuss = res['result']['info']['m_project_status'];
+          
           console.log(res);
     },
   (err) => { 

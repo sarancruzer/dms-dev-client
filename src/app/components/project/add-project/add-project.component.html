@@ -111,7 +111,7 @@
                <div class="form-group">
                 <label for="company">Project Status</label>
                  <select id="select" name="state" class="form-control form-control-lg"  [(ngModel)] = "model.project_status" #project_status="ngModel" required>
-                    <option *ngFor="let row of clients" value= {{row.id}}>{{row.client_business}}</option>
+                    <option *ngFor="let row of project_statuss" value= {{row.id}}>{{row.name}}</option>
                   </select>
 
                 <div style="color:red" 

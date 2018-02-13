@@ -15,6 +15,7 @@ export class ApiSettings {
     public static PROJECTSCOPEDETAIL='ProjectScopeDetail';
     public static PROJECTSCOPE='ProjectScope';       
     public static ITEMS='Items';       
+    public static CONTACTSDETAILS='ContactDetails';       
     
     
     
