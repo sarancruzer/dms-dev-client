@@ -47,7 +47,7 @@ export class ContactsComponent implements OnInit {
   orderby:string = "desc";
   submitted: boolean = false; 
   constructor(private _router:Router,private _service:ContactsService,private toastrService: ToastrService,private _commonService : CommonService) {
-    this.title = "State";
+    this.title = "Contacts";
     this.q = "";
     this.iSuccessError = {mSuccess:"",mError:""};
     

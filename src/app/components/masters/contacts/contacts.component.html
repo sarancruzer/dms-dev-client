@@ -151,7 +151,7 @@
              </select>
 
             <div style="color:red" 
-            *ngIf="client_name.errors && (client_name.dirty || client_name.touched || updateForm.submitted)">
+            *ngIf="client_name.errors && (client_name.dirty || client_name.touched || createForm.submitted)">
             <span class="help-block" *ngIf="client_name.errors.required">
               This field is required.
             </span>
@@ -166,7 +166,7 @@
             <input type="text" class="form-control" [(ngModel)]="model.first_name" name="first_name" #first_name="ngModel" required />
 
             <div style="color:red" 
-            *ngIf="first_name.errors && (first_name.dirty || first_name.touched || updateForm.submitted)">
+            *ngIf="first_name.errors && (first_name.dirty || first_name.touched || createForm.submitted)">
             <span class="help-block" *ngIf="first_name.errors.required">
               This field is required.
             </span>
@@ -181,7 +181,7 @@
               <input type="text" class="form-control" id="name" placeholder="Last Name" [(ngModel)] = "model.surename" name = "surename" #surename="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="surename.errors && (surename.dirty || surename.touched || updateForm.submitted)">
+              *ngIf="surename.errors && (surename.dirty || surename.touched || createForm.submitted)">
               <span class="help-block" *ngIf="surename.errors.required">
                   This field is required.
               </span>
@@ -194,7 +194,7 @@
               <input type="text" class="form-control" id="name" placeholder="Salutation" [(ngModel)] = "model.salutation" name = "salutation" #salutation="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="salutation.errors && (salutation.dirty || salutation.touched || updateForm.submitted)">
+              *ngIf="salutation.errors && (salutation.dirty || salutation.touched || createForm.submitted)">
               <span class="help-block" *ngIf="salutation.errors.required">
                   This field is required.
               </span>
@@ -209,7 +209,7 @@
              </select>
               
               <div style="color:red" 
-              *ngIf="job_title.errors && (job_title.dirty || job_title.touched || updateForm.submitted)">
+              *ngIf="job_title.errors && (job_title.dirty || job_title.touched || createForm.submitted)">
               <span class="help-block" *ngIf="job_title.errors.required">
                   This field is required.
               </span>
@@ -222,7 +222,7 @@
               <input type="text" class="form-control" id="name" placeholder="mobile" [(ngModel)] = "model.mobile" name = "mobile" #mobile="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="mobile.errors && (mobile.dirty || mobile.touched || updateForm.submitted)">
+              *ngIf="mobile.errors && (mobile.dirty || mobile.touched || createForm.submitted)">
               <span class="help-block" *ngIf="mobile.errors.required">
                   This field is required.
               </span>
@@ -235,7 +235,7 @@
               <input type="text" class="form-control" id="name" placeholder="email" [(ngModel)] = "model.email" name = "email" #email="ngModel" required>
               
               <div style="color:red" 
-              *ngIf="email.errors && (email.dirty || email.touched || updateForm.submitted)">
+              *ngIf="email.errors && (email.dirty || email.touched || createForm.submitted)">
               <span class="help-block" *ngIf="email.errors.required">
                   This field is required.
               </span>
