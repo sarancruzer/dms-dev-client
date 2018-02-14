@@ -8,7 +8,7 @@
             <small>Form</small>
           </div>
           <div class="card-body">
-            <form (ngSubmit)="submit(form)" #form="ngForm" novalidate >           
+            <form (ngSubmit)="submit(form,model.id)" #form="ngForm" novalidate >           
             <div class="form-group">
               <label for="company">Licensee Trading Name</label>
               <input type="text" class="form-control" id="company" placeholder="License Trading Name"  [(ngModel)] = "model.license_trading_name" name = "license_trading_name" #license_trading_name="ngModel" required>

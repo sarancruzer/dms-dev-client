@@ -34,8 +34,8 @@
 
               </div>
               <div class="form-group">
-                <label for="company">ABN</label>
-                <input type="text" class="form-control" id="company" placeholder="Town/City" [(ngModel)] = "model.abn" name="abn" #abn="ngModel">
+                <label for="company">ABN / ACN / BSB</label>
+                <input type="number" class="form-control" id="company" placeholder="ABN / ACN / BSB" [(ngModel)] = "model.abn" name="abn" #abn="ngModel">
                 <div style="color:red" 
               *ngIf="abn.errors && (abn.dirty || abn.touched || form.submitted)">
               <span class="help-block" *ngIf="abn.errors.required">
