@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label for="company">Company Name</label>
                <select id="select" name="company_name" class="form-control"  [(ngModel)] = "model.company_name" #company_name="ngModel" required>
-                  <option *ngFor="let item of licenses" value= {{item.id}}>{{item.company_name}}</option></select>
+                  <option *ngFor="let item of licenses" value= {{item.id}}>{{item.license_trading_name}}</option></select>
 
                   <div style="color:red" 
                   *ngIf="company_name.errors && (company_name.dirty || company_name.touched || form.submitted)">

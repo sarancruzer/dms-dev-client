@@ -18,7 +18,7 @@
               <input type="text" class="form-control" id="company" placeholder="2017-10-05" [(ngModel)] = "model.reference_date"  name="reference_date">
             </div> -->
              <div class="form-group">
-              <label for="company">Client business</label>
+              <label for="company">Client Business Name</label>
               <input type="text" class="form-control" id="company" placeholder="Client business" [(ngModel)] = "model.client_business" name="client_business" #client_business="ngModel" required >
 
               <div style="color:red" *ngIf="client_business.errors && (client_business.dirty || client_business.touched || form.submitted)">

@@ -64,7 +64,7 @@
 
 
                     <div *ngIf="item == 'aluminium_windows'">
-                      <select class="form-control" formControlName="aluminium_windows" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.aluminium_windows,item)">
+                      <select class="form-control" formControlName="aluminium_windows" (change)="onQtyChange(variation.value.building_class_id,variation.value.aluminium_windows,item)">
                         <option value="">select option</option>
                         <option value="1">Type 1</option>
                         <option value="2">Type 2</option>
@@ -73,7 +73,7 @@
                       </select>
                     </div>
                     <div *ngIf="item == 'aluminium_doors'">
-                      <select class="form-control" formControlName="aluminium_doors" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.aluminium_doors,item)">
+                      <select class="form-control" formControlName="aluminium_doors" (change)="onQtyChange(variation.value.building_class_id,variation.value.aluminium_doors,item)">
                         <option value="">select option</option>
                         <option value="1">Type 1</option>
                         <option value="2">Type 2</option>
@@ -84,7 +84,7 @@
 
 
                     <div *ngIf="item == 'curtain_wall'">
-                      <select class="form-control" formControlName="curtain_wall" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.curtain_wall,item)">
+                      <select class="form-control" formControlName="curtain_wall" (change)="onQtyChange(variation.value.building_class_id,variation.value.curtain_wall,item)">
                         <option value="">select option</option>
                         <option value="1">Type 1</option>
                         <option value="2">Type 2</option>
@@ -94,7 +94,7 @@
                     </div>
 
                     <div *ngIf="item == 'aluminium_louvres'">
-                      <select class="form-control" formControlName="aluminium_louvres" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.aluminium_louvres,item)">
+                      <select class="form-control" formControlName="aluminium_louvres" (change)="onQtyChange(variation.value.building_class_id,variation.value.aluminium_louvres,item)">
                         <option value="">select option</option>
                         <option value="1">Type 1</option>
                         <option value="2">Type 2</option>
@@ -104,7 +104,7 @@
                     </div>
 
                     <div *ngIf="item == 'kitchens'">
-                      <input type="text" class="form-control mb-2 mb-sm-0" formControlName="kitchens" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.kitchens_price,item)">
+                      <input type="text" class="form-control mb-2 mb-sm-0" formControlName="kitchens" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.kitchens,item)">
                     </div>
 
 
@@ -125,7 +125,7 @@
                     </div>
 
                     <div *ngIf="item == 'ensuites'">
-                      <input type="text" class="form-control mb-2 mb-sm-0" formControlName="ensuites" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.kitchens,item)">
+                      <input type="text" class="form-control mb-2 mb-sm-0" formControlName="ensuites" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.ensuites,item)">
                     </div>
 
                     <div *ngIf="item == 'balconies'">
@@ -137,7 +137,7 @@
                     </div>
 
                     <div *ngIf="item == 'showers'">
-                      <input type="text" class="form-control mb-2 mb-sm-0" formControlName="balconies" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.showers,item)">
+                      <input type="text" class="form-control mb-2 mb-sm-0" formControlName="showers" (keyup)="onQtyChange(variation.value.building_class_id,variation.value.showers,item)">
                     </div>
 
                     <div *ngIf="item == 'storage'">

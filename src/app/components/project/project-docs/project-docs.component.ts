@@ -152,7 +152,7 @@ createModalFunc(){
         let refId = res['result']['info']['reference_id'];
         let archId = res['result']['info']['arch_id'];
         this.form.patchValue({ref: refId})
-        this.form.patchValue({arch_ref: archId})
+        //this.form.patchValue({arch_ref: archId})
        // this.project_name = res['result']['info']['project_name'];
     },
   (err) => { 
