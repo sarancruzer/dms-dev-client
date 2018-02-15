@@ -35,10 +35,10 @@ export class ProjectTeamComponent implements OnInit {
     
       this.form = new FormGroup({
 
-        developer: new FormControl('', Validators.required),
-        project_manager: new FormControl('', Validators.required),
-        estimator: new FormControl('', Validators.required),
-        site_manager: new FormControl('', Validators.required),
+        developer: new FormControl(0, Validators.required),
+        project_manager: new FormControl(0, Validators.required),
+        estimator: new FormControl(0, Validators.required),
+        site_manager: new FormControl(0, Validators.required),
         architech: new FormControl('', Validators.required),
         engineer: new FormControl('', Validators.required),        
         building_surveyor: new FormControl('', Validators.required),        
@@ -161,7 +161,7 @@ submit(form){
   console.log("form");
   console.log(form.value);
 
-    if(form.valid){
+  
      this._service.updateProjectTeam(form.value,this.id).subscribe(     
        (res) => {
 
@@ -175,8 +175,7 @@ submit(form){
          this.iSuccessError.mError = err;
          this.toastrService.error(err, 'Error!');
      }) 
-   }
-   
+    
 }
 
 
