@@ -22,29 +22,51 @@
             <strong>{{project_name}} - Project Team</strong>
           </div>
           <div class="card-body">
+            
+            <!-- <div class="form-group">
+              <label for="company">User Type</label>
+             <select id="select" name="role" class="form-control"  [(ngModel)] = "model.role" #role="ngModel" required>
+                <option *ngFor="let role of roles" value= {{role.id}}>{{role.name}}</option></select>
+
+                <div style="color:red" 
+                *ngIf="role.errors && (role.dirty || role.touched || form.submitted)">
+                <span class="help-block" *ngIf="role.errors.required">
+                    This field is required.
+                </span>
+                </div>
+
+          </div> -->
 
             <div class="form-group">
               <label for="company">Developer</label>
-              <select id="select" class="form-control" formControlName="developer">
-                <option *ngFor="let row of developers" value={{row.id}}>{{row.name}}</option>
+              <select class="form-control" formControlName="developer" #developer="formControlName" required>
+                <option *ngFor="let row of developers" value={{row.id}}>{{row.name}} {{row.surename}}</option>
               </select>
+
+              <div style="color:red" 
+              *ngIf="developer.errors && (developer.dirty || developer.touched || form.submitted)">
+              <span class="help-block" *ngIf="developer.errors.required">
+                  This field is required.
+              </span>
+              </div>
+              
             </div>
             <div class="form-group">
               <label for="company">Project Manager</label>
               <select id="select" class="form-control" formControlName="project_manager">
-                <option *ngFor="let row of projectManagers" value={{row.id}}>{{row.name}}</option>
+                <option *ngFor="let row of projectManagers" value={{row.id}}>{{row.name}} {{row.surename}}</option>
               </select>
             </div>
             <div class="form-group">
               <label for="company">Estimator</label>
               <select id="select" name="select" class="form-control" formControlName="estimator">
-                <option *ngFor="let row of estimators" value={{row.id}}>{{row.name}}</option>
+                <option *ngFor="let row of estimators" value={{row.id}}>{{row.name}} {{row.surename}}</option>
               </select>
             </div>
             <div class="form-group">
               <label for="company">Site Manager</label>
               <select id="select" name="select" class="form-control" formControlName="site_manager">
-                <option *ngFor="let row of siteManagers" value={{row.id}}>{{row.name}}</option>
+                <option *ngFor="let row of siteManagers" value={{row.id}}>{{row.name}} {{row.surename}} </option>
               </select>
             </div>
 
