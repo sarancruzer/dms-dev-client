@@ -40,27 +40,27 @@
             </li> -->
 
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScopeConfigure']"><i class="icon-puzzle"></i> Project Scope </a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScopeConfigure']" ><i class="icon-puzzle"></i> Project Scope </a>
             </li>
            
           </ul>
         </li>
 
-        <!-- <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Reports</a>
           <ul class="nav-dropdown-items">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectDetailReport']"><i class="icon-user"></i> Project  Details </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/clientReport']"><i class="icon-puzzle"></i> Client Activity Report </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectScopeReport']"><i class="icon-puzzle"></i> Project Scope Report</a>
-            </li>           
+            </li>            -->
            
           </ul>
-        </li> -->
+        </li>
         
         
       <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageUsers') !== -1">

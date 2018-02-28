@@ -59,6 +59,8 @@ export class SupplyItemsComponent implements OnInit {
   sidemenuItems:any;
   project_quote:any;
 
+  supply_terms_selected : any;
+
   
 
   all_joinery_greyout: string;
@@ -157,6 +159,7 @@ getMasterData(){
       (res) => {
         let ress = res['result']['info']['lists'];
         this.project_name = res['result']['info']['project_name'];
+        this.supply_terms_selected = res['result']['info']['supply_terms'];
            //Object.keys(ress); // ['name', 'age']
            console.log(res);
            this.sidemenuItems = Object.getOwnPropertyNames(ress[0]);
@@ -338,7 +341,7 @@ getMasterData(){
 
     this.form = this.fb.group({
 
-      supply_terms:res['supply_terms'],
+      supply_terms:this.supply_terms_selected,
 
 
           all_joinery_quoted_date:'',
