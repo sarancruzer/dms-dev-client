@@ -25,13 +25,27 @@ export class ClientReportComponent implements OnInit {
   ngOnInit() {
   this.getClientReport();   
   }
+
+  init(){    
+    this._service.get().subscribe(     
+      (res) => {
+        console.log("REPORTS RES");
+          console.log(res);
+           
+      },
+    (err) => { 
+      console.log(err);
+        this.iSuccessError.mError = err;
+        this.toastrService.error(err, 'Error!');
+    }) 
+ } 
   
  getClientReport(){    
       this._service.getClientReport().subscribe(     
         (blob) => {
           console.log("REPORTS RES");
             console.log(blob);
-              importedSaveAs(blob, "filename.pdf");
+             importedSaveAs(blob, "ClientReport"+ Date.now() +".pdf");
         },
       (err) => { 
         console.log(err);

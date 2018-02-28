@@ -20,6 +20,12 @@ export class ReportService {
 
    }
 
+  get() : Observable<any> {
+    return this._http.post(this.apiUrl+'get'+ApiSettings.CLIENTREPORTLIST,'',this.options)
+    .map((res:Response) => <any>res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
  
   getClientReport() : Observable<Blob> {
     return this._http.post(this.apiUrl+'get'+ApiSettings.CLIENTREPORT,'',this.options)

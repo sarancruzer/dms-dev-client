@@ -3,8 +3,8 @@
   <app-sidebar-form></app-sidebar-form>
   <nav class="sidebar-nav">
     <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
+      <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/dashboard') !== -1">
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']" ><i class="icon-speedometer"></i> Dashboard </a>
       </li>
       <li class="nav-item nav-dropdown" *ngIf="roleAccess && roleAccess.indexOf('/masters') !== -1" routerLinkActive="open" appNavDropdown >
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Masters</a>
@@ -25,7 +25,7 @@
             <!-- <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/clientSize') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/clientSize']"><i class="icon-puzzle"></i> Client Size</a>
             </li> -->
-            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/projectType') !== -1">
+            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/proType') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectType']"><i class="icon-puzzle"></i> Project Type</a>
             </li>
             <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/buildingClass') !== -1">
@@ -39,21 +39,21 @@
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScope']"><i class="icon-puzzle"></i> Project Scope</a>
             </li> -->
 
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="roleAccess.indexOf('/masters/projScopeConfigure') !== -1">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/masters/projectScopeConfigure']" ><i class="icon-puzzle"></i> Project Scope </a>
             </li>
            
           </ul>
         </li>
 
-        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Reports</a>
+        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown *ngIf="roleAccess.indexOf('/reports') !== -1">
+          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle  ><i class="icon-puzzle"></i> Reports</a>
           <ul class="nav-dropdown-items">
             <!-- <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectDetailReport']"><i class="icon-user"></i> Project  Details </a>
             </li> -->
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/clientReport']"><i class="icon-puzzle"></i> Client Activity Report </a>
+            <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/clientReport') !== -1">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/clientReport']" ><i class="icon-puzzle"></i> Client Activity Report </a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/projectScopeReport']"><i class="icon-puzzle"></i> Project Scope Report</a>
@@ -64,10 +64,10 @@
         
         
       <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageUsers') !== -1">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageUsers']"><i class="icon-user"></i> Manage Users </a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageUsers']" ><i class="icon-user"></i> Manage Users </a>
       </li>
        <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageRoles') !== -1">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageRoles']"><i class="fa fa-id-badge"></i> Manage Roles </a>
+        <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageRoles']" ><i class="fa fa-id-badge"></i> Manage Roles </a>
       </li>
 
       <!-- <li class="nav-item" *ngIf="roleAccess.indexOf('/manageModules') !== -1">
@@ -79,21 +79,21 @@
       </li>
        -->
       <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageLicense') !== -1">
-            <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageLicense']"><i class="fa fa-id-card"></i> Manage License </a>
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageLicense']" ><i class="fa fa-id-card"></i> Manage License </a>
       </li>
 
-      <li class="nav-item" >
-        <a class="nav-link" routerLinkActive="active" [routerLink]="['/contacts']"><i class="fa fa-id-card"></i> Manage Contacts </a>
+      <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/contacts') !== -1">
+        <a class="nav-link"  routerLinkActive="active" [routerLink]="['/contacts']" ><i class="fa fa-id-card"></i> Manage Contacts </a>
       </li>
 
       <li class="nav-item" *ngIf="roleAccess && roleAccess.indexOf('/manageClient') !== -1">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageClient']"><i class="fa fa-briefcase"></i> Manage Clients </a>
         </li> 
 
-        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-puzzle"></i> Project</a>
+        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown *ngIf="roleAccess && roleAccess.indexOf('/project') != -1 ">
+          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle ><i class="icon-puzzle"></i> Project</a>
           <ul class="nav-dropdown-items">
-            <li class="nav-item">
+            <li class="nav-item" >
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/manageProject']"><i class="icon-user"></i> Manage Project </a>
             </li>
             <li class="nav-item">
