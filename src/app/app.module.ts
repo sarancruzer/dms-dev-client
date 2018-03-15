@@ -115,6 +115,7 @@ import { ProjectScopeConfigureComponent } from './components/masters/project-sco
 import { ClientReportComponent } from './components/reports/client-report/client-report.component';
 import { ProjectDetailReportComponent } from './components/reports/project-detail-report/project-detail-report.component';
 import { ContactsComponent } from './components/masters/contacts/contacts.component';
+import { SupplyItemReportComponent } from './components/reports/supply-item-report/supply-item-report.component';
 
 
 
@@ -180,7 +181,8 @@ import { ContactsComponent } from './components/masters/contacts/contacts.compon
     ProjectScopeConfigureComponent,
     ClientReportComponent,
     ProjectDetailReportComponent,
-    ContactsComponent,    
+    ContactsComponent,
+    SupplyItemReportComponent,    
   ],
   providers: [{
     provide: LocationStrategy,

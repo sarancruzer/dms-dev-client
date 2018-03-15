@@ -31,6 +31,8 @@ export class ApiSettings {
     public static CLIENTREPORT='ClientReport'
     public static CLIENTREPORTLIST='ClientReportList'
     public static PROJECTREPORT='ProjectReport'
+    public static SUPPLYITEMREPORT='SupplyItemReport'
+
     
         
     
